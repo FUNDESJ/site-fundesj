@@ -1,17 +1,18 @@
 import { useState } from "react";
 import '../styles/home.css';
 import logo from '../images/logo.png';
-import backgound from '../images/background.mp4';
+import background from '../images/background.mp4';
 function Home() {
 
     return (
         <div className="home">
             <video
                 className="video-bg"
-                src={backgound}
+                src={background}
                 type="video/mp4"
                 autoPlay
                 loop
+                muted
                 playsInline
             ></video>
             <header className="navbar">
