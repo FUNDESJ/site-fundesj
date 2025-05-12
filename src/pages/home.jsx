@@ -1,7 +1,7 @@
-import { useState } from "react";
 import '../styles/home.css';
 import logo from '../images/logo.png';
 import background from '../images/background.mp4';
+import { Link } from 'react-router-dom';
 function Home() {
 
     return (
@@ -10,12 +10,13 @@ function Home() {
             <img src={logo} alt="Logo" className="logo" />
             <nav className="menu">
                 <ul>
-                    <a href=""><li>A INSTITUIÇÃO ▾</li></a>
+                    <Link to="/instituição"><li>A INSTITUIÇÃO ▾</li></Link>
                     <a href=""><li>PROGRAMAS ▾</li></a>
                     <a href=""><li>PROJETOS ▾</li></a>
                     <a href=""><li>CURSOS ▾</li></a>
                     <a href=""><li>EVENTOS ▾</li></a>
                     <a href=""><li>CERTIFICADOS</li></a>
+                    <a href=""><li>NOTICIAS</li></a>
                     <a href=""><li>USJ</li></a>
                     <a href=""><li>CONTATO</li></a>
                 </ul>
