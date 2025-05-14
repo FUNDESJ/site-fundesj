@@ -1,7 +1,9 @@
 // src/pages/Sobre.jsx
-
+import Header from './header';
 function Instituicao() {
   return (
+    <>
+    <Header />  
     <div className="sobre-page">
       <header className="header">
         <h1>Sobre a FUNDESJ</h1>
@@ -41,6 +43,7 @@ function Instituicao() {
         </div>
       </section>
     </div>
+    </>
   );
 }
 

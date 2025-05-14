@@ -1,0 +1,27 @@
+
+.la
+ {
+  width: 1080px;
+  height: 400px;
+  display: block;
+  margin: 20px auto; 
+}
+
+.voluntarios {
+   width: 1080px;
+  height: 400px;
+  display: block;
+  margin: 20px auto; 
+}
+
+.bombeiro {
+   width: 1080px;
+  height: 400px;
+  display: block;
+  margin: 20px auto; 
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 10px;
+}

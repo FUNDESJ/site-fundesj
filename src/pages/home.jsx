@@ -1,28 +1,12 @@
 import '../styles/home.css';
-import logo from '../images/logo.png';
 import background from '../images/background.mp4';
 import { Link } from 'react-router-dom';
+import Header from './header';
 function Home() {
 
     return (
         <div className="home">
-        <header className="navbar">
-            <img src={logo} alt="Logo" className="logo" />
-            <nav className="menu">
-                <ul>
-                    <Link to="/instituição"><li>A INSTITUIÇÃO ▾</li></Link>
-                    <a href=""><li>PROGRAMAS ▾</li></a>
-                    <a href=""><li>PROJETOS ▾</li></a>
-                    <a href=""><li>CURSOS ▾</li></a>
-                    <a href=""><li>EVENTOS ▾</li></a>
-                    <a href=""><li>CERTIFICADOS</li></a>
-                    <a href=""><li>NOTICIAS</li></a>
-                    <a href=""><li>USJ</li></a>
-                    <a href=""><li>CONTATO</li></a>
-                </ul>
-            </nav>
-        </header>
-    
+        <Header />
         <div className="hero">
             {/* Agora o vídeo está dentro da .hero */}
             <video
