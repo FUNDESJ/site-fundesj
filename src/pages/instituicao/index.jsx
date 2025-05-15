@@ -1,5 +1,7 @@
 // src/pages/Sobre.jsx
-import Header from './header';
+import Header from '../header/index.jsx'; // Co
+
+
 function Instituicao() {
   return (
     <>

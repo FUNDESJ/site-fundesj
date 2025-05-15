@@ -1,8 +1,8 @@
-import "../styles/projetos.css"
-import Imagem1 from '../images/idpratodos.png';
-import Imagem2 from '../images/golfinho.png';
-import Imagem3 from '../images/afeto.png';
-import Header from './header';
+import './projetos.css';
+import Imagem1 from '../../images/idpratodos.png';
+import Imagem2 from '../../images/golfinho.png';
+import Imagem3 from '../../images/afeto.png';
+import Header from '../header';
 
 function Projetos () {
   return (

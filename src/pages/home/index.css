@@ -25,45 +25,6 @@ html,
     min-height: 100vh;
     width: 100%;
 }
-
-/* Navbar */
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 60px;
-    height: 80px;
-    background-color: white;
-    width: 100%;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-
-.logo {
-    height: 150px;
-    object-fit: contain;
-}
-.menu ul {
-    list-style: none;
-    display: flex;
-    gap: 30px;
-    font-size: 14px;
-    font-weight: 500;
-}
-
-.menu ul li {
-    cursor: pointer;
-    text-decoration: none;
-    color: black;
-}
-
-.menu ul li:hover {
-    color: rgb(36, 149, 255);
-}
-
 /* Hero com vídeo local */
 .hero {
     position: relative;
@@ -198,4 +159,87 @@ html,
     font-weight: bold;
     color: #000;
     margin-top: 10px;
+}
+.section-info .subTitle {
+    font-size: 40px;;
+    font-weight: bold;
+    margin-top: 20px;
+    text-align: center;
+}
+.section-info p{
+    font-size: 18px;
+    margin-top: 10px;
+    text-align: center;
+}
+.cards-projetos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  padding: 20px;
+}
+
+.card-projeto {
+  width: 320px;
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  overflow: hidden;
+  transition: transform 0.2s ease;
+}
+
+.card-projeto:hover {
+  transform: translateY(-5px);
+}
+
+.card-projeto img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 16px;
+}
+
+.card-body h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #222;
+}
+
+.card-body p {
+  font-size: 15px;
+  color: #555;
+  margin-bottom: 12px;
+}
+
+.conheca-link {
+  color: #f37020;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.conheca-link span {
+  margin-left: 5px;
+}
+.cards-redes-sociais {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15%; /* espaço entre os ícones */
+  margin: 80px;
+  flex-wrap: wrap; /* quebra para próxima linha se necessário */
+}
+
+.rede-social img {
+  width: 100px;  /* tamanho dos ícones */
+  height: 100px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.rede-social img:hover {
+  transform: scale(1.1); /* animação ao passar o mouse */
 }

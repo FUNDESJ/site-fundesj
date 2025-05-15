@@ -1,9 +1,8 @@
-import '../styles/programas.css';
-import Imagem1 from '../images/LA.png';
-import Imagem2 from '../images/volutarios.png';
-import Imagem3 from '../images/bombeiro.png';
-import Header from './header';
-
+import './programas.css';
+import Imagem1 from '../../images/LA.png';
+import Imagem2 from '../../images/volutarios.png';
+import Imagem3 from '../../images/bombeiro.png';
+import Header from '../header/index.jsx'; // Co
 function Programas () {
   return (
     <>

@@ -1,6 +1,6 @@
-import logo from '../images/logo.png';
+import logo from '../../images/logo.png';
 import { Link } from 'react-router-dom';
-
+import './header.css';
 export default function Header () {
     return (
         <header className="navbar">
