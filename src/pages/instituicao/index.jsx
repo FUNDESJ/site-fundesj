@@ -1,6 +1,6 @@
 // src/pages/Sobre.jsx
 import Header from '../header/index.jsx'; // Co
-
+import Footer from '../footer/footer';
 
 function Instituicao() {
   return (
@@ -45,6 +45,7 @@ function Instituicao() {
         </div>
       </section>
     </div>
+    <Footer/>
     </>
   );
 }

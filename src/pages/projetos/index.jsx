@@ -1,4 +1,5 @@
 import './projetos.css';
+import Footer from '../footer/footer';
 import Imagem1 from '../../images/idpratodos.png';
 import Imagem2 from '../../images/golfinho.png';
 import Imagem3 from '../../images/afeto.png';
@@ -24,6 +25,7 @@ function Projetos () {
         <img src={Imagem3} alt="imagem ACA" className="aca" />
       </div>
     </div>
+    <Footer/>
     </>
   );
 };

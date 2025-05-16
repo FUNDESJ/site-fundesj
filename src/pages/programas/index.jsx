@@ -1,4 +1,5 @@
 import './programas.css';
+import Footer from '../footer/footer';
 import Imagem1 from '../../images/LA.png';
 import Imagem2 from '../../images/volutarios.png';
 import Imagem3 from '../../images/bombeiro.png';
@@ -23,6 +24,7 @@ function Programas () {
         <img src={Imagem3} alt="imagem bombeiro" className="bombeiro" />
       </div>
     </div>
+    <Footer/>
     </>
   );
 };

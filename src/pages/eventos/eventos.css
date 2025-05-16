@@ -1,0 +1,21 @@
+.oab {
+   width: 1080px;
+  height: 400px;
+  display: block;
+  margin: 20px auto; 
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.eventos-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+}
