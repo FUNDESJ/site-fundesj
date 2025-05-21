@@ -96,6 +96,7 @@ html,
     cursor: pointer;
     transition: background 0.3s;
     border-radius: 5px;
+    font-family: 'Open Sans', Arial, sans-serif;
 }
 
 .btn:hover {
@@ -228,7 +229,7 @@ html,
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 15%; /* espaço entre os ícones */
+  gap: 8%; /* espaço entre os ícones */
   margin: 80px;
   flex-wrap: wrap; /* quebra para próxima linha se necessário */
 }
@@ -243,3 +244,28 @@ html,
 .rede-social img:hover {
   transform: scale(1.1); /* animação ao passar o mouse */
 }
+
+.programas {
+  width: 80px;
+  height: 80px;
+  margin: 1px;
+}
+
+.projetos {
+  width: 80px;
+  height: 80px;
+  margin: 1px;
+}
+
+.cursos {
+  width: 80px;
+  height: 80px;
+  margin: 1px;
+}
+
+.eventos {
+  width: 80px;
+  height: 80px;
+  margin: 1px;
+}
+

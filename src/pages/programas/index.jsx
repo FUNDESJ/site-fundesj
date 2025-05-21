@@ -9,19 +9,19 @@ function Programas () {
     <>
     <Header />
     <div>
-      <div>
-        <h2>Longevidade Ativa</h2>
+      <div className='longevidade'>
         <img src={Imagem1} alt="imagem LA" className="la" />
+        <h2>LONGEVIDADE ATIVA</h2>
       </div>
 
-      <div>
-        <h2>Programa de Formação Voluntariado</h2>
+      <div className='voluntario'>
         <img src={Imagem2} alt="imagem voluntarios" className="voluntarios" />
+        <h2>PROGRAMA DE FORMAÇÃO DE VOLUNTARIADO</h2>
       </div>
 
-      <div>
-        <h2>Programa Bombeiro Mirim</h2>
+      <div className='bombeiros'>
         <img src={Imagem3} alt="imagem bombeiro" className="bombeiro" />
+        <h2>PROGRAMA BOMBEIRO MIRIM</h2>
       </div>
     </div>
     <Footer/>

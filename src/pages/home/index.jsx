@@ -6,28 +6,34 @@ import Footer from '../footer/footer';
 import facebook from '../../images/icones redes sociais/facebook.png';
 import instagram from '../../images/icones redes sociais/instagram.png';
 import linkedin from '../../images/icones redes sociais/linkedin.png';
-
+import ciclo from '../../images/ciclo.jpg';
+import inclusaoidosos from '../../images/inclusao.png';
+import idtodos from '../../images/idtodosfi.jpeg';
+import Imagem1 from '../../images/icones todos/settings.png';
+import Imagem2 from '../../images/icones todos/docs.png';
+import Imagem3 from '../../images/icones todos/book.png';
+import Imagem4 from '../../images/icones todos/team.png'
 function Home() {
     const projetos = [
         {
             id: 1,
             titulo: "Ciclo de Palestras",
-            descricao: "Ciclo de Palestra traz temas relevantes para a saúde e bem estar dos 60+, de 15 em 15 dias acontece uma palestra junto de um especialista no assunto abordado.",
-            foto: "", // inserir foto
+            descricao: "Ciclo de Palestra traz temas relevantes para a saúde e bem estar dos 60+, de 15 em 15 dias É realizada uma palestra com a participação de um especialista no tema abordado.", 
+            foto: ciclo, // inserir foto
             link: "" // inserir o link da pagina que sera redirecionado 
         },
         {
             id: 2,
             titulo: "Inclusão Digital Para Idosos",
             descricao: "Inclusão Digital Para Idosos são aulas semanais que levam conhecimentos para os 60+, desde conhecimentos básicos até os problemas mais complexos com o Smartphone.",
-            foto: "",
+            foto: inclusaoidosos,
             link: ""
         },
         {
             id: 3,
             titulo: "Inclusão Digital Para Todos",
             descricao: "Inclusão Digital Para Todos leva conhecimentos sobre Tecnologias atuais, o inclusão digital para todos acontece uma vez por mês no Centro de Atenção a Terceira Idade (CATI).",
-            foto: "",
+            foto: idtodos,
             link: ""
         }
     ];
@@ -36,7 +42,7 @@ function Home() {
             id: 1,
             titulo: "facebook",
             foto: facebook,
-            link: "" // link facebook
+            link: "https://web.facebook.com/fundesj.sc?_rdc=1&_rdr#" // link facebook
         },
         {
             id: 2,
@@ -48,7 +54,7 @@ function Home() {
             id: 3,
             titulo: "Linkedin",
             foto: linkedin,
-            link: "" // link linkedin
+            link: "https://www.linkedin.com/company/funda-o-educacional-de-s-o-jos-fundesj/posts/?feedView=all" // link linkedin
         }
     ];
 
@@ -82,18 +88,22 @@ function Home() {
             <div className="section-cards">
                 <div className="card">
                     <i className="fas fa-sitemap"></i>
+                    <img src={Imagem1} alt="imagem Programas" className='programas'/>
                     <p>PROGRAMAS</p>
                 </div>
                 <div className="card">
                     <i className="fas fa-file-alt"></i>
+                    <img src={Imagem2} alt="imagem Projetos" className='projetos'/>
                     <p>PROJETOS</p>
                 </div>
                 <div className="card">
                     <i className="fas fa-book"></i>
+                    <img src={Imagem3} alt="imagem Cursos" className='cursos'/>
                     <p>CURSOS</p>
                 </div>
                 <div className="card">
                     <i className="fas fa-users"></i>
+                    <img src={Imagem4} alt="imagem Eventos" className='eventos'/>
                     <p>EVENTOS</p>
                 </div>
             </div>
