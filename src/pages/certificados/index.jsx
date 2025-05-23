@@ -4,6 +4,7 @@ import Footer from '../footer/footer';
 import Header from '../header/index.jsx';
 import Imagem1 from '../../images/certificado.png';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 function Certificados() {
     const [codigo, setCodigo] = useState('')

@@ -9,6 +9,7 @@ import Certificados from './pages/certificados/index.jsx';
 import Noticias from './pages/noticias/index.jsx'
 import USJ from './pages/usj/index.jsx'
 import Contato from './pages/contato/index.jsx'// Corrigido o caminho relativo
+import Admin from "./pages/admin/index.jsx";
 function App() {
   return (
     <BrowserRouter>
@@ -23,6 +24,7 @@ function App() {
         <Route path='/noticias' element={<Noticias />} />
         <Route path='/usj' element={<USJ />} />
         <Route path='/contatos' element={<Contato />} />
+        <Route path='/wp-admin' element={<Admin />} />
       </Routes>
     </BrowserRouter>
   );
