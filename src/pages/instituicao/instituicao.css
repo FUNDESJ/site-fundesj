@@ -1,0 +1,43 @@
+.sobre-intro {
+    color: black;
+}
+
+.missao,
+.visao,
+.valores{
+    width: 80px;
+  height: 80px;
+  margin: 1px;
+}
+.missao-visao-valores {
+  display: flex;
+  justify-content: center;
+  gap: 32px;           /* Espaço entre os cards */
+  margin: 40px 0;
+  flex-wrap: wrap;     /* Permite quebrar linha em telas pequenas */
+}
+
+.cartao {
+  background: #fff;
+  color: #222;
+  border-radius: 12px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+  padding: 32px 24px;
+  width: 320px;        /* Aumente conforme desejar */
+  min-height: 420px;   /* Ajuste a altura mínima */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1.1rem;
+  transition: transform 0.2s;
+  border: 1px solid rgba(136, 136, 136, 0.384);
+}
+
+.cartao img {
+  width: 80px;         /* Ajuste o tamanho da imagem */
+  margin-bottom: 16px;
+}
+
+.cartao:hover {
+  transform: scale(1.04);
+}

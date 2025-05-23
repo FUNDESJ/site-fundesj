@@ -6,13 +6,13 @@ import Footer from '../footer/footer';
 import facebook from '../../images/icones redes sociais/facebook.png';
 import instagram from '../../images/icones redes sociais/instagram.png';
 import linkedin from '../../images/icones redes sociais/linkedin.png';
-import ciclo from '../../images/ciclo.jpg';
-import inclusaoidosos from '../../images/inclusao.png';
-import idtodos from '../../images/idtodosfi.jpeg';
-import Imagem1 from '../../images/icones todos/settings.png';
-import Imagem2 from '../../images/icones todos/docs.png';
-import Imagem3 from '../../images/icones todos/book.png';
-import Imagem4 from '../../images/icones todos/team.png'
+import ciclo from '../../images/pagina inicial/ciclo.jpg';
+import inclusaoidosos from '../../images/pagina inicial/inclusao.png';
+import idtodos from '../../images/pagina inicial/idtodosfi.jpeg';
+import Imagem1 from '../../images/pagina inicial/settings.png';
+import Imagem2 from '../../images/pagina inicial/docs.png';
+import Imagem3 from '../../images/pagina inicial/book.png';
+import Imagem4 from '../../images/pagina inicial/team.png'
 function Home() {
     const projetos = [
         {

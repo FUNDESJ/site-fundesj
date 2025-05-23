@@ -2,7 +2,7 @@ import './certificados.css'
 import axios from 'axios'
 import Footer from '../footer/footer';
 import Header from '../header/index.jsx';
-import Imagem1 from '../../images/certificado.png';
+import Imagem1 from '../../images/banner certificados/certificado.png';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -27,9 +27,9 @@ function Certificados() {
             <Header />
             <div className="main-content">
 
-                <div>
-                    <h2>Certificados</h2>
+                <div className='Certificados'>
                     <img src={Imagem1} alt="imagem Certificados" className="certificados" />
+                    <h2>Certificados</h2>
                 </div>
 
                 <div className="verificador-container">

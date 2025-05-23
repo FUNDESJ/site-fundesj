@@ -1,8 +1,8 @@
 .certificados {
-   width: 70%;
-  height: auto;
+  width: 1280px;
+  height: 433px;
   display: block;
-  margin: 20px auto; 
+  margin: 2px auto; 
 }
 
 h2 {
@@ -56,4 +56,24 @@ h2 {
 
 .main-content {
   flex: 1;
+}
+
+.Certificados {
+  transition: transform 0.3s cubic-bezier(.4,2,.6,1), box-shadow 0.3s;
+  cursor: pointer;
+}
+
+.Certificados:hover {
+  transform: scale(1.08);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+}
+
+.Certificados {
+  border: 2px solid #52525229;
+      padding: 2px;
+      width: fit-content;
+      font-size: 12px;
+      font-weight: bold;
+      margin: 50px auto;
+      text-align: center;
 }

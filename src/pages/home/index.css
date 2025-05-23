@@ -245,27 +245,16 @@ html,
   transform: scale(1.1); /* animação ao passar o mouse */
 }
 
-.programas {
-  width: 80px;
-  height: 80px;
-  margin: 1px;
-}
-
-.projetos {
-  width: 80px;
-  height: 80px;
-  margin: 1px;
-}
-
-.cursos {
-  width: 80px;
-  height: 80px;
-  margin: 1px;
-}
-
+.programas,
+.projetos,
+.cursos,
 .eventos {
   width: 80px;
   height: 80px;
   margin: 1px;
+}
+
+.subTitle {
+  color: #000;
 }
 

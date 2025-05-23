@@ -1,25 +1,39 @@
-.idptodos {
-  width: 1080px;
-  height: 400px;
-  display: block;
-  margin: 20px auto; 
-}
-
-.golfinho {
-   width: 1080px;
-  height: 400px;
-  display: block;
-  margin: 20px auto; 
-}
-
+.idptodos,
+.golfinho,
 .aca {
-   width: 1080px;
+  width: 1180px;
   height: 400px;
   display: block;
-  margin: 20px auto; 
+  margin: 2px auto; 
 }
 
 h2 {
   text-align: center;
   margin-bottom: 10px;
+}
+
+.idPtodos,
+.Golfinho,
+.Aca {
+  transition: transform 0.3s cubic-bezier(.4,2,.6,1), box-shadow 0.3s;
+  cursor: pointer;
+}
+
+.idPtodos:hover,
+.Golfinho:hover,
+.Aca:hover {
+  transform: scale(1.08);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+}
+
+.idPtodos,
+.Golfinho,
+.Aca {
+  border: 2px solid #52525229;
+      padding: 2px;
+      width: fit-content;
+      font-size: 12px;
+      font-weight: bold;
+      margin: 50px auto;
+      text-align: center;
 }

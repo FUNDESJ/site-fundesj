@@ -1,46 +1,45 @@
 // src/pages/Sobre.jsx
+import './instituicao.css';
 import Header from '../header/index.jsx'; // Co
-import Footer from '../footer/footer';
+import Footer from '../footer/footer'
+import Imagem1 from '../../images/fotos instituicao/missao.png'
+import Imagem2 from '../../images/fotos instituicao/visao.png'
+import Imagem3 from '../../images/fotos instituicao/valores.png'
 
 function Instituicao() {
   return (
     <>
     <Header />  
     <div className="sobre-page">
-      <header className="header">
-        <h1>Sobre a FUNDESJ</h1>
-      </header>
-
-      <section className="sobre-intro">
-        <p>
-          A Fundação Educacional de São José (FUNDESJ) é uma entidade sem fins lucrativos
-          que atua na promoção da educação, ciência e tecnologia, contribuindo para o
-          desenvolvimento social e econômico da região.
-        </p>
-      </section>
 
       <section className="missao-visao-valores">
-        <div className="card">
+        <div className="cartao">
           <h2>Missão</h2>
-          <p>Promover educação pública de qualidade para a formação cidadã e profissional.</p>
+          <img src={Imagem1} alt="Missão" className='missao'/>
+          <p>Promover o desenvolvimento humano, educacional e econômico de São José por meio de programas e projetos em parceria com entidades públicas e privadas, 
+            visando transformação social e bem-estar coletivo.</p>
         </div>
 
-        <div className="card">
+        <div className="cartao">
           <h2>Visão</h2>
+          <img src={Imagem2} alt="Visão" className='visao'/>
           <p>
-            Ser reconhecida como referência em gestão educacional, comprometida com a
-            inovação e a inclusão.
+            Ser referência no desenvolvimento educacional, econômico, cultural e social de São José, através de projetos inovadores e parcerias estratégicas que promovam o 
+            bem-estar, a felicidade e o aprimoramento das pessoas na sociedade.
           </p>
         </div>
 
-        <div className="card">
+        <div className="cartao">
           <h2>Valores</h2>
+          <img src={Imagem3} alt="Valores" className='valores'/>
           <ul>
-            <li>Ética</li>
-            <li>Transparência</li>
+            <li>Educação Transformadora</li>
+            <li>Parcerias Estratégicas</li>
             <li>Inovação</li>
-            <li>Inclusão</li>
-            <li>Comprometimento</li>
+            <li>Compromisso Social</li>
+            <li>Ética e Transparência</li>
+            <li>Sustentabilidade</li>
+            <li>Felicidade e Bem-Estar</li>
           </ul>
         </div>
       </section>
