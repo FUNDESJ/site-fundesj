@@ -79,7 +79,7 @@ function Home() {
                     <h1>FUNDESJ</h1>
                     <p>Fundação Educacional de São José</p>
                     <div className="buttons">
-                        <button className="btn">SOBRE</button>
+                       <a href="https://encurtador.com.br/9kp1k" target='_blank'><button className="btn">SOBRE</button></a>
                         <button className="btn">INSCRIÇÕES</button>
                     </div>
                 </div>
