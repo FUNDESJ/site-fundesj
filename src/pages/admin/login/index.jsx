@@ -41,6 +41,7 @@ function Login() {
                     value={senha}
                     placeholder="Senha"
                     onChange={(e) => setSenha(e.target.value)}
+                    onKeyDown={(e) => e.key === 'Enter' && logar()}
                     className="login-input"
                 />
                 <button className="login-button" onClick={logar}>
