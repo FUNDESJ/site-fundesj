@@ -28,7 +28,7 @@ function Login() {
         <div className="login-container">
             <form className="login-form" onSubmit={(e) => e.preventDefault()}>
                 <img src={logo} alt="Logo" className="login-logo" />
-                <h1 className="login-title">Login 👍</h1>
+                <h1 className="login-title">Login</h1>
                 <input
                     type="text"
                     value={nome}
