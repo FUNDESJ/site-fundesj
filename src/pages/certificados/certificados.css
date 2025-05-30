@@ -1,79 +1,282 @@
-.certificados {
-  width: 1280px;
-  height: 433px;
-  display: block;
-  margin: 2px auto; 
-}
-
-h2 {
-  text-align: center;
-  margin-bottom: 10px;
-}
-
-.verificador-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 40px;
-}
-
-.verificador-input {
-  padding: 10px 20px;
-  border: 1px solid #ccc;
-  border-right: none;
-  border-radius: 30px 0 0 30px;
-  background-color: #f1f1f1;
-  width: 400px;
-  color: #444;
-  font-size: 16px;
-  outline: none;
-}
-
-.verificador-input::placeholder {
-  color: #888;
-}
-
-.verificador-botao {
-  padding: 10px 24px;
-  background-color: #000;
-  color: #f5f5f5; /* tom amarelo similar */
-  border: 1px solid #000;
-  border-radius: 0 30px 30px 0;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.verificador-botao:hover {
-  background-color: #333;
-}
-
+/* Estilos gerais */
 .certificados-container {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #f9f9f9;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .main-content {
-  flex: 1;
+    flex: 1;
+    padding: 20px;
 }
 
+/* Banner e título */
 .Certificados {
-  transition: transform 0.3s cubic-bezier(.4,2,.6,1), box-shadow 0.3s;
-  cursor: pointer;
+    transition: transform 0.3s cubic-bezier(.4, 2, .6, 1), box-shadow 0.3s;
+    cursor: pointer;
+    border: 2px solid #52525229;
+    padding: 2px;
+    width: fit-content;
+    margin: 50px auto;
+    text-align: center;
+    background: white;
+    border-radius: 8px;
 }
 
 .Certificados:hover {
-  transform: scale(1.08);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    transform: scale(1.03);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
 }
 
-.Certificados {
-  border: 2px solid #52525229;
-      padding: 2px;
-      width: fit-content;
-      font-size: 12px;
-      font-weight: bold;
-      margin: 50px auto;
-      text-align: center;
+.certificados-banner {
+    width: 100%;
+    max-width: 1280px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: 6px 6px 0 0;
+}
+
+h2 {
+    text-align: center;
+    margin: 10px 0;
+    color: #333;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+/* Campo de busca */
+.verificador-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px auto;
+    max-width: 600px;
+}
+
+.verificador-input {
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    border-right: none;
+    border-radius: 30px 0 0 30px;
+    background-color: #f1f1f1;
+    width: 400px;
+    color: #444;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.verificador-input:focus {
+    border-color: #000;
+    background-color: #fff;
+}
+
+.verificador-input::placeholder {
+    color: #888;
+}
+
+.verificador-botao {
+    padding: 10px 15px;
+    background-color: #000;
+    color: #fff;
+    border: 1px solid #000;
+    border-radius: 0 30px 30px 0;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.verificador-botao:hover:not(:disabled) {
+    background-color: #333;
+}
+
+.verificador-botao:disabled {
+    background-color: #555;
+    cursor: not-allowed;
+}
+
+/* Spinner */
+.spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Mensagem de erro */
+.mensagem-erro {
+    background-color: #fff6f6;
+    border: 1px solid #ffcccc;
+    color: #d8000c;
+    padding: 15px;
+    border-radius: 6px;
+    max-width: 600px;
+    margin: 20px auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.icone-erro {
+    background-color: #d8000c;
+    color: white;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+/* Tabela de resultados */
+.tabela-certificado {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    padding: 25px;
+    max-width: 800px;
+    margin: 30px auto;
+}
+
+.tabela-certificado h3 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-size: 20px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.tabela-certificado table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tabela-certificado th, 
+.tabela-certificado td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.tabela-certificado th {
+    color: #555;
+    font-weight: 500;
+    width: 30%;
+}
+
+.tabela-certificado td {
+    color: #333;
+    font-weight: 400;
+}
+
+/* Status do certificado */
+.status-aprovado {
+    color: #28a745;
+    font-weight: 500;
+}
+
+.status-pendente {
+    color: #ffc107;
+    font-weight: 500;
+}
+
+.status-reprovado {
+    color: #dc3545;
+    font-weight: 500;
+}
+
+/* Link do certificado */
+.link-certificado {
+    color: #0066cc;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.link-certificado:hover {
+    color: #004499;
+    text-decoration: underline;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .verificador-container {
+        flex-direction: column;
+    }
+    
+    .verificador-input {
+        width: 100%;
+        border-radius: 30px;
+        border-right: 1px solid #ccc;
+        margin-bottom: 10px;
+    }
+    
+    .verificador-botao {
+        width: 100%;
+        border-radius: 30px;
+    }
+
+    .tabela-certificado {
+        padding: 15px;
+    }
+    
+    .tabela-certificado th, 
+    .tabela-certificado td {
+        padding: 8px 10px;
+        display: block;
+        width: 100%;
+    }
+    
+    .tabela-certificado tr {
+        margin-bottom: 15px;
+        display: block;
+        border-bottom: 2px solid #e0e0e0;
+    }
+    
+    .tabela-certificado th {
+        font-size: 14px;
+        padding-bottom: 5px;
+    }
+    
+    .tabela-certificado td {
+        font-size: 15px;
+        padding-top: 5px;
+    }
+}
+
+@media (max-width: 480px) {
+    .Certificados {
+        margin: 30px auto;
+        width: 95%;
+    }
+    
+    .certificados-banner {
+        border-radius: 4px 4px 0 0;
+    }
+    
+    h2 {
+        font-size: 20px;
+    }
+    
+    .verificador-input,
+    .verificador-botao {
+        font-size: 14px;
+    }
+    
+    .tabela-certificado h3 {
+        font-size: 18px;
+    }
 }
