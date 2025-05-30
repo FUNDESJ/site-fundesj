@@ -10,6 +10,8 @@ import Noticias from './pages/noticias/index.jsx'
 import USJ from './pages/usj/index.jsx'
 import Contato from './pages/contato/index.jsx'// Corrigido o caminho relativo
 import Login from "./pages/admin/login/index.jsx";
+import Admin from "./pages/admin/index.jsx";
+import PrivateRoute from "./components/PrivateRoute.jsx";
 function App() {
   return (
     <BrowserRouter>
@@ -25,6 +27,14 @@ function App() {
         <Route path='/usj' element={<USJ />} />
         <Route path='/contatos' element={<Contato />} />
         <Route path='/wp-admin' element={<Login />} />
+         <Route
+          path='/admin'
+          element={
+            <PrivateRoute>
+              <Admin />
+            </PrivateRoute>
+          }
+        />
       </Routes>
     </BrowserRouter>
   );

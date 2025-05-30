@@ -1,0 +1,100 @@
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Container principal com fundo animado e centralizado */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #000, #785acd);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  animation: fadeIn 1s ease-in-out;
+  padding: 1rem;
+}
+
+/* Card do formulário */
+.login-form {
+  background-color: #ffffffdd;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 350px;
+  gap: 1.2rem;
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* Título */
+.login-title {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  color: #1f1f1f;
+  animation: fadeIn 1.2s ease-in-out;
+}
+
+/* Inputs */
+.login-input {
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  transition: all 0.3s ease;
+  background-color: #f9f9f9;
+}
+
+.login-input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px #007bff33;
+  background-color: #fff;
+}
+
+/* Botão */
+.login-button {
+  padding: 12px;
+  background-color: black;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  transform: scale(1);
+}
+
+.login-button:hover {
+  background-color: #785acd;
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsividade */
+@media (max-width: 480px) {
+  .login-form {
+    padding: 1.5rem;
+    width: 100%;
+  }
+
+  .login-input,
+  .login-button {
+    font-size: 14px;
+    padding: 10px;
+  }
+}
