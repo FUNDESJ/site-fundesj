@@ -1,0 +1,27 @@
+.imgequipe1,
+.imgequipe2,
+.imgequipe3,
+.imgequipe4,
+.imgequipe5{
+    width: 1180px;
+  height:370px;
+  display: block;
+  margin: 2px auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.botaoenviar {
+ background-color:salmon;
+ display: block;
+ margin: 2px auto;
+ width: 60%;
+}
+
+.botaoenviar2 {
+ background-color:salmon;
+ display: block;
+ margin: 2px auto;
+ width: 60%;
+ margin-bottom: 50px;
+}

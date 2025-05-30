@@ -1,14 +1,15 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Instituicao from './pages/instituicao/index.jsx'; // Corrigido o caminho relativo
-import Programas from './pages/programas/index.jsx'; // Corrigido o caminho relativo
+import Instituicao from './pages/instituicao/index.jsx';
+import Programas from './pages/programas/index.jsx'; 
 import Projetos from './pages/projetos/index.jsx';
-import Cursos from './pages/cursos/index.jsx' // Corrigido o caminho relativo
+import Cursos from './pages/cursos/index.jsx';
 import Home from './pages/home/index.jsx';
-import Eventos from './pages/eventos/index.jsx'; // Corrigido o caminho relativo
+import Eventos from './pages/eventos/index.jsx'; 
 import Certificados from './pages/certificados/index.jsx'; 
-import Noticias from './pages/noticias/index.jsx'
-import USJ from './pages/usj/index.jsx'
-import Contato from './pages/contato/index.jsx'// Corrigido o caminho relativo
+import Noticias from './pages/noticias/index.jsx';
+import USJ from './pages/usj/index.jsx';
+import Contato from './pages/contato/index.jsx';
+import Equipe from './pages/equipe/index.jsx';
 import Login from "./pages/admin/login/index.jsx";
 import Admin from "./pages/admin/index.jsx";
 import PrivateRoute from "./components/PrivateRoute.jsx";
@@ -27,6 +28,7 @@ function App() {
         <Route path='/usj' element={<USJ />} />
         <Route path='/contatos' element={<Contato />} />
         <Route path='/wp-admin' element={<Login />} />
+        <Route path='/equipe' element={<Equipe />} />
          <Route
           path='/admin'
           element={

@@ -48,7 +48,7 @@
 }
 
 .menu ul li:hover {
-    color: rgb(36, 149, 255);
+    color: darkred;
 }
 
 .menu ul li a {
@@ -69,14 +69,13 @@
     background-color: #fff;
     border: 1px solid rgba(119, 119, 119, 0.23);
     list-style: none;
-    padding: 2px 0;
-    margin: 2px 0 0 0;
-    box-shadow: 0 2px 6px rgba(0.5, 0.5, 0.5, 0.604);
+    padding:0;
+    margin:0;
     min-width: 180px;
     z-index: 1000;
     display: flex;
     flex-direction: column;
-    border-radius: 2px;
+    border-radius: 5px;
     opacity: 0;
     visibility: hidden;
     transform: translateY(5px);
@@ -96,10 +95,13 @@
     transition: all 0.1s ease;
     font-size: 17px; /* Fonte menor */
     line-height: 0.6; /* Altura de linha reduzida */
+
 }
 
 .submenu li:hover {
-    background-color: #f8f9fa;
+    background-color: rgba(169, 169, 169, 0.779);
+    border-radius: 5px;
+    transform: translateX(2px);
 }
 
 .submenu-link {
@@ -112,7 +114,7 @@
 }
 
 .submenu li:hover .submenu-link {
-    color: rgb(36, 149, 255);
+    color: darkred;
     transform: translateX(2px);
 }
 
@@ -135,5 +137,5 @@
 
 .menu ul li:hover.has-submenu::after {
     transform: translateY(-40%);
-    color: rgb(36, 149, 255);
+    color: darkred;
 }

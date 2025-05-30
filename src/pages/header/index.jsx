@@ -27,7 +27,7 @@ export default function Header() {
 
             {openMenu === 'instituicao' && (
               <ul className="submenu">
-                <li><Link to="/instituição/historia" className="submenu-link">Equipe</Link></li>
+                <li><Link to="/equipe" className="submenu-link">Equipe</Link></li>
                 <li><Link to="/instituição/equipe" className="submenu-link">Realizações 2024</Link></li>
                 <li><Link to="/instituição/contato" className="submenu-link">Parceiros</Link></li>
               </ul>

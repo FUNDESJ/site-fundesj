@@ -24,7 +24,7 @@ function Contato() {
                 </div>
                 <button
                     onClick={() => alert("Formulário enviado com sucesso! Entraremos em contato o mais breve possível.")}
-                    className="botaoenviar"
+                    className="botaoenviar1"
                 >
                     Enviar
                 </button>
