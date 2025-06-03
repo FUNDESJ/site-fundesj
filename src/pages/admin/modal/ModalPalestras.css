@@ -1,0 +1,202 @@
+/* Estilos para o overlay do modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+  animation: fadeIn 0.3s ease-out forwards;
+  padding: 20px;
+}
+
+/* Estilos para o modal em si */
+.modal {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 800px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 2rem;
+  position: relative;
+  animation: slideUp 0.4s ease-out forwards;
+}
+
+/* Cabeçalho do modal */
+.modal h2 {
+  margin-top: 0;
+  color: #2c3e50;
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #eee;
+  text-align: center;
+}
+
+/* Mensagem quando não há inscritos */
+.modal h3.empty-message {
+  text-align: center;
+  color: #7f8c8d;
+  font-weight: 400;
+  margin: 2rem 0;
+}
+
+/* Container dos cards de inscritos */
+.inscritos-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+/* Card de cada inscrito */
+.inscrito-card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e0e0e0;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.inscrito-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Título da palestra no card */
+.inscrito-card .palestra-titulo {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #3498db;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px dashed #eee;
+}
+
+/* Nome do inscrito */
+.inscrito-card .inscrito-nome {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 0.75rem;
+}
+
+/* Detalhes do inscrito */
+.inscrito-detalhes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.detalhe-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.detalhe-item strong {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: #7f8c8d;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.25rem;
+}
+
+.detalhe-item span {
+  font-size: 0.95rem;
+  color: #34495e;
+  word-break: break-word;
+}
+
+/* Como conheceu (destaque especial) */
+.como-conheceu {
+  margin-top: 1rem;
+  padding-top: 0.75rem;
+  border-top: 1px dashed #eee;
+}
+
+.como-conheceu strong {
+  display: block;
+  font-size: 0.8rem;
+  color: #7f8c8d;
+  margin-bottom: 0.25rem;
+}
+
+.como-conheceu span {
+  font-style: italic;
+  color: #3498db;
+}
+
+/* Botão de fechar */
+.modal-close-btn {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100%;
+  margin-top: 1.5rem;
+  display: block;
+  text-align: center;
+}
+
+.modal-close-btn:hover {
+  background-color: #c0392b;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.modal-close-btn:active {
+  transform: translateY(0);
+}
+
+/* Animações */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { 
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to { 
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .inscritos-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .modal {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .inscrito-detalhes {
+    grid-template-columns: 1fr;
+  }
+  
+  .modal h2 {
+    font-size: 1.5rem;
+  }
+}

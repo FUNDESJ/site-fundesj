@@ -30,7 +30,7 @@ function App() {
         <Route path='/wp-admin' element={<Login />} />
         <Route path='/equipe' element={<Equipe />} />
          <Route
-          path='/admin'
+          path='/admin/*'
           element={
             <PrivateRoute>
               <Admin />

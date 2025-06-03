@@ -1,0 +1,126 @@
+.inscricoes-container {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.inscricoes-header {
+    margin-bottom: 2rem;
+}
+
+.inscricoes-header h1 {
+    font-size: 2rem;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+
+.inscricoes-header p {
+    color: #7f8c8d;
+    font-size: 1rem;
+}
+
+.tabela-container {
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1.5rem;
+}
+
+.inscritos-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+}
+
+.inscritos-table thead tr {
+    background-color: #3498db;
+    color: white;
+    text-align: left;
+}
+
+.inscritos-table th,
+.inscritos-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.inscritos-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.inscritos-table tbody tr:nth-child(even) {
+    background-color: #f8fafc;
+}
+
+.inscritos-table tbody tr:hover {
+    background-color: #f0f7ff;
+}
+
+.inscritos-table td.nome {
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.inscritos-table td.email {
+    color: #3498db;
+}
+
+.sem-dados {
+    text-align: center;
+    color: #7f8c8d;
+    padding: 1.5rem;
+}
+
+.total-inscritos {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.total-inscritos p {
+    color: #64748b;
+    font-size: 0.9rem;
+}
+
+.btn-ver-todos {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-ver-todos:hover {
+    background-color: #2980b9;
+    transform: translateY(-1px);
+}
+
+.carregando {
+    text-align: center;
+    padding: 2rem;
+    color: #64748b;
+    font-style: italic;
+}
+
+@media (max-width: 768px) {
+    .inscricoes-container {
+        padding: 1rem;
+    }
+    
+    .total-inscritos {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
+    }
+    
+    .inscritos-table th,
+    .inscritos-table td {
+        padding: 8px 12px;
+        font-size: 0.85rem;
+    }
+}
