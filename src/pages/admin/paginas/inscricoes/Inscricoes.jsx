@@ -40,9 +40,8 @@ const Inscricoes = ({ abrirModal }) => {
                 <h1>Gerenciar Inscrições</h1>
                 <p>Visualize e gerencie todas as inscrições do sistema.</p>
                 
-                {/* Botão do modal mantido aqui */}
                 <button onClick={abrirModal} className="btn-modal">
-                    Ver lista completa de inscritos
+                    Lista completa de inscritos
                 </button>
             </div>
 
@@ -50,6 +49,7 @@ const Inscricoes = ({ abrirModal }) => {
                 <div className="carregando">Carregando inscrições...</div>
             ) : (
                 <>
+                <h3>Inscritos recentemente:</h3>
                     <div className="tabela-container">
                         <table className="inscritos-table">
                             <thead>
