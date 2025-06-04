@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Instituicao from './pages/instituicao/index.jsx';
+import Realizacoes from './pages/realizacoes/index.jsx';
 import Programas from './pages/programas/index.jsx'; 
 import Projetos from './pages/projetos/index.jsx';
 import Cursos from './pages/cursos/index.jsx';
@@ -13,12 +14,14 @@ import Equipe from './pages/equipe/index.jsx';
 import Login from "./pages/admin/login/index.jsx";
 import Admin from "./pages/admin/index.jsx";
 import PrivateRoute from "./components/PrivateRoute.jsx";
+import Parceiros from "./pages/parceiros/index.jsx";
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/instituição' element={<Instituicao />} />
+        <Route path='/realizações' element={<Realizacoes />} />
         <Route path='/programas' element={<Programas />} />
         <Route path='/projetos' element={<Projetos />} />
         <Route path='/cursos' element={<Cursos />} />
@@ -29,6 +32,7 @@ function App() {
         <Route path='/contatos' element={<Contato />} />
         <Route path='/wp-admin' element={<Login />} />
         <Route path='/equipe' element={<Equipe />} />
+        <Route path='/parceiros' element={<Parceiros />} />
          <Route
           path='/admin/*'
           element={

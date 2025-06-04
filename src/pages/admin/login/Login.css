@@ -53,6 +53,7 @@ body {
 /* Inputs */
 .login-input {
   padding: 12px;
+  color: black;
   font-size: 16px;
   border-radius: 6px;
   border: 1px solid #ccc;
