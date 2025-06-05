@@ -20,7 +20,7 @@ function Home() {
             titulo: "Ciclo de Palestras",
             descricao: "Ciclo de Palestra traz temas relevantes para a saúde e bem estar dos 60+, de 15 em 15 dias É realizada uma palestra com a participação de um especialista no tema abordado.", 
             foto: ciclo, // inserir foto
-            link: "" // inserir o link da pagina que sera redirecionado 
+            link: "./ciclo" // inserir o link da pagina que sera redirecionado 
         },
         {
             id: 2,
@@ -88,22 +88,22 @@ function Home() {
             <div className="section-cards">
                 <div className="card">
                     <i className="fas fa-sitemap"></i>
-                    <img src={Imagem1} alt="imagem Programas" className='programas'/>
+                    <a href="./programas"><img src={Imagem1} alt="imagem Programas" className='programas'/></a>
                     <p>PROGRAMAS</p>
                 </div>
                 <div className="card">
                     <i className="fas fa-file-alt"></i>
-                    <img src={Imagem2} alt="imagem Projetos" className='projetos'/>
+                    <a href="./projetos"><img src={Imagem2} alt="imagem Projetos" className='projetos'/></a>
                     <p>PROJETOS</p>
                 </div>
                 <div className="card">
                     <i className="fas fa-book"></i>
-                    <img src={Imagem3} alt="imagem Cursos" className='cursos'/>
+                    <a href="./cursos"><img src={Imagem3} alt="imagem Cursos" className='cursos'/></a>
                     <p>CURSOS</p>
                 </div>
                 <div className="card">
                     <i className="fas fa-users"></i>
-                    <img src={Imagem4} alt="imagem Eventos" className='eventos'/>
+                    <a href="./eventos"><img src={Imagem4} alt="imagem Eventos" className='eventos'/></a>
                     <p>EVENTOS</p>
                 </div>
             </div>

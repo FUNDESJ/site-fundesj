@@ -1,17 +1,17 @@
 .parceiros {
-     display: flex;
-    flex-wrap: wrap;
-    justify-content: center; /* Centraliza horizontalmente */
-    align-items: center;    /* Centraliza verticalmente */
-    gap: 1px;
-    padding: 30px;
-    min-height: 60vh;
-    padding-left: 170px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1px;
+  padding: 30px;
+  min-height: 60vh;
+  padding-left: 170px;
 }
 
 .imgparceiros {
-    width: 70%;
-    height: 70%;
+  width: 70%;
+  height: 70%;
 }
 
 .imgparceiros:hover {

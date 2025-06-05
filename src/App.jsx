@@ -15,6 +15,7 @@ import Login from "./pages/admin/login/index.jsx";
 import Admin from "./pages/admin/index.jsx";
 import PrivateRoute from "./components/PrivateRoute.jsx";
 import Parceiros from "./pages/parceiros/index.jsx";
+import Ciclo from "./pages/ciclo/index.jsx";
 function App() {
   return (
     <BrowserRouter>
@@ -33,6 +34,7 @@ function App() {
         <Route path='/wp-admin' element={<Login />} />
         <Route path='/equipe' element={<Equipe />} />
         <Route path='/parceiros' element={<Parceiros />} />
+        <Route path='/ciclo' element={<Ciclo />} />
          <Route
           path='/admin/*'
           element={

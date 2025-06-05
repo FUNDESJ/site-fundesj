@@ -2,15 +2,15 @@ import './realizacoes.css';
 import Header from '../header';
 import Footer from '../footer/footer';
 import Imagem1 from '../../images/fotos realizacoes/banner2024.png';
-import Imagem2 from '../../images/fotos realizacoes/realizacoes1.png';
-import Imagem3 from '../../images/fotos realizacoes/realizacoes2.png';
-import Imagem4 from '../../images/fotos realizacoes/realizacoes3.png';
-import Imagem5 from '../../images/fotos realizacoes/realizacoes4.png';
-import Imagem6 from '../../images/fotos realizacoes/realizacoes5.png';
-import Imagem7 from '../../images/fotos realizacoes/realizacoes6.png';
-import Imagem8 from '../../images/fotos realizacoes/realizacoes7.png';
-import Imagem9 from '../../images/fotos realizacoes/realizacoes8.png';
-import Imagem10 from '../../images/fotos realizacoes/realizacoes9.png';
+import Imagem2 from '../../images/fotos realizacoes/1.png';
+import Imagem3 from '../../images/fotos realizacoes/2.png';
+import Imagem4 from '../../images/fotos realizacoes/3.png';
+import Imagem5 from '../../images/fotos realizacoes/4.png';
+import Imagem6 from '../../images/fotos realizacoes/5.png';
+import Imagem7 from '../../images/fotos realizacoes/6.png';
+import Imagem8 from '../../images/fotos realizacoes/7.png';
+import Imagem9 from '../../images/fotos realizacoes/8.png';
+import Imagem10 from '../../images/fotos realizacoes/9.png';
 function Realizacoes() {
     return (
         <>
