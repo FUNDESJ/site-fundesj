@@ -2,6 +2,7 @@
     padding: 2rem;
     max-width: 1200px;
     margin: 0 auto;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .eventos-header {
@@ -12,6 +13,7 @@
     font-size: 2rem;
     color: #2c3e50;
     margin-bottom: 0.5rem;
+    font-weight: 600;
 }
 
 .eventos-header p {
@@ -32,19 +34,22 @@
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .btn-criar-evento:hover {
     background-color: #2980b9;
-    transform: translateY(-1px);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 .tabela-container {
     border: 1px solid #e2e8f0;
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
     margin-bottom: 1.5rem;
+    background-color: white;
 }
 
 .eventos-table {
@@ -59,10 +64,16 @@
     text-align: left;
 }
 
-.eventos-table th,
+.eventos-table th {
+    padding: 15px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
 .eventos-table td {
     padding: 12px 15px;
     border-bottom: 1px solid #e2e8f0;
+    vertical-align: middle;
 }
 
 .eventos-table tbody tr:last-child td {
@@ -86,6 +97,57 @@
     color: #3498db;
 }
 
+.sem-dados {
+    text-align: center;
+    color: #7f8c8d;
+    padding: 20px !important;
+}
+
+.status-badge {
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.status-badge.ativo {
+    background-color: #e3f9e5;
+    color: #28a745;
+}
+
+.status-badge.inativo {
+    background-color: #ffe3e3;
+    color: #dc3545;
+}
+
+.acoes {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-acao {
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 4px;
+    transition: all 0.2s;
+    color: #7f8c8d;
+    font-size: 1rem;
+}
+
+.btn-acao:hover {
+    transform: scale(1.1);
+}
+
+.btn-editar:hover {
+    color: #3498db;
+}
+
+.btn-excluir:hover {
+    color: #e74c3c;
+}
+
 @media (max-width: 768px) {
     .eventos-container {
         padding: 1rem;
@@ -93,12 +155,16 @@
     
     .eventos-table th,
     .eventos-table td {
-        padding: 8px 12px;
+        padding: 10px 12px;
         font-size: 0.85rem;
     }
     
     .btn-criar-evento {
-        padding: 0.5rem 1rem;
+        padding: 0.6rem 1rem;
         font-size: 0.9rem;
+    }
+    
+    .acoes {
+        gap: 5px;
     }
 }

@@ -1,14 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import './Eventos.css';
 import ModalEvento from './modal/ModalEvento';
+import ModalDeletar from './modal/ModalDeletar';
 import axios from 'axios';
+import { FaEdit, FaTrash, FaPlus } from 'react-icons/fa';
+
 export default function Eventos() {
     const [modalOpen, setModalOpen] = useState(false);
-    const [eventos, setEventos] = useState([])
+    const [openModalDeletar, setOpenModalDeletar] = useState(false);
+    const [eventoSelecionado,setEventoSelecionado] = useState(null)
+    const [eventos, setEventos] = useState([]);
 
-    useEffect(()=>{
+    useEffect(() => {
         listarEventos();
-    }, [])
+    }, []);
+
     async function listarEventos() {
         const token = localStorage.getItem("authToken");
         try {
@@ -17,11 +23,17 @@ export default function Eventos() {
                     Authorization: `Bearer ${token}`
                 }
             });
-            setEventos(retorno.data.Eventos)
+            setEventos(retorno.data.Eventos);
+            console.log(retorno)
         } catch (erro) {
-            console.log(erro)
+            console.log(erro);
         }
     }
+    function abrirModalDeletar(evento){
+        setEventoSelecionado(evento)
+        setOpenModalDeletar(true);
+    }
+
     return (
         <div className="eventos-container">
             <div className="eventos-header">
@@ -33,23 +45,46 @@ export default function Eventos() {
                 className="btn-criar-evento"
                 onClick={() => setModalOpen(true)}
             >
-                Criar novo evento
+                <FaPlus /> Criar novo evento
             </button>
 
             <div className="tabela-container">
                 <table className="eventos-table">
+                    <thead>
+                        <tr>
+                            <th>Título</th>
+                            <th>Palestrante</th>
+                            <th>Data</th>
+                            <th>Projeto</th>
+                            <th>Status</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
                     <tbody>
                         {eventos.length === 0 ? (
                             <tr>
-                                <td colSpan="4" className="sem-dados">Nenhuma inscrição encontrada</td>
+                                <td colSpan="6" className="sem-dados">Nenhum evento encontrado</td>
                             </tr>
                         ) : (
                             eventos.map((evento, index) => (
                                 <tr key={index}>
                                     <td className="nome">{evento.titulo}</td>
                                     <td className="email">{evento.palestrante}</td>
-                                    <td>{evento.data}</td>
+                                    <td>{new Date(evento.data).toLocaleDateString("pt-BR")}</td>
                                     <td>{evento.projeto || "N/A"}</td>
+                                    <td>
+                                        <span className={`status-badge ${evento.ativa ? 'ativo' : 'inativo'}`}>
+                                            {evento.ativa ? 'Ativo' : 'Inativo'}
+                                        </span>
+                                    </td>
+                                    <td className="acoes">
+                                        <button className="btn-acao btn-editar">
+                                            <FaEdit />
+                                        </button>
+                                        <button className="btn-acao btn-excluir" onClick ={()=> abrirModalDeletar(evento)}>
+                                            <FaTrash />
+                                        </button>
+                                    </td>
                                 </tr>
                             ))
                         )}
@@ -60,6 +95,12 @@ export default function Eventos() {
             <ModalEvento
                 isOpen={modalOpen}
                 onClose={() => setModalOpen(false)}
+            />
+            <ModalDeletar
+                isOpen={openModalDeletar}
+                onClose={()=>{setOpenModalDeletar(false)}}
+                evento={eventoSelecionado}
+                deletarEvento={listarEventos}
             />
         </div>
     );
