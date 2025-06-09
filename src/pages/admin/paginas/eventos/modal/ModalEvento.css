@@ -210,3 +210,19 @@ input[type="time"] {
   background-position: right 1rem center;
   background-size: 1em;
 }
+.spinner {
+  border: 3px solid rgba(0, 0, 0, 0.1);
+  border-left-color: #000; /* cor do spinner */
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  animation: spin 1s linear infinite;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

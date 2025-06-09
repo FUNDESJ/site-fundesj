@@ -11,10 +11,18 @@ export default function ModalEvento({ isOpen, onClose }) {
     const [projeto, setProjeto] = useState('')
     const [subTitulo, setSubTitulo] = useState('')
     const [foto, setFoto] = useState('')
+    const [isLoading, setIsLoading] = useState(false)
+    
     if (!isOpen) return null;
 
     async function criarNovoEvento() {
+        if (!titulo || !local || !data || !horario || !projeto || !palestrante || !subTitulo || !foto) {
+            return alert("Complete todos os campos corretamente")
+        }
+        
+        setIsLoading(true)
         const token = localStorage.getItem('authToken')
+        
         try {
             await axios.post('https://back-end-fundesj.onrender.com/eventos', {
                 titulo,
@@ -25,15 +33,19 @@ export default function ModalEvento({ isOpen, onClose }) {
                 projeto,
                 subTitulo,
                 foto,
-            },{
-                headers: {Authorization: `Bearer ${token}`}
+            }, {
+                headers: { Authorization: `Bearer ${token}` }
             })
+            
             onClose()
             alert("Evento criado com sucesso")
         } catch (erro) {
             alert("Erro no sistema")
+        } finally {
+            setIsLoading(false)
         }
     }
+
     return (
         <div className="modal-overlay">
             <div className="modal-container">
@@ -51,6 +63,7 @@ export default function ModalEvento({ isOpen, onClose }) {
                                 placeholder="Digite o nome do evento"
                                 value={titulo}
                                 onChange={(e) => setTitulo(e.target.value)}
+                                disabled={isLoading}
                             />
                         </div>
 
@@ -61,6 +74,7 @@ export default function ModalEvento({ isOpen, onClose }) {
                                 type="date"
                                 value={data}
                                 onChange={(e) => setData(e.target.value)}
+                                disabled={isLoading}
                             />
                         </div>
 
@@ -72,6 +86,7 @@ export default function ModalEvento({ isOpen, onClose }) {
                                 placeholder="Digite o horário do evento"
                                 value={horario}
                                 onChange={(e) => setHorario(e.target.value)}
+                                disabled={isLoading}
                             />
                         </div>
 
@@ -83,6 +98,7 @@ export default function ModalEvento({ isOpen, onClose }) {
                                 placeholder="Digite o local do evento"
                                 value={local}
                                 onChange={(e) => setLocal(e.target.value)}
+                                disabled={isLoading}
                             />
                         </div>
 
@@ -94,6 +110,7 @@ export default function ModalEvento({ isOpen, onClose }) {
                                 placeholder="Digite o nome do palestrante"
                                 value={palestrante}
                                 onChange={(e) => setPalestrante(e.target.value)}
+                                disabled={isLoading}
                             />
                         </div>
 
@@ -105,6 +122,7 @@ export default function ModalEvento({ isOpen, onClose }) {
                                 placeholder="Digite qual projeto é esse evento"
                                 value={projeto}
                                 onChange={(e) => setProjeto(e.target.value)}
+                                disabled={isLoading}
                             />
                         </div>
 
@@ -115,6 +133,7 @@ export default function ModalEvento({ isOpen, onClose }) {
                                 placeholder="Descreva o evento"
                                 value={subTitulo}
                                 onChange={(e) => setSubTitulo(e.target.value)}
+                                disabled={isLoading}
                             ></textarea>
                         </div>
 
@@ -126,6 +145,7 @@ export default function ModalEvento({ isOpen, onClose }) {
                                 placeholder="Url da foto"
                                 value={foto}
                                 onChange={(e) => setFoto(e.target.value)}
+                                disabled={isLoading}
                             />
                         </div>
                     </form>
@@ -136,6 +156,7 @@ export default function ModalEvento({ isOpen, onClose }) {
                         type="button"
                         onClick={onClose}
                         className="btn-cancelar"
+                        disabled={isLoading}
                     >
                         Cancelar
                     </button>
@@ -143,8 +164,14 @@ export default function ModalEvento({ isOpen, onClose }) {
                         type="submit"
                         className="btn-salvar"
                         onClick={criarNovoEvento}
+                        disabled={isLoading}
                     >
-                        Salvar Evento
+                        {isLoading ? (
+                            <div className="loading-spinner">
+                                <div className="spinner"></div>
+                                Salvando...
+                            </div>
+                        ) : "Salvar Evento"}
                     </button>
                 </div>
             </div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import './DeletarEventos.css'
 import { useState, useEffect } from "react";
 import axios from 'axios';
 import { FaExclamationTriangle, FaSpinner } from 'react-icons/fa';
