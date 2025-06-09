@@ -28,7 +28,7 @@
 .menu ul {
     list-style: none;
     display: flex;
-    gap: 15px;
+    gap: 25px;
     font-size: 14px;
     font-weight: 600;
     font-family: "Lato", sans-serif;
@@ -41,7 +41,7 @@
     text-decoration: none;
     color: black;
     position: relative;
-    padding: 8px 0;
+    padding: 5px;
     transition: all 0.2s ease;
     display: flex;
     align-items: center; /* Adicionado para alinhar verticalmente */

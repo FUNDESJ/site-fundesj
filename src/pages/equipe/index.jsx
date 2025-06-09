@@ -1,58 +1,91 @@
 import Header from '../header';
 import Footer from '../footer/footer';
 import './equipe.css';
-import Imagem1 from '../../images/fotos equipe/equipe1.png'
-import Imagem2 from '../../images/fotos equipe/equipe2.png'
-import Imagem3 from '../../images/fotos equipe/equipe3.png'
-import Imagem4 from '../../images/fotos equipe/equipe4.png'
-import Imagem5 from '../../images/fotos equipe/equipe5.png'
+
 
 function Equipe() {
     return (
         <>
             <Header />
-            <div>
-                <div className='equipe1'>
-                    <img src={Imagem1} alt="Equipe 1" className='imgequipe1'/>
-                    <a href="/contatos" target='_blank'>
-                    <button className="botaoenviar">
-                    Enviar E-mail
-                    </button></a>
-                </div>
-                <div className='equipe1'>
-                    <img src={Imagem2} alt="Equipe 1" className='imgequipe2'/>
-                    <a href="/contatos" target='_blank'>
-                    <button className="botaoenviar">
-                    Enviar E-mail
-                    </button></a>
-                </div>
-                <div className='equipe1'>
-                    <img src={Imagem3} alt="Equipe 1" className='imgequipe3'/>
-                    <a href="/contatos" target='_blank'>
-                    <button className="botaoenviar">
-                    Enviar E-mail
-                    </button></a>
-                </div>
-                <div className='equipe1'>
-                    <img src={Imagem4} alt="Equipe 1" className='imgequipe4'/>
-                    <a href="/contatos" target='_blank'>
-                    <button className="botaoenviar">
-                    Enviar E-mail
-                    </button></a>
-                </div>
-                <div className='equipe1'>
-                    <img src={Imagem5} alt="Equipe 1" className='imgequipe5'/>
-                    <a href="/contatos" target='_blank'>
-                    <button className="botaoenviar2">
-                    Enviar E-mail
-                    </button></a>
-                </div>
-
-
-
-
-            <Footer />
+            <div className='equipe'>
+                <h2 className='titulo'>Equipe</h2>
+                <p>
+                    <strong>Maria Helena Krüger</strong><br />
+                    Superintendente<br />
+                    superintendente@fundesj.com.br
+                </p>
+                <p>
+                    <strong>Gilmara Vieira Bastos</strong><br />
+                    Superintendente Adjuta<br />
+                    sup.adjunta@fundesj.com.br
+                </p>
+                <p className='superintendente'>
+                    <strong>Eloisa Vieira Müller</strong><br />
+                    Recursos Humanos<br />
+                    gestaodepessoas@fundes
+                </p>
+                <p>
+                    <strong>Guilherme de Souza</strong><br />
+                    Supervisor de Educação Tecnológia<br />
+                    ed.tecnologia@fundesj.com.br
+                </p>
+                <p>
+                    <strong>Letícia Parnoff</strong><br />
+                    Diretora Administrativo-Financeira<br />
+                    dir.administrativo@fundesj.com.br
+                </p>
+                <p>
+                    <strong>Paulo Henrique Hermes Vieira</strong><br />
+                    Diretor de Planejamento<br />
+                    tecnologia@fundesj.com.br
+                </p>
+                <p>
+                    <strong>Maria Luiza dos Santos</strong><br />
+                    Assessora Técnica de Ensino<br />
+                    assessoria.edu@fundesj.com.br
+                </p>
+                <p>
+                    <strong>Jozimar Antônio de Quadros</strong><br />
+                    Assessor administrativo<br />
+                    dir.administrativo@fundesj.com.br
+                </p>
+                <p>
+                    <strong>Maria Marta de Salete Poffo</strong><br />
+                    Assessora Administrativa<br />
+                    secretaria@fundesj.com.br
+                </p>
+                <p className='tecnologia'>
+                    <strong>Arthur Kalbusch Rosa</strong><br />
+                    Universitário de Tecnologia<br />
+                    tecnologia@fundesj.com.br
+                </p>
+                <p>
+                    <strong>Bernardo Alves Thives</strong><br />
+                    Universitário de Tecnologia<br />
+                    tecnologia@fundesj.com.br
+                </p>
+                <p>
+                    <strong>Gustavo Gerlach Furtado</strong><br />
+                    Universitário de Tecnologia<br />
+                    tecnologia@fundesj.com.br
+                </p>
+                <p>
+                    <strong>Felipe Linhares Domingues</strong><br />
+                    Universitário de Tecnologia<br />
+                    tecnologia@fundesj.com.br
+                </p>
+                <p>
+                    <strong>Arianni de Campos</strong><br />
+                    Universitário de Tecnologia<br />
+                    tecnologia@fundesj.com.br
+                </p>
+                <p>
+                    <strong>Thiago W. Barcellos de Salles</strong><br />
+                    Universitário de Recursos Humanos<br />
+                    tecnologia@fundesj.com.br
+                </p>
             </div>
+            <Footer />
 
         </>
     )
