@@ -9,7 +9,7 @@ import Usuarios from "./paginas/Usuarios.jsx";
 import Eventos from "./paginas/eventos/Eventos.jsx";
 import Inscricoes from "./paginas/inscricoes/Inscricoes.jsx";
 import Configuracoes from "./paginas/Configuracoes.jsx";
-import ModalInscritos from "./paginas/inscricoes/modal/Inscritos.jsx";
+import ModalInscritos from "./paginas/inscricoes/modal/ModalInscrever.jsx";
 import ModalEvento from "./paginas/eventos/modal/ModalEvento.jsx";
 
 function Admin() {
@@ -19,9 +19,6 @@ function Admin() {
 
   function abrirModalInscritos() {
     setOpenModalInscrito(true);
-  }
-  function abrirModalEventos() {
-    setOpenModalEventos(true);
   }
 
   const isActive = (path) => {
@@ -70,22 +67,11 @@ function Admin() {
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="/usuarios" element={<Usuarios />} />
-          <Route path="/eventos" element={<Eventos abrirModal={openModalEventos} />} />
-          <Route path="/inscricoes" element={<Inscricoes abrirModal={abrirModalInscritos} />} />
+          <Route path="/eventos" element={<Eventos  />} />
+          <Route path="/inscricoes" element={<Inscricoes />} />
           <Route path="/configuracoes" element={<Configuracoes />} />
         </Routes>
       </main>
-
-      <ModalInscritos
-        isOpen={openModalInscrito}
-        onClose={() => setOpenModalInscrito(false)}
-      />
-
-
-      <ModalEvento
-        isOpen={openModalEventos}
-        onClose={() => setOpenModalEventos(false)}
-      />
 
     </div>
   );

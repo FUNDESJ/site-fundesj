@@ -44,7 +44,7 @@ export default function Eventos() {
                 }
             });
             setEventos(retorno.data.Eventos);
-            setEventosFiltrados(retorno.data.Eventos); // Inicializa com todos os eventos
+            setEventosFiltrados(retorno.data.Eventos); 
         } catch (erro) {
             console.log(erro);
         }

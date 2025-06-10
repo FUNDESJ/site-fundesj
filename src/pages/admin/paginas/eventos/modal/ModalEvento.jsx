@@ -3,25 +3,25 @@ import './ModalEvento.css';
 import axios from 'axios';
 
 export default function ModalEvento({ isOpen, onClose }) {
-    const [titulo, setTitulo] = useState('')
-    const [local, setLocal] = useState('')
-    const [data, setData] = useState('')
-    const [horario, setHorario] = useState('')
-    const [palestrante, setPalestrante] = useState('')
-    const [projeto, setProjeto] = useState('')
-    const [subTitulo, setSubTitulo] = useState('')
-    const [foto, setFoto] = useState('')
-    const [isLoading, setIsLoading] = useState(false)
+    const [titulo, setTitulo] = useState('');
+    const [local, setLocal] = useState('');
+    const [data, setData] = useState('');
+    const [horario, setHorario] = useState('');
+    const [palestrante, setPalestrante] = useState('');
+    const [projeto, setProjeto] = useState('');
+    const [subTitulo, setSubTitulo] = useState('');
+    const [foto, setFoto] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
     
     if (!isOpen) return null;
 
     async function criarNovoEvento() {
         if (!titulo || !local || !data || !horario || !projeto || !palestrante || !subTitulo || !foto) {
-            return alert("Complete todos os campos corretamente")
+            return alert("Complete todos os campos corretamente");
         }
         
         setIsLoading(true)
-        const token = localStorage.getItem('authToken')
+        const token = localStorage.getItem('authToken');
         
         try {
             await axios.post('https://back-end-fundesj.onrender.com/eventos', {

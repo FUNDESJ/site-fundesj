@@ -43,7 +43,8 @@ export default function ModalEditar({ isOpen, onClose, evento, atualizarEvento, 
             }, {
                 headers: { Authorization: `Bearer ${token}` }
             })
-            atualizarEvento()
+            atualizarEvento();
+            onClose();
         } catch (erro) {
             console.log("Erro ao editar evento", erro);
             throw erro;

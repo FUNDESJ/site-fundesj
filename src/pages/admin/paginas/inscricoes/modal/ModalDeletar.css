@@ -1,0 +1,108 @@
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(3px);
+}
+
+.modal-delete-container {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 450px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    animation: modalFadeIn 0.3s ease-out;
+}
+
+@keyframes modalFadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.delete-warning-icon {
+    margin-bottom: 1.5rem;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.modal-delete-container h2 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.delete-confirmation-message {
+    margin-bottom: 2rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+.delete-confirmation-message strong {
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+.modal-delete-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.cancel-button, .confirm-delete-button {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 0.95rem;
+}
+
+.cancel-button {
+    background-color: #f1f3f5;
+    color: #495057;
+}
+
+.cancel-button:hover {
+    background-color: #e9ecef;
+}
+
+.confirm-delete-button {
+    background-color: #e74c3c;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.confirm-delete-button:hover {
+    background-color: #c0392b;
+}
+
+.confirm-delete-button:disabled {
+    background-color: #e67e6b;
+    cursor: not-allowed;
+}
+
+.spinner-icon {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
