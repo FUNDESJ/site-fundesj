@@ -2,7 +2,6 @@ import './certificados.css';
 import axios from 'axios';
 import Footer from '../footer/footer';
 import Header from '../header/index.jsx';
-import Imagem1 from '../../images/banner certificados/certificado.png';
 import { useState } from 'react';
 
 function Certificados() {
@@ -36,15 +35,8 @@ function Certificados() {
         <div className="certificados-container">
             <Header />
             <div className="main-content">
-                <div className='Certificados'>
-                    <img 
-                        src={Imagem1} 
-                        alt="Banner de Certificados" 
-                        className="certificados-banner" 
-                    />
-                    <h2>Certificados</h2>
-                </div>
-
+                <h4>Digite o código do seu </h4>
+                <h1>CERTIFICADO</h1>
                 <div className="verificador-container">
                     <input
                         type="text"

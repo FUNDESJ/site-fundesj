@@ -4,7 +4,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 0 40px;
-    height: 70px;
+    height: 80px;
     background-color: white;
     border: 1px solid rgba(119, 119, 119, 0.23);
     width: 100%;
@@ -28,8 +28,8 @@
 .menu ul {
     list-style: none;
     display: flex;
-    gap: 25px;
-    font-size: 14px;
+    gap: 15px;
+    font-size: 15px;
     font-weight: 600;
     font-family: "Lato", sans-serif;
     padding: 0;
@@ -99,7 +99,7 @@
 }
 
 .submenu li:hover {
-    background-color: rgba(169, 169, 169, 0.779);
+    background-color: rgba(169, 169, 169, 0.253);
     border-radius: 5px;
     transform: translateX(2px);
 }
