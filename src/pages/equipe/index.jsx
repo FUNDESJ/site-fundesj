@@ -2,99 +2,121 @@ import Header from '../header';
 import Footer from '../footer/footer';
 import './equipe.css';
 
-
 function Equipe() {
-    return (
-        <>
-            <Header />
-            <div className='equipe'>
-                <h2 className='titulo'>Equipe</h2>
-                <p>
-                    <strong>Maria Helena Krüger</strong><br />
-                    Superintendente<br />
-                    superintendente@fundesj.com.br
-                </p>
-                <p>
-                    <strong>Gilmara Vieira Bastos</strong><br />
-                    Superintendente Adjuta<br />
-                    sup.adjunta@fundesj.com.br
-                </p>
-                <p className='superintendente'>
-                    <strong>Eloisa Vieira Müller</strong><br />
-                    Recursos Humanos<br />
-                    gestaodepessoas@fundes
-                </p>
-                <p>
-                    <strong>Guilherme de Souza</strong><br />
-                    Supervisor de Educação Tecnológia<br />
-                    ed.tecnologia@fundesj.com.br
-                </p>
-                <p>
-                    <strong>Letícia Parnoff</strong><br />
-                    Diretora Administrativo-Financeira<br />
-                    dir.administrativo@fundesj.com.br
-                </p>
-                <p>
-                    <strong>Paulo Henrique Hermes Vieira</strong><br />
-                    Diretor de Planejamento<br />
-                    tecnologia@fundesj.com.br
-                </p>
-                <p>
-                    <strong>Maria Luiza dos Santos</strong><br />
-                    Assessora Técnica de Ensino<br />
-                    assessoria.edu@fundesj.com.br
-                </p>
-                <p>
-                    <strong>Jozimar Antônio de Quadros</strong><br />
-                    Assessor administrativo<br />
-                    dir.administrativo@fundesj.com.br
-                </p>
-                <p>
-                    <strong>Maria Marta de Salete Poffo</strong><br />
-                    Assessora Administrativa<br />
-                    secretaria@fundesj.com.br
-                </p>
-                <p className='tecnologia'>
-                    <strong>Arthur Kalbusch Rosa</strong><br />
-                    Universitário de Tecnologia<br />
-                    tecnologia@fundesj.com.br
-                </p>
-                <p>
-                    <strong>Bernardo Alves Thives</strong><br />
-                    Universitário de Tecnologia<br />
-                    tecnologia@fundesj.com.br
-                </p>
-                <p>
-                    <strong>Gustavo Gerlach Furtado</strong><br />
-                    Universitário de Tecnologia<br />
-                    tecnologia@fundesj.com.br
-                </p>
-                <p>
-                    <strong>Felipe Linhares Domingues</strong><br />
-                    Universitário de Tecnologia<br />
-                    tecnologia@fundesj.com.br
-                </p>
-                <p>
-                    <strong>Arianni de Campos</strong><br />
-                    Universitário de Tecnologia<br />
-                    tecnologia@fundesj.com.br
-                </p>
-                <p>
-                    <strong>Thiago W. Barcellos de Salles</strong><br />
-                    Universitário de Recursos Humanos<br />
-                    tecnologia@fundesj.com.br
-                </p>
+  const teamMembers = [
+    {
+      name: "Maria Helena Krüger",
+      position: "Superintendente",
+      email: "superintendente@fundesj.com.br",
+      category: "leadership"
+    },
+    {
+      name: "Gilmara Vieira Bastos",
+      position: "Superintendente Adjuta",
+      email: "sup.adjunta@fundesj.com.br",
+      category: "leadership"
+    },
+    {
+      name: "Eloisa Vieira Müller",
+      position: "Recursos Humanos",
+      email: "gestaodepessoas@fundesj.com.br",
+      category: "hr"
+    },
+    {
+      name: "Guilherme de Sousa",
+      position: "Supervisor de Educação Tecnológica",
+      email: "ed.tecnologia@fundesj.com.br",
+      category: "technology"
+    },
+    {
+      name: "Letícia Parnoff",
+      position: "Diretora Administrativo-Financeira",
+      email: "dir.administrativo@fundesj.com.br",
+      category: "finance"
+    },
+    {
+      name: "Paulo Henrique Hermes Vieira",
+      position: "Diretor de Planejamento",
+      email: "tecnologia@fundesj.com.br",
+      category: "planning"
+    },
+    {
+      name: "Maria Luiza dos Santos",
+      position: "Assessora Técnica de Ensino",
+      email: "assessoria.edu@fundesj.com.br",
+      category: "education"
+    },
+    {
+      name: "Jozimar Antônio de Quadros",
+      position: "Assessor administrativo",
+      email: "dir.administrativo@fundesj.com.br",
+      category: "admin"
+    },
+    {
+      name: "Maria Marta de Salete Poffo",
+      position: "Assessora Administrativa",
+      email: "secretaria@fundesj.com.br",
+      category: "admin"
+    },
+    {
+      name: "Arthur Kalbusch Rosa",
+      position: "Universitário de Tecnologia",
+      email: "tecnologia@fundesj.com.br",
+      category: "technology"
+    },
+    {
+      name: "Bernardo Alves Thives",
+      position: "Universitário de Tecnologia",
+      email: "tecnologia@fundesj.com.br",
+      category: "technology"
+    },
+    {
+      name: "Gustavo Gerlach Furtado",
+      position: "Universitário de Tecnologia",
+      email: "tecnologia@fundesj.com.br",
+      category: "technology"
+    },
+    {
+      name: "Felipe Linhares Domingues",
+      position: "Universitário de Tecnologia",
+      email: "tecnologia@fundesj.com.br",
+      category: "technology"
+    },
+    {
+      name: "Arianni de Campos",
+      position: "Universitário de Tecnologia",
+      email: "tecnologia@fundesj.com.br",
+      category: "technology"
+    },
+    {
+      name: "Thiago W. Barcellos de Salles",
+      position: "Universitário de Recursos Humanos",
+      email: "tecnologia@fundesj.com.br",
+      category: "hr"
+    }
+  ];
+
+  return (
+    <>
+      <Header />
+      <div className='equipe-container'>
+        <h2 className='equipe-title'>Nossa Equipe</h2>
+        
+        <div className="team-grid">
+          {teamMembers.map((member, index) => (
+            <div key={index} className={`team-card ${member.category}`}>
+              <h3 className="member-name">{member.name}</h3>
+              <p className="member-position">{member.position}</p>
+              <a href={`mailto:${member.email}`} className="member-email">
+                {member.email}
+              </a>
             </div>
-            <Footer />
-
-        </>
-    )
-
-
-
-
-
-
+          ))}
+        </div>
+      </div>
+      <Footer />
+    </>
+  );
 }
 
 export default Equipe;

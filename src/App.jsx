@@ -16,6 +16,7 @@ import Admin from "./pages/admin/index.jsx";
 import PrivateRoute from "./components/PrivateRoute.jsx";
 import Parceiros from "./pages/parceiros/index.jsx";
 import Ciclo from "./pages/ciclo/index.jsx";
+import Idbasico from "./pages/idbasico/index.jsx";
 function App() {
   return (
     <BrowserRouter>
@@ -35,6 +36,7 @@ function App() {
         <Route path='/equipe' element={<Equipe />} />
         <Route path='/parceiros' element={<Parceiros />} />
         <Route path='/ciclo' element={<Ciclo />} />
+        <Route path='/idbasico' element={<Idbasico />} />
          <Route
           path='/admin/*'
           element={

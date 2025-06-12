@@ -1,42 +1,84 @@
-.equipe {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: left;
-  padding: 20px;
-  gap: 0px;
-  width: 100%;
-  border-left: 3px solid #00000029;
-  padding-left: 20px;
+.equipe-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
 }
 
-.equipe h2{
-  font-size: 32px;
-  color: black;
-  margin: 10px 0;
-  font-weight: bold;
-  max-width: 300px;   /* Igual ao .equipe p */
-  width: 100%;
-  text-align: left;  
+.equipe-title {
+  font-size: 45px;
+  color: #000000;
+  text-align: center;
+  margin-bottom: 40px;
+  font-weight: 300;
+  letter-spacing: 1px;
 }
 
-.equipe p {
-  font-size: 16px;
-  color: rgb(0, 0, 0);
-  margin: 4px 0;
-  width: 100%;
-  max-width: 300px;
-  text-align: left;  
-      
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 30px;
 }
 
-.tecnologia{
-  border-top: 1px solid #52525229;
-  padding-top: 20px;
+.team-card {
+  background: white;
+  border-radius: 8px;
+  padding: 25px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-top: 4px solid #3498db;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.363);
 }
 
-.superintendente{
-  border-top: 1px solid #52525229;
-  padding-top: 20px;
+.team-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.member-name {
+  font-size: 23px;
+  color: #000000;
+  margin-bottom: 8px;
+  font-weight: 500;
+  font-family: Georgia, serif;
+}
+
+.member-position {
+  font-size: 17px;
+  color: #000000;
+  margin-bottom: 12px;
+  line-height: 1.4;
+  font-family: serif;
+}
+
+.member-email {
+  font-size: 15px;
+  color: #3498db;
+  text-decoration: none;
+  display: inline-block;
+  word-break: break-all;
+}
+
+.member-email:hover {
+  text-decoration: underline;
+}
+
+/* Category colors */
+.team-card.leadership,
+.team-card.hr,
+.team-card.technology,
+.team-card.finance,
+.team-card.planning,
+.team-card.education,
+.team-card.admin {
+  border-top-color: #000000;
+}
+
+@media (max-width: 768px) {
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .equipe-title {
+    font-size: 2rem;
+  }
 }
