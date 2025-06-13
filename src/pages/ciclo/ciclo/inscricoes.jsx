@@ -1,0 +1,214 @@
+import { useEffect, useState } from "react";
+import Header from "../../header";
+import Footer from "../../footer/footer";
+import axios from "axios";
+import "./inscricoes.css";
+
+export default function Inscricoes() {
+    // Infos da palestra
+    const [titulo, setTitulo] = useState('');
+    const [local, setLocal] = useState('');
+    const [data, setData] = useState('');
+    const [horario, setHorario] = useState('');
+    const [palestrante, setPalestrante] = useState('');
+    const [projeto, setProjeto] = useState('');
+    const [subTitulo, setSubTitulo] = useState('');
+    const [foto, setFoto] = useState('');
+
+    // Infos da inscrição
+    const [nome, setNome] = useState('');
+    const [email, setEmail] = useState('');
+    const [telefone, setTelefone] = useState('');
+    const [comoConheceu, setComoConheceu] = useState('');
+    const [mensagem, setMensagem] = useState('');
+
+    useEffect(() => {
+        buscarEvento();
+    }, []);
+
+    async function buscarEvento() {
+        try {
+            const retorno = await axios.post('https://back-end-fundesj.onrender.com/eventos/ativa', {
+                projeto: "Ciclo de palestras"
+            });
+            const evento = retorno.data.consulta;
+            setProjeto(evento.projeto);
+            setTitulo(evento.titulo);
+            setSubTitulo(evento.subTitulo);
+            setLocal(evento.local);
+            setData(evento.data);
+            setHorario(evento.horario);
+            setPalestrante(evento.palestrante);
+            setFoto(evento.foto);
+        } catch (erro) {
+            console.log(erro);
+            setMensagem("Não há eventos ativos no momento");
+        }
+    }
+
+    async function inscrever() {
+        if (!nome || !email || !telefone || !titulo || !comoConheceu) {
+            setMensagem("Por favor, preencha todos os campos obrigatórios");
+            return;
+        }
+        
+        try {
+            await axios.post('https://back-end-fundesj.onrender.com/inscrever', {
+                nome,
+                email,
+                telefone,
+                titulo,
+                comoConheceu
+            });
+            
+            setMensagem("Inscrição realizada com sucesso!");
+            // Limpar formulário após inscrição
+            setNome('');
+            setEmail('');
+            setTelefone('');
+            setComoConheceu('');
+            
+            // Limpar mensagem após 5 segundos
+            setTimeout(() => setMensagem(''), 5000);
+        } catch (erro) {
+            console.log(erro);
+            setMensagem("Ocorreu um erro ao processar sua inscrição");
+        }
+    }
+
+    return (
+        <>
+            <Header />
+            <div className="inscricoes-container">
+                <div className="inscricoes-header">
+                    <h1 className="inscricoes-title">Inscrição no Ciclo de Palestras</h1>
+                    <p className="inscricoes-subtitle">Preencha o formulário abaixo para garantir sua vaga</p>
+                </div>
+
+                {mensagem && (
+                    <div className={`mensagem ${mensagem.includes("sucesso") ? "sucesso" : "erro"}`}>
+                        {mensagem}
+                    </div>
+                )}
+
+                {titulo ? (
+                    <div className="evento-card">
+                        {foto && (
+                            <div className="evento-imagem-container">
+                                <img 
+                                    src={foto} 
+                                    alt={`Imagem do evento ${titulo}`} 
+                                    className="evento-imagem"
+                                    onError={(e) => {
+                                        e.target.onerror = null; 
+                                        e.target.src = "https://via.placeholder.com/800x400?text=Imagem+do+Evento";
+                                    }}
+                                />
+                            </div>
+                        )}
+                        
+                        <div className="evento-detalhes">
+                            <h2 className="evento-titulo">{titulo}</h2>
+                            {subTitulo && <p className="evento-subtitulo">{subTitulo}</p>}
+                            
+                            <div className="evento-info">
+                                <div className="evento-info-item">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                        <circle cx="12" cy="10" r="3"></circle>
+                                    </svg>
+                                    <span>{local}</span>
+                                </div>
+                                
+                                <div className="evento-info-item">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                                    </svg>
+                                    <span>{data} às {horario}</span>
+                                </div>
+                                
+                                {palestrante && (
+                                    <div className="evento-info-item">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                            <circle cx="9" cy="7" r="4"></circle>
+                                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                                        </svg>
+                                        <span>Palestrante: {palestrante}</span>
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+                    </div>
+                ) : (
+                    !mensagem && <p className="carregando">Carregando informações do evento...</p>
+                )}
+
+                <div className="inscricao-form">
+                    <h3>Formulário de Inscrição</h3>
+                    
+                    <div className="form-group">
+                        <label htmlFor="nome" className="form-label">Nome Completo*</label>
+                        <input 
+                            type="text" 
+                            id="nome"
+                            className="form-input"
+                            placeholder="Digite seu nome completo"
+                            value={nome}
+                            onChange={(e) => setNome(e.target.value)}
+                            required
+                        />
+                    </div>
+
+                    <div className="form-group">
+                        <label htmlFor="email" className="form-label">E-mail*</label>
+                        <input 
+                            type="email" 
+                            id="email"
+                            className="form-input"
+                            placeholder="Digite seu e-mail"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            required
+                        />
+                    </div>
+
+                    <div className="form-group">
+                        <label htmlFor="telefone" className="form-label">Telefone*</label>
+                        <input 
+                            type="tel" 
+                            id="telefone"
+                            className="form-input"
+                            placeholder="(00) 00000-0000"
+                            value={telefone}
+                            onChange={(e) => setTelefone(e.target.value)}
+                            required
+                        />
+                    </div>
+
+                    <div className="form-group">
+                        <label htmlFor="comoConheceu" className="form-label">Como você conheceu o evento?*</label>
+                        <input 
+                            type="text" 
+                            id="comoConheceu"
+                            className="form-input"
+                            placeholder="Redes sociais, indicação, etc."
+                            value={comoConheceu}
+                            onChange={(e) => setComoConheceu(e.target.value)}
+                            required
+                        />
+                    </div>
+
+                    <button className="form-button" onClick={inscrever}>
+                        Confirmar Inscrição
+                    </button>
+                </div>
+            </div>
+            <Footer />
+        </>
+    );
+}

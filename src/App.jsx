@@ -1,12 +1,12 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Instituicao from './pages/instituicao/index.jsx';
 import Realizacoes from './pages/realizacoes/index.jsx';
-import Programas from './pages/programas/index.jsx'; 
+import Programas from './pages/programas/index.jsx';
 import Projetos from './pages/projetos/index.jsx';
 import Cursos from './pages/cursos/index.jsx';
 import Home from './pages/home/index.jsx';
-import Eventos from './pages/eventos/index.jsx'; 
-import Certificados from './pages/certificados/index.jsx'; 
+import Eventos from './pages/eventos/index.jsx';
+import Certificados from './pages/certificados/index.jsx';
 import Noticias from './pages/noticias/index.jsx';
 import USJ from './pages/usj/index.jsx';
 import Contato from './pages/contato/index.jsx';
@@ -16,6 +16,8 @@ import Admin from "./pages/admin/index.jsx";
 import PrivateRoute from "./components/PrivateRoute.jsx";
 import Parceiros from "./pages/parceiros/index.jsx";
 import Ciclo from "./pages/ciclo/index.jsx";
+import Inscricoes from "./pages/ciclo/ciclo/inscricoes.jsx";
+import Calendario from "./pages/ciclo/ciclo/calendario.jsx";
 import Idbasico from "./pages/idbasico/index.jsx";
 function App() {
   return (
@@ -35,9 +37,13 @@ function App() {
         <Route path='/wp-admin' element={<Login />} />
         <Route path='/equipe' element={<Equipe />} />
         <Route path='/parceiros' element={<Parceiros />} />
-        <Route path='/ciclo' element={<Ciclo />} />
+        <Route path="/ciclo" element={<Ciclo />} />
+        <Route path="/ciclo/inscricoes" element={<Inscricoes />} />
+        <Route path="calendario" element={<Calendario />} />
+
+
         <Route path='/idbasico' element={<Idbasico />} />
-         <Route
+        <Route
           path='/admin/*'
           element={
             <PrivateRoute>

@@ -3,7 +3,6 @@ import { Routes, Route, Link, useLocation } from "react-router-dom";
 import "./admin.css";
 import { FiUsers, FiCalendar, FiSettings, FiPieChart, FiFileText } from "react-icons/fi";
 
-// Importe suas páginas
 import Dashboard from "./paginas/Dashboard.jsx";
 import Usuarios from "./paginas/Usuarios.jsx";
 import Eventos from "./paginas/eventos/Eventos.jsx";

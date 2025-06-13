@@ -1,39 +1,163 @@
-.ciclo{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 25vh;
-    gap: 20px;
-    margin: 70px auto;
+/* Variáveis de cores e tipografia */
+:root {
+  --primary-color: #2c3e50;
+  --secondary-color: #3498db;
+  --accent-color: #e74c3c;
+  --light-color: #ecf0f1;
+  --dark-color: #2c3e50;
+  --text-color: #333;
+  --text-light: #7f8c8d;
+  --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --font-heading: 'Montserrat', sans-serif;
+  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
 }
 
-.paragrafociclo,
-.local,
-.inscricao,
-.calendario{
-    display: block;
-    text-align: center;
-    height: 200px;
-    width: 65%;
-    font-size: 19px;;
-    text-align: left;
-
+/* Reset e estilos base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.imgciclo {
-    display: block;
-    margin: 20px auto;
-    width: 35%;
-    height: 50%;
-    object-fit: cover;
-    border-radius: 8px;
+body {
+  font-family: var(--font-main);
+  line-height: 1.6;
+  color: var(--text-color);
+  background-color: #f9f9f9;
 }
 
-.botoesCiclo {
+/* Container principal */
+.ciclo-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* Cabeçalho da seção */
+.cabecalho {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  text-align: center;
+  margin-bottom: 1.5rem;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.cabecalho::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 3px;
+  background-color: var(--accent-color);
+}
+
+/* Conteúdo textual */
+.paragrafociclo {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--text-color);
+  margin-bottom: 1.5rem;
+  text-align: center;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 1rem;
+}
+
+.local {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--secondary-color);
+  text-align: center;
+  margin: 1.5rem 0;
+  font-style: italic;
+}
+
+/* Botões de navegação */
+.nav-buttons {
   display: flex;
   justify-content: center;
-  align-items: center;
-  gap: 32px;
-  margin: 20px 0;
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.inscricao, .calendario {
+  display: inline-block;
+}
+
+.inscricao a, .calendario a {
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  background-color: var(--secondary-color);
+  color: white;
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: 600;
+  transition: var(--transition);
+  box-shadow: var(--box-shadow);
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+}
+
+.inscricao a:hover, .calendario a:hover {
+  background-color: var(--primary-color);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Imagem */
+.imgciclo {
+  display: block;
+  width: 100%;
+  max-width: 800px;
+  height: auto;
+  margin: 2rem auto;
+  border-radius: 8px;
+  box-shadow: var(--box-shadow);
+  transition: var(--transition);
+}
+
+.imgciclo:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .cabecalho {
+    font-size: 2rem;
+  }
+  
+  .paragrafociclo {
+    font-size: 1rem;
+    padding: 0;
+  }
+  
+  .nav-buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .inscricao a, .calendario a {
+    padding: 0.7rem 1.5rem;
+    width: 200px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .ciclo-container {
+    padding: 1rem;
+  }
+  
+  .cabecalho {
+    font-size: 1.8rem;
+  }
 }
