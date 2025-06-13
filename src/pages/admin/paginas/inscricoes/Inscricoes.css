@@ -40,6 +40,126 @@
     line-height: 1.6;
 }
 
+/* Barra de pesquisa e filtros */
+.filtros-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    background: #fff;
+    padding: 1.2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.search-bar {
+    position: relative;
+    flex: 1;
+    min-width: 250px;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.search-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #7f8c8d;
+    font-size: 0.9rem;
+}
+
+.search-input {
+    width: 100%;
+    padding: 0.8rem 1rem 0.8rem 2.5rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    background-color: #f8fafc;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+    background-color: #fff;
+}
+
+.filtro-campo {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-width: 180px;
+}
+
+.filter-icon {
+    position: absolute;
+    left: 12px;
+    color: #7f8c8d;
+    font-size: 0.9rem;
+    z-index: 1;
+}
+
+.select-campo {
+    padding: 0.8rem 1rem 0.8rem 2.2rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    background-color: #f8fafc;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    appearance: none;
+    width: 100%;
+}
+
+.select-campo:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+    background-color: #fff;
+}
+
+.filtro-evento {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    min-width: 250px;
+}
+
+.filtro-evento label {
+    font-size: 0.9rem;
+    color: #2c3e50;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.select-evento {
+    padding: 0.8rem 1rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    background-color: #f8fafc;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex: 1;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.7rem center;
+    background-size: 1rem;
+}
+
+.select-evento:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+    background-color: #fff;
+}
+
 /* Botões */
 .btn-modal {
     background-color: #3498db;
@@ -85,7 +205,6 @@
     background-color: rgba(52, 152, 219, 0.1);
 }
 
-/* Tabela */
 .tabela-container {
     border: 1px solid #e2e8f0;
     border-radius: 10px;
@@ -104,7 +223,7 @@
 }
 
 .inscritos-table thead tr {
-    background:  #3498db ;
+    background: #3498db;
     color: white;
 }
 
@@ -161,7 +280,6 @@
     color: #2980b9;
 }
 
-/* Ações */
 .acoes {
     display: flex;
     gap: 12px;
@@ -202,7 +320,6 @@
     transform: scale(1.1);
 }
 
-/* Estados */
 .sem-dados {
     text-align: center;
     color: #7f8c8d;
@@ -246,7 +363,25 @@
     margin-bottom: 2rem;
 }
 
-/* Responsividade */
+.resultados-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.resultados-info h3 {
+    margin: 0;
+}
+
+.total-resultados {
+    font-size: 0.9rem;
+    color: #3498db;
+    background-color: rgba(52, 152, 219, 0.1);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+}
+
 @media (max-width: 992px) {
     .inscricoes-header p {
         max-width: 100%;
@@ -256,6 +391,21 @@
     .btn-modal {
         position: static;
         margin-top: 1rem;
+    }
+    
+    .filtros-container {
+        flex-direction: column;
+    }
+    
+    .search-bar {
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1rem;
+    }
+    
+    .filtro-campo, .filtro-evento {
+        width: 100%;
     }
 }
 
@@ -279,9 +429,24 @@
     .acoes {
         gap: 8px;
     }
+    
+    .filtro-evento {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    
+    .filtro-evento label {
+        margin-bottom: 0.3rem;
+    }
+    
+    .resultados-info {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
 }
 
-/* Efeitos Especiais */
 .inscritos-table tbody tr {
     transition: all 0.3s ease;
     opacity: 1;
@@ -292,7 +457,6 @@
     transform: translateY(-1px);
 }
 
-/* Scrollbar personalizada (para navegadores WebKit) */
 .tabela-container::-webkit-scrollbar {
     height: 8px;
 }
