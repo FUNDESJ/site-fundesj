@@ -1,153 +1,295 @@
+:root {
+    --primary-color: #114B9B;
+    --primary-light: #3a6cb3;
+    --secondary-color: #f8f9fa;
+    --accent-color: #0066cc;
+    --text-color: #2c3e50;
+    --light-gray: #e8e8e8;
+    --lighter-gray: #f5f5f5;
+    --success-color: #28a745;
+    --warning-color: #ffc107;
+    --error-color: #dc3545;
+    --error-bg: #fef0f0;
+    --border-radius: 12px;
+    --box-shadow: 0 8px 24px rgba(0, 0, 0, 0.247);
+    --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 /* Estilos gerais */
+body {
+    margin: 0;
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
 .certificados-container {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    background-color: #f9f9f9;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.main-content { 
+.main-content {
     flex: 1;
-    padding: 20px;
-}
-
-.main-content h4 {
-    color: black;
-    font-weight: 600;
-    font-size: 24px;
-    font-family: Montserrat, sans-serif;;
-    text-align: center;
+    padding: 2rem 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
     width: 100%;
 }
 
+/* Títulos */
+.certificate-titles {
+    text-align: center;
+    margin: 2rem 0 1rem;
+}
 
-.main-content h1 {
-    color: #114B9B;
+.certificate-titles h4 {
+    color: var(--text-color);
+    font-weight: 500;
+    font-size: 2rem;
+    margin: 0;
+    line-height: 1.3;
+}
+
+.certificate-titles h1 {
+    color: var(--primary-color);
     font-weight: 800;
-    font-size: 65px;
-    font-family: Montserrat, sans-serif;;
-    text-align: center;
-    width: 100%;
+    font-size: 4rem;
+    margin: 0;
+    line-height: 1.1;
+    letter-spacing: -1.5px;
+    text-transform: uppercase;
 }
 
-/* Campo de busca */
-.verificador-container {
+/* Card de Exemplo Flutuante */
+.certificate-example {
+    position: relative;
+    margin: 1rem auto 2rem;
     text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 100px auto;
-    max-width: 800px;
-    width: 800px;
-    height: 230px;
-    background-color: white;
-    padding: 40px;
+}
+
+.example-card {
+    display: inline-block;
+    background: white;
+    padding: 0.5rem 1.5rem;
     border-radius: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.288);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-size: 0.9rem;
+    color: var(--primary-color);
+    border: 1px solid var(--light-gray);
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+/* Container de busca */
+.verificador-container {
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    padding: 2.5rem;
+    max-width: 680px;
+    margin: 0 auto;
+    transition: var(--transition);
+}
+
+.verificador-container:hover {
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+}
+
+/* Campo de busca com efeito de destaque */
+.search-box {
+    display: flex;
+    position: relative;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.search-box::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 10%;
+    width: 80%;
+    height: 10px;
+    background: rgba(17, 75, 155, 0.1);
+    border-radius: 50%;
+    filter: blur(5px);
+    z-index: -1;
+    transition: all 0.3s ease;
+}
+
+.search-box:focus-within::after {
+    bottom: -8px;
+    height: 15px;
+    background: rgba(17, 75, 155, 0.2);
 }
 
 .verificador-input {
-    padding: 10px 20px;
-    border: 1px solid #ccc;
-    border-right: none;
-    border-radius: 5px 0 0 5px;
-    background-color: #f1f1f1;
-    width: 400px;
-    color: #444;
-    font-size: 16px;
+    flex: 1;
+    padding: 1rem 1.5rem;
+    border: 2px solid var(--light-gray);
+    border-radius: var(--border-radius) 0 0 var(--border-radius);
+    font-size: 1rem;
+    color: var(--text-color);
     outline: none;
-    transition: border-color 0.3s;
+    transition: var(--transition);
+    background: white;
 }
 
 .verificador-input:focus {
-    border-color: #000;
-    background-color: #fff;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(17, 75, 155, 0.1);
 }
 
 .verificador-input::placeholder {
-    color: #888;
+    color: #9e9e9e;
+    opacity: 1;
 }
 
+/* Botão com microinterações melhoradas */
 .verificador-botao {
-    padding: 9px 15px;
-    background-color: #000;
-    color: #fff;
-    border: 1px solid #000;
-    border-radius: 0 5px 5px 0;
-    font-size: 16px;
+    padding: 0 1.75rem;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 0 var(--border-radius) var(--border-radius) 0;
+    font-size: 1rem;
+    font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s ease;
     display: flex;
     align-items: center;
-    justify-content: center;
+    gap: 0.5rem;
+    transition: var(--transition);
+    min-height: 50px;
+    position: relative;
+    overflow: hidden;
+}
+
+.verificador-botao::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.1);
+    transform: rotate(45deg) translate(-20%, -100%);
+    transition: transform 0.6s ease;
 }
 
 .verificador-botao:hover:not(:disabled) {
-    background-color: #333;
+    background: var(--primary-light);
+    transform: translateY(-1px);
+}
+
+.verificador-botao:hover:not(:disabled)::after {
+    transform: rotate(45deg) translate(20%, 100%);
+}
+
+.verificador-botao:active:not(:disabled) {
+    transform: translateY(0);
 }
 
 .verificador-botao:disabled {
-    background-color: #555;
+    background: #a0a0a0;
     cursor: not-allowed;
 }
 
-/* Spinner */
-.spinner {
-    width: 16px;
-    height: 16px;
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    border-radius: 50%;
-    border-top-color: #fff;
-    animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-    to { transform: rotate(360deg); }
+.search-icon {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
 }
 
 /* Mensagem de erro */
 .mensagem-erro {
-    background-color: #fff6f6;
-    border: 1px solid #ffcccc;
-    color: #d8000c;
-    padding: 15px;
-    border-radius: 6px;
-    max-width: 600px;
-    margin: 20px auto;
+    background: var(--error-bg);
+    border-radius: var(--border-radius);
+    padding: 1rem 1.5rem;
+    margin-top: 1.5rem;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 0.75rem;
+    animation: fadeIn 0.3s ease-out;
+    border-left: 4px solid var(--error-color);
 }
 
-.icone-erro {
-    background-color: #d8000c;
-    color: white;
-    width: 24px;
-    height: 24px;
+.error-icon {
+    width: 20px;
+    height: 20px;
+    fill: var(--error-color);
+    flex-shrink: 0;
+}
+
+.mensagem-erro span {
+    color: var(--error-color);
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+/* Spinner */
+.spinner {
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
     border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
+    border-top-color: white;
+    animation: spin 1s ease-in-out infinite;
 }
 
 /* Tabela de resultados */
 .tabela-certificado {
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    padding: 25px;
+    background-color: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    padding: 2rem;
     max-width: 800px;
-    margin: 30px auto;
+    margin: 3rem auto;
+    overflow: hidden;
+    transform: translateY(20px);
+    opacity: 0;
+    animation: fadeUp 0.5s ease-out forwards;
+    animation-delay: 0.2s;
+}
+
+@keyframes fadeUp {
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.certificate-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
 }
 
 .tabela-certificado h3 {
-    color: #2c3e50;
-    margin-bottom: 20px;
-    font-size: 20px;
-    text-align: center;
-    font-weight: 600;
+    color: var(--primary-color);
+    margin: 0;
+    font-size: 1.4rem;
+    font-weight: 700;
+    position: relative;
+}
+
+.certificate-badge {
+    background: var(--lighter-gray);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
 }
 
 .tabela-certificado table {
@@ -155,116 +297,245 @@
     border-collapse: collapse;
 }
 
-.tabela-certificado th, 
+.tabela-certificado th,
 .tabela-certificado td {
-    padding: 12px 15px;
+    padding: 0.8rem 1rem;
     text-align: left;
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid var(--light-gray);
 }
 
 .tabela-certificado th {
-    color: #555;
-    font-weight: 500;
+    color: var(--text-color);
+    font-weight: 600;
     width: 30%;
+    white-space: nowrap;
 }
 
 .tabela-certificado td {
-    color: #333;
+    color: var(--text-color);
     font-weight: 400;
+}
+
+.tabela-certificado tr:last-child th,
+.tabela-certificado tr:last-child td {
+    border-bottom: none;
 }
 
 /* Status do certificado */
 .status-aprovado {
-    color: #28a745;
-    font-weight: 500;
+    color: var(--success-color);
+    font-weight: 600;
 }
 
 .status-pendente {
-    color: #ffc107;
-    font-weight: 500;
+    color: var(--warning-color);
+    font-weight: 600;
 }
 
 .status-reprovado {
-    color: #dc3545;
-    font-weight: 500;
+    color: var(--error-color);
+    font-weight: 600;
 }
 
 /* Link do certificado */
 .link-certificado {
-    color: #0066cc;
+    color: var(--accent-color);
     text-decoration: none;
     font-weight: 500;
-    transition: color 0.2s;
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 .link-certificado:hover {
-    color: #004499;
+    color: #004080;
     text-decoration: underline;
 }
 
-/* Responsividade */
-@media (max-width: 768px) {
-    .verificador-container {
-        flex-direction: column;
-    }
-    
-    .verificador-input {
-        width: 100%;
-        border-radius: 30px;
-        border-right: 1px solid #ccc;
-        margin-bottom: 10px;
-    }
-    
-    .verificador-botao {
-        width: 100%;
-        border-radius: 30px;
+.download-icon {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+    transition: var(--transition);
+}
+
+.link-certificado:hover .download-icon {
+    transform: translateY(2px);
+}
+
+/* Rodapé Informativo */
+.certificate-info {
+    margin: 3rem auto 0;
+    max-width: 800px;
+}
+
+.info-card {
+    margin: 2% auto;
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    box-shadow: var(--box-shadow);
+    text-align: center;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.253);
+}
+
+.info-icon {
+    width: 40px;
+    height: 40px;
+    fill: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.info-card h4 {
+    color: var(--primary-color);
+    margin: 0 0 0.5rem;
+}
+
+.info-card p {
+    color: var(--text-color);
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+/* Animações */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
     }
 
-    .tabela-certificado {
-        padding: 15px;
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
-    
-    .tabela-certificado th, 
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Responsividade */
+@media (max-width: 992px) {
+    .certificate-titles h4 {
+        font-size: 1.8rem;
+    }
+
+    .certificate-titles h1 {
+        font-size: 3.2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .certificate-titles h4 {
+        font-size: 1.5rem;
+    }
+
+    .certificate-titles h1 {
+        font-size: 2.5rem;
+    }
+
+    .verificador-container {
+        padding: 2rem;
+    }
+
+    .search-box {
+        flex-direction: column;
+    }
+
+    .verificador-input {
+        border-radius: var(--border-radius);
+        border-right: 2px solid var(--light-gray);
+        padding: 0.9rem 1.25rem;
+    }
+
+    .verificador-botao {
+        border-radius: var(--border-radius);
+        padding: 0.9rem;
+        justify-content: center;
+        margin-top: 0.75rem;
+    }
+
+    .mensagem-erro {
+        margin-top: 0.75rem;
+    }
+
+    .certificate-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .tabela-certificado th,
     .tabela-certificado td {
-        padding: 8px 10px;
+        padding: 0.6rem 0;
         display: block;
         width: 100%;
     }
-    
+
     .tabela-certificado tr {
-        margin-bottom: 15px;
+        margin-bottom: 1rem;
         display: block;
-        border-bottom: 2px solid #e0e0e0;
-    }
-    
-    .tabela-certificado th {
-        font-size: 14px;
-        padding-bottom: 5px;
-    }
-    
-    .tabela-certificado td {
-        font-size: 15px;
-        padding-top: 5px;
+        border-bottom: 2px solid var(--light-gray);
     }
 }
 
 @media (max-width: 480px) {
-    .Certificados {
-        margin: 30px auto;
-        width: 95%;
+    .certificate-titles h4 {
+        font-size: 1.3rem;
     }
-    
-    .certificados-banner {
-        border-radius: 4px 4px 0 0;
+
+    .certificate-titles h1 {
+        font-size: 2rem;
     }
-    
-    
-    .verificador-input,
-    .verificador-botao {
-        font-size: 14px;
+
+    .verificador-container {
+        padding: 1.5rem;
     }
-    
+
+    .tabela-certificado {
+        padding: 1.5rem;
+    }
+
     .tabela-certificado h3 {
-        font-size: 18px;
+        font-size: 1.2rem;
+    }
+
+    .example-card {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+    }
+}
+
+/* Mantenha todo o CSS anterior, apenas adicione: */
+
+.mensagem-erro {
+    background: var(--error-bg);
+    border-radius: var(--border-radius);
+    padding: 1rem 1.5rem;
+    margin-top: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    animation: fadeIn 0.3s ease-out;
+    border-left: 4px solid var(--error-color);
+}
+
+.certificate-info {
+    margin-top: 2rem;
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }

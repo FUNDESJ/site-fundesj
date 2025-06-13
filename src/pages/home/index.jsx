@@ -27,7 +27,7 @@ function Home() {
             titulo: "Curso Básico Inclusão Digital",
             descricao: "Inclusão Digital Para Idosos são aulas semanais que levam conhecimentos para os 60+, abordando os conhecimentos básicos para a utilização de um Smartphone.",
             foto: inclusaoidosos,
-            link: ""
+            link: "./idbasico"
         },
         {
             id: 3,
