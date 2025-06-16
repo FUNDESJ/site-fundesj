@@ -1,19 +1,13 @@
-/* Estilo Base e Container */
+/* Container Principal */
 .inscricoes-container {
     padding: 2rem;
     max-width: 1200px;
     margin: 0 auto;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #2c3e50;
-    animation: fadeIn 0.5s ease-out;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* Header */
+/* Cabeçalho */
 .inscricoes-header {
     margin-bottom: 2.5rem;
     position: relative;
@@ -26,11 +20,6 @@
     font-weight: 700;
     color: #2c3e50;
     margin-bottom: 0.5rem;
-    background: linear-gradient(90deg, #2c3e50, #4a6fa5);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    display: inline-block;
 }
 
 .inscricoes-header p {
@@ -40,7 +29,52 @@
     line-height: 1.6;
 }
 
-/* Barra de pesquisa e filtros */
+/* Botões */
+.btn-modal {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.8rem;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    box-shadow: 0 2px 5px rgba(52, 152, 219, 0.3);
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.btn-modal:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+}
+
+.btn-modal:active {
+    transform: translateY(0);
+}
+
+.btn-ver-todos {
+    background-color: transparent;
+    color: #3498db;
+    border: 1px solid #3498db;
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-left: 1rem;
+}
+
+.btn-ver-todos:hover {
+    background-color: rgba(52, 152, 219, 0.1);
+}
+
+/* Filtros */
 .filtros-container {
     display: flex;
     justify-content: space-between;
@@ -160,51 +194,7 @@
     background-color: #fff;
 }
 
-/* Botões */
-.btn-modal {
-    background-color: #3498db;
-    color: white;
-    border: none;
-    padding: 0.8rem 1.8rem;
-    border-radius: 6px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    display: inline-flex;
-    align-items: center;
-    gap: 0.7rem;
-    box-shadow: 0 2px 5px rgba(52, 152, 219, 0.3);
-    position: absolute;
-    right: 0;
-    top: 0;
-}
-
-.btn-modal:hover {
-    background-color: #2980b9;
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
-}
-
-.btn-modal:active {
-    transform: translateY(0);
-}
-
-.btn-ver-todos {
-    background-color: transparent;
-    color: #3498db;
-    border: 1px solid #3498db;
-    padding: 0.6rem 1.2rem;
-    border-radius: 6px;
-    font-size: 0.9rem;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    margin-left: 1rem;
-}
-
-.btn-ver-todos:hover {
-    background-color: rgba(52, 152, 219, 0.1);
-}
-
+/* Tabela */
 .tabela-container {
     border: 1px solid #e2e8f0;
     border-radius: 10px;
@@ -280,6 +270,7 @@
     color: #2980b9;
 }
 
+/* Ações */
 .acoes {
     display: flex;
     gap: 12px;
@@ -320,6 +311,7 @@
     transform: scale(1.1);
 }
 
+/* Estados */
 .sem-dados {
     text-align: center;
     color: #7f8c8d;
@@ -353,6 +345,7 @@
     to { transform: rotate(360deg); }
 }
 
+/* Informações */
 .total-inscritos {
     display: flex;
     align-items: center;
@@ -382,6 +375,7 @@
     border-radius: 20px;
 }
 
+/* Responsividade */
 @media (max-width: 992px) {
     .inscricoes-header p {
         max-width: 100%;
@@ -447,6 +441,7 @@
     }
 }
 
+/* Efeitos */
 .inscritos-table tbody tr {
     transition: all 0.3s ease;
     opacity: 1;

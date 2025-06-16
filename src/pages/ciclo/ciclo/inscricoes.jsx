@@ -21,6 +21,7 @@ export default function Inscricoes() {
     const [telefone, setTelefone] = useState('');
     const [comoConheceu, setComoConheceu] = useState('');
     const [mensagem, setMensagem] = useState('');
+    const [carregando, setCarregando] = useState(false);
 
     useEffect(() => {
         buscarEvento();
@@ -32,12 +33,19 @@ export default function Inscricoes() {
                 projeto: "Ciclo de palestras"
             });
             const evento = retorno.data.consulta;
+            const dataOriginal = evento.data;
+            const dataFormatada = new Date(dataOriginal).toLocaleDateString('pt-BR');
+
+            let horarioFormatado = evento.horario;
+            if (horarioFormatado.includes(':')) {
+                horarioFormatado = horarioFormatado.slice(0, 5);
+            }
             setProjeto(evento.projeto);
             setTitulo(evento.titulo);
             setSubTitulo(evento.subTitulo);
             setLocal(evento.local);
-            setData(evento.data);
-            setHorario(evento.horario);
+            setData(dataFormatada);
+            setHorario(horarioFormatado);
             setPalestrante(evento.palestrante);
             setFoto(evento.foto);
         } catch (erro) {
@@ -47,11 +55,15 @@ export default function Inscricoes() {
     }
 
     async function inscrever() {
+        setMensagem('');
+        setCarregando(true);
+
         if (!nome || !email || !telefone || !titulo || !comoConheceu) {
             setMensagem("Por favor, preencha todos os campos obrigatórios");
+            setCarregando(false);
             return;
         }
-        
+
         try {
             await axios.post('https://back-end-fundesj.onrender.com/inscrever', {
                 nome,
@@ -60,57 +72,50 @@ export default function Inscricoes() {
                 titulo,
                 comoConheceu
             });
-            
+
             setMensagem("Inscrição realizada com sucesso!");
-            // Limpar formulário após inscrição
             setNome('');
             setEmail('');
             setTelefone('');
             setComoConheceu('');
-            
-            // Limpar mensagem após 5 segundos
-            setTimeout(() => setMensagem(''), 5000);
         } catch (erro) {
             console.log(erro);
-            setMensagem("Ocorreu um erro ao processar sua inscrição");
+            setMensagem("Você já está Inscrito neste evento");
+        } finally {
+            setCarregando(false);
+            setTimeout(() => setMensagem(''), 5000);
         }
     }
 
     return (
         <>
             <Header />
-            <div className="inscricoes-container">
+            <div className="inscricoes-container main-content">                
                 <div className="inscricoes-header">
-                    <h1 className="inscricoes-title">Inscrição no Ciclo de Palestras</h1>
-                    <p className="inscricoes-subtitle">Preencha o formulário abaixo para garantir sua vaga</p>
-                </div>
-
-                {mensagem && (
-                    <div className={`mensagem ${mensagem.includes("sucesso") ? "sucesso" : "erro"}`}>
-                        {mensagem}
-                    </div>
-                )}
+                <h1 className="inscricoes-title">Inscrição no Ciclo de Palestras</h1>
+                <p className="inscricoes-subtitle">Preencha o formulário abaixo para garantir sua vaga</p>
+            </div>
 
                 {titulo ? (
                     <div className="evento-card">
                         {foto && (
                             <div className="evento-imagem-container">
-                                <img 
-                                    src={foto} 
-                                    alt={`Imagem do evento ${titulo}`} 
+                                <img
+                                    src={foto}
+                                    alt={`Imagem do evento ${titulo}`}
                                     className="evento-imagem"
                                     onError={(e) => {
-                                        e.target.onerror = null; 
+                                        e.target.onerror = null;
                                         e.target.src = "https://via.placeholder.com/800x400?text=Imagem+do+Evento";
                                     }}
                                 />
                             </div>
                         )}
-                        
+
                         <div className="evento-detalhes">
                             <h2 className="evento-titulo">{titulo}</h2>
                             {subTitulo && <p className="evento-subtitulo">{subTitulo}</p>}
-                            
+
                             <div className="evento-info">
                                 <div className="evento-info-item">
                                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -119,7 +124,7 @@ export default function Inscricoes() {
                                     </svg>
                                     <span>{local}</span>
                                 </div>
-                                
+
                                 <div className="evento-info-item">
                                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                                         <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
@@ -129,7 +134,7 @@ export default function Inscricoes() {
                                     </svg>
                                     <span>{data} às {horario}</span>
                                 </div>
-                                
+
                                 {palestrante && (
                                     <div className="evento-info-item">
                                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -150,11 +155,11 @@ export default function Inscricoes() {
 
                 <div className="inscricao-form">
                     <h3>Formulário de Inscrição</h3>
-                    
+
                     <div className="form-group">
                         <label htmlFor="nome" className="form-label">Nome Completo*</label>
-                        <input 
-                            type="text" 
+                        <input
+                            type="text"
                             id="nome"
                             className="form-input"
                             placeholder="Digite seu nome completo"
@@ -166,8 +171,8 @@ export default function Inscricoes() {
 
                     <div className="form-group">
                         <label htmlFor="email" className="form-label">E-mail*</label>
-                        <input 
-                            type="email" 
+                        <input
+                            type="email"
                             id="email"
                             className="form-input"
                             placeholder="Digite seu e-mail"
@@ -179,8 +184,8 @@ export default function Inscricoes() {
 
                     <div className="form-group">
                         <label htmlFor="telefone" className="form-label">Telefone*</label>
-                        <input 
-                            type="tel" 
+                        <input
+                            type="tel"
                             id="telefone"
                             className="form-input"
                             placeholder="(00) 00000-0000"
@@ -192,8 +197,8 @@ export default function Inscricoes() {
 
                     <div className="form-group">
                         <label htmlFor="comoConheceu" className="form-label">Como você conheceu o evento?*</label>
-                        <input 
-                            type="text" 
+                        <input
+                            type="text"
                             id="comoConheceu"
                             className="form-input"
                             placeholder="Redes sociais, indicação, etc."
@@ -203,10 +208,28 @@ export default function Inscricoes() {
                         />
                     </div>
 
-                    <button className="form-button" onClick={inscrever}>
-                        Confirmar Inscrição
+                    <button
+                        className="form-button"
+                        onClick={inscrever}
+                        disabled={carregando}
+                    >
+                        {carregando ? (
+                            <div className="loading-spinner">
+                                <div className="spinner"></div>
+                                <span>Processando...</span>
+                            </div>
+                        ) : (
+                            "Confirmar Inscrição"
+                        )}
                     </button>
+                       {mensagem && (
+                    <div className={`mensagem ${mensagem.includes("sucesso") ? "sucesso" : "erro"}`}>
+                        {mensagem}
+                    </div>
+                )}
                 </div>
+              
+
             </div>
             <Footer />
         </>

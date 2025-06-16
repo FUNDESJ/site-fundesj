@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './Inscricoes.css';
+import './InscricoesAdmin.css';
 import { FaEdit, FaTrash, FaSearch, FaFilter } from 'react-icons/fa';
 import ModalInscritos from './modal/ModalInscrever';
 import ModalDeletar from './modal/ModalDeletar';
@@ -16,8 +16,7 @@ const Inscricoes = () => {
     const [inscritoSelecionado, setInscritoSelecionado] = useState(null);
     const [termoPesquisa, setTermoPesquisa] = useState('');
     const [filtroEvento, setFiltroEvento] = useState('todos');
-    const [campoFiltro, setCampoFiltro] = useState('todos'); // Novo estado para selecionar o campo de filtro
-
+    const [campoFiltro, setCampoFiltro] = useState('todos'); 
     useEffect(() => {
         buscarLista();
     }, []);
@@ -51,20 +50,17 @@ const Inscricoes = () => {
     function filtrarInscritos() {
         let resultado = [...inscritos];
         
-        // Filtrar por evento primeiro (se não for 'todos')
         if (filtroEvento !== 'todos') {
             resultado = resultado.filter(inscrito => 
                 inscrito.titulo === filtroEvento
             );
         }
         
-        // Aplicar filtro de pesquisa se houver termo
         if (termoPesquisa) {
             const termo = termoPesquisa.toLowerCase();
             
             resultado = resultado.filter(inscrito => {
                 if (campoFiltro === 'todos') {
-                    // Pesquisa em todos os campos
                     return (
                         (inscrito.nome && inscrito.nome.toLowerCase().includes(termo)) ||
                         (inscrito.email && inscrito.email.toLowerCase().includes(termo)) ||
@@ -72,7 +68,6 @@ const Inscricoes = () => {
                         (inscrito.titulo && inscrito.titulo.toLowerCase().includes(termo))
                     );
                 } else {
-                    // Pesquisa no campo específico selecionado
                     const campo = inscrito[campoFiltro] || '';
                     return campo.toString().toLowerCase().includes(termo);
                 }
@@ -105,14 +100,12 @@ const Inscricoes = () => {
         <div className="inscricoes-container">
             <div className="inscricoes-header">
                 <h1>Gerenciar Inscrições</h1>
-                <p>Visualize e gerencie todas as inscrições do sistema.</p>
 
                 <button onClick={openModalInscritos} className="btn-modal">
                     Adicionar Inscritos
                 </button>
             </div>
 
-            {/* Barra de pesquisa e filtros */}
             <div className="filtros-container">
                 <div className="search-bar">
                     <FaSearch className="search-icon" />
@@ -121,7 +114,7 @@ const Inscricoes = () => {
                         placeholder="Digite para pesquisar..."
                         value={termoPesquisa}
                         onChange={(e) => setTermoPesquisa(e.target.value)}
-                        className="search-input"
+                        className="search-input"    
                     />
                     <div className="filtro-campo">
                         <FaFilter className="filter-icon" />

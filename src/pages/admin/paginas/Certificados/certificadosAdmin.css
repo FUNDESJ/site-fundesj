@@ -1,0 +1,240 @@
+/* Container principal */
+.certificados-container {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Cabeçalho */
+.certificados-header {
+    margin-bottom: 2rem;
+}
+
+.certificados-header h1 {
+    font-size: 2rem;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.certificados-header p {
+    color: #7f8c8d;
+    font-size: 1rem;
+}
+
+/* Botões e ações */
+.btn-add {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-bottom: 1.5rem;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.btn-add:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Container da tabela */
+.tabela-container {
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    margin-bottom: 1.5rem;
+    background-color: white;
+}
+
+/* Estilos da tabela */
+.certificados-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+}
+
+.certificados-table thead tr {
+    background-color: #3498db;
+    color: white;
+    text-align: left;
+}
+
+.certificados-table th {
+    padding: 15px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+.certificados-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #e2e8f0;
+    vertical-align: middle;
+}
+
+.certificados-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.certificados-table tbody tr:nth-child(even) {
+    background-color: #f8fafc;
+}
+
+.certificados-table tbody tr:hover {
+    background-color: #f0f7ff;
+}
+
+/* Células específicas */
+.certificados-table td.nome {
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.certificados-table td.curso {
+    color: #3498db;
+}
+
+/* Mensagem sem dados */
+.sem-dados {
+    text-align: center;
+    color: #7f8c8d;
+    padding: 20px !important;
+}
+
+/* Badges (se necessário) */
+.status-badge {
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* Botões de ação */
+.acoes {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-acao {
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 4px;
+    transition: all 0.2s;
+    color: #7f8c8d;
+    font-size: 1rem;
+}
+
+.btn-acao:hover {
+    transform: scale(1.1);
+}
+
+.btn-editar:hover {
+    color: #3498db;
+}
+
+.btn-excluir:hover {
+    color: #e74c3c;
+}
+
+/* Link do certificado */
+.certificado-link {
+    color: #3498db;
+    text-decoration: none;
+    transition: color 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.certificado-link:hover {
+    color: #2980b9;
+    text-decoration: underline;
+}
+
+/* Sistema de filtro */
+.filtro-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    gap: 15px;
+}
+
+.filtro-input-group {
+    display: flex;
+    flex: 1;
+    max-width: 600px;
+}
+
+.filtro-input-wrapper {
+    position: relative;
+    flex: 1;
+}
+
+.filtro-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+}
+
+.filtro-input {
+    width: 100%;
+    padding: 10px 15px 10px 40px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    transition: border-color 0.2s;
+}
+
+.filtro-input:focus {
+    outline: none;
+    border-color: #4a90e2;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .certificados-container {
+        padding: 1rem;
+    }
+    
+    .certificados-table th,
+    .certificados-table td {
+        padding: 10px 12px;
+        font-size: 0.85rem;
+    }
+    
+    .btn-add {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+    }
+    
+    .acoes {
+        gap: 5px;
+    }
+    
+    .filtro-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .filtro-input-group {
+        max-width: 100%;
+    }
+    
+    .btn-add {
+        width: 100%;
+        justify-content: center;
+    }
+}
