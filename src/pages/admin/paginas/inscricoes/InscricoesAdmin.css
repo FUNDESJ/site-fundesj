@@ -22,13 +22,6 @@
     margin-bottom: 0.5rem;
 }
 
-.inscricoes-header p {
-    color: #7f8c8d;
-    font-size: 1.05rem;
-    max-width: 70%;
-    line-height: 1.6;
-}
-
 /* Botões */
 .btn-modal {
     background-color: #3498db;
@@ -38,7 +31,7 @@
     border-radius: 6px;
     font-size: 1rem;
     cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition: all 0.3s ease;
     display: inline-flex;
     align-items: center;
     gap: 0.7rem;
@@ -52,10 +45,6 @@
     background-color: #2980b9;
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
-}
-
-.btn-modal:active {
-    transform: translateY(0);
 }
 
 .btn-ver-todos {
@@ -111,16 +100,7 @@
     border: 1px solid #e2e8f0;
     border-radius: 6px;
     font-size: 0.95rem;
-    transition: all 0.3s ease;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
     background-color: #f8fafc;
-}
-
-.search-input:focus {
-    outline: none;
-    border-color: #3498db;
-    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
-    background-color: #fff;
 }
 
 .filtro-campo {
@@ -135,26 +115,16 @@
     left: 12px;
     color: #7f8c8d;
     font-size: 0.9rem;
-    z-index: 1;
 }
 
-.select-campo {
+.select-campo, .select-evento {
     padding: 0.8rem 1rem 0.8rem 2.2rem;
     border: 1px solid #e2e8f0;
     border-radius: 6px;
     font-size: 0.9rem;
     background-color: #f8fafc;
     cursor: pointer;
-    transition: all 0.3s ease;
     appearance: none;
-    width: 100%;
-}
-
-.select-campo:focus {
-    outline: none;
-    border-color: #3498db;
-    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
-    background-color: #fff;
 }
 
 .filtro-evento {
@@ -162,36 +132,6 @@
     align-items: center;
     gap: 0.8rem;
     min-width: 250px;
-}
-
-.filtro-evento label {
-    font-size: 0.9rem;
-    color: #2c3e50;
-    font-weight: 500;
-    white-space: nowrap;
-}
-
-.select-evento {
-    padding: 0.8rem 1rem;
-    border: 1px solid #e2e8f0;
-    border-radius: 6px;
-    font-size: 0.9rem;
-    background-color: #f8fafc;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    flex: 1;
-    appearance: none;
-    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
-    background-repeat: no-repeat;
-    background-position: right 0.7rem center;
-    background-size: 1rem;
-}
-
-.select-evento:focus {
-    outline: none;
-    border-color: #3498db;
-    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
-    background-color: #fff;
 }
 
 /* Tabela */
@@ -202,14 +142,12 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     margin-bottom: 2rem;
     background-color: white;
-    position: relative;
 }
 
 .inscritos-table {
     width: 100%;
     border-collapse: collapse;
     font-size: 0.95rem;
-    table-layout: fixed;
 }
 
 .inscritos-table thead tr {
@@ -217,42 +155,11 @@
     color: white;
 }
 
-.inscritos-table th {
-    padding: 16px 20px;
-    font-weight: 600;
-    text-align: left;
-    letter-spacing: 0.5px;
-    position: relative;
-}
-
-.inscritos-table th:not(:last-child)::after {
-    content: '';
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    height: 60%;
-    width: 1px;
-    background-color: rgba(255, 255, 255, 0.2);
-}
-
-.inscritos-table td {
+.inscritos-table th, .inscritos-table td {
     padding: 14px 20px;
     border-bottom: 1px solid #f1f5f9;
     vertical-align: middle;
     word-wrap: break-word;
-}
-
-.inscritos-table tbody tr:last-child td {
-    border-bottom: none;
-}
-
-.inscritos-table tbody tr:nth-child(even) {
-    background-color: #f8fafc;
-}
-
-.inscritos-table tbody tr:hover {
-    background-color: #f0f7ff;
 }
 
 .inscritos-table td.nome {
@@ -266,15 +173,9 @@
     cursor: pointer;
 }
 
-.inscritos-table td.email:hover {
-    color: #2980b9;
-}
-
-/* Ações */
 .acoes {
     display: flex;
     gap: 12px;
-    justify-content: flex-start;
 }
 
 .btn-acao {
@@ -283,7 +184,6 @@
     cursor: pointer;
     padding: 8px;
     border-radius: 50%;
-    transition: all 0.3s ease;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -311,11 +211,10 @@
     transform: scale(1.1);
 }
 
-/* Estados */
 .sem-dados {
     text-align: center;
     color: #7f8c8d;
-    padding: 30px !important;
+    padding: 30px;
     font-style: italic;
 }
 
@@ -345,10 +244,8 @@
     to { transform: rotate(360deg); }
 }
 
-/* Informações */
 .total-inscritos {
     display: flex;
-    align-items: center;
     justify-content: flex-end;
     color: #7f8c8d;
     font-size: 0.9rem;
@@ -375,97 +272,14 @@
     border-radius: 20px;
 }
 
-/* Responsividade */
-@media (max-width: 992px) {
-    .inscricoes-header p {
-        max-width: 100%;
-        margin-bottom: 1.5rem;
-    }
-    
-    .btn-modal {
-        position: static;
-        margin-top: 1rem;
-    }
-    
-    .filtros-container {
-        flex-direction: column;
-    }
-    
-    .search-bar {
-        width: 100%;
-        flex-direction: column;
-        align-items: stretch;
-        gap: 1rem;
-    }
-    
-    .filtro-campo, .filtro-evento {
-        width: 100%;
-    }
-}
-
 @media (max-width: 768px) {
-    .inscricoes-container {
-        padding: 1.5rem;
-    }
-    
     .inscricoes-header h1 {
         font-size: 1.8rem;
     }
-    
     .tabela-container {
         overflow-x: auto;
     }
-    
     .inscritos-table {
         min-width: 700px;
     }
-    
-    .acoes {
-        gap: 8px;
-    }
-    
-    .filtro-evento {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.5rem;
-    }
-    
-    .filtro-evento label {
-        margin-bottom: 0.3rem;
-    }
-    
-    .resultados-info {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.5rem;
-    }
-}
-
-/* Efeitos */
-.inscritos-table tbody tr {
-    transition: all 0.3s ease;
-    opacity: 1;
-}
-
-.inscritos-table tbody tr:hover {
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    transform: translateY(-1px);
-}
-
-.tabela-container::-webkit-scrollbar {
-    height: 8px;
-}
-
-.tabela-container::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: 10px;
-}
-
-.tabela-container::-webkit-scrollbar-thumb {
-    background: #c1c1c1;
-    border-radius: 10px;
-}
-
-.tabela-container::-webkit-scrollbar-thumb:hover {
-    background: #a8a8a8;
 }

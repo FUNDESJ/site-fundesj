@@ -17,6 +17,7 @@ const Inscricoes = () => {
     const [termoPesquisa, setTermoPesquisa] = useState('');
     const [filtroEvento, setFiltroEvento] = useState('todos');
     const [campoFiltro, setCampoFiltro] = useState('todos'); 
+
     useEffect(() => {
         buscarLista();
     }, []);
@@ -49,16 +50,13 @@ const Inscricoes = () => {
 
     function filtrarInscritos() {
         let resultado = [...inscritos];
-        
+
         if (filtroEvento !== 'todos') {
-            resultado = resultado.filter(inscrito => 
-                inscrito.titulo === filtroEvento
-            );
+            resultado = resultado.filter(inscrito => inscrito.titulo === filtroEvento);
         }
-        
+
         if (termoPesquisa) {
             const termo = termoPesquisa.toLowerCase();
-            
             resultado = resultado.filter(inscrito => {
                 if (campoFiltro === 'todos') {
                     return (
@@ -73,7 +71,7 @@ const Inscricoes = () => {
                 }
             });
         }
-        
+
         setInscritosFiltrados(resultado);
     }
 
@@ -100,7 +98,6 @@ const Inscricoes = () => {
         <div className="inscricoes-container">
             <div className="inscricoes-header">
                 <h1>Gerenciar Inscrições</h1>
-
                 <button onClick={openModalInscritos} className="btn-modal">
                     Adicionar Inscritos
                 </button>
@@ -114,7 +111,7 @@ const Inscricoes = () => {
                         placeholder="Digite para pesquisar..."
                         value={termoPesquisa}
                         onChange={(e) => setTermoPesquisa(e.target.value)}
-                        className="search-input"    
+                        className="search-input"
                     />
                     <div className="filtro-campo">
                         <FaFilter className="filter-icon" />
@@ -131,7 +128,7 @@ const Inscricoes = () => {
                         </select>
                     </div>
                 </div>
-                
+
                 <div className="filtro-evento">
                     <label htmlFor="filtro-evento">Filtrar por evento:</label>
                     <select
@@ -159,7 +156,7 @@ const Inscricoes = () => {
                             {inscritosFiltrados.length} {inscritosFiltrados.length === 1 ? 'resultado' : 'resultados'}
                         </span>
                     </div>
-                    
+
                     <div className="tabela-container">
                         <table className="inscritos-table">
                             <thead>
@@ -175,8 +172,8 @@ const Inscricoes = () => {
                                 {inscritosFiltrados.length === 0 ? (
                                     <tr>
                                         <td colSpan="5" className="sem-dados">
-                                            {termoPesquisa || filtroEvento !== 'todos' 
-                                                ? "Nenhuma inscrição encontrada com os filtros aplicados" 
+                                            {termoPesquisa || filtroEvento !== 'todos'
+                                                ? "Nenhuma inscrição encontrada com os filtros aplicados"
                                                 : "Nenhuma inscrição encontrada"}
                                         </td>
                                     </tr>
@@ -219,13 +216,13 @@ const Inscricoes = () => {
             />
             <ModalDeletar
                 isOpen={openModalDeletar}
-                onClose={() => {setOpenModalDeletar(false)}}
+                onClose={() => { setOpenModalDeletar(false); }}
                 inscrito={inscritoSelecionado}
                 deletarInscrito={buscarLista}
             />
             <ModalEditar
                 isOpen={openModalEditar}
-                onClose={() => {setOpenModalEditar(false)}}
+                onClose={() => { setOpenModalEditar(false); }}
                 inscrito={inscritoSelecionado}
                 atualizarInscrito={buscarLista}
             />

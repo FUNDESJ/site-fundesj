@@ -23,25 +23,25 @@
     font-size: 1rem;
 }
 
-/* Botões e ações */
+/* Botão de adicionar */
 .btn-add {
-    background-color: #3498db;
+    background-color: #4a90e2;
     color: white;
     border: none;
-    padding: 0.75rem 1.5rem;
-    border-radius: 6px;
+    padding: 10px 20px;
+    border-radius: 4px;
     font-size: 1rem;
     cursor: pointer;
     margin-bottom: 1.5rem;
-    transition: all 0.2s ease;
-    display: inline-flex;
+    transition: background-color 0.2s;
+    display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .btn-add:hover {
-    background-color: #2980b9;
+    background-color: #3a7bc8;
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
@@ -56,7 +56,7 @@
     background-color: white;
 }
 
-/* Estilos da tabela */
+/* Tabela */
 .certificados-table {
     width: 100%;
     border-collapse: collapse;
@@ -93,7 +93,6 @@
     background-color: #f0f7ff;
 }
 
-/* Células específicas */
 .certificados-table td.nome {
     font-weight: 600;
     color: #2c3e50;
@@ -110,7 +109,7 @@
     padding: 20px !important;
 }
 
-/* Badges (se necessário) */
+/* Badges de status */
 .status-badge {
     padding: 5px 10px;
     border-radius: 20px;
@@ -118,7 +117,17 @@
     font-weight: 500;
 }
 
-/* Botões de ação */
+.status-badge.ativo {
+    background-color: #e3f9e5;
+    color: #28a745;
+}
+
+.status-badge.inativo {
+    background-color: #ffe3e3;
+    color: #dc3545;
+}
+
+/* Ações */
 .acoes {
     display: flex;
     gap: 10px;
@@ -177,6 +186,38 @@
     max-width: 600px;
 }
 
+.filtro-select-container {
+    position: relative;
+    min-width: 120px;
+}
+
+.filtro-select {
+    width: 100%;
+    padding: 10px 15px;
+    padding-right: 30px;
+    border: 1px solid #ddd;
+    border-radius: 4px 0 0 4px;
+    background-color: white;
+    appearance: none;
+    cursor: pointer;
+}
+
+.filtro-select:focus {
+    outline: none;
+    border-color: #4a90e2;
+}
+
+.filtro-select-container::after {
+    content: "▼";
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.8em;
+    color: #666;
+    pointer-events: none;
+}
+
 .filtro-input-wrapper {
     position: relative;
     flex: 1;
@@ -194,7 +235,8 @@
     width: 100%;
     padding: 10px 15px 10px 40px;
     border: 1px solid #ddd;
-    border-radius: 4px;
+    border-left: none;
+    border-radius: 0 4px 4px 0;
     transition: border-color 0.2s;
 }
 
@@ -208,33 +250,30 @@
     .certificados-container {
         padding: 1rem;
     }
-    
+
     .certificados-table th,
     .certificados-table td {
         padding: 10px 12px;
         font-size: 0.85rem;
     }
-    
+
     .btn-add {
         padding: 0.6rem 1rem;
         font-size: 0.9rem;
+        width: 100%;
+        justify-content: center;
     }
-    
+
     .acoes {
         gap: 5px;
-    }
-    
+    }   
+
     .filtro-container {
         flex-direction: column;
         align-items: stretch;
     }
-    
+
     .filtro-input-group {
         max-width: 100%;
-    }
-    
-    .btn-add {
-        width: 100%;
-        justify-content: center;
     }
 }

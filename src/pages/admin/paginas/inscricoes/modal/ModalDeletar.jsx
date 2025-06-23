@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import './ModalDeletar.css'
 import { FaExclamationTriangle, FaSpinner } from 'react-icons/fa';
-import DeletarEvento from '../../eventos/modal/ModalDeletar';
 
 export default function deletarInscricao({ isOpen, onClose, inscrito, deletarInscrito }) {
     const [nome, setNome] = useState('');
