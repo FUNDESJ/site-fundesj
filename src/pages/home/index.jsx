@@ -59,9 +59,6 @@ function Home() {
         }
     ];
 
-    
-
-    console.log(projetos);
     return (
         <div className="home">
             <Header />
