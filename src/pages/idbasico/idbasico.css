@@ -190,24 +190,12 @@
 }
 
 /* Cores específicas para cada card */
-.card-sobre {
+.card-sobre,
+.card-voluntario,
+.card-modulos,
+.card-chamada {
   border-top-color: #3498db;
   border-bottom-color: #3498db;
-}
-
-.card-voluntario {
-  border-top-color: #2ecc71;
-  border-bottom-color: #2ecc71;
-}
-
-.card-modulos {
-  border-top-color: #9b59b6;
-  border-bottom-color: #9b59b6;
-}
-
-.card-chamada {
-  border-top-color: #e74c3c;
-  border-bottom-color: #e74c3c;
 }
 
 /* Responsividade */

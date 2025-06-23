@@ -1,0 +1,16 @@
+.idintermediario-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}   
+.idintermediario-content h1 {
+  font-size: 2rem;
+  color: var(--text-color);
+  margin-bottom: 20px;
+}
+.idintermediario-content p {
+  font-size: 1.2rem;
+  color: var(--text-color);
+  margin-bottom: 20px;
+}

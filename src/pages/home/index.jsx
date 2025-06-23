@@ -1,4 +1,4 @@
-import './index.css'; // Corrigido o caminho do CSS
+import './index.css';
 import background from '../../images/background.mp4'; // Caminho correto para o vídeo
 import { Link } from 'react-router-dom';
 import Header from '../header/index.jsx'; // Corrigido o caminho do Header
@@ -12,7 +12,8 @@ import idtodos from '../../images/pagina inicial/idtodosfi.jpeg';
 import Imagem1 from '../../images/pagina inicial/settings.png';
 import Imagem2 from '../../images/pagina inicial/docs.png';
 import Imagem3 from '../../images/pagina inicial/book.png';
-import Imagem4 from '../../images/pagina inicial/team.png'
+import Imagem4 from '../../images/pagina inicial/team.png';
+import WhatsAppButton from '../../pages/whatsapp/whatsAppbutton.jsx'; // Importando o botão do WhatsApp
 function Home() {
     const projetos = [
         {
@@ -34,7 +35,7 @@ function Home() {
             titulo: "Inclusão Digital Intermediário",
             descricao: "O Curso Inclusão Digital Intermediário oferece conhecimentos sobre as tecnologias atuais, com oficinas realizadas semanalmente no Centro de Atenção à Terceira Idade (CATI).",
             foto: idtodos, // Alterar para a foto correta
-            link: ""
+            link: "./idintermediario" // Corrigido o link para a página de ID Intermediário
         }
     ];
     const redesSociais = [
@@ -57,6 +58,8 @@ function Home() {
             link: "https://www.linkedin.com/company/funda-o-educacional-de-s-o-jos-fundesj/posts/?feedView=all" // link linkedin
         }
     ];
+
+    
 
     console.log(projetos);
     return (
@@ -138,6 +141,7 @@ function Home() {
                     </div>
                 ))}
             </div>
+            <WhatsAppButton />
             <Footer />
         </div>
     );

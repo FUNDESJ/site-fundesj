@@ -19,6 +19,7 @@ import Ciclo from "./pages/ciclo/index.jsx";
 import Inscricoes from "./pages/ciclo/ciclo/inscricoes.jsx";
 import Calendario from "./pages/ciclo/ciclo/calendario.jsx";
 import Idbasico from "./pages/idbasico/index.jsx";
+import Idintermediario from "./pages/idintermediario/index.jsx";
 function App() {
   return (
     <BrowserRouter>
@@ -30,7 +31,7 @@ function App() {
         <Route path='/projetos' element={<Projetos />} />
         <Route path='/cursos' element={<Cursos />} />
         <Route path='/eventos' element={<Eventos />} />
-        <Route path='/certificados' element={<Certificados />} />
+        <Route path='/validador' element={<Certificados />} />
         <Route path='/noticias' element={<Noticias />} />
         <Route path='/usj' element={<USJ />} />
         <Route path='/contatos' element={<Contato />} />
@@ -40,7 +41,7 @@ function App() {
         <Route path="/ciclo" element={<Ciclo />} />
         <Route path="/ciclo/inscricoes" element={<Inscricoes />} />
         <Route path="calendario" element={<Calendario />} />
-
+        <Route path="/idintermediario" element={<Idintermediario />} />
 
         <Route path='/idbasico' element={<Idbasico />} />
         <Route

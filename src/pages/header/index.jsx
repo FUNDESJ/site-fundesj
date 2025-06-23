@@ -38,7 +38,7 @@ export default function Header() {
           
 
           {/* Outros itens sem submenu */}
-          <li><Link to="/certificados">CERTIFICADOS</Link></li>
+          <li><Link to="/validador">CERTIFICADOS</Link></li>
           <li><Link to="/noticias">NOTÍCIAS</Link></li>
           <li><Link to="/usj">USJ</Link></li>
           <li><Link to="/contatos">CONTATOS</Link></li>

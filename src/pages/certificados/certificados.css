@@ -25,7 +25,7 @@ body {
 }
 
 .certificados-container {
-    min-height: 100vh;
+    min-height: 88vh;
     display: flex;
     flex-direction: column;
 }
