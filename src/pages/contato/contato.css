@@ -1,0 +1,76 @@
+/* contato.css */
+
+.contato-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: calc(100vh - 300px); /* Ajuste conforme altura do header/footer */
+}
+
+.informacoes {
+    background: #ffffff;
+    padding: 25px;
+    width: 100%;
+    max-width: 800px;
+}
+
+
+.informacoes h1 {
+    color: #2c3e50;
+    font-size: 40px;
+    margin-bottom: 1rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.informacoes p {
+    color: #000000;
+    font-size: 18px;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    line-height: 1.6;
+}
+
+/* Estilo para o mapa */
+.map-container {
+    margin-top: 2.5rem;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e0e0e0;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .contato-container {
+        padding: 0 1rem;
+        margin: 1rem auto;
+    }
+    
+    .informacoes {
+        padding: 1.5rem;
+    }
+    
+    .informacoes h1 {
+        font-size: 2rem;
+    }
+    
+    .informacoes p {
+        font-size: 1rem;
+    }
+}
+
+/* Efeitos de hover para contatos clicáveis */
+.informacoes p[onClick] {
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.informacoes p[onClick]:hover {
+    color: #3498db;
+}
