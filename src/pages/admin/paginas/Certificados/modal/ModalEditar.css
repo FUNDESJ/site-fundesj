@@ -1,176 +1,145 @@
-/* Estilos para o overlay do modal (fundo escuro) */
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-  backdrop-filter: blur(3px);
-  animation: fadeIn 0.3s ease-out;
+/* Estilos específicos para o Modal de Edição */
+.modal-editar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
 }
 
-/* Estilos para o conteúdo do modal */
-.modal-content {
-  background-color: white;
-  padding: 30px;
-  border-radius: 12px;
-  width: 90%;
-  max-width: 500px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-  transform: translateY(0);
-  opacity: 1;
-  transition: all 0.3s ease;
-  max-height: 90vh;
-  overflow-y: auto;
+.modal-editar-content {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 500px;
+    max-height: 90vh;
+    overflow-y: auto;
+    animation: modal-editar-fadeIn 0.3s ease-out;
 }
 
-/* Efeito de entrada do modal */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+@keyframes modal-editar-fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-/* Cabeçalho do modal */
-.modal-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 25px;
-  padding-bottom: 15px;
-  border-bottom: 1px solid #eee;
+.modal-editar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #eee;
 }
 
-.modal-header h2 {
-  margin: 0;
-  color: #2c3e50;
-  font-size: 22px;
-  font-weight: 600;
+.modal-editar-title {
+    margin: 0;
+    color: #333;
+    font-size: 1.5rem;
 }
 
-/* Botão de fechar */
-.modal-close {
-  background: none;
-  border: none;
-  font-size: 24px;
-  cursor: pointer;
-  color: #7f8c8d;
-  transition: color 0.2s;
-  padding: 5px;
-  line-height: 1;
+.modal-editar-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #666;
+    transition: color 0.2s;
 }
 
-.modal-close:hover {
-  color: #e74c3c;
+.modal-editar-close:hover {
+    color: #333;
 }
 
-/* Grupos de formulário */
-.modal-form-group {
-  margin-bottom: 20px;
+.modal-editar-form-group {
+    padding: 15px 20px;
 }
 
-.modal-form-group label {
-  display: block;
-  margin-bottom: 8px;
-  font-weight: 500;
-  color: #2c3e50;
-  font-size: 14px;
+.modal-editar-label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #444;
 }
 
-.modal-form-group input {
-  width: 100%;
-  padding: 12px 15px;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  font-size: 15px;
-  transition: border 0.3s, box-shadow 0.3s;
+.modal-editar-input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-.modal-form-group input:focus {
-  outline: none;
-  border-color: #3498db;
-  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+.modal-editar-input:focus {
+    border-color: #4a90e2;
+    box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+    outline: none;
 }
 
-/* Área de ações (botões) */
-.modal-actions {
-  display: flex;
-  justify-content: flex-end;
-  gap: 15px;
-  margin-top: 30px;
-  padding-top: 20px;
-  border-top: 1px solid #eee;
+.modal-editar-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 20px;
+    border-top: 1px solid #eee;
 }
 
-/* Estilos base para botões */
-.modal-btn {
-  padding: 12px 24px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 15px;
-  font-weight: 500;
-  transition: all 0.3s;
-  border: none;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 120px;
+.modal-editar-btn {
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+    font-size: 0.9rem;
 }
 
-/* Botão de cancelar */
-.modal-btn-cancel {
-  background-color: #f1f1f1;
-  color: #555;
+.modal-editar-btn-cancel {
+    background-color: #f5f5f5;
+    color: #666;
 }
 
-.modal-btn-cancel:hover {
-  background-color: #e0e0e0;
+.modal-editar-btn-cancel:hover {
+    background-color: #e0e0e0;
 }
 
-/* Botão de salvar */
-.modal-btn-save {
-  background-color: #3498db;
-  color: white;
+.modal-editar-btn-save {
+    background-color: #4a90e2;
+    color: white;
 }
 
-.modal-btn-save:hover {
-  background-color: #2980b9;
+.modal-editar-btn-save:hover {
+    background-color: #3a7bc8;
 }
 
-/* Estado de loading */
-.modal-btn[disabled] {
-  opacity: 0.7;
-  cursor: not-allowed;
+.modal-editar-btn-save:disabled {
+    background-color: #a0c4ff;
+    cursor: not-allowed;
 }
 
 /* Responsividade */
 @media (max-width: 600px) {
-  .modal-content {
-    padding: 20px;
-    width: 95%;
-  }
-  
-  .modal-actions {
-    flex-direction: column-reverse;
-    gap: 10px;
-  }
-  
-  .modal-btn {
-    width: 100%;
-  }
-}
-
-/* Efeito de foco para acessibilidade */
-.modal-content:focus-within {
-  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.3);
+    .modal-editar-content {
+        width: 95%;
+        margin: 0 auto;
+    }
+    
+    .modal-editar-actions {
+        flex-direction: column;
+    }
+    
+    .modal-editar-btn {
+        width: 100%;
+    }
 }

@@ -3,6 +3,7 @@ import axios from 'axios';
 import { FaEdit, FaTrash, FaPlus, FaSearch, FaExternalLinkAlt } from 'react-icons/fa';
 import ModalEditar from './modal/ModalEditar';
 import ModalDeletar from './modal/ModalDeletar';
+import ModalCriar from './modal/ModalCriar';
 import './certificadosAdmin.css';
 
 export default function Certificados() {
@@ -49,7 +50,9 @@ export default function Certificados() {
         setCertificadoSelecionado(certificado);
         setOpenModalDeletar(true)
     }
-
+    function abrirModalCriar(){
+        setOpenModalCriar(true)
+    }
     return (
         <div className="certificados-container">
             <div className="cabecalho-com-botao">
@@ -59,7 +62,7 @@ export default function Certificados() {
                 </div>
                 <button
                     className="btn-add"
-                    onClick={() => setOpenModalCriar(true)}
+                    onClick={abrirModalCriar}
                 >
                     <FaPlus /> Adicionar Certificado
                 </button>
@@ -154,6 +157,10 @@ export default function Certificados() {
                 onClose={() => setOpenModalDeletar(false)}
                 certificado={certificadoSelecionado}
                 deletarCertificado={listarCertificados} />
+            <ModalCriar
+            isOpen = {openModalCriar}
+            onClose={()=> setOpenModalCriar(false)}
+            />
         </div>
     );
 }

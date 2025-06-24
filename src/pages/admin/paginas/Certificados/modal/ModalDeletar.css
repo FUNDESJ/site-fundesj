@@ -109,13 +109,7 @@
   50% { transform: scale(1.05); opacity: 0.9; }
 }
 
-.modal-content p {
-  color: #4a5568;
-  font-size: 1.0625rem;
-  line-height: 1.5;
-  margin-bottom: 24px;
-  max-width: 85%;
-}
+
 
 .certificado-info {
   background-color: #f7fafc;
