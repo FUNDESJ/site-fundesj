@@ -51,22 +51,10 @@
     text-align: left;
 }
 
-.ler-mais {
-    background: #2196F3;
-    color: white;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.ler-mais:hover {
-    background: #0b7dda;
-}
 
 .ler-mais {
     display: inline-block;
-    background: #2196F3;
+    background: darkred;
     color: white;
     border: none;
     padding: 8px 16px;
@@ -77,7 +65,8 @@
 }
 
 .ler-mais:hover {
-    background: #0b7dda;
+    background: rgb(207, 15, 15);
+    color: white;
 }
 
 .icone-relogio {
@@ -123,9 +112,9 @@
 }
 
 .botao-paginacao.ativo {
-    background: #2195f3b2;
+    background: rgb(192, 3, 3);
     color: rgb(0, 0, 0);
-    border-color: #2196F3;
+    border-color: rgb(192, 3, 3);
 }
 
 .botao-paginacao:disabled {

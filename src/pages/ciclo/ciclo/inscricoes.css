@@ -1,238 +1,158 @@
-:root {
-  --primary: #4f46e5;
-  --primary-light: #6366f1;
-  --dark: #1e293b;
-  --light: #f8fafc;
-  --gray: #64748b;
-  --gray-light: #e2e8f0;
-  --error: #ef4444;
-  --success: #10b981;
-  --radius: 8px;
-  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  --transition: all 0.3s ease;
-}
-
-/* Reset */
+/* Reset básico */
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  font-family: 'Inter', system-ui, sans-serif;
 }
 
-/* Global */
 body {
-  background-color: #f5f7fa;
-  color: var(--dark);
-  line-height: 1.6;
+  font-family: 'Helvetica Neue', sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
 }
 
-/* Container Principal */
+/* Container principal */
 .inscricoes-container {
-  max-width: 800px;
-  margin: 2rem auto;
-  padding: 0 1.5rem;
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: center;
 }
 
-/* Cabeçalho */
+/* Header da página */
 .inscricoes-header {
+  width: 100%;
   text-align: center;
-  margin-bottom: 2.5rem;
+  margin-bottom: 30px;
 }
 
 .inscricoes-title {
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--dark);
-  margin-bottom: 1rem;
+  font-size: 2.5rem;
+  color: #1a1a1a;
+  margin-bottom: 10px;
 }
 
 .inscricoes-subtitle {
-  font-size: 1.1rem;
-  color: var(--gray);
-  font-weight: 400;
-  text-align: center;
-  max-width: 600px;
-  margin: 0 auto;
+  font-size: 1.2rem;
+  color: #666;
 }
 
-/* Cartão do Evento */
+/* Cartão do evento */
 .evento-card {
-  background: white;
-  border: 1px solid var(--gray-light);
-  border-radius: var(--radius);
-  padding: 2rem;
-  margin-bottom: 3rem;
-  box-shadow: var(--shadow);
-}
-
-.evento-imagem-container {
-  width: 100%;
-  height: 300px;
-  border-radius: var(--radius);
+  flex: 1;
+  min-width: 350px;
+  max-width: 500px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
   overflow: hidden;
-  margin-bottom: 1.5rem;
 }
 
-.evento-imagem {
+.evento-imagem-container img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.3s ease;
-}
-
-.evento-imagem:hover {
-  transform: scale(1.03);
+  height: auto;
+  display: block;
 }
 
 .evento-detalhes {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
+  padding: 20px;
 }
 
 .evento-titulo {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--dark);
-  text-align: center;
-  margin-bottom: 0.5rem;
+  font-size: 1.8rem;
+  color: #0c2444;
+  margin-bottom: 10px;
 }
 
 .evento-subtitulo {
-  font-size: 1.1rem;
-  font-style: italic;
-  color: var(--gray);
-  text-align: center;
-  margin-bottom: 1.5rem;
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 20px;
 }
 
 .evento-info {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 15px;
 }
 
 .evento-info-item {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 10px;
+  color: #444;
   font-size: 1rem;
-  color: var(--dark);
-}
-
-.evento-info-item svg {
-  color: var(--primary);
-  width: 20px;
-  height: 20px;
-}
-
-/* Mensagens */
-.mensagem {
-  padding: 1rem;
-  border-radius: var(--radius);
-  margin-bottom: 1.5rem;
-  text-align: center;
-  font-weight: 500;
-}
-
-.sucesso {
-  background-color: rgba(16, 185, 129, 0.1);
-  color: var(--success);
-  border: 1px solid var(--success);
-}
-
-.erro {
-  background-color: rgba(239, 68, 68, 0.1);
-  color: var(--error);
-  border: 1px solid var(--error);
-}
-
-.carregando {
-  text-align: center;
-  color: var(--gray);
-  margin: 2rem 0;
 }
 
 /* Formulário */
 .inscricao-form {
-  background: white;
-  border-radius: var(--radius);
-  padding: 2rem;
-  border: 1px solid var(--gray-light);
-  box-shadow: var(--shadow);
+  flex: 1;
+  min-width: 350px;
+  max-width: 500px;
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
 }
 
 .inscricao-form h3 {
   font-size: 1.5rem;
-  color: var(--dark);
-  text-align: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 20px;
+  color: #0c2444;
 }
 
 .form-group {
-  margin-bottom: 1.5rem;
+  margin-bottom: 20px;
 }
 
 .form-label {
   display: block;
-  margin-bottom: 0.5rem;
-  font-weight: 500;
-  color: var(--dark);
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 6px;
 }
 
 .form-input {
   width: 100%;
-  padding: 0.75rem 1rem;
-  border: 1px solid var(--gray-light);
-  border-radius: var(--radius);
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
   font-size: 1rem;
-  transition: var(--transition);
-}
-
-.form-input:focus {
-  outline: none;
-  border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
 }
 
 .form-button {
-  width: 100%;
-  padding: 1rem;
-  margin: 0.5rem 0rem;
-  border: none;
-  border-radius: var(--radius);
-  background: var(--primary);
+  background-color: darkred;
   color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 20px;
   font-size: 1rem;
-  font-weight: 600;
   cursor: pointer;
-  transition: var(--transition);
+  transition: background-color 0.2s ease-in-out;
+  width: 100%;
 }
 
 .form-button:hover {
-  background: var(--primary-light);
+  background-color: #b71c1c;
 }
 
-.form-button:disabled {
-  opacity: 0.7;
-  cursor: not-allowed;
-}
-
-/* Spinner */
+/* Spinner de carregamento */
 .loading-spinner {
   display: flex;
   align-items: center;
+  gap: 10px;
   justify-content: center;
-  gap: 0.5rem;
 }
 
 .spinner {
-  width: 20px;
-  height: 20px;
-  border: 3px solid rgba(255, 255, 255, 0.3);
-  border-top-color: white;
+  border: 3px solid #eee;
+  border-top: 3px solid #d32f2f;
   border-radius: 50%;
+  width: 18px;
+  height: 18px;
   animation: spin 1s linear infinite;
 }
 
@@ -242,30 +162,30 @@ body {
   }
 }
 
+/* Mensagem de status */
+.mensagem {
+  margin-top: 20px;
+  padding: 12px;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.mensagem.sucesso {
+  background-color: #e0f2f1;
+  color: #00695c;
+}
+
+.mensagem.erro {
+  background-color: #ffebee;
+  color: #c62828;
+}
+
 /* Responsivo */
 @media (max-width: 768px) {
   .inscricoes-container {
-    padding: 0 1rem;
-  }
-
-  .inscricoes-title {
-    font-size: 1.75rem;
-  }
-
-  .evento-card,
-  .inscricao-form {
-    padding: 1.5rem;
-  }
-
-  .evento-imagem-container {
-    height: 250px;
-  }
-
-  .evento-titulo {
-    font-size: 1.3rem;
-  }
-
-  .evento-info-item {
-    font-size: 0.95rem;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
   }
 }

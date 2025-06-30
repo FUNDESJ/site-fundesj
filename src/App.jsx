@@ -44,8 +44,8 @@ function App() {
         <Route path="calendario" element={<Calendario />} />
         <Route path="/idintermediario" element={<Idintermediario />} />
         <Route path="/requerimento" element={<Requerimento />} />
+        <Route path='/idbasico/*' element={<Idbasico />} />
 
-        <Route path='/idbasico' element={<Idbasico />} />
         <Route
           path='/admin/*'
           element={
