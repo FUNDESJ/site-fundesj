@@ -342,7 +342,7 @@ export default function Requerimento() {
                             </div>
 
                             <div className="form-group">
-                                <label className="form-label">Certidão de Nascimento/Casamento<span className="required-marker">*</span></label>
+                                <label className="form-label">Certidão de Nascimento<span className="required-marker">*</span></label>
                                 <div className="file-upload">
                                     <input
                                         type="file"
