@@ -1,5 +1,5 @@
 :root {
-    --primary-color: #114B9B;
+    --primary-color: darkred;
     --primary-light: #3a6cb3;
     --secondary-color: #f8f9fa;
     --accent-color: #0066cc;
@@ -53,7 +53,7 @@ body {
 }
 
 .certificate-titles h1 {
-    color: var(--primary-color);
+    color: darkred;
     font-weight: 800;
     font-size: 4rem;
     margin: 0;
@@ -76,7 +76,7 @@ body {
     border-radius: 20px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     font-size: 0.9rem;
-    color: var(--primary-color);
+    color: darkred;
     border: 1px solid var(--light-gray);
     animation: float 3s ease-in-out infinite;
 }
@@ -161,7 +161,7 @@ body {
 /* Botão com microinterações melhoradas */
 .verificador-botao {
     padding: 0 1.75rem;
-    background: var(--primary-color);
+    background: darkred;
     color: white;
     border: none;
     border-radius: 0 var(--border-radius) var(--border-radius) 0;
@@ -279,7 +279,7 @@ body {
 }
 
 .tabela-certificado h3 {
-    color: var(--primary-color);
+    color: black;
     margin: 0;
     font-size: 1.4rem;
     font-weight: 700;
@@ -287,7 +287,7 @@ body {
 }
 
 .certificate-badge {
-    background: var(--lighter-gray);
+    background: rgb(138, 255, 138);
     padding: 0.5rem 1rem;
     border-radius: 20px;
 }
@@ -383,12 +383,12 @@ body {
 .info-icon {
     width: 40px;
     height: 40px;
-    fill: var(--primary-color);
+    fill: darkred;
     margin-bottom: 1rem;
 }
 
 .info-card h4 {
-    color: var(--primary-color);
+    color: darkred;
     margin: 0 0 0.5rem;
 }
 

@@ -83,26 +83,26 @@ function Home() {
             </div>
 
             <div className="section-cards">
-                <div className="card">
+               <a href="./programas"><div className="card">
                     <i className="fas fa-sitemap"></i>
-                    <a href="./programas"><img src={Imagem1} alt="imagem Programas" className='programas'/></a>
+                    <img src={Imagem1} alt="imagem Programas" className='programas'/>
                     <p>PROGRAMAS</p>
-                </div>
-                <div className="card">
+                </div></a>
+                <a href="./projetos"><div className="card">
                     <i className="fas fa-file-alt"></i>
-                    <a href="./projetos"><img src={Imagem2} alt="imagem Projetos" className='projetos'/></a>
+                    <img src={Imagem2} alt="imagem Projetos" className='projetos'/>
                     <p>PROJETOS</p>
-                </div>
-                <div className="card">
+                </div></a>
+                <a href="./cursos"><div className="card">
                     <i className="fas fa-book"></i>
-                    <a href="./cursos"><img src={Imagem3} alt="imagem Cursos" className='cursos'/></a>
+                    <img src={Imagem3} alt="imagem Cursos" className='cursos'/>
                     <p>CURSOS</p>
-                </div>
-                <div className="card">
+                </div></a>
+                <a href="./eventos"><div className="card">
                     <i className="fas fa-users"></i>
-                    <a href="./eventos"><img src={Imagem4} alt="imagem Eventos" className='eventos'/></a>
+                    <img src={Imagem4} alt="imagem Eventos" className='eventos'/>
                     <p>EVENTOS</p>
-                </div>
+                </div></a>
             </div>
             <div className="section-info">
                 <h2 className="subTitle">Nossos Projetos</h2>
