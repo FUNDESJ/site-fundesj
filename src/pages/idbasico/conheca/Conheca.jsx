@@ -41,14 +41,34 @@ const Conheca = () => {
           <p className="section-description">
             Tem como objetivo tornar as pessoas idosas mais adeptas, autônomas e independentes na utilização dos dispositivos móveis digitais em suas atividades diárias, propiciando a elas oportunidades para que usem os dispositivos, com seus diversos atrativos e aplicativos, para o pertencimento na sociedade digital.
           </p>
+
+          <div className="impact-statement">
+            <div className="impact-content">
+              <h3 className="impact-title">Mais que tecnologia: transformação social</h3>
+              <p className="impact-text">
+                O Projeto Inclusão Digital, desenvolvido pela Fundação Educacional de São José/SC, vai além do ensino tecnológico: promove autonomia, cidadania e transformação social. A iniciativa oferece muito mais que acesso ao uso de dispositivos eletrônicos — ela fortalece a saúde cognitiva, estimula o aprendizado contínuo e incentiva a convivência e a construção de vínculos entre os participantes.
+              </p>
+              <p className="impact-text">
+                Ao unir tecnologia, inclusão e bem-estar, o projeto abre portas para novas possibilidades, ampliando horizontes e despertando o protagonismo digital com mais confiança, autonomia e senso de pertencimento.
+              </p>
+            </div>
+            <div className="impact-visual">
+              <div className="visual-circle"></div>
+            </div>
+          </div>
         </div>
 
         <div className="timeline">
+          <div className="timeline-line"></div>
           {timelineData.map((item, index) => (
-            <div key={index} className="timeline-item">
+            <div key={index} className={`timeline-item ${index % 2 === 0 ? 'left' : 'right'}`}>
               <div className="timeline-year">{item.year}</div>
               <div className="timeline-content">
                 <p>{item.description}</p>
+              </div>
+              <div className="timeline-marker">
+                <div className="marker-outer"></div>
+                <div className="marker-inner"></div>
               </div>
             </div>
           ))}
