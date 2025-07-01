@@ -15,6 +15,10 @@ export default function Certificados() {
     const [searchTerm, setSearchTerm] = useState('');
     const [isLoading, setIsLoading] = useState(true);
 
+    // Paginação
+    const [currentPage, setCurrentPage] = useState(1);
+    const certificadosPerPage = 10;
+
     async function listarCertificados() {
         setIsLoading(true);
         const token = localStorage.getItem('authToken');
@@ -42,17 +46,30 @@ export default function Certificados() {
         certificado.codigo.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
-    function abrirModalEditar(certificado) {
+    // Paginação - cálculo de páginas
+    const indexOfLast = currentPage * certificadosPerPage;
+    const indexOfFirst = indexOfLast - certificadosPerPage;
+    const currentCertificados = filteredCertificados.slice(indexOfFirst, indexOfLast);
+    const totalPages = Math.ceil(filteredCertificados.length / certificadosPerPage);
+
+    const abrirModalEditar = (certificado) => {
         setCertificadoSelecionado(certificado);
         setOpenModalEditar(true);
-    }
-    function abrirModalDeletar(certificado) {
+    };
+
+    const abrirModalDeletar = (certificado) => {
         setCertificadoSelecionado(certificado);
-        setOpenModalDeletar(true)
-    }
-    function abrirModalCriar(){
-        setOpenModalCriar(true)
-    }
+        setOpenModalDeletar(true);
+    };
+
+    const abrirModalCriar = () => {
+        setOpenModalCriar(true);
+    };
+
+    const changePage = (number) => {
+        setCurrentPage(number);
+    };
+
     return (
         <div className="certificados-container">
             <div className="cabecalho-com-botao">
@@ -60,10 +77,7 @@ export default function Certificados() {
                     <h1>Lista de Certificados</h1>
                     <p>Gerencie todos os certificados cadastrados no sistema</p>
                 </div>
-                <button
-                    className="btn-add"
-                    onClick={abrirModalCriar}
-                >
+                <button className="btn-add" onClick={abrirModalCriar}>
                     <FaPlus /> Adicionar Certificado
                 </button>
             </div>
@@ -77,7 +91,10 @@ export default function Certificados() {
                             className="filtro-input"
                             placeholder="Pesquisar certificados..."
                             value={searchTerm}
-                            onChange={(e) => setSearchTerm(e.target.value)}
+                            onChange={(e) => {
+                                setSearchTerm(e.target.value);
+                                setCurrentPage(1);
+                            }}
                         />
                     </div>
                 </div>
@@ -86,64 +103,81 @@ export default function Certificados() {
             {isLoading ? (
                 <div className="carregando">Carregando certificados...</div>
             ) : (
-                <div className="tabela-container">
-                    <table className="certificados-table">
-                        <thead>
-                            <tr>
-                                <th>Nome</th>
-                                <th>Curso</th>
-                                <th>Código</th>
-                                <th>Horas</th>
-                                <th>Link</th>
-                                <th>Ações</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {filteredCertificados.length === 0 ? (
+                <>
+                    <div className="tabela-container">
+                        <table className="certificados-table">
+                            <thead>
                                 <tr>
-                                    <td colSpan="6" className="sem-dados">
-                                        {searchTerm ? "Nenhum certificado encontrado" : "Nenhum certificado cadastrado"}
-                                    </td>
+                                    <th>Nome</th>
+                                    <th>Curso</th>
+                                    <th>Código</th>
+                                    <th>Horas</th>
+                                    <th>Link</th>
+                                    <th>Ações</th>
                                 </tr>
-                            ) : (
-                                filteredCertificados.map((certificado, index) => (
-                                    <tr key={index}>
-                                        <td className="nome">{certificado.nome}</td>
-                                        <td className="curso">{certificado.curso}</td>
-                                        <td>{certificado.codigo}</td>
-                                        <td>{certificado.horas}</td>
-                                        <td>
-                                            <a
-                                                href={certificado.link}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="certificado-link"
-                                            >
-                                                <FaExternalLinkAlt /> Ver Certificado
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <div className="acoes">
-                                                <button
-                                                    className="btn-acao btn-editar"
-                                                    onClick={() => abrirModalEditar(certificado)}
-                                                >
-                                                    <FaEdit />
-                                                </button>
-                                                <button
-                                                    className="btn-acao btn-excluir"
-                                                    onClick={() => abrirModalDeletar(certificado)}
-                                                >
-                                                    <FaTrash />
-                                                </button>
-                                            </div>
+                            </thead>
+                            <tbody>
+                                {currentCertificados.length === 0 ? (
+                                    <tr>
+                                        <td colSpan="6" className="sem-dados">
+                                            {searchTerm ? "Nenhum certificado encontrado" : "Nenhum certificado cadastrado"}
                                         </td>
                                     </tr>
-                                ))
-                            )}
-                        </tbody>
-                    </table>
-                </div>
+                                ) : (
+                                    currentCertificados.map((certificado, index) => (
+                                        <tr key={index}>
+                                            <td className="nome">{certificado.nome}</td>
+                                            <td className="curso">{certificado.curso}</td>
+                                            <td>{certificado.codigo}</td>
+                                            <td>{certificado.horas}</td>
+                                            <td>
+                                                <a
+                                                    href={certificado.link}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="certificado-link"
+                                                >
+                                                    <FaExternalLinkAlt /> Ver Certificado
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <div className="acoes">
+                                                    <button
+                                                        className="btn-acao btn-editar"
+                                                        onClick={() => abrirModalEditar(certificado)}
+                                                    >
+                                                        <FaEdit />
+                                                    </button>
+                                                    <button
+                                                        className="btn-acao btn-excluir"
+                                                        onClick={() => abrirModalDeletar(certificado)}
+                                                    >
+                                                        <FaTrash />
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    ))
+                                )}
+                            </tbody>
+                        </table>
+                    </div>
+
+                    {/* Paginação */}
+                    {totalPages > 1 && (
+                        <div className="paginacao">
+                            {[...Array(totalPages)].map((_, i) => (
+                                <button
+                                    key={i + 1}
+                                    className={currentPage === i + 1 ? "pagina ativa" : "pagina"}
+                                    onClick={() => changePage(i + 1)}
+                                >
+                                    {i + 1}
+                                </button>
+                            ))}
+                        </div>
+                    )}
+                </>
             )}
 
             <ModalEditar
@@ -156,10 +190,11 @@ export default function Certificados() {
                 isOpen={openModalDeletar}
                 onClose={() => setOpenModalDeletar(false)}
                 certificado={certificadoSelecionado}
-                deletarCertificado={listarCertificados} />
+                deletarCertificado={listarCertificados}
+            />
             <ModalCriar
-            isOpen = {openModalCriar}
-            onClose={()=> setOpenModalCriar(false)}
+                isOpen={openModalCriar}
+                onClose={() => setOpenModalCriar(false)}
             />
         </div>
     );
