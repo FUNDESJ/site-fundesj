@@ -197,15 +197,20 @@ export default function Inscricoes() {
 
                     <div className="form-group">
                         <label htmlFor="comoConheceu" className="form-label">Como você conheceu o evento?*</label>
-                        <input
-                            type="text"
-                            id="comoConheceu"
+                           
+                           <select  id="comoConheceu"
                             className="form-input"
-                            placeholder="Redes sociais, indicação, etc."
                             value={comoConheceu}
                             onChange={(e) => setComoConheceu(e.target.value)}
                             required
-                        />
+                            >
+                                <option value="Amigos">Amigos</option>
+                                <option value="Instagram">Instragram</option>
+                                <option value="Facebook">Facebook</option>
+                                <option value="Televisão">Televisão</option>
+                                <option value="Outros">Outros</option>
+
+                            </select>
                     </div>
 
                     <button
