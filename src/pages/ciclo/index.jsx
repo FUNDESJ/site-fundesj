@@ -12,7 +12,7 @@ function Ciclo() {
                 <div className='ciclo-content'>
                     <h1 className='cabecalho'>Ciclo de Palestras</h1>
                     <p className='paragrafociclo'>
-                        O Ciclo de Palestras, do Programa Longevidade Ativa da Prefeitura Municipal de São José, acontece neste ano de 2024, quinzenalmente nas sextas-feiras de cada mês, com convidados especiais.
+                        O Ciclo de Palestras, do Programa Longevidade Ativa da Prefeitura Municipal de São José, acontece neste ano de 2025, quinzenalmente nas sextas-feiras de cada mês, com convidados especiais.
                         O objetivo do Ciclo de Palestras é orientar e informar sobre longevidade, inspirando as pessoas idosas numa jornada de bem-estar para uma vida plena e saudável.
                     </p>
                     <p className='local'>Local: Centro de Atenção à Terceira Idade (CATI)</p>
