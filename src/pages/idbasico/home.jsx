@@ -42,20 +42,12 @@ function Home() {
         </div>
 
         <div className="bottom-row">
-          <div className="action-card card-modulos">
-            <div className="card-content">
-              <h2>MÓDULOS</h2>
-              <div className="card-overlay">
-                <button className="card-button">Ver módulos</button>
-              </div>
-            </div>
-          </div>
 
           <div className="action-card card-chamada">
             <div className="card-content">
               <h2>CHAMADA 2025</h2>
               <div className="card-overlay">
-                <button className="card-button">Informações</button>
+                <button className="card-button" onClick={()=> navigate('chamada')}>Informações</button>
               </div>
             </div>
           </div>

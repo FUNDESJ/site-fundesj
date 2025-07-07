@@ -52,9 +52,7 @@ const Conheca = () => {
                 Ao unir tecnologia, inclusão e bem-estar, o projeto abre portas para novas possibilidades, ampliando horizontes e despertando o protagonismo digital com mais confiança, autonomia e senso de pertencimento.
               </p>
             </div>
-            <div className="impact-visual">
-              <div className="visual-circle"></div>
-            </div>
+          
           </div>
         </div>
 
