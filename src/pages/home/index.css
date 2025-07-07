@@ -17,7 +17,7 @@ html,
     width: 100%;
     background-color: #ffffff;
     font-family: Arial, sans-serif;
-} /*cinza de fundo alterado para branco. separar a estilização da instituição da página home, alguém vai fazer*/
+}
 
 .home {
     display: flex;
