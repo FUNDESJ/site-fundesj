@@ -539,3 +539,6 @@ body {
         transform: translateY(0);
     }
 }
+.buscar{
+    margin-left: 3px;
+}

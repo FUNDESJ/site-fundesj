@@ -10,7 +10,6 @@
     --border-radius: 8px;
     --box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
     --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-    --success-color: #4caf50;
     --error-color: #f44336;
   }
   

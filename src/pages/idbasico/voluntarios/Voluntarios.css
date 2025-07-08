@@ -333,14 +333,12 @@
       animation: fadeIn 0.6s ease-out forwards;
   }
   
-  /* Validação */
+  /* Validação - Apenas para erros */
   input:invalid, select:invalid {
       border-color: var(--error-color);
   }
   
-  input:valid, select:valid {
-      border-color: var(--success-color);
-  }
+  /* Removido o estilo para inputs válidos */
   
   /* Efeitos de foco aprimorados */
   input:focus, select:focus, .file-upload-label:focus-within {
