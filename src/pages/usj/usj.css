@@ -1,7 +1,229 @@
-.qrcode {
-width: 25%;
-  height: 400%;
-  display: block;
-  margin: 1% auto;
+/* usj.css - Atualizado com paleta bordô/vermelho */
 
+/* Variáveis CSS atualizadas */
+:root {
+  --usj-primary: #800020;       /* bordô escuro */
+  --usj-secondary: #c94c4c;     /* vermelho claro */
+  --usj-accent: #a52a2a;        /* marrom avermelhado */
+  --usj-light: #ffffff;         /* vermelho muito claro */
+  --usj-dark: #4a1c1c;          /* bordô escuro mais intenso */
+  --usj-gradient: linear-gradient(135deg, var(--usj-primary) 0%, var(--usj-accent) 100%);
+  --usj-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --usj-transition: all 0.3s ease;
+  --usj-text: #2c3e50;          /* cor de texto escura */
+}
+
+/* Estilos da página */
+.usj-page {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: var(--usj-text);
+  background-color: #ffffff;    /* fundo levemente avermelhado */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Container do QR Code */
+.usj-qrcode-container {
+  display: flex;
+  justify-content: center;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background-color: white;
+  box-shadow: var(--usj-shadow);
+  border-radius: 8px;
+  max-width: 90%;
+  border: 1px solid #f0e0e0;    
+}
+
+.usj-qrcode {
+  width: 500px;
+  height: 300px;
+  object-fit: contain;
+  transition: var(--usj-transition);
+  filter: drop-shadow(0 2px 4px rgba(128, 0, 32, 0.2));
+}
+
+.usj-qrcode:hover {
+  transform: scale(1.05);
+}
+
+/* Seções de conteúdo */
+.usj-content-section {
+  background: white;
+  border-radius: 10px;
+  box-shadow: var(--usj-shadow);
+  padding: 2rem;
+  margin: 1.5rem auto;
+  max-width: 900px;
+  width: 90%;
+  transition: var(--usj-transition);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #f0e0e0;
+}
+
+.usj-content-section::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--usj-gradient);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+.usj-content-section:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(128, 0, 32, 0.1);
+}
+
+.usj-content-section:hover::after {
+  transform: scaleX(1);
+}
+
+/* Seção destacada */
+.usj-highlighted {
+  background: var(--usj-gradient);
+  color: white;
+  border: none;
+}
+
+/* Títulos */
+.usj-section-title {
+  color: var(--usj-primary);
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0 auto 1rem;
+  padding-bottom: 0.5rem;
+  width: fit-content;
+  text-align: center;
+  position: relative;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.usj-highlighted .usj-section-title {
+  color: white;
+  border-bottom-color: var(--usj-light);
+}
+
+.usj-section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50%;
+  height: 2px;
+  background: var(--usj-secondary);
+}
+
+/* Texto */
+.usj-section-text {
+  color: var(--usj-dark);
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin: 1rem 0;
+  text-align: justify;
+}
+
+.usj-highlighted .usj-section-text {
+  color: white;
+}
+
+/* Links */
+.usj-link {
+  color: var(--usj-secondary);
+  text-decoration: none;
+  font-weight: 600;
+  position: relative;
+  transition: var(--usj-transition);
+  padding: 0.2rem 0;
+}
+
+.usj-link::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--usj-secondary);
+  visibility: hidden;
+  transform: scaleX(0);
+  transition: all 0.3s ease-in-out;
+}
+
+.usj-link:hover {
+  color: var(--usj-primary);
+}
+
+.usj-link:hover::before {
+  visibility: visible;
+  transform: scaleX(1);
+}
+
+.usj-highlighted .usj-link {
+  color: var(--usj-light);
+}
+
+.usj-highlighted .usj-link:hover {
+  color: white;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .usj-section-title {
+    font-size: 1.5rem;
+  }
+  
+  .usj-section-text {
+    font-size: 1rem;
+  }
+  
+  .usj-qrcode {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .usj-content-section {
+    padding: 1.5rem;
+    width: 95%;
+  }
+}
+
+/* Animações */
+@keyframes usj-fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.usj-content-section {
+  animation: usj-fadeIn 0.6s ease-out forwards;
+}
+
+.usj-content-section:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.usj-content-section:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+.usj-content-section:nth-child(4) {
+  animation-delay: 0.3s;
+}
+
+/* Melhorias de contraste */
+.usj-content-section {
+  color: var(--usj-text);
+}
+
+.usj-highlighted {
+  --usj-text: white;
 }

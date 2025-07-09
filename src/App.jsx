@@ -21,6 +21,7 @@ import Calendario from "./pages/ciclo/ciclo/calendario.jsx";
 import Idbasico from "./pages/idbasico/index.jsx";
 import Idintermediario from "./pages/idintermediario/index.jsx";
 import Requerimento from "./pages/usj/paginas/Requerimento.jsx";
+import Trasnferencia from "./pages/usj/paginas/TransferenciaAssistida.jsx";
 function App() {
   return (
     <BrowserRouter>
@@ -44,6 +45,7 @@ function App() {
         <Route path="calendario" element={<Calendario />} />
         <Route path="/idintermediario" element={<Idintermediario />} />
         <Route path="/requerimento" element={<Requerimento />} />
+        <Route path="/transferencia-assistida" element={<Trasnferencia/>}/>
         <Route path='/idbasico/*' element={<Idbasico />} />
 
         <Route
