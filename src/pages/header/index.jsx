@@ -30,6 +30,7 @@ export default function Header() {
                 <li><Link to="/equipe" className="submenu-link">Equipe</Link></li>
                 <li><Link to="/realizações" className="submenu-link">Realizações 2024</Link></li>
                 <li><Link to="/parceiros" className="submenu-link">Parceiros</Link></li>
+                <li><Link to="/projetos-anteriores" className="submenu-link">Projetos anteriores</Link></li>
               </ul>
             )}
           </li>

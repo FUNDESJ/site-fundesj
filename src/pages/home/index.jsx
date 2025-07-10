@@ -88,7 +88,7 @@ function Home() {
                     <img src={Imagem1} alt="imagem Programas" className='programas'/>
                     <p>PROGRAMAS</p>
                 </div></a>
-                <a href="./projetos"><div className="card">
+                <a href="./projetos-ativos"><div className="card">
                     <i className="fas fa-file-alt"></i>
                     <img src={Imagem2} alt="imagem Projetos" className='projetos'/>
                     <p>PROJETOS</p>

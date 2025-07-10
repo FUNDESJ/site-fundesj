@@ -9,12 +9,15 @@ function USJ() {
       <Header />
       
       <div className="usj-qrcode-container">
+      <a href="https://emec.mec.gov.br/emec/consulta-cadastro/detalhamento/d96957f455f6405d14c6542552b0f6eb/NDc1Ng==">
         <img 
           src="https://fundesj.com.br/wp-content/uploads/2022/12/qrcode.png" 
           alt="QR Code para acesso rápido" 
           className='usj-qrcode' 
         />
+         </a>
       </div>
+     
       
       <div className="usj-content-section">
         <h2 className="usj-section-title">SOLICITAÇÃO DE DOCUMENTOS ACADÊMICOS ON-LINE</h2>

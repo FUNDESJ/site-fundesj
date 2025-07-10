@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Instituicao from './pages/instituicao/index.jsx';
 import Realizacoes from './pages/realizacoes/index.jsx';
 import Programas from './pages/programas/index.jsx';
-import Projetos from './pages/projetos/index.jsx';
+import ProjetosAnteriores from './pages/projetosAnteriores/index.jsx';
 import Cursos from './pages/cursos/index.jsx';
 import Home from './pages/home/index.jsx';
 import Eventos from './pages/eventos/index.jsx';
@@ -22,6 +22,7 @@ import Idbasico from "./pages/idbasico/index.jsx";
 import Idintermediario from "./pages/idintermediario/index.jsx";
 import Requerimento from "./pages/usj/paginas/Requerimento.jsx";
 import Trasnferencia from "./pages/usj/paginas/TransferenciaAssistida.jsx";
+import ProjetosAtivos from "./pages/projetosAtivos/index.jsx";
 function App() {
   return (
     <BrowserRouter>
@@ -30,7 +31,7 @@ function App() {
         <Route path='/instituição' element={<Instituicao />} />
         <Route path='/realizações' element={<Realizacoes />} />
         <Route path='/programas' element={<Programas />} />
-        <Route path='/projetos' element={<Projetos />} />
+        <Route path='/projetos-anteriores' element={<ProjetosAnteriores />} />
         <Route path='/cursos' element={<Cursos />} />
         <Route path='/eventos' element={<Eventos />} />
         <Route path='/validador' element={<Certificados />} />
@@ -47,6 +48,7 @@ function App() {
         <Route path="/requerimento" element={<Requerimento />} />
         <Route path="/transferencia-assistida" element={<Trasnferencia/>}/>
         <Route path='/idbasico/*' element={<Idbasico />} />
+        <Route path= '/projetos-ativos' element={<ProjetosAtivos/>}/>
 
         <Route
           path='/admin/*'

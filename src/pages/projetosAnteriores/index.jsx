@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
-import './projetos.css';
+import './projetosAnteriores.css';
 import Header from '../header';
 import Footer from '../footer/footer';
 
-function Projetos() {
+function ProjetosAnteriores() {
   useEffect(() => {
     const scrollReveals = document.querySelectorAll('.scroll-reveal');
     
@@ -95,4 +95,4 @@ function Projetos() {
   );
 };
 
-export default Projetos;
+export default ProjetosAnteriores;

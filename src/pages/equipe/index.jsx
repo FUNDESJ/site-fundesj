@@ -59,7 +59,7 @@ function Equipe() {
       category: "admin"
     },
     {
-      name: "Arthur Kalbusch Rosa",
+      name: "Arianni de Campos",
       position: "Universitário de Tecnologia",
       email: "tecnologia@fundesj.com.br",
       category: "technology"
@@ -71,19 +71,13 @@ function Equipe() {
       category: "technology"
     },
     {
-      name: "Gustavo Gerlach Furtado",
-      position: "Universitário de Tecnologia",
-      email: "tecnologia@fundesj.com.br",
-      category: "technology"
-    },
-    {
       name: "Felipe Linhares Domingues",
       position: "Universitário de Tecnologia",
       email: "tecnologia@fundesj.com.br",
       category: "technology"
     },
     {
-      name: "Arianni de Campos",
+      name: "Henrique Inacio Generoso Panitz",
       position: "Universitário de Tecnologia",
       email: "tecnologia@fundesj.com.br",
       category: "technology"
@@ -93,7 +87,8 @@ function Equipe() {
       position: "Universitário de Recursos Humanos",
       email: "tecnologia@fundesj.com.br",
       category: "hr"
-    }
+    }, 
+    
   ];
 
   return (

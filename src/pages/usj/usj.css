@@ -1,16 +1,14 @@
-/* usj.css - Atualizado com paleta bordô/vermelho */
 
-/* Variáveis CSS atualizadas */
 :root {
-  --usj-primary: #800020;       /* bordô escuro */
-  --usj-secondary: #c94c4c;     /* vermelho claro */
-  --usj-accent: #a52a2a;        /* marrom avermelhado */
-  --usj-light: #ffffff;         /* vermelho muito claro */
-  --usj-dark: #4a1c1c;          /* bordô escuro mais intenso */
+  --usj-primary: #800020;       
+  --usj-secondary: #c94c4c;     
+  --usj-accent: #a52a2a;        
+  --usj-light: #ffffff;       
+  --usj-dark: #4a1c1c;         
   --usj-gradient: linear-gradient(135deg, var(--usj-primary) 0%, var(--usj-accent) 100%);
   --usj-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   --usj-transition: all 0.3s ease;
-  --usj-text: #2c3e50;          /* cor de texto escura */
+  --usj-text: #2c3e50;         
 }
 
 /* Estilos da página */
@@ -18,7 +16,7 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
   color: var(--usj-text);
-  background-color: #ffffff;    /* fundo levemente avermelhado */
+  background-color: #ffffff;    
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -96,6 +94,7 @@
 /* Títulos */
 .usj-section-title {
   color: var(--usj-primary);
+  text-align: center;
   font-size: 1.8rem;
   font-weight: 700;
   margin: 0 auto 1rem;

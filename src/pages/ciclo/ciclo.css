@@ -37,7 +37,6 @@ body {
   align-items: center;
 }
 
-/* Cabeçalho da seção */
 .cabecalho {
   font-family: var(--font-heading);
   font-size: 2.5rem;
@@ -59,7 +58,6 @@ body {
   background-color: var(--accent-color);
 }
 
-/* Conteúdo textual */
 .paragrafociclo {
   font-size: 1.1rem;
   line-height: 1.8;
@@ -75,7 +73,7 @@ body {
 .local {
   font-size: 1.2rem;
   font-weight: 600;
-  color: #2980b9; /* Azul mais escuro para melhor contraste */
+  color: darkred; /* Azul mais escuro para melhor contraste */
   text-align: center;
   margin: 1.5rem 0;
   font-style: italic;
@@ -109,11 +107,11 @@ body {
 }
 
 .inscricao a {
-  background-color: #27ae60; /* Verde para o botão de inscrição */
+  background-color: darkred; 
 }
 
 .calendario a {
-  background-color: #8e44ad; /* Roxo para o botão de calendário */
+  background-color: darkred; 
 }
 
 .inscricao a:hover, .calendario a:hover {
@@ -122,14 +120,13 @@ body {
 }
 
 .inscricao a:hover {
-  background-color: #219653; /* Verde mais escuro no hover */
+  background-color: rgb(168, 12, 12);
 }
 
 .calendario a:hover {
-  background-color: #7d3c98; /* Roxo mais escuro no hover */
+  background-color: rgb(168, 12, 12); 
 }
 
-/* Imagem */
 .imgciclo {
   display: block;
   width: 100%;
@@ -146,7 +143,6 @@ body {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-/* Responsividade */
 @media (max-width: 768px) {
   .cabecalho {
     font-size: 2rem;

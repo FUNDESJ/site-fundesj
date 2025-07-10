@@ -1,0 +1,134 @@
+/* Variáveis CSS */
+:root {
+  --primary-color: #800020;
+  --primary-light: #a3333d;
+  --secondary-color: #c94c4c;
+  --accent-color: #a52a2a;
+  --text-color: #2c3e50;
+  --light-gray: #ffffff; /* Totalmente branco */
+  --lighter-gray: #ffffff; /* Totalmente branco */
+  --border-radius: 8px;
+  --box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --error-color: #f44336;
+}
+
+/* ProjetosAtivos.css */
+
+.projetos-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  color: var(--text-color);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.page-header h1 {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.page-header p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 0 auto;
+  color: var(--text-color);
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.project-card {
+  background-color: var(--light-gray);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--box-shadow);
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+}
+
+.project-image {
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primary-color);
+  background-image: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+}
+
+.icon-wrapper {
+  font-size: 4rem;
+  transition: var(--transition);
+}
+
+.project-card:hover .icon-wrapper {
+  transform: scale(1.1);
+}
+
+.project-content {
+  padding: 1.5rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-content h3 {
+  color: var(--primary-color);
+  margin-bottom: 0.75rem;
+  font-size: 1.4rem;
+}
+
+.project-content p {
+  color: var(--text-color);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  flex-grow: 1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .page-header h1 {
+    font-size: 2rem;
+  }
+  
+  .page-header p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .projetos-container {
+    padding: 1.5rem 1rem;
+  }
+  
+  .project-image {
+    height: 150px;
+  }
+  
+  .icon-wrapper {
+    font-size: 3rem;
+  }
+}
