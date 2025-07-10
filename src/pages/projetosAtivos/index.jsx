@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
-import './ProjetosAtivos.css';
+import './projetosAtivos.css';
 import Header from '../header/index.jsx';
 import Footer from '../footer/footer';
 
