@@ -90,7 +90,7 @@ function Home() {
                 </div></a>
                 <a href="./projetos-ativos"><div className="card">
                     <i className="fas fa-file-alt"></i>
-                    <img src={Imagem2} alt="imagem Projetos" className='projetos'/>
+                    <img src={Imagem4} alt="imagem Projetos" className='projetos'/>
                     <p>PROJETOS</p>
                 </div></a>
                 <a href="./cursos"><div className="card">
@@ -98,10 +98,10 @@ function Home() {
                     <img src={Imagem3} alt="imagem Cursos" className='cursos'/>
                     <p>CURSOS</p>
                 </div></a>
-                <a href="./eventos"><div className="card">
+                <a href="./validador"><div className="card">
                     <i className="fas fa-users"></i>
-                    <img src={Imagem4} alt="imagem Eventos" className='eventos'/>
-                    <p>EVENTOS</p>
+                    <img src={Imagem2} alt="imagem Eventos" className='eventos'/>
+                    <p>CERTIFICADOS</p>
                 </div></a>
             </div>
             <div className="section-info">

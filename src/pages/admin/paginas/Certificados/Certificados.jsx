@@ -70,6 +70,49 @@ export default function Certificados() {
         setCurrentPage(number);
     };
 
+    // Função para gerar os números de página a serem exibidos
+    const getPageNumbers = () => {
+        const pages = [];
+        const maxVisiblePages = 5;
+        
+        // Sempre mostra a primeira página
+        pages.push(1);
+        
+        // Determina o intervalo de páginas ao redor da atual
+        let startPage = Math.max(2, currentPage - 2);
+        let endPage = Math.min(totalPages - 1, currentPage + 2);
+        
+        // Ajusta se estiver perto do início
+        if (currentPage <= 3) {
+            endPage = Math.min(maxVisiblePages, totalPages - 1);
+        }
+        
+        // Ajusta se estiver perto do final
+        if (currentPage >= totalPages - 2) {
+            startPage = Math.max(totalPages - maxVisiblePages + 1, 2);
+        }
+        
+        // Adiciona páginas do intervalo
+        if (startPage > 2) {
+            pages.push('...');
+        }
+        
+        for (let i = startPage; i <= endPage; i++) {
+            pages.push(i);
+        }
+        
+        if (endPage < totalPages - 1) {
+            pages.push('...');
+        }
+        
+        // Sempre mostra a última página se houver mais de uma
+        if (totalPages > 1) {
+            pages.push(totalPages);
+        }
+        
+        return pages;
+    };
+
     return (
         <div className="certificados-container">
             <div className="cabecalho-com-botao">
@@ -163,18 +206,38 @@ export default function Certificados() {
                         </table>
                     </div>
 
-                    {/* Paginação */}
+                    {/* Paginação melhorada */}
                     {totalPages > 1 && (
                         <div className="paginacao">
-                            {[...Array(totalPages)].map((_, i) => (
-                                <button
-                                    key={i + 1}
-                                    className={currentPage === i + 1 ? "pagina ativa" : "pagina"}
-                                    onClick={() => changePage(i + 1)}
-                                >
-                                    {i + 1}
-                                </button>
+                            <button 
+                                className={`pagina-nav ${currentPage === 1 ? 'disabled' : ''}`}
+                                onClick={() => changePage(currentPage - 1)}
+                                disabled={currentPage === 1}
+                            >
+                                &laquo; Anterior
+                            </button>
+
+                            {getPageNumbers().map((page, index) => (
+                                page === '...' ? (
+                                    <span key={`ellipsis-${index}`} className="separador">...</span>
+                                ) : (
+                                    <button
+                                        key={page}
+                                        className={`pagina ${currentPage === page ? 'ativa' : ''}`}
+                                        onClick={() => changePage(page)}
+                                    >
+                                        {page}
+                                    </button>
+                                )
                             ))}
+
+                            <button 
+                                className={`pagina-nav ${currentPage === totalPages ? 'disabled' : ''}`}
+                                onClick={() => changePage(currentPage + 1)}
+                                disabled={currentPage === totalPages}
+                            >
+                                Próxima &raquo;
+                            </button>
                         </div>
                     )}
                 </>

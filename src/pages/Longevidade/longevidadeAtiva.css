@@ -1,0 +1,141 @@
+:root {
+  --primary-color: #800020;
+  --primary-light: #a3333d;
+  --secondary-color: #f8f9fa;
+  --accent-color: #a52a2a;
+  --text-color: #2c3e50;
+  --light-gray: #e8e8e8;
+  --lighter-gray: #f5f5f5;
+  --border-radius: 12px;
+  --box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Base Container */
+.longevidade-container {
+  background-color: white;
+  color: var(--text-color);
+  padding: 3rem 1.5rem;
+}
+
+.longevidade-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Typography */
+.longevidade-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--light-gray);
+  color: var(--primary-color);
+}
+
+.longevidade-text-group {
+  margin-bottom: 3rem;
+}
+
+.longevidade-text {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+.longevidade-text strong {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+/* Cards */
+.longevidade-card {
+  border-radius: var(--border-radius);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: var(--box-shadow);
+  transition: var(--transition);
+}
+
+.longevidade-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+}
+
+.atividades-card {
+  background-color: var(--lighter-gray);
+}
+
+.proposito-card {
+  background-color: rgba(128, 0, 32, 0.05);
+  border: 1px solid rgba(128, 0, 32, 0.1);
+}
+
+.card-title {
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: var(--primary-color);
+}
+
+/* Activities List */
+.atividades-list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.atividades-list li {
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.atividades-list li::before {
+  content: "•";
+  color: var(--primary-color);
+  font-size: 1.5rem;
+  position: absolute;
+  left: 0;
+  top: -2px;
+}
+
+.atividade-item {
+  font-size: 1.1rem;
+  display: inline-block;
+  padding: 0.5rem 0;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .longevidade-title {
+    font-size: 2rem;
+  }
+  
+  .card-title {
+    font-size: 1.5rem;
+  }
+  
+  .atividades-list {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .longevidade-container {
+    padding: 2rem 1rem;
+  }
+  
+  .longevidade-title {
+    font-size: 1.75rem;
+  }
+  
+  .longevidade-card {
+    padding: 1.5rem;
+  }
+  
+  .atividades-list {
+    grid-template-columns: 1fr;
+  }
+}

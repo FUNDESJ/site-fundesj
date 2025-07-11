@@ -221,7 +221,7 @@ export default function Inscricoes() {
                         {carregando ? (
                             <div className="loading-spinner">
                                 <div className="spinner"></div>
-                                <span>Processando...</span>
+                                <span></span>
                             </div>
                         ) : (
                             "Confirmar Inscrição"

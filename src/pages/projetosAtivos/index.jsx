@@ -6,7 +6,7 @@ import Footer from '../footer/footer';
 
 const ProjetosAtivos = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
-    const carouselRef = useRef(null);
+    const carosselRef = useRef(null);
     const projects = [
         {
             title: "Inclusão Digital para Idosos",
@@ -28,16 +28,11 @@ const ProjetosAtivos = () => {
             description: "Aprofunda habilidades digitais já adquiridas, permitindo maior domínio tecnológico e oportunidades.",
             icon: "📱🚀",
         },
-        {
-            title: "Educação Continuada",
-            description: "Oferece cursos e workshops para atualização profissional em diversas áreas do conhecimento.",
-            icon: "📚✨",
-        },
     ];
 
-    const cardWidth = 300; // Fixed width for each card
-    const gap = 20; // Gap between cards
-    const cardsToShow = 3; // Number of cards to show at once
+    const cardWidth = 300;
+    const gap = 20;
+    const cardsToShow = 3;
 
     const nextProjects = () => {
         setCurrentIndex(prev => Math.min(prev + 1, projects.length - cardsToShow));
@@ -48,9 +43,9 @@ const ProjetosAtivos = () => {
     };
 
     useEffect(() => {
-        if (carouselRef.current) {
+        if (carosselRef.current) {
             const translateX = -currentIndex * (cardWidth + gap);
-            carouselRef.current.style.transform = `translateX(${translateX}px)`;
+            carosselRef.current.style.transform = `translateX(${translateX}px)`;
         }
     }, [currentIndex]);
 
@@ -58,17 +53,19 @@ const ProjetosAtivos = () => {
         <>
             <Header />
             <main className="projetos-container">
-                <section className="page-header">
-                    <h1 className="section-title">Nossos Projetos Ativos</h1>
-                    <p className="section-subtitle">
-                        Cada iniciativa da Fundação Educacional de São José é cuidadosamente planejada para transformar vidas e
-                        fortalecer vínculos sociais por meio da educação, inclusão e bem-estar comunitário.
-                    </p>
+
+                <section className="projetos-hero">
+                    <div className="hero-content">
+                        <h1 className="hero-title">Nossos Projetos Ativos</h1>
+                        <p className="hero-subtitle">
+                            Cada iniciativa da Fundação Educacional de São José é cuidadosamente planejada para transformar vidas e
+                            fortalecer vínculos sociais por meio da educação, inclusão e bem-estar comunitário.                        </p>
+                    </div>
                 </section>
 
-                <div className="carousel-wrapper">
+                <div className="carossel-wrapper">
                     <button
-                        className="carousel-button prev"
+                        className="carossel-button prev"
                         onClick={prevProjects}
                         aria-label="Projetos anteriores"
                         style={{ display: currentIndex === 0 ? 'none' : 'flex' }}
@@ -76,10 +73,10 @@ const ProjetosAtivos = () => {
                         <FiChevronLeft size={32} />
                     </button>
 
-                    <div className="carousel-container">
-                        <div className="projects-carousel" ref={carouselRef}>
+                    <div className="carossel-container">
+                        <div className="projects-carossel" ref={carosselRef}>
                             {projects.map((project, index) => (
-                                <div 
+                                <div
                                     className="project-card-wrapper"
                                     key={index}
                                     style={{ width: `${cardWidth}px` }}
@@ -95,7 +92,7 @@ const ProjetosAtivos = () => {
                     </div>
 
                     <button
-                        className="carousel-button next"
+                        className="carossel-button next"
                         onClick={nextProjects}
                         aria-label="Próximos projetos"
                         style={{ display: currentIndex >= projects.length - cardsToShow ? 'none' : 'flex' }}

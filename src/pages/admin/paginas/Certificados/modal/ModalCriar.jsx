@@ -12,7 +12,6 @@ export default function ModalCriar({ isOpen, onClose }) {
     const [errors, setErrors] = useState({});
 
     async function adicionarCertificado() {
-        // Validação dos campos
         const newErrors = {};
         if (!nome) newErrors.nome = 'Nome é obrigatório';
         if (!curso) newErrors.curso = 'Curso é obrigatório';
@@ -45,9 +44,7 @@ export default function ModalCriar({ isOpen, onClose }) {
                 headers: { Authorization: `Bearer ${token}` }
             });
 
-            alert("Certificado adicionado com sucesso!");
             onClose();
-            // Reset form
             setNome('');
             setCurso('');
             setHoras('');
