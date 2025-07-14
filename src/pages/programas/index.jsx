@@ -3,7 +3,7 @@ import Footer from '../footer/footer';
 import { useState } from 'react';
 import Header from '../header/index.jsx';
 import Imagem1 from '../../images/banner programas/LA.png';
-import Imagem2 from '../../images/banner programas/volutarios.png';
+import Imagem2 from '../../images/banner programas/voluntariado.png';
 import Imagem3 from '../../images/banner programas/bombeiro.png';
 
 function Programas() {
@@ -63,7 +63,6 @@ function Programas() {
 
           <div className="eixos-grid">
             <article className="eixo-card">
-              <div className="eixo-number">1</div>
               <h3 className="eixo-title">Educação e Formação Profissional</h3>
               <p className="eixo-description">
                 Iniciativas voltadas à qualificação de servidores públicos e da comunidade por meio de bolsas de estudos e cursos especializados. O destaque é o Programa Stricto Sensu, que apoia a formação em nível de pós-graduação, fortalecendo a gestão pública e incentivando o aprimoramento técnico e acadêmico.
@@ -71,7 +70,6 @@ function Programas() {
             </article>
 
             <article className="eixo-card">
-              <div className="eixo-number">2</div>
               <h3 className="eixo-title">Inclusão Digital</h3>
               <p className="eixo-description">
                 Projetos que democratizam o acesso à tecnologia e à informação, capacitando pessoas de diferentes faixas etárias — com ênfase na população idosa — para o uso consciente e autônomo de recursos digitais. Programas como a Inclusão Digital para Idosos, Inclusão Digital para Todos e ações em Lares de Repouso promovem independência, comunicação e integração social.
@@ -79,7 +77,6 @@ function Programas() {
             </article>
 
             <article className="eixo-card">
-              <div className="eixo-number">3</div>
               <h3 className="eixo-title">Cidadania, Bem-Estar e Valorização da Vida</h3>
               <p className="eixo-description">
                 Programas que promovem bem-estar, saúde emocional e integração social para o público 60+. O destaque é o Longevidade Ativa, ciclo de palestras quinzenais que estimula o protagonismo e o envelhecimento saudável, além de projetos de formação de voluntariado para atuação em ações comunitárias e eventos da Fundação.

@@ -34,8 +34,8 @@ function Home() {
             id: 3,
             titulo: "Inclusão Digital Intermediário",
             descricao: "O Curso Inclusão Digital Intermediário oferece conhecimentos sobre as tecnologias atuais, com oficinas realizadas semanalmente no Centro de Atenção à Terceira Idade (CATI).",
-            foto: idtodos, // Alterar para a foto correta
-            link: "./idintermediario" // Corrigido o link para a página de ID Intermediário
+            foto: idtodos, 
+            link: "./idintermediario" 
         }
     ];
     const redesSociais = [
