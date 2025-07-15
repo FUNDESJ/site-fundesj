@@ -38,7 +38,8 @@ export default function LongevidadeAtiva() {
       id: 4,
       nome: "Bem-Estar e Conectividade",
       imagem: bemEstar,
-      descricao: "Atividades físicas e sociais para idosos"
+      descricao: "Atividades físicas e sociais para idosos",
+      link: '/ilpi'
     }
   ];
 

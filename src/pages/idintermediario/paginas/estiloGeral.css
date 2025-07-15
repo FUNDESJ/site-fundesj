@@ -1,0 +1,8 @@
+.titulo-container{
+    display: flex;
+    justify-content: center;
+    margin: 19.4%;
+}
+.titulo{
+    color: darkred;
+}

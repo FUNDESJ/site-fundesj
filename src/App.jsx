@@ -24,7 +24,10 @@ import Requerimento from "./pages/usj/paginas/Requerimento.jsx";
 import Trasnferencia from "./pages/usj/paginas/TransferenciaAssistida.jsx";
 import ProjetosAtivos from "./pages/projetosAtivos/index.jsx";
 import LongevidadeAtiva from "./pages/Longevidade/LongevidadeAtiva.jsx";
-import Conheca from './pages/idintermediario/paginas/conheca.jsx'
+import Conheca from './pages/idintermediario/paginas/conheca.jsx';
+import InscricoesIntermediario from './pages/idintermediario/paginas/inscricoes.jsx';
+import ChamadaIntermediario from './pages/idintermediario/paginas/chamadas.jsx';
+import Ilpi from './pages/ilpi/index.jsx'
 function App() {
   return (
     <BrowserRouter>
@@ -53,6 +56,9 @@ function App() {
         <Route path= '/projetos-ativos' element={<ProjetosAtivos/>}/>
         <Route path= '/longevidade-ativa' element={<LongevidadeAtiva/>}/>       
         <Route path="/idintermediario/conheca" element={<Conheca/>}/>
+        <Route path="/idintermediario/inscricao" element={<InscricoesIntermediario/>}/>
+        <Route path="/idintermediario/chamada" element={<ChamadaIntermediario/>}/>
+        <Route path="/ilpi" element={<Ilpi/>}/>
         <Route  path='/admin/*'
           element={
             <PrivateRoute>

@@ -12,7 +12,7 @@ function Equipe() {
     },
     {
       name: "Gilmara Vieira Bastos",
-      position: "Superintendente Adjuta",
+      position: "Superintendente Adjunta",
       email: "sup.adjunta@fundesj.com.br",
       category: "leadership"
     },

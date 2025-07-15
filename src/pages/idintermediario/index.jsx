@@ -37,18 +37,22 @@ function Idintermediario() {
                     </div>
 
                     <div className="modern-card">
+                        <a href='/idintermediario/inscricao'>
                         <div className="card-icon">✍️</div>
                         <h2>Inscrições</h2>
                         <p>Garanta sua vaga no próximo módulo do curso. Vagas limitadas para melhor aproveitamento.</p>
                         <button className="card-button">Inscreva-se</button>
+                        </a>
                         <div className="card-decoration"></div>
                     </div>
 
                     <div className="modern-card">
+                        <a href='/idintermediario/chamada'>
                         <div className="card-icon">📢</div>
                         <h2>Chamadas</h2>
                         <p>Acompanhe nossas convocações, calendário de aulas e eventos especiais do programa.</p>
                         <button className="card-button">Ver Chamadas</button>
+                        </a>
                         <div className="card-decoration"></div>
                     </div>
                 </div>

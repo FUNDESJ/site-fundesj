@@ -24,6 +24,7 @@ const ProjetosAtivos = () => {
             title: "Projeto ILPI",
             description: "Voltado ao cuidado e à conectividade de idosos em instituições de longa permanência, melhorando sua qualidade de vida.",
             icon: "🏥❤️",
+            link: '/ilpi'
         },
         {
             title: "Oficinas de Inclusão Digital Intermediárias",
