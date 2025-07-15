@@ -1,37 +1,61 @@
 import './idintermediario.css';
 import Header from '../header/index.jsx';
-import Footer from '../footer/footer';  
-
-
+import Footer from '../footer/footer';
 
 function Idintermediario() {
     return (
-
         <>
             <Header />
             <div className="idintermediario-container">
-                <div className="idintermediario-content">
-                    <h1>Curso de Inclusão Digital Intermediário</h1>
-                    <p>
-                        O Curso Inclusão Digital Intermediário oferece conhecimentos sobre as tecnologias atuais, com oficinas realizadas semanalmente no Centro de Atenção à Terceira Idade (CATI).
-                    </p>
-                    <p>
-                        O curso é voltado para pessoas com mais de 60 anos que já possuem conhecimentos básicos de informática e desejam aprimorar suas habilidades.
-                    </p>
-                    <p>
-                        As aulas são ministradas por instrutores qualificados e abordam temas como redes sociais, aplicativos úteis, segurança digital e muito mais.
-                    </p>
+                <div className="idintermediario-hero">
+                    <div className="idintermediario-content">
+                        <h1>Curso de Inclusão Digital Intermediário</h1>
+                        <p>
+                            A Fundação Educacional apresenta uma iniciativa voltada à promoção da inclusão digital para pessoas com 60 anos ou mais. O projeto tem como propósito ampliar 
+                            a autonomia, a qualidade de vida e a participação social dos idosos na era tecnológica, por meio de oficinas presenciais temáticas e estruturadas.    
+                        </p>
+                    </div>
+                    <div className="idintermediario-image">
+                        <img src="https://apadep.org.br/wp-content/uploads/2020/06/WhatsApp-Image-2020-06-09-at-15.51.27.jpeg" 
+                             alt="Curso de Inclusão Digital Intermediário" 
+                             onError={(e) => {
+                                e.target.onerror = null;
+                                e.target.src = "https://via.placeholder.com/800x600?text=Curso+Inclusão+Digital";
+                             }} />
+                    </div>
                 </div>
-                <div className="idintermediario-image">
-                    <img src="https://fundesj.org.br/wp-content/uploads/2023/10/ID-Intermediario.png" alt="Curso de Inclusão Digital Intermediário" />
+
+                <div className="cards-container">
+                    <div className="modern-card">
+                        <div className="card-icon">📋</div>
+                        <a href='/idintermediario/conheca'>
+                        <h2>Conheça o Projeto</h2>
+                        <p>Descubra todos os detalhes sobre nossa metodologia, instrutores e o impacto que estamos causando na comunidade.</p>
+                        <button className="card-button">Saiba Mais</button>
+                        </a>
+                        <div className="card-decoration"></div>
+                    </div>
+
+                    <div className="modern-card">
+                        <div className="card-icon">✍️</div>
+                        <h2>Inscrições</h2>
+                        <p>Garanta sua vaga no próximo módulo do curso. Vagas limitadas para melhor aproveitamento.</p>
+                        <button className="card-button">Inscreva-se</button>
+                        <div className="card-decoration"></div>
+                    </div>
+
+                    <div className="modern-card">
+                        <div className="card-icon">📢</div>
+                        <h2>Chamadas</h2>
+                        <p>Acompanhe nossas convocações, calendário de aulas e eventos especiais do programa.</p>
+                        <button className="card-button">Ver Chamadas</button>
+                        <div className="card-decoration"></div>
+                    </div>
                 </div>
             </div>
             <Footer />
         </>
-    );  
+    );
 }
-
-
-
 
 export default Idintermediario;

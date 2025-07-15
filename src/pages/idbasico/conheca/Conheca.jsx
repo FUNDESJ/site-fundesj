@@ -25,7 +25,7 @@ const Conheca = () => {
     <section className="conheca-section">
       <div className="container">
         <div className="section-header">
-          <h1 className="section-title">Projeto Inclusão Digital</h1>
+          <h1 className="section-titulo">Projeto Inclusão Digital</h1>
           <div className="title-decoration">
             <div className="decoration-line"></div>
             <div className="decoration-dot"></div>

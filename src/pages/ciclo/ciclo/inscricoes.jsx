@@ -90,11 +90,11 @@ export default function Inscricoes() {
     return (
         <>
             <Header />
-            <div className="inscricoes-container main-content">                
+            <div className="inscricoes-container main-content">
                 <div className="inscricoes-header">
-                <h1 className="inscricoes-title">Inscrição no Ciclo de Palestras</h1>
-                <p className="inscricoes-subtitle">Preencha o formulário abaixo para garantir sua vaga</p>
-            </div>
+                    <h1 className="inscricoes-title">Inscrição no Ciclo de Palestras</h1>
+                    <p className="inscricoes-subtitle">Preencha o formulário abaixo para garantir sua vaga</p>
+                </div>
 
                 {titulo ? (
                     <div className="evento-card">
@@ -197,20 +197,20 @@ export default function Inscricoes() {
 
                     <div className="form-group">
                         <label htmlFor="comoConheceu" className="form-label">Como você conheceu o evento?*</label>
-                           
-                           <select  id="comoConheceu"
+
+                        <select id="comoConheceu"
                             className="form-input"
                             value={comoConheceu}
                             onChange={(e) => setComoConheceu(e.target.value)}
                             required
-                            >
-                                <option value="Amigos">Amigos</option>
-                                <option value="Instagram">Instragram</option>
-                                <option value="Facebook">Facebook</option>
-                                <option value="Televisão">Televisão</option>
-                                <option value="Outros">Outros</option>
-
-                            </select>
+                        >
+                            <option value="">Selecione</option>
+                            <option value="Amigos">Amigos</option>
+                            <option value="Instagram">Instragram</option>
+                            <option value="Facebook">Facebook</option>
+                            <option value="Televisão">Televisão</option>
+                            <option value="Outros">Outros</option>
+                        </select>
                     </div>
 
                     <button
@@ -221,20 +221,18 @@ export default function Inscricoes() {
                         {carregando ? (
                             <div className="loading-spinner">
                                 <div className="spinner"></div>
-                                <span></span>
+                                <span>Processando...</span>
                             </div>
                         ) : (
                             "Confirmar Inscrição"
                         )}
                     </button>
-                       {mensagem && (
-                    <div className={`mensagem ${mensagem.includes("sucesso") ? "sucesso" : "erro"}`}>
-                        {mensagem}
-                    </div>
-                )}
+                    {mensagem && (
+                        <div className={`mensagem ${mensagem.includes("sucesso") ? "sucesso" : "erro"}`}>
+                            {mensagem}
+                        </div>
+                    )}
                 </div>
-              
-
             </div>
             <Footer />
         </>

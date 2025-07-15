@@ -12,11 +12,13 @@ const ProjetosAtivos = () => {
             title: "Inclusão Digital para Idosos",
             description: "Capacita pessoas da terceira idade para o uso de tecnologias, promovendo autonomia e conexão com o mundo digital.",
             icon: "👵🏽💻",
+            link: '/idbasico'
         },
         {
             title: "Ciclo de Palestras",
             description: "Estimula o diálogo e a reflexão sobre temas relevantes da atualidade, trazendo especialistas para debates enriquecedores.",
             icon: "🎤🧠",
+            link: '/ciclo'
         },
         {
             title: "Projeto ILPI",
@@ -27,6 +29,7 @@ const ProjetosAtivos = () => {
             title: "Oficinas de Inclusão Digital Intermediárias",
             description: "Aprofunda habilidades digitais já adquiridas, permitindo maior domínio tecnológico e oportunidades.",
             icon: "📱🚀",
+            link: '/idintermediario'
         },
     ];
 
@@ -81,11 +84,13 @@ const ProjetosAtivos = () => {
                                     key={index}
                                     style={{ width: `${cardWidth}px` }}
                                 >
+                                    <a href={project.link}>
                                     <ProjectCard
                                         title={project.title}
                                         description={project.description}
                                         icon={project.icon}
                                     />
+                                    </a>
                                 </div>
                             ))}
                         </div>

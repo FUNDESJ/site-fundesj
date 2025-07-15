@@ -24,6 +24,7 @@ import Requerimento from "./pages/usj/paginas/Requerimento.jsx";
 import Trasnferencia from "./pages/usj/paginas/TransferenciaAssistida.jsx";
 import ProjetosAtivos from "./pages/projetosAtivos/index.jsx";
 import LongevidadeAtiva from "./pages/Longevidade/LongevidadeAtiva.jsx";
+import Conheca from './pages/idintermediario/paginas/conheca.jsx'
 function App() {
   return (
     <BrowserRouter>
@@ -51,6 +52,7 @@ function App() {
         <Route path='/idbasico/*' element={<Idbasico />} />
         <Route path= '/projetos-ativos' element={<ProjetosAtivos/>}/>
         <Route path= '/longevidade-ativa' element={<LongevidadeAtiva/>}/>       
+        <Route path="/idintermediario/conheca" element={<Conheca/>}/>
         <Route  path='/admin/*'
           element={
             <PrivateRoute>

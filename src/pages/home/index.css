@@ -227,6 +227,11 @@ a .card:hover {
   text-decoration: none;
   font-weight: bold;
 }
+.conheca-link:hover {
+  color: darkred;
+  text-decoration: none;
+  font-weight: bold;
+}
 
 .conheca-link span {
   margin-left: 5px;

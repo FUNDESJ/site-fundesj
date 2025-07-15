@@ -4,7 +4,7 @@
 :root {
   --primary-color: #a8323e; /* bordô avermelhado */
   --secondary-color: #c94c4c; /* vermelho claro */
-  --accent-color: #ff5e5e; /* tom de destaque */
+  --accent-color: #945050; /* tom de destaque */
   --dark-color: #1a1a1a;
   --light-color: #ffffff; /* fundo totalmente branco */
   --text-color: #2b2b2b;
@@ -40,11 +40,11 @@
   position: relative;
 }
 
-.section-title {
+.section-titulo {
   font-size: clamp(2rem, 5vw, 3.5rem);
   font-weight: 800;
   margin-bottom: 1.5rem;
-  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  background: var(--primary-color);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
