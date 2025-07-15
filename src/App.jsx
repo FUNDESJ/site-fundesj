@@ -28,6 +28,7 @@ import Conheca from './pages/idintermediario/paginas/conheca.jsx';
 import InscricoesIntermediario from './pages/idintermediario/paginas/inscricoes.jsx';
 import ChamadaIntermediario from './pages/idintermediario/paginas/chamadas.jsx';
 import Ilpi from './pages/ilpi/index.jsx'
+import Voluntariado from "./pages/voluntariado/index.jsx";
 function App() {
   return (
     <BrowserRouter>
@@ -59,6 +60,7 @@ function App() {
         <Route path="/idintermediario/inscricao" element={<InscricoesIntermediario/>}/>
         <Route path="/idintermediario/chamada" element={<ChamadaIntermediario/>}/>
         <Route path="/ilpi" element={<Ilpi/>}/>
+        <Route path= '/voluntariado' element={<Voluntariado/>}/>
         <Route  path='/admin/*'
           element={
             <PrivateRoute>
