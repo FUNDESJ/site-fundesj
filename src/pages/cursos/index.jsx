@@ -13,7 +13,7 @@ function Cursos() {
       titulo: "Inteligência Artificial no Ambiente de Trabalho",
       imagem: Imagem1,
       descricao: "Curso introdutório que apresenta os impactos da inteligência artificial no ambiente de trabalho, incentivando a compreensão de novas tecnologias e sua aplicação ética e produtiva.",
-      status: "Realizado"
+      status: "Realizado",
     },
     {
       id: 2,
@@ -34,7 +34,9 @@ function Cursos() {
       titulo: "NEF – Educação Continuada",
       imagem: Imagem3,
       descricao: "Curso atualmente em andamento, realizado por meio da Escola Federativa, que oferece conteúdos de aperfeiçoamento contínuo para servidores públicos e agentes políticos.",
-      status: "Ativo"
+      status: "Ativo",
+      link: '/nef'
+
     }
   ];
 
@@ -53,16 +55,18 @@ function Cursos() {
         </section>
 
         {/* Cursos Section */}
-      
+
 
         {/* Curso Ativo Section */}
         <section className="curso-ativo-section">
           <h2 className="section-title">Curso Ativo</h2>
           {cursos.filter(curso => curso.status === "Ativo").map(curso => (
+             <a href={curso.link}>
             <article key={curso.id} className="curso-ativo-card">
               <div className="ativo-image-container">
+                
                 <img src={curso.imagem} alt={curso.titulo} className="ativo-image" />
-                <div className="curso-status ativo">Em Andamento</div>
+                  <div className="curso-status ativo">Em Andamento</div>
               </div>
               <div className="ativo-content">
                 <h3 className="ativo-title">{curso.titulo}</h3>
@@ -70,9 +74,11 @@ function Cursos() {
                 <p className="ativo-info">A iniciativa visa promover a qualificação técnica alinhada às boas práticas da administração pública.</p>
               </div>
             </article>
+            </a>
+
           ))}
         </section>
-          <section className="cursos-section">
+        <section className="cursos-section">
           <h2 className="section-title">Cursos Realizados</h2>
           <div className="cursos-grid">
             {cursos.filter(curso => curso.status === "Realizado").map(curso => (

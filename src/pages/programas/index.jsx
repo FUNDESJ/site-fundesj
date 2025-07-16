@@ -21,13 +21,15 @@ function Programas() {
       id: 2,
       nome: "Programa de formação voluntariado",
       foto: Imagem2,
-      descricao: "Iniciativa que capacita cidadãos para atuarem como voluntários em diversas frentes de trabalho social e comunitário."
+      descricao: "Iniciativa que capacita cidadãos para atuarem como voluntários em diversas frentes de trabalho social e comunitário.",
+      link: '/voluntariado'
     },
     {
       id: 3,
       nome: 'Programa Bombeiro Mirim',
       foto: Imagem3,
-      descricao: "Projeto educativo que ensina noções de prevenção, cidadania e primeiros socorros para crianças e adolescentes."
+      descricao: "Projeto educativo que ensina noções de prevenção, cidadania e primeiros socorros para crianças e adolescentes.",
+      link: '/bombeiro-mirim'
     }
   ];
 

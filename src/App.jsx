@@ -29,6 +29,8 @@ import InscricoesIntermediario from './pages/idintermediario/paginas/inscricoes.
 import ChamadaIntermediario from './pages/idintermediario/paginas/chamadas.jsx';
 import Ilpi from './pages/ilpi/index.jsx'
 import Voluntariado from "./pages/voluntariado/index.jsx";
+import BombeiroMirim from "./pages/bombeiro mirim/index.jsx";
+import Nef from "./pages/nef/index.jsx";
 function App() {
   return (
     <BrowserRouter>
@@ -61,6 +63,8 @@ function App() {
         <Route path="/idintermediario/chamada" element={<ChamadaIntermediario/>}/>
         <Route path="/ilpi" element={<Ilpi/>}/>
         <Route path= '/voluntariado' element={<Voluntariado/>}/>
+        <Route path= '/bombeiro-mirim' element={<BombeiroMirim/>}/>
+        <Route path="/nef" element={<Nef/>}/>
         <Route  path='/admin/*'
           element={
             <PrivateRoute>
