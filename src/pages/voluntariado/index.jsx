@@ -54,8 +54,7 @@ export default function Voluntariado() {
             <Header />
 
             <div className="voluntariado-container">
-                {/* Hero Section */}
-                <div className="hero-content">
+                <div className="voluntariado-hero">
                     <h1 className="hero-titulo">Programa de Formação de Voluntariado</h1>
                     <h2 className="hero-subtitulo">FUNDESJ/AVOS</h2>
                     <div className="hero-divider"></div>

@@ -31,8 +31,13 @@
   text-align: center;
   position: relative;
   overflow: hidden;
-}
 
+  /* Adicione estas linhas: */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 .programas-hero::before {
   content: '';
   position: absolute;

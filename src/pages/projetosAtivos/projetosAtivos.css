@@ -29,10 +29,17 @@
   color: white;
   padding: 4rem 2rem;
   border-radius: var(--border-radius);
+  margin: 2rem 0;
   text-align: center;
   position: relative;
- margin: 2rem 0;
   overflow: hidden;
+
+  /* Adicione estas linhas: */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px; /* Ajuste conforme necessário */
 }
 
 .projetos-hero::before {

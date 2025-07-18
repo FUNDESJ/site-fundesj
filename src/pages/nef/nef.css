@@ -1,388 +1,362 @@
+/* CSS Variables */
+:root {
+  --nef-primary-color: #800020; /* Dark red/burgundy */
+  --nef-primary-light: #a83232;
+  --nef-accent-color: #a52a2a; /* Gold */
+  --nef-text-color: #333;
+  --nef-light-gray: #f5f5f5;
+  --nef-lighter-gray: #f9f9f9;
+  --nef-border-radius: 8px;
+  --nef-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --nef-transition: all 0.3s ease;
+}
 
+
+/* Base Styles */
 .nef-container {
-    font-family: 'Montserrat', 'Segoe UI', sans-serif;
-    color: var(--text-color);
-    line-height: 1.6;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+  font-family: 'Montserrat', sans-serif;
+  color: var(--nef-text-color);
+  line-height: 1.6;
+  overflow-x: hidden;
 }
 
 /* Hero Section */
-.nef-hero {
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
-    color: white;
-    padding: 100px 20px;
-    text-align: center;
-    border-radius: var(--border-radius);
-    margin: 20px 0 40px;
-    position: relative;
-    overflow: hidden;
+.nef-hero-section {
+  position: relative;
+  height: 60vh;
+  min-height: 400px;
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+              url('https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 2rem;
+  color: white;
 }
 
-.hero-content {
-    max-width: 800px;
-    margin: 0 auto;
-    position: relative;
-    z-index: 2;
+.nef-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
 }
 
-.nef-hero h1 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 15px;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+.nef-hero-title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .nef-hero-subtitle {
-    font-size: 1.5rem;
-    font-weight: 500;
-    margin-bottom: 20px;
-    color: rgba(255, 255, 255, 0.9);
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  font-weight: 300;
 }
 
-.hero-divider {
-    width: 100px;
-    height: 4px;
-    background-color: white;
-    margin: 20px auto;
-    border-radius: 2px;
+.nef-hero-divider {
+  width: 80px;
+  height: 4px;
+  background: var(--nef-accent-color);
+  margin: 2rem auto;
+  border-radius: 2px;
 }
 
-.hero-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover;
-    opacity: 0.15;
-    z-index: 1;
+.nef-hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
 }
 
 /* Section Styles */
-.section-header {
-    text-align: center;
-    margin-bottom: 40px;
+.nef-about-section,
+.nef-trilha-section,
+.nef-inscricao-section,
+.nef-certificacao-section,
+.nef-duvidas-section,
+.nef-links-section,
+.nef-beneficios-section {
+  padding: 4rem 2rem;
 }
 
-.section-header h2 {
-    font-size: 2rem;
-    color: var(--primary-color);
-    margin-bottom: 15px;
-    position: relative;
+.nef-section-header {
+  text-align: center;
+  margin-bottom: 3rem;
 }
 
-.divider {
-    width: 80px;
-    height: 4px;
-    background-color: var(--accent-color);
-    margin: 0 auto;
-    border-radius: 2px;
+.nef-section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--nef-primary-color);
+  margin-bottom: 1rem;
 }
 
-.section-subtitle {
-    font-size: 1.1rem;
-    color: var(--primary-light);
-    margin-top: 15px;
+.nef-divider {
+  width: 80px;
+  height: 4px;
+  background: var(--nef-accent-color);
+  margin: 0 auto 1.5rem;
+  border-radius: 2px;
 }
 
-.section-content {
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: center;
-    font-size: 1.1rem;
-    line-height: 1.8;
+.nef-section-subtitle {
+  font-size: 1.2rem;
+  color: #666;
+  max-width: 700px;
+  margin: 0 auto;
 }
 
-.section-content strong {
-    color: var(--primary-color);
-    font-weight: 600;
+/* About Section */
+.nef-section-content {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 1.1rem;
+}
+
+.nef-section-content p {
+  margin-bottom: 1.5rem;
+  line-height: 1.8;
 }
 
 /* Trilha de Conhecimento */
-.nef-trilha {
-    background-color: var(--lighter-gray);
-    padding: 60px 20px;
-    margin: 40px 0;
-    border-radius: var(--border-radius);
+.nef-cursos-lista {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 1.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
-.cursos-lista {
-    max-width: 800px;
-    margin: 0 auto;
+.nef-curso-item {
+  background: white;
+  border-radius: var(--nef-border-radius);
+  box-shadow: var(--nef-box-shadow);
+  padding: 1.5rem;
+  transition: var(--nef-transition);
 }
 
-.curso-item {
-    background: white;
-    padding: 25px;
-    margin-bottom: 20px;
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
-    transition: var(--transition);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
+.nef-curso-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
 }
 
-.curso-item:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+.nef-curso-item h3 {
+  color: var(--nef-primary-color);
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
 }
 
-.curso-item h3 {
-    flex: 1;
-    min-width: 300px;
-    margin-right: 20px;
-    color: var(--primary-color);
-    font-size: 1.1rem;
+.nef-curso-link {
+  display: inline-block;
+  background: var(--nef-primary-color);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: var(--nef-transition);
 }
 
-.curso-link {
-    background-color: var(--accent-color);
-    color: white;
-    padding: 10px 20px;
-    border-radius: 30px;
-    text-decoration: none;
-    font-weight: 500;
-    transition: var(--transition);
-    white-space: nowrap;
-}
-
-.curso-link:hover {
-    background-color: var(--primary-color);
-    transform: translateY(-2px);
-    color: white;
+.nef-curso-link:hover {
+  background: var(--nef-primary-light);
+  transform: translateY(-3px);
 }
 
 /* Inscrição Section */
-.nef-inscricao {
-    padding: 60px 0;
+.nef-steps-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
-.steps-container {
-    max-width: 800px;
-    margin: 0 auto;
+.nef-step {
+  background: white;
+  border-radius: var(--nef-border-radius);
+  box-shadow: var(--nef-box-shadow);
+  padding: 1.5rem;
+  text-align: center;
 }
 
-.step {
-    display: flex;
-    margin-bottom: 30px;
-    align-items: flex-start;
+.nef-step-number {
+  width: 50px;
+  height: 50px;
+  background: var(--nef-accent-color);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 auto 1rem;
 }
 
-.step-number {
-    background-color: var(--accent-color);
-    color: white;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 700;
-    margin-right: 20px;
-    flex-shrink: 0;
+.nef-step p {
+  line-height: 1.8;
 }
 
-.step p {
-    margin: 5px 0;
+.nef-step a {
+  color: var(--nef-primary-color);
+  font-weight: 600;
+  text-decoration: none;
 }
 
-.step ul {
-    margin: 10px 0 0 20px;
-    padding-left: 20px;
-}
-
-.step li {
-    margin-bottom: 8px;
+.nef-step a:hover {
+  text-decoration: underline;
 }
 
 /* Certificação Section */
-.nef-certificacao {
-    background-color: rgba(40, 167, 69, 0.1);
-    padding: 60px 20px;
-    margin: 40px 0;
-    border-radius: var(--border-radius);
-}
-
-.certificacao-content {
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: center;
-    font-size: 1.1rem;
-    line-height: 1.8;
+.nef-certificacao-content {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 1.1rem;
+  line-height: 1.8;
 }
 
 /* Dúvidas Section */
-.nef-duvidas {
-    padding: 60px 0;
+.nef-contato-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
-.contato-info {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px;
-    max-width: 900px;
-    margin: 0 auto;
+.nef-contato-item {
+  background: white;
+  border-radius: var(--nef-border-radius);
+  box-shadow: var(--nef-box-shadow);
+  padding: 1.5rem;
+  text-align: center;
 }
 
-.contato-item {
-    background: white;
-    padding: 25px;
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
-    display: flex;
-    align-items: center;
-    min-height: 100px;
+.nef-contato-icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
 }
 
-.contato-icon {
-    font-size: 1.5rem;
-    margin-right: 15px;
-    color: var(--accent-color);
+.nef-contato-item p {
+  line-height: 1.8;
 }
 
-.contato-item p {
-    margin: 5px 0;
+.nef-contato-item a {
+  color: var(--nef-primary-color);
+  font-weight: 600;
+  text-decoration: none;
 }
 
-.contato-item small {
-    opacity: 0.8;
+.nef-contato-item a:hover {
+  text-decoration: underline;
 }
 
 /* Links Úteis Section */
-.nef-links {
-    background-color: var(--lighter-gray);
-    padding: 60px 20px;
-    margin: 40px 0;
-    border-radius: var(--border-radius);
+.nef-links-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
-.links-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
-    max-width: 1000px;
-    margin: 0 auto;
+.nef-link-card {
+  background: white;
+  border-radius: var(--nef-border-radius);
+  box-shadow: var(--nef-box-shadow);
+  padding: 1.5rem;
+  text-align: center;
+  color: var(--nef-primary-color);
+  font-weight: 600;
+  text-decoration: none;
+  transition: var(--nef-transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100px;
 }
 
-.link-card {
-    background: white;
-    padding: 25px 15px;
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
-    transition: var(--transition);
-    text-align: center;
-    text-decoration: none;
-    color: var(--primary-color);
-    font-weight: 500;
-    border: 2px solid transparent;
-    min-height: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.link-card:hover {
-    border-color: var(--accent-color);
-    transform: translateY(-3px);
-    color: var(--primary-color);
+.nef-link-card:hover {
+  background: var(--nef-primary-color);
+  color: white;
+  transform: translateY(-3px);
 }
 
 /* Benefícios Section */
-.nef-beneficios {
-    padding: 60px 0;
+.nef-beneficios-grid {
+  display: flex;
+  gap: 1.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
-.beneficios-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 25px;
-    max-width: 1000px;
-    margin: 0 auto;
+.nef-beneficio-card {
+  background: white;
+  border-radius: var(--nef-border-radius);
+  box-shadow: var(--nef-box-shadow);
+  padding: 1.5rem;
+  text-align: center;
+  transition: var(--nef-transition);
+  border-left: 3px solid darkred;
 }
 
-.beneficio-card {
-    background: white;
-    padding: 30px 20px;
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
-    transition: var(--transition);
-    text-align: center;
-    border-top: 4px solid var(--accent-color);
-    min-height: 180px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+.nef-beneficio-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
 }
 
-.beneficio-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+.nef-beneficio-card h3 {
+  color: var(--nef-primary-color);
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
 }
 
-.beneficio-card h3 {
-    color: var(--primary-color);
-    margin-bottom: 15px;
-    font-size: 1.2rem;
+.nef-beneficio-card p {
+  color: #666;
+  line-height: 1.6;
 }
 
 /* Responsive Adjustments */
 @media (max-width: 768px) {
-    .nef-hero {
-        padding: 80px 20px;
-    }
-    
-    .nef-hero h1 {
-        font-size: 2rem;
-    }
-    
-    .hero-subtitle {
-        font-size: 1.2rem;
-    }
-    
-    .curso-item {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    
-    .curso-item h3 {
-        margin-bottom: 15px;
-    }
-    
-    .step {
-        flex-direction: column;
-    }
-    
-    .step-number {
-        margin-bottom: 15px;
-    }
-
-    .links-grid,
-    .beneficios-grid,
-    .contato-info {
-        grid-template-columns: 1fr;
-    }
+  .nef-hero-title {
+    font-size: 2.5rem;
+  }
+  
+  .nef-hero-subtitle {
+    font-size: 1.2rem;
+  }
+  
+  .nef-section-title {
+    font-size: 2rem;
+  }
+  
+  .nef-about-section,
+  .nef-trilha-section,
+  .nef-inscricao-section,
+  .nef-certificacao-section,
+  .nef-duvidas-section,
+  .nef-links-section,
+  .nef-beneficios-section {
+    padding: 3rem 1.5rem;
+  }
 }
 
 @media (max-width: 480px) {
-    .nef-hero {
-        padding: 60px 20px;
-    }
-    
-    .nef-hero h1 {
-        font-size: 1.8rem;
-    }
-    
-    .section-header h2 {
-        font-size: 1.6rem;
-    }
-    
-    .link-card,
-    .beneficio-card {
-        min-height: auto;
-        padding: 20px 15px;
-    }
+  .nef-hero-title {
+    font-size: 2rem;
+  }
+  
+  .nef-cursos-lista,
+  .nef-contato-info,
+  .nef-links-grid,
+  .nef-beneficios-grid {
+    grid-template-columns: 1fr;
+  }
 }

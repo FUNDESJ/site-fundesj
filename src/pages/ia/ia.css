@@ -1,0 +1,342 @@
+/* CSS for IA Course Page - Classes específicas */
+.ia-course-container {
+  font-family: 'Montserrat', sans-serif;
+  color: var(--text-color);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Hero Section */
+.ia-hero-section {
+  position: relative;
+  height: 80vh;
+  min-height: 500px;
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 2rem;
+  color: white;
+}
+
+.ia-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+}
+
+.ia-hero-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.ia-hero-highlight {
+  color: var(--primary-light);
+}
+
+.ia-hero-subtitle {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  font-weight: 300;
+}
+
+.ia-institution-logo {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px;
+  font-weight: 500;
+  transition: var(--transition);
+  display: inline-block;
+}
+
+.ia-institution-logo:hover {
+  background: var(--primary-color);
+  transform: translateY(-3px);
+}
+
+/* Section Styles */
+.ia-section {
+  padding: 3rem 2rem;
+}
+
+.ia-section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.ia-section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.ia-divider {
+  width: 80px;
+  height: 4px;
+  background: var(--accent-color);
+  margin: 0 auto 1.5rem;
+  border-radius: 2px;
+}
+
+/* Introduction Section */
+.ia-intro-content {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 1.1rem;
+}
+
+.ia-intro-text {
+  margin-bottom: 1.5rem;
+}
+
+.ia-highlight-box {
+  background: var(--lighter-gray);
+  padding: 1.5rem;
+  border-left: 4px solid var(--primary-color);
+  border-radius: 0 var(--border-radius) var(--border-radius) 0;
+  text-align: left;
+  margin: 2rem auto;
+  max-width: 700px;
+}
+
+/* Program Section */
+.ia-modules-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.ia-module-card {
+  background: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  overflow: hidden;
+  transition: var(--transition);
+}
+
+.ia-module-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+}
+
+.ia-module-header {
+  background: var(--primary-color);
+  color: white;
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ia-module-title {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.ia-module-duration {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 0.25rem 0.75rem;
+  border-radius: 50px;
+  font-size: 0.9rem;
+}
+
+.ia-module-body {
+  padding: 1.5rem;
+  text-align: left;
+}
+
+.ia-module-subtitle {
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+
+/* Schedule Section */
+.ia-schedule-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.ia-schedule-card {
+  background: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  overflow: hidden;
+}
+
+.ia-date-badge {
+  background: var(--accent-color);
+  color: white;
+  padding: 0.75rem;
+  text-align: center;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.ia-schedule-details {
+  padding: 1.5rem;
+}
+
+.ia-schedule-text {
+  margin-bottom: 0.5rem;
+}
+
+/* Facilitators Section */
+.ia-facilitators-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.ia-facilitator-card {
+  background: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  overflow: hidden;
+  display: flex;
+}
+
+.ia-facilitator-photo {
+  min-width: 120px;
+  background: var(--light-gray);
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23800020"><path d="M12 4a4 4 0 014 4 4 4 0 01-4 4 4 4 0 01-4-4 4 4 0 014-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 50%;
+}
+
+.ia-facilitator-info {
+  padding: 1.5rem;
+  flex: 1;
+}
+
+.ia-facilitator-name {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.ia-facilitator-bio {
+  list-style-type: none;
+  padding: 0;
+}
+
+.ia-facilitator-bio-item {
+  margin-bottom: 0.5rem;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.ia-facilitator-bio-item::before {
+  content: "•";
+  color: var(--accent-color);
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+}
+
+/* CTA Section */
+.ia-cta-section {
+  text-align: center;
+  background: var(--lighter-gray);
+  width: 50%;
+  margin-bottom: 2rem;
+  border-radius: var(--border-radius);
+  padding: 3rem;
+  border-left: 3px solid darkred;
+}
+.centraliza-secao{
+    display: flex;
+    justify-content: center;
+}
+.ia-cta-title {
+  font-size: 2.2rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.ia-cta-text {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ia-cta-button {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 1rem 2.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: 0 4px 12px rgba(128, 0, 32, 0.3);
+}
+
+.ia-cta-button:hover {
+  background: var(--primary-light);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(128, 0, 32, 0.4);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .ia-hero-title {
+    font-size: 2.5rem;
+  }
+  
+  .ia-hero-subtitle {
+    font-size: 1.2rem;
+  }
+  
+  .ia-section-title {
+    font-size: 2rem;
+  }
+  
+  .ia-section {
+    padding: 3rem 1.5rem;
+  }
+  
+  .ia-facilitator-card {
+    flex-direction: column;
+  }
+  
+  .ia-facilitator-photo {
+    height: 120px;
+    min-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .ia-hero-title {
+    font-size: 2rem;
+  }
+  
+  .ia-modules-container,
+  .ia-facilitators-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .ia-module-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}

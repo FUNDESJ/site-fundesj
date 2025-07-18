@@ -18,13 +18,13 @@
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+    align-items: center;
 }
 
 /* Hero Section */
 .voluntariado-hero {
 
     color: var(--primary-color);
-    padding: 80px 20px;
     text-align: center;
     border-radius: var(--border-radius);
     margin: 20px 0 40px;
@@ -52,8 +52,8 @@
     height: 4px;
     background-color: var(--primary-color);
     margin-top: 20px;
-    margin-bottom: 2rem;
     border-radius: 2px;
+    margin-left: 45%;
 }
 
 .hero-text {

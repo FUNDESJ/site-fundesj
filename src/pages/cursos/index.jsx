@@ -14,6 +14,7 @@ function Cursos() {
       imagem: Imagem1,
       descricao: "Curso introdutório que apresenta os impactos da inteligência artificial no ambiente de trabalho, incentivando a compreensão de novas tecnologias e sua aplicação ética e produtiva.",
       status: "Realizado",
+      link: '/cursos/inteligencia-artificial'
     },
     {
       id: 2,
@@ -35,7 +36,7 @@ function Cursos() {
       imagem: Imagem3,
       descricao: "Curso atualmente em andamento, realizado por meio da Escola Federativa, que oferece conteúdos de aperfeiçoamento contínuo para servidores públicos e agentes políticos.",
       status: "Ativo",
-      link: '/nef'
+      link: '/cursos/nef'
 
     }
   ];
@@ -82,6 +83,7 @@ function Cursos() {
           <h2 className="section-title">Cursos Realizados</h2>
           <div className="cursos-grid">
             {cursos.filter(curso => curso.status === "Realizado").map(curso => (
+              <a href={curso.link}>
               <article key={curso.id} className="curso-card">
                 <div className="curso-image-container">
                   <img src={curso.imagem} alt={curso.titulo} className="curso-image" />
@@ -92,6 +94,7 @@ function Cursos() {
                   <p className="curso-description">{curso.descricao}</p>
                 </div>
               </article>
+              </a>
             ))}
           </div>
         </section>

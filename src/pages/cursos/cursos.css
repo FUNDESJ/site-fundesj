@@ -19,6 +19,7 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1rem;
+  
 }
 
 .cursos-hero {
@@ -30,7 +31,15 @@
   text-align: center;
   position: relative;
   overflow: hidden;
+
+  /* Adicione estas linhas: */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px; /* Ajuste conforme necessário */
 }
+
 
 .cursos-hero::before {
   content: '';
@@ -47,6 +56,7 @@
 .hero-content {
   position: relative;
   z-index: 1;
+  text-align: center;
 }
 
 .hero-title {
@@ -54,6 +64,8 @@
   font-weight: 700;
   margin-bottom: 1rem;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    text-align: center;
+
 }
 
 .hero-subtitle {
@@ -61,6 +73,8 @@
   max-width: 700px;
   margin: 0 auto;
   opacity: 0.9;
+    text-align: center;
+
 }
 
 /* Section Titles */
@@ -90,13 +104,15 @@
 }
 
 .curso-card {
+ display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   background: white;
   border-radius: var(--border-radius);
   overflow: hidden;
   box-shadow: var(--box-shadow);
   transition: var(--transition);
-  display: flex;
-  flex-direction: column;
+  height: 100%; 
 }
 
 .curso-card:hover {
