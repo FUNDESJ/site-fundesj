@@ -219,10 +219,11 @@ export default function Inscricoes() {
                         disabled={carregando}
                     >
                         {carregando ? (
+                            <>
                             <div className="loading-spinner">
-                                <div className="spinner"></div>
-                                <span>Processando...</span>
                             </div>
+                            <span>Carregando....</span>
+                            </>
                         ) : (
                             "Confirmar Inscrição"
                         )}

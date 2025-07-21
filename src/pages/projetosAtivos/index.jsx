@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
-import './projetosAtivos.css';
+import styles from './ProjetosAtivos.module.css';
 import Header from '../header/index.jsx';
 import Footer from '../footer/footer';
 
@@ -56,20 +56,21 @@ const ProjetosAtivos = () => {
     return (
         <>
             <Header />
-            <main className="projetos-container">
+            <main className={styles.container}>
 
-                <section className="projetos-hero">
-                    <div className="hero-content">
-                        <h1 className="hero-title">Nossos Projetos Ativos</h1>
-                        <p className="hero-subtitle">
+                <section className={styles.hero}>
+                    <div className={styles.heroContent}>
+                        <h1 className={styles.heroTitle}>Nossos Projetos Ativos</h1>
+                        <p className={styles.heroSubtitle}>
                             Cada iniciativa da Fundação Educacional de São José é cuidadosamente planejada para transformar vidas e
-                            fortalecer vínculos sociais por meio da educação, inclusão e bem-estar comunitário.                        </p>
+                            fortalecer vínculos sociais por meio da educação, inclusão e bem-estar comunitário.
+                        </p>
                     </div>
                 </section>
 
-                <div className="carossel-wrapper">
+                <div className={styles.carosselWrapper}>
                     <button
-                        className="carossel-button prev"
+                        className={`${styles.carosselButton} ${styles.prev}`}
                         onClick={prevProjects}
                         aria-label="Projetos anteriores"
                         style={{ display: currentIndex === 0 ? 'none' : 'flex' }}
@@ -77,20 +78,20 @@ const ProjetosAtivos = () => {
                         <FiChevronLeft size={32} />
                     </button>
 
-                    <div className="carossel-container">
-                        <div className="projects-carossel" ref={carosselRef}>
+                    <div className={styles.carosselContainer}>
+                        <div className={styles.projectsCarossel} ref={carosselRef}>
                             {projects.map((project, index) => (
                                 <div
-                                    className="project-card-wrapper"
+                                    className={styles.projectCardWrapper}
                                     key={index}
                                     style={{ width: `${cardWidth}px` }}
                                 >
                                     <a href={project.link}>
-                                    <ProjectCard
-                                        title={project.title}
-                                        description={project.description}
-                                        icon={project.icon}
-                                    />
+                                        <ProjectCard
+                                            title={project.title}
+                                            description={project.description}
+                                            icon={project.icon}
+                                        />
                                     </a>
                                 </div>
                             ))}
@@ -98,7 +99,7 @@ const ProjetosAtivos = () => {
                     </div>
 
                     <button
-                        className="carossel-button next"
+                        className={`${styles.carosselButton} ${styles.next}`}
                         onClick={nextProjects}
                         aria-label="Próximos projetos"
                         style={{ display: currentIndex >= projects.length - cardsToShow ? 'none' : 'flex' }}
@@ -115,11 +116,11 @@ const ProjetosAtivos = () => {
 };
 
 const ProjectCard = ({ title, description, icon }) => (
-    <div className="project-card">
-        <div className="project-image">
-            <div className="icon-wrapper">{icon}</div>
+    <div className={styles.projectCard}>
+        <div className={styles.projectImage}>
+            <div className={styles.iconWrapper}>{icon}</div>
         </div>
-        <div className="project-content">
+        <div className={styles.projectContent}>
             <h3>{title}</h3>
             <p>{description}</p>
         </div>
@@ -127,10 +128,10 @@ const ProjectCard = ({ title, description, icon }) => (
 );
 
 const ImpactSection = () => (
-    <section className="impact-section">
-        <div className="impact-content">
-            <h2 className="impact-title">Impacto Social e Resultados</h2>
-            <div className="impact-text">
+    <section className={styles.impactSection}>
+        <div className={styles.impactContent}>
+            <h2 className={styles.impactTitle}>Impacto Social e Resultados</h2>
+            <div className={styles.impactText}>
                 <p>
                     Nossos projetos já beneficiaram diretamente mais de <strong>1.000 pessoas</strong>, com mais de <strong>2.000 horas de atividades educacionais realizadas</strong>.
                     Acreditamos que a educação transformadora é o alicerce de uma sociedade mais justa e igualitária.
@@ -140,7 +141,7 @@ const ImpactSection = () => (
                     assegurando que os recursos sejam aplicados com máxima eficiência e impacto.
                 </p>
             </div>
-            <div className="stats-grid">
+            <div className={styles.statsGrid}>
                 <StatItem number="1.000+" label="Pessoas diretamente impactadas" />
                 <StatItem number="2.000+" label="Horas de atividades educacionais" />
                 <StatItem number="15+" label="Parceiros institucionais" />
@@ -151,9 +152,9 @@ const ImpactSection = () => (
 );
 
 const StatItem = ({ number, label }) => (
-    <div className="stat-item">
-        <span className="stat-number">{number}</span>
-        <span className="stat-label">{label}</span>
+    <div className={styles.statItem}>
+        <span className={styles.statNumber}>{number}</span>
+        <span className={styles.statLabel}>{label}</span>
     </div>
 );
 

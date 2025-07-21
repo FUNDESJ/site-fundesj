@@ -282,6 +282,7 @@
 
 .ro-info-card {
   background: white;
+  border-top: 3px solid darkred;
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
   padding: 1.5rem;

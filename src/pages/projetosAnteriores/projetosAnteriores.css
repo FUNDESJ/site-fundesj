@@ -1,14 +1,13 @@
 /* Projetos Anteriores CSS */
 .pa-page {
-  font-family: 'Montserrat', sans-serif;
-  color: var(--text-color);
+    font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  color: darkred;
   line-height: 1.6;
-  overflow-x: hidden;
-  background-color: #f9f9f9;
+  background-color: #fafafa;
 }
 
 .pa-main {
-  padding: 2rem 0;
+  padding: 4rem 0;
 }
 
 .pa-container {
@@ -17,21 +16,26 @@
   padding: 0 2rem;
 }
 
+/* Scroll Reveal Animation */
+.pa-scroll-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.pa-scroll-reveal.pa-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* Titles and Text */
 .pa-title {
   font-size: 2.8rem;
   font-weight: 700;
-  color: var(--primary-color);
-  margin-bottom: 1.5rem;
+  color: darkred;
+  margin: 1rem;
   text-align: center;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-
-.pa-visible.pa-title {
-  opacity: 1;
-  transform: translateY(0);
+  transition-delay: 0.1s;
 }
 
 .pa-intro {
@@ -39,15 +43,8 @@
   max-width: 800px;
   margin: 0 auto 3rem;
   text-align: center;
-  color: var(--text-light);
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease-out 0.2s, transform 0.6s ease-out 0.2s;
-}
-
-.pa-visible.pa-intro {
-  opacity: 1;
-  transform: translateY(0);
+  color: black;
+  transition-delay: 0.2s;
 }
 
 /* Grid Layout */
@@ -62,47 +59,45 @@
 .pa-card {
   background: white;
   border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
   overflow: hidden;
+  border-left: 3px solid darkred;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out, box-shadow 0.3s ease;
-}
-
-.pa-visible.pa-card {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 .pa-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
 }
 
 .pa-content {
   padding: 2rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .pa-card-title {
   font-size: 1.5rem;
-  color: var(--primary-color);
+  color: darkred;
   margin-bottom: 1rem;
   font-weight: 600;
 }
 
 .pa-card-description {
-  color: var(--text-light);
+  color: #666;
   margin-bottom: 1.5rem;
+  flex-grow: 1;
 }
 
 .pa-link {
   display: inline-block;
-  color: var(--accent-color);
+  color: darkred;
   font-weight: 600;
   text-decoration: none;
   position: relative;
-  padding-bottom: 2px;
+  padding-bottom: 3px;
+  align-self: flex-start;
 }
 
 .pa-link::after {
@@ -112,10 +107,12 @@
   left: 0;
   width: 0;
   height: 2px;
-  background-color: var(--accent-color);
+  background-color: #e74c3c;
   transition: width 0.3s ease;
 }
-
+.pa-link:hover{
+  color: red
+}
 .pa-link:hover::after {
   width: 100%;
 }
@@ -124,39 +121,30 @@
 .pa-section {
   max-width: 800px;
   margin: 0 auto 4rem;
-  padding: 2rem;
+  padding: 2.5rem;
   background: white;
   border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  border-top: 3px solid darkred;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
 }
 
 .pa-section h2 {
   font-size: 2rem;
-  color: var(--primary-color);
+  color: darkred;
   margin-bottom: 1.5rem;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-
-.pa-visible.pa-section h2 {
-  opacity: 1;
-  transform: translateY(0);
+  transition-delay: 0.1s;
 }
 
 .pa-section p {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease-out 0.2s, transform 0.6s ease-out 0.2s;
+  color: #555;
+  transition-delay: 0.2s;
 }
 
-.pa-visible.pa-section p {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Responsive Design */
 @media (max-width: 768px) {
+  .pa-main {
+    padding: 3rem 0;
+  }
+  
   .pa-title {
     font-size: 2.2rem;
   }
@@ -167,10 +155,11 @@
   
   .pa-grid {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
   
   .pa-section {
-    padding: 1.5rem;
+    padding: 2rem;
   }
 }
 
@@ -185,5 +174,13 @@
   
   .pa-card-title {
     font-size: 1.3rem;
+  }
+  
+  .pa-section {
+    padding: 1.5rem;
+  }
+  
+  .pa-section h2 {
+    font-size: 1.7rem;
   }
 }
