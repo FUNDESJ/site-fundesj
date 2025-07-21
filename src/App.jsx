@@ -32,6 +32,8 @@ import Voluntariado from "./pages/voluntariado/index.jsx";
 import BombeiroMirim from "./pages/bombeiro mirim/index.jsx";
 import Nef from "./pages/nef/index.jsx";
 import InteligenciaArtificial from "./pages/ia/index.jsx";
+import OrientacaoParental from "./pages/orientacao parental/index.jsx";
+import RedacaoOficial from "./pages/redacao oficial/index.jsx";
 function App() {
   return (
     <BrowserRouter>
@@ -55,19 +57,21 @@ function App() {
         <Route path="calendario" element={<Calendario />} />
         <Route path="/idintermediario" element={<Idintermediario />} />
         <Route path="/requerimento" element={<Requerimento />} />
-        <Route path="/transferencia-assistida" element={<Trasnferencia/>}/>
+        <Route path="/transferencia-assistida" element={<Trasnferencia />} />
         <Route path='/idbasico/*' element={<Idbasico />} />
-        <Route path= '/projetos-ativos' element={<ProjetosAtivos/>}/>
-        <Route path= '/longevidade-ativa' element={<LongevidadeAtiva/>}/>       
-        <Route path="/idintermediario/conheca" element={<Conheca/>}/>
-        <Route path="/idintermediario/inscricao" element={<InscricoesIntermediario/>}/>
-        <Route path="/idintermediario/chamada" element={<ChamadaIntermediario/>}/>
-        <Route path="/ilpi" element={<Ilpi/>}/>
-        <Route path= '/voluntariado' element={<Voluntariado/>}/>
-        <Route path= '/bombeiro-mirim' element={<BombeiroMirim/>}/>
-        <Route path="/cursos/nef" element={<Nef/>}/>
-        <Route path="/cursos/inteligencia-artificial" element={<InteligenciaArtificial/>}/>
-        <Route  path='/admin/*'
+        <Route path='/projetos-ativos' element={<ProjetosAtivos />} />
+        <Route path='/longevidade-ativa' element={<LongevidadeAtiva />} />
+        <Route path="/idintermediario/conheca" element={<Conheca />} />
+        <Route path="/idintermediario/inscricao" element={<InscricoesIntermediario />} />
+        <Route path="/idintermediario/chamada" element={<ChamadaIntermediario />} />
+        <Route path="/ilpi" element={<Ilpi />} />
+        <Route path='/voluntariado' element={<Voluntariado />} />
+        <Route path='/bombeiro-mirim' element={<BombeiroMirim />} />
+        <Route path="/cursos/nef" element={<Nef />} />
+        <Route path="/cursos/inteligencia-artificial" element={<InteligenciaArtificial />} />
+        <Route path= "/cursos/orientacao-parental" element={<OrientacaoParental/>}/>
+        <Route path="/cursos/redacao-oficial" element= {<RedacaoOficial/>}/>
+        <Route path='/admin/*'
           element={
             <PrivateRoute>
               <Admin />

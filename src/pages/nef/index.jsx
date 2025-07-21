@@ -1,4 +1,3 @@
-import React from 'react';
 import { Helmet } from 'react-helmet';
 import './nef.css';
 import Header from '../header';
@@ -15,7 +14,7 @@ const Nef = () => {
         {/* Hero Section */}
         <section className="nef-hero-section">
           <div className="nef-hero-content">
-            <h1 className="nef-hero-title">NEF – Educação Continuada</h1>
+            <h1 className="nef-hero-title">NEF – <span className="neuro-hero-highlight">Educação Continuada</span></h1>
             <p className="nef-hero-subtitle">Capacitação contínua para servidores públicos e agentes políticos municipais</p>
             <div className="nef-hero-divider"></div>
           </div>

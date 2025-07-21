@@ -1,5 +1,5 @@
-/* CSS for Neurodiversidade Page */
-.neuro-course-container {
+/* CSS for Redação Oficial Page */
+.ro-course-container {
   font-family: 'Montserrat', sans-serif;
   color: var(--text-color);
   line-height: 1.6;
@@ -7,7 +7,7 @@
 }
 
 /* Hero Section */
-.neuro-hero-section {
+.ro-hero-section {
   position: relative;
   height: 80vh;
   min-height: 500px;
@@ -22,47 +22,47 @@
   color: white;
 }
 
-.neuro-hero-content {
+.ro-hero-content {
   position: relative;
   z-index: 2;
   max-width: 800px;
 }
 
-.neuro-hero-title {
+.ro-hero-title {
   font-size: 3.5rem;
   font-weight: 700;
   margin-bottom: 1rem;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-.neuro-hero-highlight {
+.ro-hero-highlight {
   color: var(--primary-light);
 }
 
-.neuro-hero-subtitle {
+.ro-hero-subtitle {
   font-size: 1.5rem;
   margin-bottom: 2rem;
   font-weight: 300;
 }
 
 /* Section Styles */
-.neuro-section {
+.ro-section {
   padding: 3rem 2rem;
 }
 
-.neuro-section-header {
+.ro-section-header {
   text-align: center;
   margin-bottom: 3rem;
 }
 
-.neuro-section-title {
+.ro-section-title {
   font-size: 2.5rem;
   font-weight: 700;
   color: var(--primary-color);
   margin-bottom: 1rem;
 }
 
-.neuro-divider {
+.ro-divider {
   width: 80px;
   height: 4px;
   background: var(--accent-color);
@@ -71,18 +71,18 @@
 }
 
 /* Introduction Section */
-.neuro-intro-content {
+.ro-intro-content {
   max-width: 800px;
   margin: 0 auto;
   text-align: center;
   font-size: 1.1rem;
 }
 
-.neuro-intro-text {
+.ro-intro-text {
   margin-bottom: 1.5rem;
 }
 
-.neuro-highlight-box {
+.ro-highlight-box {
   background: var(--lighter-gray);
   padding: 1.5rem;
   border-left: 4px solid var(--primary-color);
@@ -93,7 +93,7 @@
 }
 
 /* Program Section */
-.neuro-modules-container {
+.ro-modules-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 2rem;
@@ -101,7 +101,7 @@
   margin: 0 auto;
 }
 
-.neuro-module-card {
+.ro-module-card {
   background: white;
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
@@ -109,78 +109,82 @@
   transition: var(--transition);
 }
 
-.neuro-module-card:hover {
+.ro-module-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
 }
 
-.neuro-module-header {
+.ro-module-header {
   background: var(--primary-color);
   color: white;
   padding: 1rem 1.5rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 
-.neuro-module-title {
+.ro-module-title {
   margin: 0;
   font-size: 1.5rem;
 }
 
-.neuro-module-duration {
-  background: rgba(255, 255, 255, 0.2);
-  padding: 0.25rem 0.75rem;
-  border-radius: 50px;
-  font-size: 0.9rem;
-}
-
-.neuro-module-body {
+.ro-module-body {
   padding: 1.5rem;
   text-align: left;
 }
 
-.neuro-module-subtitle {
-  color: var(--primary-color);
-  margin-bottom: 0.5rem;
-  font-size: 1.2rem;
+.ro-schedule-list {
+  list-style-type: none;
+  padding: 0;
 }
 
-/* Schedule Section */
-.neuro-schedule-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  max-width: 800px;
+.ro-schedule-item {
+  margin-bottom: 0.75rem;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.ro-schedule-item::before {
+  content: "•";
+  color: var(--accent-color);
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+}
+
+/* Content Section */
+.ro-content-container {
+  max-width: 1000px;
   margin: 0 auto;
 }
 
-.neuro-schedule-card {
+.ro-content-card {
   background: white;
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
-  overflow: hidden;
-}
-
-.neuro-date-badge {
-  background: var(--accent-color);
-  color: white;
-  padding: 0.75rem;
-  text-align: center;
-  font-weight: 600;
-  font-size: 1.1rem;
-}
-
-.neuro-schedule-details {
   padding: 1.5rem;
+  margin-bottom: 2rem;
 }
 
-.neuro-schedule-text {
+.ro-content-title {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.ro-content-subtitle {
+  font-style: italic;
+  margin-bottom: 1rem;
+  color: var(--text-light);
+}
+
+.ro-content-list {
+  padding-left: 1.5rem;
+}
+
+.ro-content-list li {
   margin-bottom: 0.5rem;
 }
 
 /* Facilitators Section */
-.neuro-facilitators-grid {
+.ro-facilitators-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 2rem;
@@ -188,7 +192,7 @@
   margin: 0 auto;
 }
 
-.neuro-facilitator-card {
+.ro-facilitator-card {
   background: white;
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
@@ -196,7 +200,7 @@
   display: flex;
 }
 
-.neuro-facilitator-photo {
+.ro-facilitator-photo {
   min-width: 120px;
   background: var(--light-gray);
   background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23800020"><path d="M12 4a4 4 0 014 4 4 4 0 01-4 4 4 4 0 01-4-4 4 4 0 014-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4z"/></svg>');
@@ -205,28 +209,28 @@
   background-size: 50%;
 }
 
-.neuro-facilitator-info {
+.ro-facilitator-info {
   padding: 1.5rem;
   flex: 1;
 }
 
-.neuro-facilitator-name {
+.ro-facilitator-name {
   color: var(--primary-color);
   margin-bottom: 1rem;
 }
 
-.neuro-facilitator-bio {
+.ro-facilitator-bio {
   list-style-type: none;
   padding: 0;
 }
 
-.neuro-facilitator-bio-item {
+.ro-facilitator-bio-item {
   margin-bottom: 0.5rem;
   position: relative;
   padding-left: 1.5rem;
 }
 
-.neuro-facilitator-bio-item::before {
+.ro-facilitator-bio-item::before {
   content: "•";
   color: var(--accent-color);
   position: absolute;
@@ -234,81 +238,101 @@
   font-weight: bold;
 }
 
-/* CTA Section */
-.neuro-cta-section {
-  text-align: center;
-  background: var(--lighter-gray);
-  width: 50%;
-  margin-bottom: 2rem;
-  border-radius: var(--border-radius);
-  padding: 3rem;
-  border-left: 3px solid darkred;
+/* Schedule Section */
+.ro-schedule-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
-.neuro-cta-title {
-  font-size: 2.2rem;
+.ro-schedule-card {
+  background: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  overflow: hidden;
+}
+
+.ro-date-badge {
+  background: var(--accent-color);
+  color: white;
+  padding: 0.75rem;
+  text-align: center;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.ro-schedule-details {
+  padding: 1.5rem;
+}
+
+.ro-schedule-text {
+  margin-bottom: 0.5rem;
+}
+
+/* Info Section */
+.ro-info-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.ro-info-card {
+  background: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  padding: 1.5rem;
+}
+
+.ro-info-title {
   color: var(--primary-color);
   margin-bottom: 1rem;
+  font-size: 1.3rem;
 }
 
-.neuro-cta-text {
-  font-size: 1.2rem;
-  margin-bottom: 2rem;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
+.ro-info-text {
+  margin-bottom: 0.5rem;
 }
 
 /* Responsive Adjustments */
 @media (max-width: 768px) {
-  .neuro-hero-title {
+  .ro-hero-title {
     font-size: 2.5rem;
   }
   
-  .neuro-hero-subtitle {
+  .ro-hero-subtitle {
     font-size: 1.2rem;
   }
   
-  .neuro-section-title {
+  .ro-section-title {
     font-size: 2rem;
   }
   
-  .neuro-section {
+  .ro-section {
     padding: 3rem 1.5rem;
   }
   
-  .neuro-facilitator-card {
+  .ro-facilitator-card {
     flex-direction: column;
   }
   
-  .neuro-facilitator-photo {
+  .ro-facilitator-photo {
     height: 120px;
     min-width: 100%;
-  }
-
-  .neuro-cta-section {
-    width: 80%;
   }
 }
 
 @media (max-width: 480px) {
-  .neuro-hero-title {
+  .ro-hero-title {
     font-size: 2rem;
   }
   
-  .neuro-modules-container,
-  .neuro-facilitators-grid {
+  .ro-modules-container,
+  .ro-facilitators-grid,
+  .ro-info-container {
     grid-template-columns: 1fr;
-  }
-  
-  .neuro-module-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.5rem;
-  }
-
-  .neuro-cta-section {
-    width: 90%;
-    padding: 2rem 1rem;
   }
 }

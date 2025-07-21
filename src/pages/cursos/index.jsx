@@ -21,14 +21,16 @@ function Cursos() {
       titulo: "Orientação Parental para Professores do AEE",
       imagem: Imagem2,
       descricao: "Voltado a educadores da área de Educação Especial, o curso aborda estratégias de apoio à parentalidade, com foco no fortalecimento do vínculo entre escola e família.",
-      status: "Realizado"
+      status: "Realizado",
+      link: '/cursos/orientacao-parental'
     },
     {
       id: 3,
       titulo: "Redação Oficial",
       imagem: Imagem4,
       descricao: "Formação voltada à produção de documentos oficiais com clareza, objetividade e respeito às normas da linguagem administrativa, essencial para servidores e profissionais da gestão pública.",
-      status: "Realizado"
+      status: "Realizado",
+      link: '/cursos/redacao-oficial'
     },
     {
       id: 4,
@@ -67,7 +69,7 @@ function Cursos() {
               <div className="ativo-image-container">
                 
                 <img src={curso.imagem} alt={curso.titulo} className="ativo-image" />
-                  <div className="curso-status ativo">Em Andamento</div>
+                  <div className="curso-status realizado">Em Andamento</div>
               </div>
               <div className="ativo-content">
                 <h3 className="ativo-title">{curso.titulo}</h3>
@@ -87,7 +89,7 @@ function Cursos() {
               <article key={curso.id} className="curso-card">
                 <div className="curso-image-container">
                   <img src={curso.imagem} alt={curso.titulo} className="curso-image" />
-                  <div className="curso-status realizado">Realizado</div>
+                  <div className="curso-status ativo ">Realizado</div>
                 </div>
                 <div className="curso-content">
                   <h3 className="curso-title">{curso.titulo}</h3>

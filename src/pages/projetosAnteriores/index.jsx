@@ -4,23 +4,7 @@ import Header from '../header';
 import Footer from '../footer/footer';
 
 function ProjetosAnteriores() {
-  useEffect(() => {
-    const scrollReveals = document.querySelectorAll('.pa-scroll-reveal');
-    
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('pa-visible');
-        }
-      });
-    }, { threshold: 0.1 });
-    
-    scrollReveals.forEach(el => observer.observe(el));
-    
-    return () => {
-      scrollReveals.forEach(el => observer.unobserve(el));
-    };
-  }, []);
+
 
   return (
     <div className="pa-page">

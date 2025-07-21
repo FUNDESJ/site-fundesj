@@ -77,7 +77,7 @@ function Equipe() {
       category: "technology"
     },
     {
-      name: "Henrique Inacio Generoso Panitz",
+      name: "Henrique I. Generoso Panitz",
       position: "Universitário de Tecnologia",
       email: "tecnologia@fundesj.com.br",
       category: "technology"
