@@ -34,12 +34,11 @@ const Nef = () => {
           </div>
         </section>
 
-        {/* Trilha de Conhecimento */}
         <section className="nef-trilha-section">
           <div className="nef-section-header">
-            <h2 className="nef-section-title">Trilha de Conhecimento Básica</h2>
+            <h2 className="nef-section-title">Cursos disponibilizados</h2>
             <div className="nef-divider"></div>
-            <p className="nef-section-subtitle">Recomenda-se que os participantes realizem a trilha composta por cinco cursos</p>
+            <p className="nef-section-subtitle">Segue abaixo alguns dos diversos cursos disponibilizados pelo Núcleo de Ensino Federativo</p>
           </div>
 
           <div className="nef-cursos-lista">
