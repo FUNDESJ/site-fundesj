@@ -1,0 +1,181 @@
+:root {
+  --primary-color: #800020;
+  --primary-light: #a3333d;
+  --secondary-color: #c94c4c;
+  --accent-color: #a52a2a;
+  --text-color: #2c3e50;
+  --light-gray: #ffffff;
+  --lighter-gray: #f8f9fa;
+  --medium-gray: #e9ecef;
+  --dark-gray: #343a40;
+  --border-radius: 8px;
+  --box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Estilos base */
+.calendario-page {
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  line-height: 1.6;
+  color: var(--text-color);
+  background-color: var(--lighter-gray);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.titulo {
+  margin-bottom: 2rem;
+}
+
+.calendario-title {
+  text-align: center;
+  color: var(--primary-color);
+  font-size: 2.5rem;
+  margin-top: 2rem;
+}
+
+.divider {
+  height: 3px;
+  width: 100px;
+  background-color: var(--primary-color);
+  margin: 0.5rem auto;
+}
+
+.calendario-image {
+  display: block;
+  max-width: 40%;
+  height: auto;
+  margin: 0 auto 3rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+}
+
+/* Container de palestras */
+.palestras-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem 3rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+/* Card de palestra */
+.palestra-card {
+  background: var(--light-gray);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--box-shadow);
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+  border-left: 3px solid darkred;
+}
+
+.palestra-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.palestra-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-bottom: 3px solid var(--primary-color);
+}
+
+.palestra-content {
+  padding: 1.5rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.palestra-title {
+  color: var(--primary-color);
+  margin: 0 0 1rem;
+  font-size: 1.25rem;
+}
+
+.palestra-info {
+  margin: 0.5rem 0;
+  font-size: 0.95rem;
+}
+
+.palestra-highlight {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.palestra-description {
+  margin-top: 1rem !important;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--medium-gray);
+  font-style: italic;
+}
+
+/* Loading Animation */
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  width: 100%;
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid var(--medium-gray);
+  border-top: 5px solid var(--primary-color);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+  .palestras-container {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .calendario-title {
+    font-size: 2rem;
+    margin: 1.5rem 0;
+  }
+
+  .calendario-image {
+    max-width: 70%;
+  }
+
+  .palestras-container {
+    padding: 0 1.5rem 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .calendario-title {
+    font-size: 1.75rem;
+    margin: 1rem 0;
+  }
+
+  .calendario-image {
+    max-width: 90%;
+  }
+
+  .palestras-container {
+    grid-template-columns: 1fr;
+    padding: 0 1rem 2rem;
+  }
+
+  .palestra-image {
+    height: 180px;
+  }
+}

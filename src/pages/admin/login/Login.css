@@ -9,13 +9,18 @@
   }
 }
 
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
 body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Container principal com fundo animado e centralizado */
+/* Container principal */
 .login-container {
   display: flex;
   justify-content: center;
@@ -41,6 +46,17 @@ body {
   animation: fadeIn 1s ease-in-out;
 }
 
+/* Mensagem de erro */
+.login-error {
+  background-color: #ffebee;
+  color: #c62828;
+  padding: 0.8rem;
+  border-radius: 6px;
+  border-left: 4px solid #c62828;
+  font-size: 0.9rem;
+  animation: fadeIn 0.3s ease-out;
+}
+
 /* Título */
 .login-title {
   text-align: center;
@@ -61,6 +77,11 @@ body {
   background-color: #f9f9f9;
 }
 
+.login-input:disabled {
+  background-color: #eee;
+  cursor: not-allowed;
+}
+
 .login-input:focus {
   border-color: #007bff;
   box-shadow: 0 0 0 3px #007bff33;
@@ -78,12 +99,31 @@ body {
   cursor: pointer;
   transition: all 0.3s ease;
   transform: scale(1);
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.login-button:hover {
+.login-button:hover:not(:disabled) {
   background-color: #785acd;
   transform: scale(1.05);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.login-button:disabled {
+  background-color: #666;
+  cursor: wait;
+}
+
+/* Spinner de carregamento */
+.login-spinner {
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 1s ease-in-out infinite;
 }
 
 /* Responsividade */

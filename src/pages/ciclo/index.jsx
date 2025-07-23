@@ -1,7 +1,6 @@
 import './ciclo.css';
 import Header from '../header';
 import Footer from '../footer/footer';
-import Imagem1 from '../../images/fotos ciclo/ciclo.png';
 import { Link } from 'react-router-dom';
 
 function Ciclo() {
@@ -10,23 +9,26 @@ function Ciclo() {
             <Header />
             <div className="ciclo-container">
                 <div className='ciclo-content'>
-                    <h1 className='cabecalho'>Ciclo de Palestras</h1>
+                    <h1 className='cabecalho'>Ciclo de Palestras sobre Longevidade Ativa</h1>
                     <p className='paragrafociclo'>
-                        O Ciclo de Palestras, do Programa Longevidade Ativa da Prefeitura Municipal de São José, acontece neste ano de 2025, quinzenalmente nas sextas-feiras de cada mês, com convidados especiais.
-                        O objetivo do Ciclo de Palestras é orientar e informar sobre longevidade, inspirando as pessoas idosas numa jornada de bem-estar para uma vida plena e saudável.
+                        O Programa Longevidade Ativa da Prefeitura Municipal de São José promove em 2025 um ciclo de palestras quinzenais sobre envelhecimento saudável. Realizadas às sextas-feiras, estas sessões trazem especialistas para compartilhar conhecimentos e práticas para uma vida plena na terceira idade.
                     </p>
-                    <p className='local'>Local: Centro de Atenção à Terceira Idade (CATI)</p>
+                    <p className='paragrafociclo'>
+                        Cada encontro aborda temas essenciais como saúde física, bem-estar emocional, planejamento financeiro e manutenção de relações sociais, sempre com base em evidências científicas e abordagens práticas.
+                    </p>
+                    <p className='local'>
+                        <span>📍</span> Centro de Atenção à Terceira Idade (CATI) - Av. das Palmeiras, 500
+                    </p>
                     
                     <div className="nav-buttons">
                         <p className='inscricao'>
-                            <Link to="/ciclo/inscricoes">Inscrições</Link>
+                            <Link to="/ciclo/inscricoes">Inscreva-se</Link>
                         </p>
                         <p className='calendario'>
-                            <Link to="/calendario">Calendário</Link>
+                            <Link to="/calendario">Ver Calendário</Link>
                         </p>
                     </div>
                 </div>
-                <img src={Imagem1} alt="Imagem do Ciclo de Palestras" className='imgciclo'/>
             </div>
             <Footer />
         </>

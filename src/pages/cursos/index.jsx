@@ -89,7 +89,7 @@ function Cursos() {
               <article key={curso.id} className="curso-card">
                 <div className="curso-image-container">
                   <img src={curso.imagem} alt={curso.titulo} className="curso-image" />
-                  <div className="curso-status ativo ">Realizado</div>
+                  <div className="curso-status realizado">Realizado</div>
                 </div>
                 <div className="curso-content">
                   <h3 className="curso-title">{curso.titulo}</h3>

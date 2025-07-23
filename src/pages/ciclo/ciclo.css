@@ -1,176 +1,117 @@
-/* Variáveis de cores e tipografia */
-:root {
-  --primary-color: #2c3e50;
-  --secondary-color: #3498db;
-  --accent-color: #e74c3c;
-  --light-color: #ecf0f1;
-  --dark-color: #2c3e50;
-  --text-color: #333;
-  --text-light: #7f8c8d;
-  --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  --font-heading: 'Montserrat', sans-serif;
-  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  --transition: all 0.3s ease;
-}
-
-/* Reset e estilos base */
-* {
+/* Reset básico */
+.ciclo-container * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-body {
-  font-family: var(--font-main);
-  line-height: 1.6;
-  color: var(--text-color);
-  background-color: #f9f9f9;
-}
-
-/* Container principal */
+/* Estrutura principal */
 .ciclo-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem;
+  min-height: 100vh;
+  background-color: var(--bg-light);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--text-primary);
+  padding: var(--space-unit);
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
+/* Container de conteúdo */
+.ciclo-content {
+  max-width: 800px;
+  width: 100%;
+  margin: 2rem auto;
+  padding: 3rem;
+  background: white;
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  border-left: 3px solid darkred;
+}
+
+/* Tipografia */
 .cabecalho {
-  font-family: var(--font-heading);
   font-size: 2.5rem;
+  font-weight: 600;
   color: var(--primary-color);
-  text-align: center;
   margin-bottom: 1.5rem;
-  position: relative;
-  padding-bottom: 0.5rem;
-}
-
-.cabecalho::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100px;
-  height: 3px;
-  background-color: var(--accent-color);
+  line-height: 1.3;
 }
 
 .paragrafociclo {
   font-size: 1.1rem;
   line-height: 1.8;
-  color: var(--text-color);
   margin-bottom: 1.5rem;
-  text-align: center;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0 1rem;
+  color: var(--text-primary);
 }
 
 .local {
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: darkred; /* Azul mais escuro para melhor contraste */
-  text-align: center;
-  margin: 1.5rem 0;
-  font-style: italic;
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-/* Botões de navegação */
+/* Navegação */
 .nav-buttons {
   display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-  margin: 2rem 0;
+  gap: 1rem;
+  margin-top: 2rem;
 }
 
-.inscricao, .calendario {
+.inscricao a, 
+.calendario a {
   display: inline-block;
-}
-
-.inscricao a, .calendario a {
-  display: inline-block;
-  padding: 0.8rem 2rem;
-  background-color: #2980b9; /* Azul mais escuro */
-  color: white;
+  padding: 0.8rem 1.8rem;
+  font-size: 1rem;
+  font-weight: 500;
   text-decoration: none;
-  border-radius: 50px;
-  font-weight: 600;
-  transition: var(--transition);
-  box-shadow: var(--box-shadow);
-  text-transform: uppercase;
-  font-size: 0.9rem;
-  letter-spacing: 1px;
+  border-radius: var(--border-radius);
+  transition: all 0.2s ease;
 }
 
+/* Estilo com darkred */
 .inscricao a {
-  background-color: darkred; 
+  background-color: darkred;
+  color: white;
 }
 
 .calendario a {
-  background-color: darkred; 
+  border: 2px solid darkred;
+  color: darkred;
 }
 
-.inscricao a:hover, .calendario a:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-}
-
+/* Hover */
 .inscricao a:hover {
-  background-color: rgb(168, 12, 12);
+  background-color: #a80000;
 }
 
 .calendario a:hover {
-  background-color: rgb(168, 12, 12); 
+  background-color: rgba(139, 0, 0, 0.08);
 }
 
-.imgciclo {
-  display: block;
-  width: 100%;
-  max-width: 800px;
-  height: auto;
-  margin: 2rem auto;
-  border-radius: 8px;
-  box-shadow: var(--box-shadow);
-  transition: var(--transition);
-}
-
-.imgciclo:hover {
-  transform: scale(1.02);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
+/* Responsividade */
 @media (max-width: 768px) {
+  .ciclo-content {
+    padding: 2rem;
+  }
+
   .cabecalho {
     font-size: 2rem;
-  }
-  
-  .paragrafociclo {
-    font-size: 1rem;
-    padding: 0;
-  }
-  
-  .nav-buttons {
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-  }
-  
-  .inscricao a, .calendario a {
-    padding: 0.7rem 1.5rem;
-    width: 200px;
-    text-align: center;
   }
 }
 
 @media (max-width: 480px) {
-  .ciclo-container {
-    padding: 1rem;
+  .ciclo-content {
+    padding: 1.5rem;
+    margin: 1rem auto;
   }
-  
+
+  .nav-buttons {
+    flex-direction: column;
+  }
+
   .cabecalho {
     font-size: 1.8rem;
   }

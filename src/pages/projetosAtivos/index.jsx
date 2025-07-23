@@ -3,6 +3,10 @@ import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import styles from './ProjetosAtivos.module.css';
 import Header from '../header/index.jsx';
 import Footer from '../footer/footer';
+import ciclo from '../../images/pagina inicial/ciclo.jpg';
+import inclusaoidosos from '../../images/pagina inicial/inclusao.png';
+import idtodos from '../../images/pagina inicial/idtodosfi.jpeg';
+import bemEstar from '../../images/pagina inicial/bemEstar.jpeg';
 
 const ProjetosAtivos = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -11,25 +15,25 @@ const ProjetosAtivos = () => {
         {
             title: "Inclusão Digital para Idosos",
             description: "Capacita pessoas da terceira idade para o uso de tecnologias, promovendo autonomia e conexão com o mundo digital.",
-            icon: "👵🏽💻",
+            image: inclusaoidosos,
             link: '/idbasico'
         },
         {
             title: "Ciclo de Palestras",
             description: "Estimula o diálogo e a reflexão sobre temas relevantes da atualidade, trazendo especialistas para debates enriquecedores.",
-            icon: "🎤🧠",
+            image: ciclo,
             link: '/ciclo'
         },
         {
             title: "Projeto ILPI",
             description: "Voltado ao cuidado e à conectividade de idosos em instituições de longa permanência, melhorando sua qualidade de vida.",
-            icon: "🏥❤️",
+            image: bemEstar,
             link: '/ilpi'
         },
         {
             title: "Oficinas de Inclusão Digital Intermediárias",
             description: "Aprofunda habilidades digitais já adquiridas, permitindo maior domínio tecnológico e oportunidades.",
-            icon: "📱🚀",
+            image: idtodos,
             link: '/idintermediario'
         },
     ];
@@ -57,7 +61,6 @@ const ProjetosAtivos = () => {
         <>
             <Header />
             <main className={styles.container}>
-
                 <section className={styles.hero}>
                     <div className={styles.heroContent}>
                         <h1 className={styles.heroTitle}>Nossos Projetos Ativos</h1>
@@ -90,7 +93,7 @@ const ProjetosAtivos = () => {
                                         <ProjectCard
                                             title={project.title}
                                             description={project.description}
-                                            icon={project.icon}
+                                            image={project.image}
                                         />
                                     </a>
                                 </div>
@@ -115,10 +118,10 @@ const ProjetosAtivos = () => {
     );
 };
 
-const ProjectCard = ({ title, description, icon }) => (
+const ProjectCard = ({ title, description, image }) => (
     <div className={styles.projectCard}>
         <div className={styles.projectImage}>
-            <div className={styles.iconWrapper}>{icon}</div>
+            <img src={image} alt={title} />
         </div>
         <div className={styles.projectContent}>
             <h3>{title}</h3>

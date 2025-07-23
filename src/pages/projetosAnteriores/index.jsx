@@ -37,12 +37,12 @@ function ProjetosAnteriores() {
           <div className="pa-grid">
             <div className="pa-card pa-scroll-reveal">
               <div className="pa-content">
-                <h3 className="pa-card-title">Inclusão Digital para Todos</h3>
+                <h3 className="pa-card-title">ID para Todos</h3>
                 <p className="pa-card-description">
                   Iniciativa de inclusão digital que ofereceu palestras e oficinas para pessoas idosas, ensinando o uso básico do celular e de ferramentas digitais do dia a dia, 
                   promovendo autonomia e participação ativa na sociedade conectada.
                 </p>
-                <a href="#" className="pa-link">Saiba mais</a>
+                <a href="/projetos-anteriores/id-todos" className="pa-link">Saiba mais</a>
               </div>
             </div>
             
@@ -53,7 +53,7 @@ function ProjetosAnteriores() {
                   Iniciativa de preservação ambiental voltada à conscientização sobre a importância da conservação dos oceanos e da vida marinha, 
                   por meio de atividades educativas e mobilizações comunitárias.
                 </p>
-                <a href="#" className="pa-link">Saiba mais</a>
+                <a href="/projetos-anteriores/golfinho" className="pa-link">Saiba mais</a>
               </div>
             </div>
             
@@ -64,7 +64,7 @@ function ProjetosAnteriores() {
                   Programa de apoio emocional e psicológico criado durante a pandemia, com foco no acolhimento e 
                   acompanhamento de famílias em momentos de fragilidade social e emocional.
                 </p>
-                <a href="#" className="pa-link">Saiba mais</a>
+                <a href="/projetos-anteriores/afetar-com-afeto" className="pa-link">Saiba mais</a>
               </div>
             </div>
           </div>

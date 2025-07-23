@@ -1,0 +1,300 @@
+
+
+/* Estilos base */
+.golfinho-page {
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  line-height: 1.7;
+  color: var(--text-color);
+  background-color: var(--light-gray);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.golfinho-main {
+  flex: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 2rem 1.5rem;
+}
+
+/* Hero Section */
+.golfinho-hero {
+  background: var(--primary-color);
+  color: white;
+  padding: 6rem 2rem;
+  text-align: center;
+  margin-bottom: 4rem;
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--border-radius);
+}
+
+.golfinho-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 75% 50%, rgba(0, 180, 216, 0.15), transparent 70%);
+  z-index: 0;
+}
+
+.golfinho-hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.golfinho-title {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  color: var(--white);
+  font-weight: 800;
+  line-height: 1.2;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.golfinho-subtitle {
+  font-size: 1.3rem;
+  margin: 0 auto;
+  opacity: 0.9;
+  font-weight: 400;
+}
+
+/* Content Sections */
+.golfinho-section {
+  background-color: var(--white);
+  border-radius: var(--border-radius);
+  padding: 3rem;
+  margin-bottom: 3rem;
+  box-shadow: var(--box-shadow);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.golfinho-section::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--accent-color), var(--primary-light));
+}
+
+.golfinho-section-title {
+  color: var(--primary-color);
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  font-weight: 700;
+  position: relative;
+  display: inline-block;
+}
+
+.golfinho-section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 60px;
+  height: 4px;
+  background-color: var(--accent-color);
+  border-radius: 2px;
+}
+
+.section-text {
+  margin-bottom: 1.8rem;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--text-color);
+}
+
+.section-highlight {
+  color: var(--primary-color);
+  font-weight: 600;
+  position: relative;
+}
+
+.section-highlight::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--accent-color);
+  opacity: 0.5;
+  transition: var(--transition);
+}
+
+.section-highlight:hover::after {
+  opacity: 1;
+  bottom: -4px;
+  height: 4px;
+}
+
+/* List Styles */
+.golfinho-list {
+  margin: 2rem 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+.golfinho-list li {
+  margin-bottom: 1.2rem;
+  position: relative;
+  padding-left: 2rem;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.golfinho-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: 12px;
+  height: 12px;
+  background-color: var(--accent-color);
+  border-radius: 50%;
+  transform: scale(1);
+  transition: var(--transition);
+}
+
+.golfinho-list li:hover::before {
+  transform: scale(1.3);
+}
+
+/* Stats Section */
+.golfinho-stats {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin: 3rem 0;
+}
+
+.stat-card {
+  background: var(--primary-color);
+  color: var(--white);
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  text-align: center;
+  min-width: 220px;
+  box-shadow: var(--box-shadow);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  transform: scale(0);
+  transition: var(--transition);
+}
+
+.stat-card:hover {
+  transform: translateY(-8px);
+}
+
+.stat-card:hover::before {
+  transform: scale(1);
+}
+
+.stat-number {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  position: relative;
+  color: white;
+  z-index: 1;
+}
+
+.stat-label {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  position: relative;
+  z-index: 1;
+  color: white;
+}
+
+/* Wave Divider */
+.wave-divider {
+  position: relative;
+  height: 60px;
+  overflow: hidden;
+  margin: 4rem 0;
+}
+
+.wave-divider svg {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+  .golfinho-hero {
+    padding: 5rem 2rem;
+  }
+  
+  .golfinho-title {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .golfinho-hero {
+    padding: 4rem 1.5rem;
+    clip-path: ellipse(120% 100% at 50% 0%);
+  }
+
+  .golfinho-title {
+    font-size: 2.2rem;
+  }
+
+  .golfinho-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .golfinho-section {
+    padding: 2rem;
+  }
+
+  .golfinho-section-title {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .golfinho-hero {
+    padding: 3rem 1rem;
+    clip-path: ellipse(140% 100% at 50% 0%);
+  }
+
+  .golfinho-title {
+    font-size: 2rem;
+  }
+
+  .golfinho-section-title {
+    font-size: 1.6rem;
+  }
+
+  .stat-card {
+    width: 100%;
+    min-width: auto;
+  }
+}
