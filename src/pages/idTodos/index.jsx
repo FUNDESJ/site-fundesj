@@ -62,7 +62,7 @@ export default function IdTodos() {
                 <section className="inclusao-section">
                     <h2 className="id-section-title">Resultados e Continuidade</h2>
                     <p className="section-text">
-                        Desde sua criação, o projeto já beneficiou centenas de cidadãos em diversos bairros de São José. A alta demanda evidencia a importância de expandir a iniciativa com novas turmas, conteúdos atualizados e parcerias que fortaleçam a inclusão digital como política pública permanente.
+                        Desde sua criação, o projeto já beneficiou centenas de cidadãos em diversos bairros de São José. A alta demanda evidencia a importância de expandir a iniciativa com novas turmas, conteúdos atualizados e parcerias que fortaleçam a inclusão digital parar pessoas da terceira idade.
                     </p>
                 </section>
             </main>
