@@ -7,7 +7,7 @@ import ciclo from '../../images/pagina inicial/ciclo.jpg';
 import inclusaoidosos from '../../images/pagina inicial/inclusao.png';
 import idtodos from '../../images/pagina inicial/idtodosfi.jpeg';
 import bemEstar from '../../images/pagina inicial/bemEstar.jpeg';
-
+//corrigindo erro
 const ProjetosAtivos = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const carosselRef = useRef(null);
