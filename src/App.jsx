@@ -5,7 +5,6 @@ import Programas from './pages/programas/index.jsx';
 import ProjetosAnteriores from './pages/projetosAnteriores/index.jsx';
 import Cursos from './pages/cursos/index.jsx';
 import Home from './pages/home/index.jsx';
-import Eventos from './pages/eventos/index.jsx';
 import Certificados from './pages/certificados/index.jsx';
 import Noticias from './pages/noticias/index.jsx';
 import USJ from './pages/usj/index.jsx';
@@ -47,7 +46,6 @@ function App() {
         <Route path='/programas' element={<Programas />} />
         <Route path='/projetos-anteriores' element={<ProjetosAnteriores />} />
         <Route path='/cursos' element={<Cursos />} />
-        <Route path='/eventos' element={<Eventos />} />
         <Route path='/validador' element={<Certificados />} />
         <Route path='/noticias' element={<Noticias />} />
         <Route path='/usj/*' element={<USJ />} />
