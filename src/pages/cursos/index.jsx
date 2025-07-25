@@ -69,7 +69,7 @@ function Cursos() {
               <div className="ativo-image-container">
                 
                 <img src={curso.imagem} alt={curso.titulo} className="ativo-image" />
-                  <div className="curso-status realizado">Em Andamento</div>
+                  <div className="curso-status ativo">Em Andamento</div>
               </div>
               <div className="ativo-content">
                 <h3 className="ativo-title">{curso.titulo}</h3>

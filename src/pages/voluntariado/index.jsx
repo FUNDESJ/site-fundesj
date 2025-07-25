@@ -168,10 +168,10 @@ export default function Voluntariado() {
                 <section className="methodology-section">
                     <div className="section-content">
                         <h2 className="section-title">Metodologia</h2>
-                        <p className="section-text">
+                        <p className="voluntario-section-text">
                             Os encontros incluem atividades lúdicas e foram pensados para explorar diferentes dimensões do ser humano, fortalecendo não apenas a importância do voluntariado, mas também as normas e diretrizes que orientam a ação.
                         </p>
-                        <p className="section-text">
+                        <p className="voluntario-section-text">
                             Esta série de encontros é uma oportunidade para aprofundar o autoconhecimento e aprimorar as relações interpessoais, contribuindo para um ambiente de cuidado, respeito e solidariedade, fundamental para o apoio às mães e crianças que enfrentam desafios tão delicados.
                         </p>
                     </div>

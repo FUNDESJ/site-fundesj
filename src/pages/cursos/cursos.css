@@ -150,12 +150,12 @@
   letter-spacing: 0.5px;
 }
 
-.curso-status.realizado {
+.curso-status.ativo {
   background-color: var(--light-gray);
   color: var(--text-color);
 }
 
-.curso-status.ativo {
+.curso-status.realizado {
   background-color: var(--primary-color);
   color: white;
 }
