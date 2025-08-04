@@ -17,7 +17,7 @@ function Ciclo() {
                         Cada encontro aborda temas essenciais como saúde física, bem-estar emocional, planejamento financeiro e manutenção de relações sociais, sempre com base em evidências científicas e abordagens práticas.
                     </p>
                     <p className='local'>
-                        <span>📍</span> Centro de Atenção à Terceira Idade (CATI) - Av. das Palmeiras, 500
+                        <span>📍</span> Centro de Atenção à Terceira Idade (CATI) - Av. Acioni Souza Filho, s/n - Praia Comprida, São José - SC
                     </p>
                     
                     <div className="nav-buttons">

@@ -106,7 +106,7 @@ function Cursos() {
           <div className="estrutura-content">
             <h2 className="estrutura-title">Estrutura e Propósito</h2>
             <p className="estrutura-text">
-              Os cursos ofertados pela FUNDESJ refletem o compromisso com a formação contínua, a inovação pedagógica e o fortalecimento das competências profissionais. As edições anteriores atenderam temáticas emergentes e específicas, enquanto o curso NEF – Educação Continuada representa a consolidação de uma política educacional voltada ao desenvolvimento permanente de agentes públicos.
+              Os cursos ofertados pela FUNDESJ refletem o compromisso com a formação continuada, a inovação pedagógica e o fortalecimento das competências profissionais. As edições anteriores atenderam temáticas emergentes e específicas, enquanto o curso NEF – Educação Continuada representa a consolidação de uma política educacional voltada ao desenvolvimento permanente de agentes públicos.
             </p>
           </div>
         </section>

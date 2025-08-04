@@ -12,7 +12,6 @@ import Imagem8 from '../../images/fotos parceiros/NATURAÇÃO.png'
 import Imagem9 from '../../images/fotos parceiros/UFSC_NETI.png'
 import Imagem10 from '../../images/fotos parceiros/OAB.png'
 import Imagem11 from '../../images/fotos parceiros/SENAC.png'
-import Imagem12 from '../../images/fotos parceiros/STYLUS.png'
 import Imagem13 from '../../images/fotos parceiros/UNICESUMAR.png'
 import Imagem14 from '../../images/fotos parceiros/UNIVALI.png'
 import Imagem15 from '../../images/fotos parceiros/BB.png'
@@ -53,9 +52,6 @@ function Parceiros() {
                 </a>
                 <a href="https://portal.sc.senac.br/portal/novo/" target='_blank' rel='noopener noreferrer'>
                     <img src={Imagem11} alt="img Senac" className='imgparceiros'/>
-                </a>
-                <a href="https://www.instagram.com/stylus.contabilidade" target='_blank' rel='noopener noreferrer'>
-                    <img src={Imagem12} alt="img Stylus" className='imgparceiros'/>
                 </a>
                 <a href="https://www.unicesumar.edu.br/" target='_blank' rel='noopener noreferrer'>
                     <img src={Imagem13} alt="img Unicesumar" className='imgparceiros'/>

@@ -10,12 +10,7 @@ function Equipe() {
       email: "superintendente@fundesj.com.br",
       category: "leadership"
     },
-    {
-      name: "Gilmara Vieira Bastos",
-      position: "Superintendente Adjunta",
-      email: "sup.adjunta@fundesj.com.br",
-      category: "leadership"
-    },
+    
     {
       name: "Eloisa Vieira Müller",
       position: "Recursos Humanos",
@@ -33,12 +28,6 @@ function Equipe() {
       position: "Diretora Administrativo-Financeira",
       email: "dir.administrativo@fundesj.com.br",
       category: "finance"
-    },
-    {
-      name: "Paulo Henrique Hermes Vieira",
-      position: "Diretor de Planejamento",
-      email: "tecnologia@fundesj.com.br",
-      category: "planning"
     },
     {
       name: "Maria Luiza dos Santos",
@@ -72,12 +61,6 @@ function Equipe() {
     },
     {
       name: "Felipe Linhares Domingues",
-      position: "Universitário de Tecnologia",
-      email: "tecnologia@fundesj.com.br",
-      category: "technology"
-    },
-    {
-      name: "Henrique I. Generoso Panitz",
       position: "Universitário de Tecnologia",
       email: "tecnologia@fundesj.com.br",
       category: "technology"

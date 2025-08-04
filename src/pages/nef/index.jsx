@@ -28,7 +28,7 @@ const Nef = () => {
             <div className="nef-divider"></div>
 
             <p>
-              O <strong>Núcleo da Escola Federativa de São José (NEF)</strong>, coordenado pela <strong>Fundação Educacional de São José (FUNDESJ)</strong>, oferece capacitação contínua para servidores públicos e agentes políticos municipais. A proposta é aprimorar competências e fortalecer o serviço público na região.
+              O <strong>Núcleo da Escola Federativa(NEF)</strong>, coordenado pela <strong>Fundação Educacional de São José (FUNDESJ)</strong>, oferece capacitação contínua para servidores públicos e agentes políticos municipais. A proposta é aprimorar competências e fortalecer o serviço público na região.
             </p>
           </div>
         </section>

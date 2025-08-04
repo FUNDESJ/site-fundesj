@@ -145,10 +145,10 @@ const ImpactSection = () => (
                 </p>
             </div>
             <div className={styles.statsGrid}>
-                <StatItem number="1.000+" label="Pessoas diretamente impactadas" />
+                <StatItem number="3.000+" label="Pessoas impactadas" />
                 <StatItem number="2.000+" label="Horas de atividades educacionais" />
                 <StatItem number="15+" label="Parceiros institucionais" />
-                <StatItem number="100+" label="Oficinas e encontros" />
+                <StatItem number="500+" label="Oficinas e encontros" />
             </div>
         </div>
     </section>

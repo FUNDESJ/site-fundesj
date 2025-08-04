@@ -3,7 +3,6 @@
   font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
   line-height: 1.7;
   color: var(--text-color);
-  background-color: var(--light-gray);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
