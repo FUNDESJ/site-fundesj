@@ -60,6 +60,12 @@ function Equipe() {
       category: "technology"
     },
     {
+      name: "Davi José Verissimo de Campos",
+      position: "Universitário de Tecnologia",
+      email: "tecnologia@fundesj.com.br",
+      category: "technology"
+    },
+    {
       name: "Felipe Linhares Domingues",
       position: "Universitário de Tecnologia",
       email: "tecnologia@fundesj.com.br",
