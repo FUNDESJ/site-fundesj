@@ -19,9 +19,9 @@ function Home() {
         {
             id: 1,
             titulo: "Ciclo de Palestras",
-            descricao: "Ciclo de Palestra traz temas relevantes para a saúde e bem estar dos 60+, de 15 em 15 dias É realizada uma palestra com a participação de um especialista no tema abordado.", 
+            descricao: "Ciclo de Palestra traz temas relevantes para a saúde e bem estar dos 60+, de 15 em 15 dias É realizada uma palestra com a participação de um especialista no tema abordado.",
             foto: ciclo,
-            link: "./ciclo" 
+            link: "./ciclo"
         },
         {
             id: 2,
@@ -34,8 +34,8 @@ function Home() {
             id: 3,
             titulo: "Inclusão Digital Intermediário",
             descricao: "O Curso Inclusão Digital Intermediário oferece conhecimentos sobre as tecnologias atuais, com oficinas realizadas semanalmente no Centro de Atenção à Terceira Idade (CATI).",
-            foto: idtodos, 
-            link: "./idintermediario" 
+            foto: idtodos,
+            link: "./idintermediario"
         }
     ];
     const redesSociais = [
@@ -63,10 +63,9 @@ function Home() {
         <div className="home">
             <Header />
             <div className="hero">
-                {/* Agora o vídeo está dentro da .hero */}
                 <video
                     className="video-bg"
-                    src={background} // Usando o vídeo importado
+                    src={background} 
                     type="video/mp4"
                     autoPlay
                     loop
@@ -83,24 +82,24 @@ function Home() {
             </div>
 
             <div className="section-cards">
-               <a href="./programas"><div className="card">
+                <a href="./programas"><div className="card">
                     <i className="fas fa-sitemap"></i>
-                    <img src={Imagem1} alt="imagem Programas" className='programas'/>
+                    <img src={Imagem1} alt="imagem Programas" className='programas' />
                     <p>PROGRAMAS</p>
                 </div></a>
                 <a href="./projetos-ativos"><div className="card">
                     <i className="fas fa-file-alt"></i>
-                    <img src={Imagem4} alt="imagem Projetos" className='projetos'/>
+                    <img src={Imagem4} alt="imagem Projetos" className='projetos' />
                     <p>PROJETOS</p>
                 </div></a>
                 <a href="./cursos"><div className="card">
                     <i className="fas fa-book"></i>
-                    <img src={Imagem3} alt="imagem Cursos" className='cursos'/>
+                    <img src={Imagem3} alt="imagem Cursos" className='cursos' />
                     <p>CURSOS</p>
                 </div></a>
                 <a href="./validador"><div className="card">
                     <i className="fas fa-users"></i>
-                    <img src={Imagem2} alt="imagem Eventos" className='eventos'/>
+                    <img src={Imagem2} alt="imagem Eventos" className='eventos' />
                     <p>CERTIFICADOS</p>
                 </div></a>
             </div>
@@ -114,14 +113,17 @@ function Home() {
             <div className="cards-projetos">
                 {projetos.map((projeto) => (
                     <div className="card-projeto" key={projeto.id}>
-                        <img src={projeto.foto} alt={projeto.titulo} />
-                        <div className="card-body">
-                            <h3>{projeto.titulo}</h3>
-                            <p>{projeto.descricao}</p>
-                            <Link to={projeto.link} className="conheca-link">
+                        <Link to={projeto.link} className="conheca-link">
+                            <img src={projeto.foto} alt={projeto.titulo} />
+                            <div className="card-body">
+
+                                <h3>{projeto.titulo}</h3>
+                                <p>{projeto.descricao}</p>
+
                                 Conheça <span>&raquo;</span>
-                            </Link>
-                        </div>
+                            </div>
+                        </Link>
+
                     </div>
                 ))}
             </div>

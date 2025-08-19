@@ -1,5 +1,6 @@
 import Header from '../header/index.jsx';
 import Footer from '../footer/footer';
+import Image1 from '../../images/qr-code/qrcode-mec.png'
 import './usj.css';
 import { Link } from 'react-router-dom';
 
@@ -11,7 +12,7 @@ function USJ() {
       <div className="usj-qrcode-container">
       <a href="https://emec.mec.gov.br/emec/consulta-cadastro/detalhamento/d96957f455f6405d14c6542552b0f6eb/NDc1Ng==">
         <img 
-          src="https://fundesj.com.br/wp-content/uploads/2022/12/qrcode.png" 
+          src={Image1} 
           alt="QR Code para acesso rápido" 
           className='usj-qrcode' 
         />
