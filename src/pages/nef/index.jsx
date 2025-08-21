@@ -124,12 +124,12 @@ const Nef = () => {
           <div className="nef-contato-info">
             <div className="nef-contato-item">
               <div className="nef-contato-icon">📞</div>
-              <p><strong>Telefone:</strong> (48) 3381‑7465<br /><small>(atendimento das 13h às 19h)</small></p>
+              <p><strong>Telefone:</strong> (48) 3381-0010<br /><small>(atendimento das 13h às 19h)</small></p>
             </div>
 
             <div className="nef-contato-item">
               <div className="nef-contato-icon">💬</div>
-              <p><strong>WhatsApp:</strong> (48) 3381‑0009</p>
+              <p><strong>WhatsApp:</strong> (48) 99679-2332</p>
             </div>
 
             <div className="nef-contato-item">
