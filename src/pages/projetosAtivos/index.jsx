@@ -13,22 +13,16 @@ const ProjetosAtivos = () => {
     const carosselRef = useRef(null);
     const projects = [
         {
-            title: "Inclusão Digital para Idosos",
-            description: "Capacita pessoas da terceira idade para o uso de tecnologias, promovendo autonomia e conexão com o mundo digital.",
-            image: inclusaoidosos,
-            link: '/idbasico'
-        },
-        {
             title: "Ciclo de Palestras",
             description: "Estimula o diálogo e a reflexão sobre temas relevantes da atualidade, trazendo especialistas para debates enriquecedores.",
             image: ciclo,
             link: '/ciclo'
         },
         {
-            title: "Projeto ILPI",
-            description: "Voltado ao cuidado e à conectividade de idosos em instituições de longa permanência, melhorando sua qualidade de vida.",
-            image: bemEstar,
-            link: '/ilpi'
+            title: "Inclusão Digital para Idosos",
+            description: "Capacita pessoas da terceira idade para o uso de tecnologias, promovendo autonomia e conexão com o mundo digital.",
+            image: inclusaoidosos,
+            link: '/idbasico'
         },
         {
             title: "Oficinas de Inclusão Digital Intermediárias",
@@ -36,6 +30,13 @@ const ProjetosAtivos = () => {
             image: idtodos,
             link: '/idintermediario'
         },
+        {
+            title: "Projeto ILPI",
+            description: "Voltado ao cuidado e à conectividade de idosos em instituições de longa permanência, melhorando sua qualidade de vida.",
+            image: bemEstar,
+            link: '/ilpi'
+        },
+
     ];
 
     const cardWidth = 300;

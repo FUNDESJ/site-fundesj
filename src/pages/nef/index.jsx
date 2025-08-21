@@ -11,7 +11,6 @@ const Nef = () => {
       </Helmet>
       <Header />
       <div className="nef-container">
-        {/* Hero Section */}
         <section className="nef-hero-section">
           <div className="nef-hero-content">
             <h1 className="nef-hero-title">NEF – <span className="neuro-hero-highlight">Educação Continuada</span></h1>
@@ -21,7 +20,6 @@ const Nef = () => {
           <div className="nef-hero-overlay"></div>
         </section>
 
-        {/* About Section */}
         <section className="nef-about-section">
           <div className="nef-section-content">
             <h2 className="nef-section-title">Apresentação</h2>
@@ -78,7 +76,6 @@ const Nef = () => {
           </div>
         </section>
 
-        {/* Inscrição Section */}
         <section className="nef-inscricao-section">
           <div className="nef-section-header">
             <h2 className="nef-section-title">Como se inscrever</h2>
@@ -104,7 +101,6 @@ const Nef = () => {
           </div>
         </section>
 
-        {/* Certificação Section */}
         <section className="nef-certificacao-section">
           <div className="nef-section-header">
             <h2 className="nef-section-title">Certificação e reconhecimento</h2>
@@ -118,7 +114,6 @@ const Nef = () => {
           </div>
         </section>
 
-        {/* Dúvidas Section */}
         <section className="nef-duvidas-section">
           <div className="nef-section-header">
             <h2 className="nef-section-title">Dúvidas ou suporte</h2>
@@ -138,13 +133,12 @@ const Nef = () => {
             </div>
 
             <div className="nef-contato-item">
-              <div className="nef-contato-icon">📧</div>
-              <p><strong>E-mail:</strong> <a href="mailto:nef@fundesj.com.br">nef@fundesj.com.br</a></p>
+                <div className="nef-contato-icon">📧</div>
+                <p><strong>E-mail:</strong> <a href="mailto:tecnologia@fundesj.com.br" target="_blank">tecnologia@fundesj.com.br</a></p>
             </div>
           </div>
         </section>
 
-        {/* Links Úteis Section */}
         <section className="nef-links-section">
           <div className="nef-section-header">
             <h2 className="nef-section-title">Links úteis</h2>
@@ -156,8 +150,8 @@ const Nef = () => {
               Plataforma Escola Virtual.Gov
             </a>
 
-            <a href="mailto:nef@fundesj.com.br" className="nef-link-card">
-              Contato NEF – nef@fundesj.com.br
+            <a href="mailto:tecnologia@fundesj.com.br" className="nef-link-card">
+              Contato NEF – tecnologia@fundesj.com.br
             </a>
 
             <a href="https://www.fundesj.com.br" target="_blank" rel="noopener noreferrer" className="nef-link-card">

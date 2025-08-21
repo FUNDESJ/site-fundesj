@@ -15,6 +15,9 @@ import Imagem11 from '../../images/fotos parceiros/SENAC.png'
 import Imagem13 from '../../images/fotos parceiros/UNICESUMAR.png'
 import Imagem14 from '../../images/fotos parceiros/UNIVALI.png'
 import Imagem15 from '../../images/fotos parceiros/BB.png'
+import Imagem16 from '../../images/fotos parceiros/ela.png'
+import Imagem17 from '../../images/fotos parceiros/redeFemininaContraCancer.png'
+import Imagem18 from '../../images/fotos parceiros/funiber.png'
 function Parceiros() {
     return (
         <>
@@ -62,6 +65,16 @@ function Parceiros() {
                 <a href="https://www.bb.com.br/site/" target='_blank' rel='noopener noreferrer'>
                     <img src={Imagem15} alt="img BB" className='imgparceiros'/>
                 </a>
+                <a href="https://www.institutoela.org.br/" target='_blank' rel='noopener noreferrer'>
+                    <img src={Imagem16} alt="img ELA" className='imgparceiros'/>
+                </a>
+                <a href="https://redefemininasc.com.br/" target='_blank' rel='noopener noreferrer'>
+                    <img src={Imagem17} alt="img Rede feminina de combate ao cancer" className='imgparceiros'/>
+                </a>
+                <a href="https://www.funiber.org.br/" target='_blank' rel='noopener noreferrer'>
+                    <img src={Imagem18} alt="img funiber" className='imgparceiros'/>
+                </a>
+                
             </div>
             <Footer />
         </>

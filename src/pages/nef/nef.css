@@ -166,6 +166,7 @@
 .nef-curso-link:hover {
   background: var(--nef-primary-light);
   transform: translateY(-3px);
+  color: white;
 }
 
 /* Inscrição Section */

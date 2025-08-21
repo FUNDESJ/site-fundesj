@@ -15,10 +15,10 @@ export default function LongevidadeAtiva() {
   const atividades = [
     {
       id: 1,
-      nome: "Ciclo de Palestras",
-      imagem: ciclo,
-      descricao: "Palestras quinzenais sobre saúde e bem-estar para a terceira idade",
-      link: "./ciclo" 
+      nome: "Bem-Estar e Conectividade",
+      imagem: bemEstar,
+      descricao: "Atividades físicas e sociais para idosos",
+      link: '/ilpi'
     },
     {
       id: 2,
@@ -29,18 +29,18 @@ export default function LongevidadeAtiva() {
     },
     {
       id: 3,
+      nome: "Ciclo de Palestras",
+      imagem: ciclo,
+      descricao: "Palestras quinzenais sobre saúde e bem-estar para a terceira idade",
+      link: "./ciclo"
+    },
+    {
+      id: 4,
       nome: "Inclusão Digital Intermediário",
       imagem: idtodos,
       descricao: "Curso avançado de ferramentas digitais",
       link: "./idintermediario"
     },
-    {
-      id: 4,
-      nome: "Bem-Estar e Conectividade",
-      imagem: bemEstar,
-      descricao: "Atividades físicas e sociais para idosos",
-      link: '/ilpi'
-    }
   ];
 
   const scrollCarousel = (direction) => {
@@ -87,15 +87,15 @@ export default function LongevidadeAtiva() {
                 {atividades.map((atividade) => (
                   <div key={atividade.id} className="atividade-card">
                     <div className="atividade-icon">
-                     <a href={atividade.link}>
-                      <img
-                        src={atividade.imagem}
-                        alt={atividade.nome}
-                        loading="lazy"
-                      />
-                      <div className="atividade-hover-text">
-                        Saiba mais
-                      </div>
+                      <a href={atividade.link}>
+                        <img
+                          src={atividade.imagem}
+                          alt={atividade.nome}
+                          loading="lazy"
+                        />
+                        <div className="atividade-hover-text">
+                          Saiba mais
+                        </div>
                       </a>
                     </div>
                     <span className="atividade-item">{atividade.nome}</span>
