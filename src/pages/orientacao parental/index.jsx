@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet';
 import Header from '../header';
 import Footer from '../footer/footer';
 import './orientacao.css';
+import Image1 from '../../images/fotos cursos/rodrigo-sartorio.png';
 
 const Neurodiversidade = () => {
     return (
@@ -95,7 +96,6 @@ const Neurodiversidade = () => {
                     </div>
                 </section>
 
-                {/* Schedule Section */}
                 <section className="neuro-section">
                     <div className="neuro-section-header">
                         <h2 className="neuro-section-title">Data e Local do Evento</h2>
@@ -125,7 +125,11 @@ const Neurodiversidade = () => {
 
                     <div className="neuro-facilitators-grid">
                         <div className="neuro-facilitator-card">
-                            <div className="neuro-facilitator-photo"></div>
+                            <div className="neuro-facilitator-photo">
+                                <img src={Image1} alt="Foto Dr Rodrigo Sartório"
+                                    className="neuro-facilitator-img"
+                                />
+                            </div>
                             <div className="neuro-facilitator-info">
                                 <h3 className="neuro-facilitator-name">DR. RODRIGO SARTÓRIO</h3>
                                 <ul className="neuro-facilitator-bio">
@@ -146,7 +150,7 @@ const Neurodiversidade = () => {
                 <div className='centraliza-secao'>
                     <section className="neuro-cta-section">
                         <h2 className="neuro-cta-title">Construindo uma educação mais inclusiva e acolhedora</h2>
-                        <p className="neuro-cta-text">Junte-se a nós nesta jornada de capacitação em neurodiversidade</p>        
+                        <p className="neuro-cta-text">Junte-se a nós nesta jornada de capacitação em neurodiversidade</p>
                     </section>
                 </div>
             </div>

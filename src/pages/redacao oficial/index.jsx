@@ -144,7 +144,9 @@ const RedacaoOficial = () => {
 
                     <div className="ro-facilitators-grid">
                         <div className="ro-facilitator-card">
-                            <div className="ro-facilitator-photo"></div>
+                            <div className="ro-facilitator-photo">
+                                <img src="https://e4n4itr6emt.exactdn.com/wp-content/uploads/2025/06/thumbnail_Escritora-Ana-Kelly-Brustolin-lanca-livro-na-Fundacao-Cultural-BADESC-em-Florianopolis.-credito-divulgacao.jpg?strip=all&lossy=1&ssl=1" alt="ANA KELLY BORBA" className='ro-facilitator-img'/>
+                            </div>
                             <div className="ro-facilitator-info">
                                 <h3 className="ro-facilitator-name">ANA KELLY BORBA DA SILVA BRUSTOLIN</h3>
                                 <ul className="ro-facilitator-bio">

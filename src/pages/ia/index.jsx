@@ -2,7 +2,9 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import Header from '../header';
 import Footer from '../footer/footer';
+import Image1 from '../../images/fotos cursos/renata-caldas.png'
 import './ia.css'
+
 const IntelienciaArtificial = () => {
     return (
         <>
@@ -12,7 +14,6 @@ const IntelienciaArtificial = () => {
             </Helmet>
 
             <div className="ia-course-container">
-                {/* Hero Section */}
                 <section className="ia-hero-section">
                     <div className="ia-hero-content">
                         <h1 className="ia-hero-title">Potencialidades das <span className="ia-hero-highlight">IAs no Serviço Público</span></h1>
@@ -22,7 +23,6 @@ const IntelienciaArtificial = () => {
                     <div className="ia-hero-overlay"></div>
                 </section>
 
-                {/* Introduction Section */}
                 <section className="ia-section">
                     <div className="ia-section-header">
                         <h2 className="ia-section-title">Apresentação</h2>
@@ -42,7 +42,6 @@ const IntelienciaArtificial = () => {
                     </div>
                 </section>
 
-                {/* Program Section */}
                 <section className="ia-section">
                     <div className="ia-section-header">
                         <h2 className="ia-section-title">Programação</h2>
@@ -74,7 +73,6 @@ const IntelienciaArtificial = () => {
                     </div>
                 </section>
 
-                {/* Schedule Section */}
                 <section className="ia-section">
                     <div className="ia-section-header">
                         <h2 className="ia-section-title">Data e Local</h2>
@@ -104,7 +102,6 @@ const IntelienciaArtificial = () => {
                     </div>
                 </section>
 
-                {/* Facilitators Section */}
                 <section className="ia-section">
                     <div className="ia-section-header">
                         <h2 className="ia-section-title">Facilitadoras</h2>
@@ -113,7 +110,13 @@ const IntelienciaArtificial = () => {
 
                     <div className="ia-facilitators-grid">
                         <div className="ia-facilitator-card">
-                            <div className="ia-facilitator-photo"></div>
+                            <div className="ia-facilitator-photo">
+                                <img 
+                                    src="https://static.wixstatic.com/media/48ffd1_bf6acff7731345a4b5645a273f0583a7~mv2.jpg/v1/fill/w_640,h_406,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/48ffd1_bf6acff7731345a4b5645a273f0583a7~mv2.jpg" 
+                                    alt="Jeciane Golinhaki" 
+                                    className="ia-facilitator-img"
+                                />
+                            </div>
                             <div className="ia-facilitator-info">
                                 <h3 className="ia-facilitator-name">Jeciane Golinhaki</h3>
                                 <ul className="ia-facilitator-bio">
@@ -126,7 +129,13 @@ const IntelienciaArtificial = () => {
                         </div>
 
                         <div className="ia-facilitator-card">
-                            <div className="ia-facilitator-photo"></div>
+                            <div className="ia-facilitator-photo">
+                                <img 
+                                    src={Image1}
+                                    alt="Renata Caldas" 
+                                    className="ia-facilitator-img"
+                                />
+                            </div>
                             <div className="ia-facilitator-info">
                                 <h3 className="ia-facilitator-name">Renata Caldas</h3>
                                 <ul className="ia-facilitator-bio">

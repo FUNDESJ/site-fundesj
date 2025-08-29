@@ -194,7 +194,7 @@
   margin-bottom: 0.5rem;
 }
 
-/* Facilitators Section */
+/* Facilitators Section - FOTOS CORRIGIDAS (EM CIMA DO CARD) */
 .ia-facilitators-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -209,36 +209,42 @@
   box-shadow: var(--box-shadow);
   overflow: hidden;
   display: flex;
+  flex-direction: column;
 }
 
 .ia-facilitator-photo {
-  min-width: 120px;
-  background: var(--light-gray);
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23800020"><path d="M12 4a4 4 0 014 4 4 4 0 01-4 4 4 4 0 01-4-4 4 4 0 014-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4z"/></svg>');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 50%;
+  width: 100%;
+  height: 280px;
+  overflow: hidden;
+}
+
+.ia-facilitator-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .ia-facilitator-info {
   padding: 1.5rem;
-  flex: 1;
 }
 
 .ia-facilitator-name {
   color: var(--primary-color);
   margin-bottom: 1rem;
+  font-size: 1.4rem;
 }
 
 .ia-facilitator-bio {
   list-style-type: none;
   padding: 0;
+  margin: 0;
 }
 
 .ia-facilitator-bio-item {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
   position: relative;
   padding-left: 1.5rem;
+  line-height: 1.5;
 }
 
 .ia-facilitator-bio-item::before {
@@ -247,6 +253,7 @@
   position: absolute;
   left: 0;
   font-weight: bold;
+  font-size: 1.2rem;
 }
 
 /* CTA Section */
@@ -314,13 +321,12 @@
     padding: 3rem 1.5rem;
   }
   
-  .ia-facilitator-card {
-    flex-direction: column;
+  .ia-facilitator-photo {
+    height: 250px;
   }
   
-  .ia-facilitator-photo {
-    height: 120px;
-    min-width: 100%;
+  .ia-cta-section {
+    width: 80%;
   }
 }
 
@@ -338,5 +344,18 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 0.5rem;
+  }
+  
+  .ia-facilitator-photo {
+    height: 220px;
+  }
+  
+  .ia-cta-section {
+    width: 90%;
+    padding: 2rem 1.5rem;
+  }
+  
+  .ia-cta-title {
+    font-size: 1.8rem;
   }
 }
