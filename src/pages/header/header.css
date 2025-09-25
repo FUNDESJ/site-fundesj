@@ -65,7 +65,7 @@
   transition: all 0.15s ease;
 }
 
-/* SUBMENU */
+/* SUBMENU BASE */
 .submenu {
   position: absolute;
   top: 100%;
@@ -86,6 +86,7 @@
   transition: all 0.2s ease;
 }
 
+/* Mostra submenu no desktop */
 .menu ul li:hover .submenu {
   opacity: 1;
   visibility: visible;
@@ -195,21 +196,35 @@
     display: flex;
   }
 
+  /* Submenu no mobile */
   .submenu {
     position: relative;
     border: none;
     opacity: 1;
     visibility: visible;
     transform: none;
-    display: none;
+    display: none; /* escondido por padrão */
   }
 
-  .menu ul li:hover .submenu {
-    display: block;
+  .submenu.open {
+    display: block; /* aparece quando clicado */
+    animation: slideDown 0.3s ease forwards;
   }
 
   .submenu li {
     font-size: 15px;
     padding-left: 15px;
+  }
+}
+
+/* Animação suave */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
