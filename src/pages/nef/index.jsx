@@ -2,7 +2,7 @@ import { Helmet } from 'react-helmet';
 import './nef.css';
 import Header from '../header';
 import Footer from '../footer/footer';
-
+import HeroCursos from '../../components/heros/hero_cursos.jsx';
 const Nef = () => {
   return (
     <>
@@ -11,14 +11,11 @@ const Nef = () => {
       </Helmet>
       <Header />
       <div className="nef-container">
-        <section className="nef-hero-section">
-          <div className="nef-hero-content">
-            <h1 className="nef-hero-title">NEF – <span className="neuro-hero-highlight">Educação Continuada</span></h1>
-            <p className="nef-hero-subtitle">Capacitação contínua para servidores públicos e agentes políticos municipais</p>
-            <div className="nef-hero-divider"></div>
-          </div>
-          <div className="nef-hero-overlay"></div>
-        </section>
+        <HeroCursos
+          titulo1="Núcleo da Escola Federativa -"
+          titulo2={'(NEF)'}
+          subtitulo="Capacitação contínua para servidores públicos e agentes políticos municipais"
+        />
 
         <section className="nef-about-section">
           <div className="nef-section-content">

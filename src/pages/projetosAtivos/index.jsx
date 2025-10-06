@@ -7,7 +7,7 @@ import ciclo from '../../images/pagina inicial/ciclo.jpg';
 import inclusaoidosos from '../../images/pagina inicial/inclusao.png';
 import idtodos from '../../images/pagina inicial/idtodosfi.jpeg';
 import bemEstar from '../../images/pagina inicial/bemEstar.jpeg';
-//corrigindo erro
+import HeroPages from '../../components/heros/hero_pages.jsx';
 const ProjetosAtivos = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const carosselRef = useRef(null);
@@ -62,15 +62,12 @@ const ProjetosAtivos = () => {
         <>
             <Header />
             <main className={styles.container}>
-                <section className={styles.hero}>
-                    <div className={styles.heroContent}>
-                        <h1 className={styles.heroTitle}>Nossos Projetos Ativos</h1>
-                        <p className={styles.heroSubtitle}>
-                            Cada iniciativa da Fundação Educacional de São José é cuidadosamente planejada para transformar vidas e
-                            fortalecer vínculos sociais por meio da educação, inclusão e bem-estar comunitário.
-                        </p>
-                    </div>
-                </section>
+
+                <HeroPages
+                    titulo="Nossos Projetos Ativos"
+                    descricao="Cada iniciativa da Fundação Educacional de São José é cuidadosamente planejada para transformar vidas e
+                            fortalecer vínculos sociais por meio da educação, inclusão e bem-estar comunitário."
+                />
 
                 <div className={styles.carosselWrapper}>
                     <button

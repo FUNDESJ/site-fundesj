@@ -5,7 +5,7 @@ import Imagem1 from '../../images/banner cursos/ia.png';
 import Imagem2 from '../../images/banner cursos/aee.png';
 import Imagem3 from '../../images/banner cursos/nef.png';
 import Imagem4 from '../../images/banner cursos/redacao.png';
-
+import HeroPages from '../../components/heros/hero_pages.jsx';
 function Cursos() {
   const cursos = [
     {
@@ -47,16 +47,11 @@ function Cursos() {
     <>
       <Header />
       <main className="cursos-container">
-        {/* Hero Section */}
-        <section className="cursos-hero">
-          <div className="hero-content">
-            <h1 className="hero-title">Cursos Oferecidos pela FUNDESJ</h1>
-            <p className="hero-subtitle">
-              A FUNDESJ promove cursos e formações continuadas com foco na qualificação profissional, no desenvolvimento institucional e na disseminação de conhecimentos relevantes para o serviço público e a comunidade em geral.
-            </p>
-          </div>
-        </section>
 
+        <HeroPages 
+        titulo="Cursos Oferecidos pela FUNDESJ" 
+        descricao="A FUNDESJ promove cursos e formações continuadas com foco na qualificação profissional, no desenvolvimento institucional e na disseminação de conhecimentos relevantes para o serviço público e a comunidade em geral." 
+        />
         {/* Cursos Section */}
 
 

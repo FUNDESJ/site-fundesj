@@ -5,7 +5,7 @@ import Header from '../header/index.jsx';
 import Imagem1 from '../../images/banner programas/LA.png';
 import Imagem2 from '../../images/banner programas/voluntariado.png';
 import Imagem3 from '../../images/banner programas/bombeiro.png';
-
+import HeroPages from '../../components/heros/hero_pages.jsx';
 function Programas() {
   const [currentProgram, setCurrentProgram] = useState(0);
 
@@ -15,7 +15,7 @@ function Programas() {
       nome: "Longevidade Ativa",
       foto: Imagem1,
       descricao: "Programa voltado para a promoção do envelhecimento saudável e ativo, com atividades físicas, culturais e educacionais para idosos.",
-      link : '/longevidade-ativa' 
+      link: '/longevidade-ativa'
     },
     {
       id: 2,
@@ -45,14 +45,11 @@ function Programas() {
     <>
       <Header />
       <main className="programas-container">
-        <section className="programas-hero">
-          <div className="hero-content">
-            <h1 className="hero-title">Nossos Programas</h1>
-            <p className="hero-subtitle">
-              Transformando vidas através da educação e inclusão social
-            </p>
-          </div>
-        </section>
+
+        <HeroPages
+          titulo="Nossos Programas"
+          descricao="Transformando vidas através da educação e inclusão social"
+        />
 
         <section className="programas-intro">
           <p className="intro-text">
@@ -92,59 +89,59 @@ function Programas() {
           <div className="commitment-content">
             <h2 className="commitment-title">Compromisso com o Desenvolvimento Humano</h2>
             <p className="commitment-text">
-Iniciativas que promovem o desenvolvimento humano em todas as fases da vida, com foco em cidadania, saúde e integração social. O Programa Longevidade Ativa oferece palestras quinzenais voltadas ao público 60+, incentivando o envelhecimento saudável e o protagonismo na terceira idade.
-Já o Programa Bombeiro Mirim atua com crianças da rede pública, promovendo educação cidadã e prevenção, em parceria com o Corpo de Bombeiros Militar. Complementam esse eixo as ações de formação de voluntários, que fortalecem o engajamento comunitário por meio da participação ativa em projetos sociais.            </p>
+              Iniciativas que promovem o desenvolvimento humano em todas as fases da vida, com foco em cidadania, saúde e integração social. O Programa Longevidade Ativa oferece palestras quinzenais voltadas ao público 60+, incentivando o envelhecimento saudável e o protagonismo na terceira idade.
+              Já o Programa Bombeiro Mirim atua com crianças da rede pública, promovendo educação cidadã e prevenção, em parceria com o Corpo de Bombeiros Militar. Complementam esse eixo as ações de formação de voluntários, que fortalecem o engajamento comunitário por meio da participação ativa em projetos sociais.            </p>
           </div>
         </section>
 
         <section className="programas-carousel">
           <h2 className="carousel-title">Conheça nossos programas em destaque</h2>
           <div className="carousel-container">
-            <button 
-              className="carousel-button prev" 
+            <button
+              className="carousel-button prev"
               onClick={prevProgram}
               aria-label="Programa anterior"
             >
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </button>
-            
+
             <div className="carousel-slide">
               <a href={programas[currentProgram].link}>
-              <div className="program-card">
-                <div className="program-image-container">
-                  <img 
-                    src={programas[currentProgram].foto} 
-                    alt={programas[currentProgram].nome}
-                    className="program-image"
-                  />
-                  <div className="program-overlay">
-                    <span className="know-more">Saiba mais</span>
+                <div className="program-card">
+                  <div className="program-image-container">
+                    <img
+                      src={programas[currentProgram].foto}
+                      alt={programas[currentProgram].nome}
+                      className="program-image"
+                    />
+                    <div className="program-overlay">
+                      <span className="know-more">Saiba mais</span>
+                    </div>
+                  </div>
+                  <div className="program-info">
+                    <h3 className="program-name">{programas[currentProgram].nome}</h3>
+                    <p className="program-description">{programas[currentProgram].descricao}</p>
                   </div>
                 </div>
-                <div className="program-info">
-                  <h3 className="program-name">{programas[currentProgram].nome}</h3>
-                  <p className="program-description">{programas[currentProgram].descricao}</p>
-                </div>
-              </div>
               </a>
             </div>
-            
-            <button 
-              className="carousel-button next" 
+
+            <button
+              className="carousel-button next"
               onClick={nextProgram}
               aria-label="Próximo programa"
             >
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </button>
           </div>
           <div className="carousel-dots">
             {programas.map((_, index) => (
-              <span 
-                key={index} 
+              <span
+                key={index}
                 className={`dot ${index === currentProgram ? 'active' : ''}`}
                 onClick={() => setCurrentProgram(index)}
                 aria-label={`Ir para programa ${index + 1}`}

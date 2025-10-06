@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet';
 import Header from '../header';
 import Footer from '../footer/footer';
 import './redacao-oficial.css';
-
+import HeroCursos from '../../components/heros/hero_cursos.jsx';
 const RedacaoOficial = () => {
     return (
         <>
@@ -13,15 +13,12 @@ const RedacaoOficial = () => {
             </Helmet>
 
             <div className="ro-course-container">
-                {/* Hero Section */}
-                <section className="ro-hero-section">
-                    <div className="ro-hero-content">
-                        <h1 className="ro-hero-title">Curso de <span className="ro-hero-highlight">Redação Oficial</span></h1>
-                        <p className="ro-hero-subtitle">Capacitação para servidores da Administração Pública Municipal de São José</p>
-                    </div>
-                    <div className="ro-hero-overlay"></div>
-                </section>
-
+       
+                <HeroCursos
+                titulo1="Curso de"
+                titulo2= 'Redação Oficial'
+                subtitulo="Capacitação para servidores da Administração Pública Municipal de São José"
+                />
                 {/* Introduction Section */}
                 <section className="ro-section">
                     <div className="ro-section-header">

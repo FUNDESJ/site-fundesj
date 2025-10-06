@@ -2,6 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import Header from '../header';
 import Footer from '../footer/footer';
+import HeroCursos from '../../components/heros/hero_cursos.jsx';
 import './orientacao.css';
 import Image1 from '../../images/fotos cursos/rodrigo-sartorio.png';
 
@@ -14,16 +15,12 @@ const Neurodiversidade = () => {
             </Helmet>
 
             <div className="neuro-course-container">
-                {/* Hero Section */}
-                <section className="neuro-hero-section">
-                    <div className="neuro-hero-content">
-                        <h1 className="neuro-hero-title">Oficina de <span className="neuro-hero-highlight">Neurodiversidade</span></h1>
-                        <p className="neuro-hero-subtitle">Estratégias para inclusão educacional de crianças com necessidades especiais</p>
-                    </div>
-                    <div className="neuro-hero-overlay"></div>
-                </section>
 
-                {/* Introduction Section */}
+                <HeroCursos
+                titulo1="Oficina de"
+                titulo2= 'Neurodiversidade'
+                subtitulo="Estratégias para inclusão educacional de crianças com necessidades especiais"
+                />
                 <section className="neuro-section">
                     <div className="neuro-section-header">
                         <h2 className="neuro-section-title">Apresentação</h2>

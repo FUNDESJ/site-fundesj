@@ -3,6 +3,8 @@ import { Helmet } from 'react-helmet';
 import Header from '../header';
 import Footer from '../footer/footer';
 import Image1 from '../../images/fotos cursos/renata-caldas.png'
+import HeroCursos from '../../components/heros/hero_cursos.jsx';
+
 import './ia.css'
 
 const IntelienciaArtificial = () => {
@@ -14,15 +16,11 @@ const IntelienciaArtificial = () => {
             </Helmet>
 
             <div className="ia-course-container">
-                <section className="ia-hero-section">
-                    <div className="ia-hero-content">
-                        <h1 className="ia-hero-title">Potencialidades das <span className="ia-hero-highlight">IAs no Serviço Público</span></h1>
-                        <p className="ia-hero-subtitle">Capacitando servidores para transformar São José em uma cidade educadora e inovadora</p>
-                   
-                    </div>
-                    <div className="ia-hero-overlay"></div>
-                </section>
-
+            <HeroCursos
+          titulo1="Potencialidades das"
+          titulo2= 'IAs no Serviço Público'
+          subtitulo="Capacitando servidores para transformar São José em uma cidade educadora e inovadora"
+        />
                 <section className="ia-section">
                     <div className="ia-section-header">
                         <h2 className="ia-section-title">Apresentação</h2>
