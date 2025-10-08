@@ -14,7 +14,7 @@ export default function Eventos() {
     const [eventos, setEventos] = useState([]);
     const [eventosFiltrados, setEventosFiltrados] = useState([]);
     const [filtro, setFiltro] = useState("");
-    const [tipoFiltro, setTipoFiltro] = useState("título"); 
+    const [tipoFiltro, setTipoFiltro] = useState("título");
 
     useEffect(() => {
         listarEventos();
@@ -26,9 +26,9 @@ export default function Eventos() {
         } else {
             const filtrado = eventos.filter(evento => {
                 const campo = tipoFiltro === "título" ? evento.titulo.toLowerCase() :
-                             tipoFiltro === "palestrante" ? evento.palestrante.toLowerCase() :
-                             evento.projeto.toLowerCase();
-                
+                    tipoFiltro === "palestrante" ? evento.palestrante.toLowerCase() :
+                        evento.projeto.toLowerCase();
+
                 return campo.includes(filtro.toLowerCase());
             });
             setEventosFiltrados(filtrado);
@@ -44,7 +44,7 @@ export default function Eventos() {
                 }
             });
             setEventos(retorno.data.Eventos);
-            setEventosFiltrados(retorno.data.Eventos); 
+            setEventosFiltrados(retorno.data.Eventos);
         } catch (erro) {
             console.log(erro);
         }
@@ -66,16 +66,16 @@ export default function Eventos() {
                 <h1>Gerenciar Eventos</h1>
                 <p>Visualize e gerencie todos os eventos do sistema.</p>
             </div>
-              <button
-                    className="btn-criar-evento"
-                    onClick={() => setModalOpen(true)}
-                >
-                    <FaPlus /> Criar novo evento
-                </button>
+            <button
+                className="btn-criar-evento"
+                onClick={() => setModalOpen(true)}
+            >
+                <FaPlus /> Criar novo evento
+            </button>
             <div className="filtro-container">
                 <div className="filtro-input-group">
                     <div className="filtro-select-container">
-                        <select 
+                        <select
                             value={tipoFiltro}
                             onChange={(e) => setTipoFiltro(e.target.value)}
                             className="filtro-select"
@@ -122,7 +122,7 @@ export default function Eventos() {
                                 <tr key={index}>
                                     <td className="nome">{evento.titulo}</td>
                                     <td className="email">{evento.palestrante}</td>
-                                    <td>{new Date(evento.data).toLocaleDateString("pt-BR")}</td>
+                                    <td>{evento.data.split("T")[0].split("-").reverse().join("/")}</td>
                                     <td>{evento.projeto || "N/A"}</td>
                                     <td>
                                         <span className={`status-badge ${evento.ativa ? 'ativo' : 'inativo'}`}>

@@ -34,7 +34,7 @@ export default function Inscricoes() {
             });
             const evento = retorno.data.consulta;
             const dataOriginal = evento.data;
-            const dataFormatada = new Date(dataOriginal).toLocaleDateString('pt-BR');
+            const dataFormatada = dataOriginal.split("T")[0].split("-").reverse().join("/");
 
             let horarioFormatado = evento.horario;
             if (horarioFormatado.includes(':')) {

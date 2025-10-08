@@ -57,7 +57,7 @@ export default function Calendario() {
                                 <div className="palestra-content">
                                     <h3 className="palestra-title">{palestra.titulo}</h3>
                                     <p className="palestra-info"><span className="palestra-highlight">Local:</span> Centro de Atenção à Terceira Idade (CATI)</p>
-                                    <p className="palestra-info"><span className="palestra-highlight">Data:</span> {new Date(palestra.data).toLocaleDateString('pt-BR')}</p>
+                                    <p className="palestra-info"><span className="palestra-highlight">Data:</span> {palestra.data.split("T")[0].split("-").reverse().join("/")}</p>
                                     <p className="palestra-info"><span className="palestra-highlight">Horário:</span> {palestra.horario.slice(0, 5)}</p>
                                     <p className="palestra-info"><span className="palestra-highlight">Palestrante:</span> {palestra.palestrante}</p>
                                     <p className="palestra-description">{palestra.subTitulo}</p>
