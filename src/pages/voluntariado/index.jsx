@@ -1,4 +1,4 @@
-import Header from '../header/index'
+import Header from '../../components/header/index'
 import Footer from '../footer/footer'
 import MariaHelena from '../../images/Palestrantes Voluntariado/MariaHelena.jpg'
 import solange from '../../images/Palestrantes Voluntariado/solange.webp'

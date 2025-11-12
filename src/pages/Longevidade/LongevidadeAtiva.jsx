@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import './longevidadeAtiva.css';
-import Header from '../header/index.jsx';
+import Header from '../../components/header/index.jsx';
 import Footer from '../footer/footer.jsx';
 import ciclo from '../../images/pagina inicial/ciclo.jpg';
 import inclusaoidosos from '../../images/pagina inicial/inclusao.png';

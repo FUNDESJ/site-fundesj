@@ -1,4 +1,4 @@
-import Header from '../../header/index.jsx';
+import Header from '../../../components/header/index.jsx';
 import Footer from '../../footer/footer';
 import './estiloGeral.css'
 

@@ -1,5 +1,5 @@
 import './ciclo.css';
-import Header from '../header';
+import Header from '../../components/header';
 import Footer from '../footer/footer';
 import { Link } from 'react-router-dom';
 

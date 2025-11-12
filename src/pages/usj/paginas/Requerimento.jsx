@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import axios from 'axios'
-import Header from "../../header";
+import Header from "../../../components/header";
 import Footer from "../../footer/footer";
 import "./Requerimento.css";
 import { FiUpload } from "react-icons/fi";

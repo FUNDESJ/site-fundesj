@@ -1,5 +1,5 @@
 import './bombeiroMirim.css'
-import Header from '../header';
+import Header from '../../components/header';
 import Footer from '../footer/footer';
 import { FaMedal, FaHandsHelping , FaUsers, FaHandHoldingHeart   } from 'react-icons/fa';
 

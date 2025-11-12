@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import styles from './ProjetosAtivos.module.css';
-import Header from '../header/index.jsx';
+import Header from '../../components/header/index.jsx';
 import Footer from '../footer/footer';
 import ciclo from '../../images/pagina inicial/ciclo.jpg';
 import inclusaoidosos from '../../images/pagina inicial/inclusao.png';

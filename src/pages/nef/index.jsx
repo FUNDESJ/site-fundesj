@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet';
 import './nef.css';
-import Header from '../header';
+import Header from '../../components/header/index.jsx';
 import Footer from '../footer/footer';
 import HeroCursos from '../../components/heros/hero_cursos.jsx';
 const Nef = () => {

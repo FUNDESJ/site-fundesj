@@ -1,7 +1,7 @@
 import './programas.css';
 import Footer from '../footer/footer';
 import { useState } from 'react';
-import Header from '../header/index.jsx';
+import Header from '../../components/header/index.jsx';
 import Imagem1 from '../../images/banner programas/LA.png';
 import Imagem2 from '../../images/banner programas/voluntariado.png';
 import Imagem3 from '../../images/banner programas/bombeiro.png';

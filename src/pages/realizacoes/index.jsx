@@ -1,5 +1,5 @@
 import './realizacoes.css';
-import Header from '../header';
+import Header from '../../components/header';
 import Footer from '../footer/footer';
 import Imagem1 from '../../images/fotos realizacoes/banner2024.png';
 import Imagem2 from '../../images/fotos realizacoes/1.png';

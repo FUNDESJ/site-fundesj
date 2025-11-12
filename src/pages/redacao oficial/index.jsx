@@ -1,6 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import Header from '../header';
+import Header from '../../components/header/index.jsx';
 import Footer from '../footer/footer';
 import './redacao-oficial.css';
 import HeroCursos from '../../components/heros/hero_cursos.jsx';

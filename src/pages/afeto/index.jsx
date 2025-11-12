@@ -1,4 +1,4 @@
-import Header from "../header";
+import Header from "../../components/header";
 import Footer from "../footer/footer";
 import './afeto.css'
 export default function AfertarAfeto() {

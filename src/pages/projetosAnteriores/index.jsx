@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import './projetosAnteriores.css';
 import { Link } from 'react-router-dom';
-import Header from '../header';
+import Header from '../../components/header';
 import Footer from '../footer/footer';
 
 function ProjetosAnteriores() {

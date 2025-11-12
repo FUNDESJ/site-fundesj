@@ -1,5 +1,5 @@
 import './parceiros.css';
-import Header from '../header';
+import Header from '../../components/header';
 import Footer from '../footer/footer';
 import Imagem1 from '../../images/fotos parceiros/CITTADINO.png'
 import Imagem2 from '../../images/fotos parceiros/BOMBEIRO.png'
