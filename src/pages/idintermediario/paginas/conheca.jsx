@@ -1,5 +1,5 @@
 import Header from '../../../components/header/index.jsx'
-import Footer from '../../footer/footer.jsx'
+import Footer from '../../../components/footer/footer.jsx'
 import './conheca.css'
 
 export default function Conheca(){

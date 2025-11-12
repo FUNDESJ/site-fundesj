@@ -1,7 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import Header from '../../components/header/index.jsx';
-import Footer from '../footer/footer';
+import Footer from '../../components/footer/footer.jsx';
 import HeroCursos from '../../components/heros/hero_cursos.jsx';
 import './orientacao.css';
 import Image1 from '../../images/fotos cursos/rodrigo-sartorio.png';

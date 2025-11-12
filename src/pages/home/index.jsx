@@ -2,7 +2,7 @@ import './index.css';
 import background from '../../images/background.mp4'; // Caminho correto para o vídeo
 import { Link } from 'react-router-dom';
 import Header from '../../components/header/index.jsx'; // Corrigido o caminho do Header
-import Footer from '../footer/footer';
+import Footer from '../../components/footer/footer.jsx';
 import facebook from '../../images/icones redes sociais/facebook.png';
 import instagram from '../../images/icones redes sociais/instagram.png';
 import linkedin from '../../images/icones redes sociais/linkedin.png';

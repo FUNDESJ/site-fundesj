@@ -1,6 +1,6 @@
 import './certificados.css';
 import axios from 'axios';
-import Footer from '../footer/footer';
+import Footer from '../../components/footer/footer.jsx';
 import Header from '../../components/header/index.jsx';
 import { useState } from 'react';
 

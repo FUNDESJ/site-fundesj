@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Footer from '../footer/footer';
+import Footer from '../../components/footer/footer.jsx';
 import Header from '../../components/header/index.jsx';
 import { FaClock, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import './noticias.css';

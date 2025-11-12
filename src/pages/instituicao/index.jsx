@@ -1,7 +1,7 @@
 // src/pages/Sobre.jsx
 import './instituicao.css';
 import Header from '../../components/header/index.jsx';
-import Footer from '../footer/footer'
+import Footer from '../../components/footer/footer.jsx'
 import Imagem1 from '../../images/fotos instituicao/missao.png'
 import Imagem2 from '../../images/fotos instituicao/visao.png'
 import Imagem3 from '../../images/fotos instituicao/valores.png'

@@ -1,6 +1,6 @@
 import './realizacoes.css';
 import Header from '../../components/header';
-import Footer from '../footer/footer';
+import Footer from '../../components/footer/footer';
 import Imagem1 from '../../images/fotos realizacoes/banner2024.png';
 import Imagem2 from '../../images/fotos realizacoes/1.png';
 import Imagem3 from '../../images/fotos realizacoes/2.png';

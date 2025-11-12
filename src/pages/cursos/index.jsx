@@ -1,5 +1,5 @@
 import './cursos.css';
-import Footer from '../footer/footer';
+import Footer from '../../components/footer/footer.jsx';
 import Header from '../../components/header/index.jsx';
 import Imagem1 from '../../images/banner cursos/ia.png';
 import Imagem2 from '../../images/banner cursos/aee.png';

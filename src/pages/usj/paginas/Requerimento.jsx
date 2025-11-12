@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import axios from 'axios'
 import Header from "../../../components/header";
-import Footer from "../../footer/footer";
+import Footer from "../../../components/footer/footer";
 import "./Requerimento.css";
 import { FiUpload } from "react-icons/fi";
 import { ClipLoader } from 'react-spinners';

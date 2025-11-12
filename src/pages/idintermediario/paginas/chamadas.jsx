@@ -1,5 +1,5 @@
 import Header from '../../../components/header/index.jsx';
-import Footer from '../../footer/footer';
+import Footer from '../../../components/footer/footer.jsx';
 import './estiloGeral.css'
 export default function ChamadaIntermediario() {
     return (

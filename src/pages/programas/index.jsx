@@ -1,5 +1,5 @@
 import './programas.css';
-import Footer from '../footer/footer';
+import Footer from '../../components/footer/footer.jsx';
 import { useState } from 'react';
 import Header from '../../components/header/index.jsx';
 import Imagem1 from '../../images/banner programas/LA.png';

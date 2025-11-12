@@ -1,5 +1,5 @@
 import Header from '../../components/header/index'
-import Footer from '../footer/footer'
+import Footer from '../../components/footer/footer'
 import MariaHelena from '../../images/Palestrantes Voluntariado/MariaHelena.jpg'
 import solange from '../../images/Palestrantes Voluntariado/solange.webp'
 import priscila from '../../images/Palestrantes Voluntariado/priscila.webp'

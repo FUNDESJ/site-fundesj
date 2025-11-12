@@ -1,5 +1,5 @@
 import Header from "../../components/header";
-import Footer from "../footer/footer";
+import Footer from "../../components/footer/footer";
 import './idTodos.css'
 export default function IdTodos() {
     return (

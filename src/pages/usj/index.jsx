@@ -1,5 +1,5 @@
 import Header from '../../components/header/index.jsx';
-import Footer from '../footer/footer';
+import Footer from '../../components/footer/footer.jsx';
 import Image1 from '../../images/qr-code/qrcode-mec.png'
 import './usj.css';
 import { Link } from 'react-router-dom';

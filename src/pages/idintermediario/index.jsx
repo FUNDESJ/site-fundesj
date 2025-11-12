@@ -1,6 +1,6 @@
 import './idintermediario.css';
 import Header from '../../components/header/index.jsx';
-import Footer from '../footer/footer';
+import Footer from '../../components/footer/footer.jsx';
 
 function Idintermediario() {
     return (

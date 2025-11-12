@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import Header from "../../components/header/index.jsx";
-import Footer from "../footer/footer";
+import Footer from "../../components/footer/footer.jsx";
 import "./idbasico.css";
 
 import Home from "./home.jsx";

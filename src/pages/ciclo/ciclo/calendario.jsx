@@ -1,5 +1,5 @@
 import Header from '../../../components/header/index.jsx';
-import Footer from '../../footer/footer.jsx';
+import Footer from '../../../components/footer/footer.jsx';
 import './calendario.css';
 import calendarioCiclo from '../../../images/fotos ciclo/calendarioCiclo.png';
 import { useState, useEffect } from 'react';

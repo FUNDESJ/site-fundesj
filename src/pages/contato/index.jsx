@@ -1,5 +1,5 @@
 import Header from '../../components/header/index.jsx';
-import Footer from '../footer/footer';
+import Footer from '../../components/footer/footer.jsx';
 import './contato.css';
 import MapaIframe from "../../pages/contato/mapa.jsx";
 import { FaPhone, FaWhatsapp, FaMapMarkerAlt } from 'react-icons/fa';
