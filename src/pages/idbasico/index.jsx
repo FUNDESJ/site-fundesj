@@ -7,6 +7,7 @@ import Home from "./home.jsx";
 import Voluntarios from "./voluntarios/Voluntarios.jsx";
 import Conheca from "./conheca/Conheca.jsx";
 import Chamada from "./chamada/Chamada.jsx";
+import Inscricoes from "./inscricoes/Inscricoes.jsx";
 function Idbasico() {
   return (
     <>
@@ -17,6 +18,7 @@ function Idbasico() {
           <Route path="voluntarios" element={<Voluntarios />} />
           <Route path="conheca" element={<Conheca />} />
           <Route path="chamada" element={<Chamada />} />
+          <Route path="inscricoes" element={<Inscricoes />} />
         </Routes>
       </div>
       <Footer />

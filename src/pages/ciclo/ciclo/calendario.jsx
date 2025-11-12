@@ -6,7 +6,9 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 export default function Calendario() {
-    const [palestras, setPalestras] = useState([]);
+    const [palestras2025, setPalestras2025] = useState([]);
+    const [palestras2024, setPalestras2024] = useState([]);
+    const [palestras, setPalestras ] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     
     useEffect(() => {
@@ -19,7 +21,7 @@ export default function Calendario() {
             const lista = await axios.get('https://back-end-fundesj.onrender.com/palestras');
             setPalestras(lista.data);
         } catch (erro) {
-            console.log("Erro ao carregar palestras");
+            console.log(erro);
         } finally {
             setIsLoading(false);
         }

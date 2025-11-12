@@ -1,0 +1,13 @@
+.inscricoes-wrapper {
+  display: flex;
+  justify-content: center;   
+  align-items: center;      
+  min-height: calc(100vh - 200px); 
+  text-align: center;
+}
+
+.inscricoes-alert {
+  font-size: 2.5rem;
+  color: #6b0c11;
+  font-weight: 600;
+}
