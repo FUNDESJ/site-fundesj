@@ -1,13 +1,541 @@
-.inscricoes-wrapper {
+/* Página de Inscrições - Design Limpo e Branco */
+.inscricoes-page {
+  min-height: 100vh;
   display: flex;
-  justify-content: center;   
-  align-items: center;      
-  min-height: calc(100vh - 200px); 
-  text-align: center;
+  flex-direction: column;
+  background: #ffffff;
+  /* Branco puro */
 }
 
-.inscricoes-alert {
+/* Hero Section Limpa */
+.inscricoes-hero {
+  position: relative;
+  width: 100%;
+  height: 350px;
+  background: #ffffff;
+  /* Branco puro */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* Remove todos os efeitos de fundo anteriores */
+.inscricoes-hero::before,
+.inscricoes-overlay {
+  display: none;
+  /* Remove completamente os overlays */
+}
+
+.inscricoes-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+  padding: 0 30px;
+}
+
+.inscricoes-hero h1 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #8B0000;
+  /* Cor sólida vermelho bordô */
+  text-shadow: 0 4px 15px rgba(139, 0, 0, 0.1);
+  letter-spacing: -0.5px;
+  line-height: 1.1;
+}
+
+.inscricoes-hero p {
+  font-size: 1.4rem;
+  color: #666;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  margin-top: 15px;
+}
+
+/* Container do Formulário - Fundo branco puro */
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 60px 30px;
+  /* Reduzi um pouco o padding */
+  flex: 1;
+  background: #ffffff;
+  /* Branco puro */
+}
+
+.form-card {
+  background: white;
+  padding: 60px;
+  border-radius: 24px;
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.08),
+    0 8px 30px rgba(139, 0, 0, 0.05);
+  width: 100%;
+  max-width: 800px;
+  border: 1px solid rgba(139, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.form-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #8B0000 0%, #A52A2A 50%, #8B0000 100%);
+}
+
+.form-card h2 {
+  color: #333;
   font-size: 2.5rem;
-  color: #6b0c11;
+  font-weight: 700;
+  margin-bottom: 15px;
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: -0.5px;
+}
+
+.form-description {
+  color: #666;
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+/* Formulário */
+.inscricao-form {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
   font-weight: 600;
+  margin-bottom: 12px;
+  color: #333;
+  font-size: 1.1rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 0.3px;
+}
+
+.form-input {
+  padding: 18px 20px;
+  border: 2px solid #e8e8e8;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  background-color: #fafafa;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #8B0000;
+  background-color: white;
+  box-shadow:
+    0 4px 20px rgba(139, 0, 0, 0.1),
+    0 0 0 4px rgba(139, 0, 0, 0.05);
+  transform: translateY(-2px);
+}
+
+.form-input::placeholder {
+  color: #999;
+  font-size: 1rem;
+}
+
+/* Botão de Enviar */
+.submit-btn {
+  background: linear-gradient(135deg, #8B0000 0%, #A52A2A 100%);
+  color: white;
+  padding: 20px 40px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-shadow:
+    0 8px 25px rgba(139, 0, 0, 0.3),
+    0 4px 15px rgba(139, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.submit-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.submit-btn:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 12px 35px rgba(139, 0, 0, 0.4),
+    0 6px 20px rgba(139, 0, 0, 0.3);
+}
+
+.submit-btn:hover::before {
+  left: 100%;
+}
+
+.submit-btn:active {
+  transform: translateY(-1px);
+}
+
+/* Estilos para o grupo de radio buttons */
+.radio-group {
+  display: flex;
+  gap: 30px;
+  margin-top: 8px;
+}
+
+.radio-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  font-weight: 500;
+  color: #333;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  padding: 12px 20px;
+  border: 2px solid #e8e8e8;
+  border-radius: 12px;
+  background-color: #fafafa;
+  flex: 1;
+  justify-content: center;
+  position: relative;
+}
+
+.radio-option:hover {
+  border-color: #8B0000;
+  background-color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(139, 0, 0, 0.1);
+}
+
+.radio-option input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.radio-custom {
+  width: 22px;
+  height: 22px;
+  border: 2px solid #ccc;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.radio-custom::after {
+  content: '';
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #8B0000;
+  opacity: 0;
+  transform: scale(0);
+  transition: all 0.3s ease;
+}
+
+.radio-option input[type="radio"]:checked+.radio-custom {
+  border-color: #8B0000;
+  background-color: rgba(139, 0, 0, 0.05);
+}
+
+.radio-option input[type="radio"]:checked+.radio-custom::after {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.radio-option input[type="radio"]:checked~span:last-child {
+  color: #8B0000;
+  font-weight: 600;
+}
+
+/* Estado quando selecionado */
+.radio-option input[type="radio"]:checked~.radio-custom {
+  border-color: #8B0000;
+}
+
+.radio-option input[type="radio"]:checked~span:last-child {
+  color: #8B0000;
+}
+
+/* Responsividade para radio buttons */
+@media (max-width: 768px) {
+  .radio-group {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .radio-option {
+    padding: 15px 20px;
+  }
+}
+
+/* Ajuste para acessibilidade */
+.radio-option:focus-within {
+  border-color: #8B0000;
+  box-shadow: 0 0 0 3px rgba(139, 0, 0, 0.1);
+}
+
+/* Informações adicionais */
+.form-info {
+  margin-top: 40px;
+  padding: 25px;
+  background: #f8f9fa;
+  border-radius: 12px;
+  border-left: 4px solid #8B0000;
+}
+
+.form-info p {
+  color: #555;
+  line-height: 1.6;
+  margin: 0;
+  font-size: 1rem;
+}
+
+/* Notificação de campos obrigatórios */
+.required-notice {
+  display: block;
+  color: #8B0000;
+  font-weight: 600;
+  margin-top: 10px;
+  font-size: 1rem;
+}
+
+/* Estilos para upload de arquivos */
+.file-upload-container {
+  position: relative;
+  margin-top: 8px;
+}
+
+.file-input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.file-label {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 20px;
+  border: 2px solid #8B0000;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #8B0000 0%, #A52A2A 100%);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: left;
+  color: white;
+}
+
+.file-label:hover {
+  background: linear-gradient(135deg, #A52A2A 0%, #8B0000 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(139, 0, 0, 0.3);
+}
+
+.file-label:active {
+  transform: translateY(0);
+}
+
+.file-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+  color: white;
+}
+
+.file-text {
+  flex: 1;
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.file-hint {
+  margin-top: 8px;
+  color: #888;
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+/* Estado quando arquivo está selecionado - MANTÉM O BORDÔ */
+.file-input:valid+.file-label {
+  border-color: #8B0000;
+  border-style: solid;
+  background: linear-gradient(135deg, #2E8B57 0%, #3CB371 100%);
+}
+
+.file-input:valid+.file-label .file-text {
+  color: white;
+  font-weight: 600;
+}
+
+.file-input:valid+.file-label .file-icon {
+  color: white;
+}
+
+/* Estado de foco para acessibilidade */
+.file-label:focus-within {
+  box-shadow: 0 0 0 3px rgba(139, 0, 0, 0.3);
+}
+
+/* Responsividade para upload de arquivos */
+@media (max-width: 768px) {
+  .file-label {
+    padding: 15px;
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+
+  .file-text {
+    font-size: 0.95rem;
+  }
+}
+
+/* Ajuste nos labels para indicar campos obrigatórios */
+.form-group label:has(+ .form-input[required])::after,
+.form-group label:has(+ .radio-group[required])::after,
+.form-group label:has(+ .file-upload-container[required])::after {
+  content: ' *';
+  color: #8B0000;
+}
+
+/* Remove o required do email visualmente */
+.form-group label[for="email"]::after {
+  content: '' !important;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .inscricoes-hero {
+    height: 280px;
+  }
+
+  .inscricoes-hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .inscricoes-hero p {
+    font-size: 1.2rem;
+  }
+
+  .form-card {
+    padding: 40px 25px;
+    margin: 0 15px;
+    border-radius: 20px;
+  }
+
+  .form-card h2 {
+    font-size: 2rem;
+  }
+
+  .form-input {
+    padding: 16px;
+    font-size: 16px;
+  }
+
+  .submit-btn {
+    padding: 18px 30px;
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .inscricoes-hero {
+    height: 240px;
+  }
+
+  .inscricoes-hero h1 {
+    font-size: 2rem;
+  }
+
+  .inscricoes-hero p {
+    font-size: 1.1rem;
+  }
+
+  .form-card {
+    padding: 30px 20px;
+    border-radius: 16px;
+  }
+
+  .form-card h2 {
+    font-size: 1.8rem;
+  }
+
+  .submit-btn {
+    padding: 16px 25px;
+    font-size: 1rem;
+  }
+
+  .form-input {
+    font-size: 16px;
+    padding: 14px;
+  }
+}
+
+/* Melhorias de acessibilidade para idosos */
+.form-input {
+  font-size: 16px;
+}
+
+.form-group label {
+  font-size: 1.1rem;
+  margin-bottom: 14px;
+}
+
+.form-input {
+  padding: 18px;
+}
+
+/* Animações suaves */
+.inscricoes-hero h1,
+.inscricoes-hero p,
+.form-card {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

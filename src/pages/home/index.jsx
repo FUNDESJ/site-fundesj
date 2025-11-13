@@ -65,7 +65,7 @@ function Home() {
             <div className="hero">
                 <video
                     className="video-bg"
-                    src={background} 
+                    src={background}
                     type="video/mp4"
                     autoPlay
                     loop
@@ -77,7 +77,11 @@ function Home() {
                 <div className="hero-content">
                     <h1>FUNDESJ</h1>
                     <p>Fundação Educacional de São José</p>
-
+                    <Link to="/idbasico/inscricoes" className="inscricao-link">
+                        <button className="inscricao-btn">
+                            Inscrições Inclusão Digital 2026
+                        </button>
+                    </Link>
                 </div>
             </div>
 
