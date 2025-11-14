@@ -6,10 +6,10 @@ export default function Inscricoes() {
         nomeCompleto: '',
         dataNascimento: '',
         celular: '',
-        email: '', // Agora opcional
+        email: '', 
         cursoAnterior: '',
-        documentoFoto: null, // Novo campo
-        comprovanteResidencia: null // Novo campo
+        documentoFoto: null, 
+        comprovanteResidencia: null 
     });
 
     const handleChange = (e) => {

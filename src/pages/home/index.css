@@ -83,34 +83,107 @@ html,
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* Botão de Inscrições */
+/* Botão de Inscrições - Design Profissional e Sofisticado */
 .inscricao-btn {
-  background-color: darkred;
-  color: white;
-  padding: 20px 40px;
-  font-size: 20px;
-  font-weight: bold;
-  border: 2px solid transparent;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  margin-top: 80px;
-  font-family: 'Open Sans', Arial, sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background: #ffffff;
+    color: #8B0000;
+    padding: 22px 50px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    border: 2px solid #8B0000;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 80px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(139, 0, 0, 0.15);
 }
 
+/* Efeito hover sofisticado */
 .inscricao-btn:hover {
-  background-color: #000000;
-  border-color: #f8f8f8;
-  transform: translateY(-3px);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    background: #8B0000;
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(139, 0, 0, 0.25);
+    border-color: #8B0000;
 }
 
+/* Efeito de clique sutil */
 .inscricao-btn:active {
-  transform: translateY(-1px);
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+    transform: translateY(0);
+    box-shadow: 0 2px 15px rgba(139, 0, 0, 0.2);
+}
+
+/* Remove outline azul padrão */
+.inscricao-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(139, 0, 0, 0.1);
+}
+
+/* Seta elegante */
+.inscricao-btn .btn-arrow {
+    display: inline-block;
+    margin-left: 12px;
+    transition: transform 0.3s ease;
+    font-weight: 300;
+}
+
+.inscricao-btn:hover .btn-arrow {
+    transform: translateX(4px);
+}
+
+/* Versão alternativa mais moderna - Escolha uma das duas: */
+
+/* OPÇÃO 1 - Design com gradiente sutil */
+.inscricao-btn.alt-style {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    color: #8B0000;
+    border: 2px solid #8B0000;
+    box-shadow: 0 4px 25px rgba(139, 0, 0, 0.1);
+}
+
+.inscricao-btn.alt-style:hover {
+    background: linear-gradient(135deg, #8B0000 0%, #A52A2A 100%);
+    color: #ffffff;
+}
+
+/* OPÇÃO 2 - Design minimalista extremo */
+.inscricao-btn.minimal-style {
+    background: transparent;
+    color: #8B0000;
+    border: 2px solid #8B0000;
+    box-shadow: none;
+    font-weight: 600;
+}
+
+.inscricao-btn.minimal-style:hover {
+    background: #8B0000;
+    color: #ffffff;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .inscricao-btn {
+        padding: 20px 40px;
+        font-size: 1.1rem;
+        margin-top: 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    .inscricao-btn {
+        padding: 18px 30px;
+        font-size: 1rem;
+        letter-spacing: 0.5px;
+    }
+    
+    .inscricao-btn .btn-arrow {
+        margin-left: 8px;
+    }
 }
 
 /* Botões */
