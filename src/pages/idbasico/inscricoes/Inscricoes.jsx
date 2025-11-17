@@ -76,6 +76,19 @@ export default function Inscricoes() {
         setIsSubmitted(false);
     };
 
+    const handleConfirm = () => {
+        setIsSubmitted(false);
+        setFormData({
+            nomeCompleto: '',
+            dataNascimento: '',
+            celular: '',
+            email: '',
+            cursoAnterior: '',
+            documentoFoto: null,
+            comprovanteResidencia: null
+        });
+    };
+
     return (
         <div className="inscricoes-page">
             <div className="inscricoes-hero">
@@ -251,8 +264,8 @@ export default function Inscricoes() {
                             <p><strong>Nome:</strong> {formData.nomeCompleto}</p>
                             <p><strong>Celular:</strong> {formData.celular}</p>
                         </div>
-                        <button onClick={handleNewInscription} className="new-inscription-btn">
-                            Fazer Nova Inscrição
+                        <button onClick={handleConfirm} className="confirm-btn">
+                            Voltar ao início
                         </button>
                         <p className="success-footer">
                             Dúvidas? Entre em contato conosco pelos nossos canais oficiais.
