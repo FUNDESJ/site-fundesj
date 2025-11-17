@@ -117,14 +117,14 @@ export default function Inscricoes() {
                         </div>
 
                         <div className="form-group">
-                            <label htmlFor="email">Gmail</label>
+                            <label htmlFor="email">Gmail (opcional)</label>
                             <input
                                 type="email"
                                 id="email"
                                 name="email"
                                 value={formData.email}
                                 onChange={handleChange}
-                                placeholder="seuemail@gmail.com (opcional)"
+                                placeholder="seuemail@gmail.com"
                                 className="form-input"
                             />
                         </div>
