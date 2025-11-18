@@ -648,6 +648,11 @@
   margin-top: 20px;
 }
 
+.confirm-link {
+  text-decoration: none;
+  display: inline-block;
+}
+
 /* Animações */
 @keyframes successAppear {
   from {

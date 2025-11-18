@@ -1,5 +1,6 @@
 import './inscricoes.css'
 import { useState } from 'react'
+import { Link } from 'react-router-dom';
 
 export default function Inscricoes() {
     const [formData, setFormData] = useState({
@@ -264,9 +265,11 @@ export default function Inscricoes() {
                             <p><strong>Nome:</strong> {formData.nomeCompleto}</p>
                             <p><strong>Celular:</strong> {formData.celular}</p>
                         </div>
-                        <button onClick={handleConfirm} className="confirm-btn">
-                            Voltar ao início
-                        </button>
+                        <Link to="/" className="confirm-link">
+                            <button className="confirm-btn">
+                                Voltar ao Início
+                            </button>
+                        </Link>
                         <p className="success-footer">
                             Dúvidas? Entre em contato conosco pelos nossos canais oficiais.
                         </p>
