@@ -25,7 +25,7 @@ const ProjetosAtivos = () => {
             link: '/idbasico'
         },
         {
-            title: "Oficinas de Inclusão Digital Intermediárias",
+            title: "Oficina Temática de Inclusão Digital",
             description: "Aprofunda habilidades digitais já adquiridas, permitindo maior domínio tecnológico e oportunidades.",
             image: idtodos,
             link: '/idintermediario'

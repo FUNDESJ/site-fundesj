@@ -9,19 +9,19 @@ function Idintermediario() {
             <div className="idintermediario-container">
                 <div className="idintermediario-hero">
                     <div className="idintermediario-content">
-                        <h1>Curso de Inclusão Digital Intermediário</h1>
+                        <h1>Oficina Temática de Inclusão Digital</h1>
                         <p>
-                            A Fundação Educacional apresenta uma iniciativa voltada à promoção da inclusão digital para pessoas com 60 anos ou mais. O projeto tem como propósito ampliar 
-                            a autonomia, a qualidade de vida e a participação social dos idosos na era tecnológica, por meio de oficinas presenciais temáticas e estruturadas.    
+                            A Fundação Educacional apresenta uma iniciativa voltada à promoção da inclusão digital para pessoas com 60 anos ou mais. O projeto tem como propósito ampliar
+                            a autonomia, a qualidade de vida e a participação social dos idosos na era tecnológica, por meio de oficinas presenciais temáticas e estruturadas.
                         </p>
                     </div>
                     <div className="idintermediario-image">
-                        <img src="https://apadep.org.br/wp-content/uploads/2020/06/WhatsApp-Image-2020-06-09-at-15.51.27.jpeg" 
-                             alt="Curso de Inclusão Digital Intermediário" 
-                             onError={(e) => {
+                        <img src="https://apadep.org.br/wp-content/uploads/2020/06/WhatsApp-Image-2020-06-09-at-15.51.27.jpeg"
+                            alt="Curso de Inclusão Digital Intermediário"
+                            onError={(e) => {
                                 e.target.onerror = null;
                                 e.target.src = "https://via.placeholder.com/800x600?text=Curso+Inclusão+Digital";
-                             }} />
+                            }} />
                     </div>
                 </div>
 
@@ -29,29 +29,19 @@ function Idintermediario() {
                     <div className="modern-card">
                         <div className="card-icon">📋</div>
                         <a href='/idintermediario/conheca'>
-                        <h2>Conheça o Projeto</h2>
-                        <p>Descubra todos os detalhes sobre nossa metodologia, instrutores e o impacto que estamos causando na comunidade.</p>
-                        <button className="card-button">Saiba Mais</button>
+                            <h2>Conheça o Projeto</h2>
+                            <p>Descubra todos os detalhes sobre nossa metodologia, instrutores e o impacto que estamos causando na comunidade.</p>
+                            <button className="card-button">Saiba Mais</button>
                         </a>
                         <div className="card-decoration"></div>
                     </div>
 
                     <div className="modern-card">
                         <a href='/idintermediario/inscricao'>
-                        <div className="card-icon">✍️</div>
-                        <h2>Inscrições</h2>
-                        <p>Garanta sua vaga no próximo módulo do curso. Vagas limitadas para melhor aproveitamento.</p>
-                        <button className="card-button">Inscreva-se</button>
-                        </a>
-                        <div className="card-decoration"></div>
-                    </div>
-
-                    <div className="modern-card">
-                        <a href='/idintermediario/chamada'>
-                        <div className="card-icon">📢</div>
-                        <h2>Chamadas</h2>
-                        <p>Acompanhe nossas convocações, calendário de aulas e eventos especiais do programa.</p>
-                        <button className="card-button">Ver Chamadas</button>
+                            <div className="card-icon">✍️</div>
+                            <h2>Inscrições</h2>
+                            <p>Garanta sua vaga na próxima Oficina Temática. Vagas limitadas para melhor aproveitamento.</p>
+                            <button className="card-button">Inscreva-se</button>
                         </a>
                         <div className="card-decoration"></div>
                     </div>

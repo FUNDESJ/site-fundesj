@@ -25,15 +25,15 @@ function Home() {
         },
         {
             id: 2,
-            titulo: "Curso Básico Inclusão Digital",
+            titulo: "Curso de Inclusão Digital",
             descricao: "Inclusão Digital Para Idosos são aulas semanais que levam conhecimentos para os 60+, abordando os conhecimentos básicos para a utilização de um Smartphone.",
             foto: inclusaoidosos,
             link: "./idbasico"
         },
         {
             id: 3,
-            titulo: "Inclusão Digital Intermediário",
-            descricao: "O Curso Inclusão Digital Intermediário oferece conhecimentos sobre as tecnologias atuais, com oficinas realizadas semanalmente no Centro de Atenção à Terceira Idade (CATI).",
+            titulo: "Oficina de Inclusão Digital",
+            descricao: "A Oficina Temática de Inclusão Digital oferece conhecimentos sobre as tecnologias atuais, com oficinas realizadas semanalmente no Centro de Atenção à Terceira Idade (CATI).",
             foto: idtodos,
             link: "./idintermediario"
         }
@@ -77,12 +77,13 @@ function Home() {
                 <div className="hero-content">
                     <h1>FUNDESJ</h1>
                     <p>Fundação Educacional de São José</p>
-                    <Link to="/idbasico/inscricoes" className="inscricao-link">
+                   
+                    {/*<Link to="/idbasico/inscricoes" className="inscricao-link">
                         <button className="inscricao-btn">
                             Inscrições Inclusão Digital 2026
                             <span className="btn-arrow">→</span>
                         </button>
-                    </Link>
+                    </Link> */}
                 </div>
             </div>
 

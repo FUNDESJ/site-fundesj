@@ -66,7 +66,7 @@ function ProjetosAnteriores() {
             <div className="pa-card pa-scroll-reveal">
               <Link to="/projetos-anteriores/afetar-com-afeto" >
                 <div className="pa-content">
-                  <h3 className="pa-card-title">Projeto Afeto</h3>
+                  <h3 className="pa-card-title">Projeto Afetar com Afeto</h3>
                   <p className="pa-card-description">
                     Programa de apoio emocional e psicológico criado durante a pandemia, com foco no acolhimento e
                     acompanhamento de famílias em momentos de fragilidade social e emocional.

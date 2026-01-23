@@ -22,7 +22,7 @@ export default function LongevidadeAtiva() {
     },
     {
       id: 2,
-      nome: "Curso Básico de Inclusão Digital para Idosos",
+      nome: "Curso de Inclusão Digital para Idosos",
       imagem: inclusaoidosos,
       descricao: "Aulas de informática básica para a melhor idade",
       link: "./idbasico"
@@ -36,9 +36,9 @@ export default function LongevidadeAtiva() {
     },
     {
       id: 4,
-      nome: "Inclusão Digital Intermediário",
+      nome: "Oficina Temática de Inclusão Digital",
       imagem: idtodos,
-      descricao: "Curso avançado de ferramentas digitais",
+      descricao: "Oficina de ferramentas digitais",
       link: "./idintermediario"
     },
   ];
