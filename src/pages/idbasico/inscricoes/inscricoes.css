@@ -613,11 +613,19 @@
   font-size: 0.9rem;
 }
 
-/* Botão de Confirmação */
-.confirm-btn {
-  background: linear-gradient(135deg, #2E8B57 0%, #3CB371 100%);
-  color: white;
-  padding: 16px 50px;
+/* CORREÇÃO DOS BOTÕES - Agora proporcionais e bonitos */
+.success-actions {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.confirm-btn,
+.new-inscription-btn {
+  min-width: 200px;
+  padding: 18px 40px;
   font-size: 1.1rem;
   font-weight: 600;
   border: none;
@@ -627,18 +635,71 @@
   text-transform: none;
   letter-spacing: 0.5px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  box-shadow: 0 8px 25px rgba(46, 139, 87, 0.3);
-  margin-bottom: 20px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+/* Efeito de brilho ao passar o mouse */
+.confirm-btn::before,
+.new-inscription-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.confirm-btn:hover::before,
+.new-inscription-btn:hover::before {
+  left: 100%;
+}
+
+/* Botão principal (Verde) */
+.confirm-btn {
+  background: linear-gradient(135deg, #2E8B57 0%, #3CB371 100%);
+  color: white;
 }
 
 .confirm-btn:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px);
   box-shadow: 0 12px 30px rgba(46, 139, 87, 0.4);
   background: linear-gradient(135deg, #3CB371 0%, #2E8B57 100%);
 }
 
 .confirm-btn:active {
-  transform: translateY(0);
+  transform: translateY(-1px);
+}
+
+/* Botão secundário (Cinza elegante) */
+.new-inscription-btn {
+  background: linear-gradient(135deg, #5D6D7E 0%, #34495E 100%);
+  color: white;
+  border: 2px solid transparent;
+}
+
+.new-inscription-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(52, 73, 94, 0.4);
+  background: linear-gradient(135deg, #34495E 0%, #5D6D7E 100%);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.new-inscription-btn:active {
+  transform: translateY(-1px);
+}
+
+/* Link do botão confirm */
+.confirm-link {
+  text-decoration: none;
+  display: inline-block;
 }
 
 .success-footer {
@@ -685,7 +746,7 @@
   }
 }
 
-/* Responsividade */
+/* Responsividade para página de sucesso */
 @media (max-width: 768px) {
   .success-card {
     padding: 40px 30px;
@@ -705,6 +766,19 @@
   .success-message {
     font-size: 1.1rem;
   }
+
+  .success-actions {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .confirm-btn,
+  .new-inscription-btn {
+    min-width: 250px;
+    width: 100%;
+    max-width: 300px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -722,9 +796,11 @@
     font-size: 1.6rem;
   }
 
+  .confirm-btn,
   .new-inscription-btn {
     padding: 16px 30px;
     font-size: 1rem;
+    min-width: 200px;
   }
 }
 
@@ -737,5 +813,398 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/* Overlay de carregamento */
+.loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  border-radius: 24px;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.loading-content {
+  text-align: center;
+  max-width: 400px;
+  padding: 40px;
+}
+
+.loading-spinner {
+  width: 60px;
+  height: 60px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #8B0000;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 25px;
+}
+
+.loading-title {
+  color: #333;
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.loading-text {
+  color: #666;
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
+/* Overlay de sucesso */
+.success-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.98);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  border-radius: 24px;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.success-animation {
+  text-align: center;
+  max-width: 400px;
+  padding: 40px;
+}
+
+.success-checkmark {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 25px;
+  position: relative;
+}
+
+.check-icon {
+  width: 80px;
+  height: 80px;
+  position: relative;
+  border-radius: 50%;
+  box-sizing: content-box;
+  border: 4px solid #2E8B57;
+}
+
+.check-icon::before {
+  top: 3px;
+  left: -2px;
+  width: 30px;
+  transform-origin: 100% 50%;
+}
+
+.check-icon::after {
+  top: 0;
+  left: 30px;
+  width: 60px;
+  transform-origin: 0 50%;
+}
+
+.check-icon::before, .check-icon::after {
+  content: '';
+  height: 4px;
+  background: #2E8B57;
+  position: absolute;
+  transform: scaleX(0);
+}
+
+.icon-line {
+  height: 4px;
+  background-color: #2E8B57;
+  display: block;
+  border-radius: 2px;
+  position: absolute;
+  z-index: 10;
+}
+
+.icon-line.line-tip {
+  top: 46px;
+  left: 14px;
+  width: 25px;
+  transform: rotate(45deg);
+  animation: icon-line-tip 0.75s;
+}
+
+.icon-line.line-long {
+  top: 38px;
+  right: 8px;
+  width: 47px;
+  transform: rotate(-45deg);
+  animation: icon-line-long 0.75s;
+}
+
+.icon-circle {
+  top: -4px;
+  left: -4px;
+  z-index: 10;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  position: absolute;
+  box-sizing: content-box;
+  border: 4px solid rgba(46, 139, 87, 0.2);
+}
+
+.icon-fix {
+  top: 8px;
+  width: 5px;
+  left: 26px;
+  z-index: 1;
+  height: 85px;
+  position: absolute;
+  transform: rotate(-45deg);
+  background-color: rgba(255, 255, 255, 0);
+}
+
+.success-title-animation {
+  color: #2E8B57;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  animation: bounceIn 0.6s ease-out;
+}
+
+.success-text {
+  color: #666;
+  font-size: 1.2rem;
+  animation: fadeInUp 0.5s ease-out 0.3s both;
+}
+
+/* Mensagem de erro */
+.error-message {
+  background: linear-gradient(135deg, #FFF5F5 0%, #FFF 100%);
+  border: 2px solid #FED7D7;
+  border-radius: 16px;
+  padding: 30px;
+  text-align: center;
+  margin-bottom: 30px;
+  animation: shake 0.5s ease-out;
+}
+
+.error-icon {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #E53E3E 0%, #C53030 100%);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0 auto 20px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.error-title {
+  color: #C53030;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.error-text {
+  color: #718096;
+  font-size: 1.1rem;
+  line-height: 1.5;
+  margin-bottom: 25px;
+}
+
+.error-retry-btn {
+  background: linear-gradient(135deg, #E53E3E 0%, #C53030 100%);
+  color: white;
+  padding: 12px 30px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.error-retry-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(229, 62, 62, 0.3);
+}
+
+.error-retry-btn:active {
+  transform: translateY(0);
+}
+
+/* Estados desabilitados */
+.form-input:disabled,
+.file-label.disabled,
+.radio-option.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.file-label.disabled {
+  background: linear-gradient(135deg, #999 0%, #777 100%);
+}
+
+.submit-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.submit-btn:disabled:hover {
+  transform: none !important;
+  box-shadow: 0 8px 25px rgba(139, 0, 0, 0.3) !important;
+}
+
+/* Animações */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes bounceIn {
+  0% { 
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% { 
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% { 
+    transform: scale(0.9);
+  }
+  100% { 
+    transform: scale(1);
+  }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+  20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+@keyframes icon-line-tip {
+  0% {
+    width: 0;
+    left: 1px;
+    top: 19px;
+  }
+  54% {
+    width: 0;
+    left: 1px;
+    top: 19px;
+  }
+  70% {
+    width: 50px;
+    left: -8px;
+    top: 37px;
+  }
+  84% {
+    width: 17px;
+    left: 21px;
+    top: 48px;
+  }
+  100% {
+    width: 25px;
+    left: 14px;
+    top: 46px;
+  }
+}
+
+@keyframes icon-line-long {
+  0% {
+    width: 0;
+    right: 46px;
+    top: 54px;
+  }
+  65% {
+    width: 0;
+    right: 46px;
+    top: 54px;
+  }
+  84% {
+    width: 55px;
+    right: 0px;
+    top: 35px;
+  }
+  100% {
+    width: 47px;
+    right: 8px;
+    top: 38px;
+  }
+}
+
+/* Responsividade para os novos elementos */
+@media (max-width: 768px) {
+  .loading-content,
+  .success-animation {
+    padding: 30px 20px;
+  }
+  
+  .loading-spinner {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .loading-title {
+    font-size: 1.5rem;
+  }
+  
+  .success-checkmark {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .check-icon {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .icon-circle {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .success-title-animation {
+    font-size: 1.7rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .loading-content,
+  .success-animation {
+    padding: 20px 15px;
+  }
+  
+  .loading-title {
+    font-size: 1.3rem;
+  }
+  
+  .success-title-animation {
+    font-size: 1.5rem;
   }
 }
