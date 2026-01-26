@@ -17,7 +17,6 @@ export default function Inscricoes() {
 
     const handleChange = (e) => {
         const { name, value, type, files } = e.target;
-
         if (type === 'file') {
             setFormData(prevState => ({
                 ...prevState,
@@ -153,7 +152,7 @@ export default function Inscricoes() {
                             </div>
 
                             <div className="form-group">
-                                <label htmlFor="email">Gmail (opcional)</label>
+                                <label htmlFor="email">Email (opcional)</label>
                                 <input
                                     type="email"
                                     id="email"
