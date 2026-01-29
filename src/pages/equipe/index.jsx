@@ -36,13 +36,19 @@ function Equipe() {
       category: "education"
     },
     {
-      name: "Jozimar Antônio de Quadros",
-      position: "Assessor administrativo",
-      email: "dir.administrativo@fundesj.com.br",
+      name: "Maria Marta de Salete Poffo",
+      position: "Assessora Administrativa",
+      email: "secretaria@fundesj.com.br",
       category: "admin"
     },
     {
-      name: "Maria Marta de Salete Poffo",
+      name: "Nalma Aparecida Nienchotter",
+      position: "Assessora Administrativa",
+      email: "secretaria@fundesj.com.br",
+      category: "admin"
+    },
+    {
+      name: "Monica Medeiros Gomes Matuo",
       position: "Assessora Administrativa",
       email: "secretaria@fundesj.com.br",
       category: "admin"
@@ -60,6 +66,12 @@ function Equipe() {
       category: "technology"
     },
     {
+      name: "Bernardo Ghinato Goelzer",
+      position: "Universitário de Tecnologia",
+      email: "tecnologia@fundesj.com.br",
+      category: "technology"
+    },
+    {
       name: "Davi José Verissimo de Campos",
       position: "Universitário de Tecnologia",
       email: "tecnologia@fundesj.com.br",
@@ -71,13 +83,6 @@ function Equipe() {
       email: "tecnologia@fundesj.com.br",
       category: "technology"
     },
-    {
-      name: "Thiago W. Barcellos de Salles",
-      position: "Universitário de Recursos Humanos",
-      email: "tecnologia@fundesj.com.br",
-      category: "hr"
-    }, 
-    
   ];
 
   return (

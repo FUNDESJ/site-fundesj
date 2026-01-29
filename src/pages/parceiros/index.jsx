@@ -18,6 +18,7 @@ import Imagem15 from '../../images/fotos parceiros/BB.png'
 import Imagem16 from '../../images/fotos parceiros/ela.png'
 import Imagem17 from '../../images/fotos parceiros/redeFemininaContraCancer.png'
 import Imagem18 from '../../images/fotos parceiros/funiber.png'
+import Imagem19 from '../../images/fotos parceiros/Logo-AVOS-Coracao.jpg'
 function Parceiros() {
     return (
         <>
@@ -73,6 +74,9 @@ function Parceiros() {
                 </a>
                 <a href="https://www.funiber.org.br/" target='_blank' rel='noopener noreferrer'>
                     <img src={Imagem18} alt="img funiber" className='imgparceiros'/>
+                </a>
+                <a href="https://avos.org.br/" target='_blank' rel='noopener noreferrer'>
+                    <img src={Imagem19} alt="img funiber" className='imgparceiros'/>
                 </a>
                 
             </div>
