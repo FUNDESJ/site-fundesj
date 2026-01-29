@@ -311,8 +311,8 @@
 
 /* Informações adicionais */
 .form-info {
-  margin-top: 40px;
-  padding: 25px;
+  margin-top: 1px;
+  padding: 15px 20px;
   background: #f8f9fa;
   border-radius: 12px;
   border-left: 4px solid #8B0000;
@@ -914,7 +914,8 @@
   transform-origin: 0 50%;
 }
 
-.check-icon::before, .check-icon::after {
+.check-icon::before,
+.check-icon::after {
   content: '';
   height: 4px;
   background: #2E8B57;
@@ -1075,36 +1076,66 @@
 
 /* Animações */
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes bounceIn {
-  0% { 
+  0% {
     opacity: 0;
     transform: scale(0.3);
   }
-  50% { 
+
+  50% {
     opacity: 1;
     transform: scale(1.05);
   }
-  70% { 
+
+  70% {
     transform: scale(0.9);
   }
-  100% { 
+
+  100% {
     transform: scale(1);
   }
 }
 
 @keyframes shake {
-  0%, 100% { transform: translateX(0); }
-  10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
-  20%, 40%, 60%, 80% { transform: translateX(5px); }
+
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: translateX(-5px);
+  }
+
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: translateX(5px);
+  }
 }
 
 @keyframes icon-line-tip {
@@ -1113,21 +1144,25 @@
     left: 1px;
     top: 19px;
   }
+
   54% {
     width: 0;
     left: 1px;
     top: 19px;
   }
+
   70% {
     width: 50px;
     left: -8px;
     top: 37px;
   }
+
   84% {
     width: 17px;
     left: 21px;
     top: 48px;
   }
+
   100% {
     width: 25px;
     left: 14px;
@@ -1141,16 +1176,19 @@
     right: 46px;
     top: 54px;
   }
+
   65% {
     width: 0;
     right: 46px;
     top: 54px;
   }
+
   84% {
     width: 55px;
     right: 0px;
     top: 35px;
   }
+
   100% {
     width: 47px;
     right: 8px;
@@ -1160,50 +1198,52 @@
 
 /* Responsividade para os novos elementos */
 @media (max-width: 768px) {
+
   .loading-content,
   .success-animation {
     padding: 30px 20px;
   }
-  
+
   .loading-spinner {
     width: 50px;
     height: 50px;
   }
-  
+
   .loading-title {
     font-size: 1.5rem;
   }
-  
+
   .success-checkmark {
     width: 70px;
     height: 70px;
   }
-  
+
   .check-icon {
     width: 70px;
     height: 70px;
   }
-  
+
   .icon-circle {
     width: 70px;
     height: 70px;
   }
-  
+
   .success-title-animation {
     font-size: 1.7rem;
   }
 }
 
 @media (max-width: 480px) {
+
   .loading-content,
   .success-animation {
     padding: 20px 15px;
   }
-  
+
   .loading-title {
     font-size: 1.3rem;
   }
-  
+
   .success-title-animation {
     font-size: 1.5rem;
   }
