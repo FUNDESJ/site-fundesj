@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { Routes, Route, Link, useLocation } from "react-router-dom";
 import "./admin.css";
-import { FiUsers, FiCalendar, FiSettings, FiPieChart, FiFileText } from "react-icons/fi";
+import { FiUsers, FiCalendar, FiFolderMinus, FiPieChart, FiFileText } from "react-icons/fi";
 
 import Dashboard from "./paginas/Dashboard.jsx";
 import Certificados from "./paginas/Certificados/Certificados.jsx";
 import Eventos from "./paginas/eventos/Eventos.jsx";
 import Inscricoes from "./paginas/inscricoes/Inscricoes.jsx";
-import Configuracoes from "./paginas/Configuracoes.jsx";
+import IdBasico from "./paginas/IdBasico/IdBasico.jsx";
 
 function Admin() {
   const [openModalInscrito, setOpenModalInscrito] = useState(false);
@@ -51,10 +51,10 @@ function Admin() {
               Inscrições
             </Link>
           </li>
-          <li className={isActive('/configuracoes') ? "active" : ""}>
-            <Link to="/admin/configuracoes">
-              <FiSettings />
-              Configurações
+          <li className={isActive('/IdBasico') ? "active" : ""}>
+            <Link to="/admin/IdBasico">
+              <FiFolderMinus />
+              Inclusão Digital
             </Link>
           </li>
         </ul>
@@ -64,9 +64,9 @@ function Admin() {
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="/certificados" element={<Certificados />} />
-          <Route path="/eventos" element={<Eventos  />} />
+          <Route path="/eventos" element={<Eventos />} />
           <Route path="/inscricoes" element={<Inscricoes />} />
-          <Route path="/configuracoes" element={<Configuracoes />} />
+          <Route path="/IdBasico" element={<IdBasico />} />
         </Routes>
       </main>
 

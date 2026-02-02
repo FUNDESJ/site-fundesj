@@ -10,8 +10,8 @@ export default function Inscricoes() {
         celular: '',
         email: '',
         primeira_vez: null,
-        localAula: '',
-        horarioAula: ''
+        local: '',
+        periodo: ''
     })
 
     const [isSubmitted, setIsSubmitted] = useState(false)
@@ -39,9 +39,15 @@ export default function Inscricoes() {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        // Validação dos campos obrigatórios
-        if (!formData.nomeCompleto || !formData.dataNascimento || !formData.celular ||
-            formData.primeira_vez === null || !formData.localAula || !formData.horarioAula) {
+        if (
+            !formData.nomeCompleto ||
+            !formData.dataNascimento ||
+            !formData.celular ||
+            formData.primeira_vez === null ||
+            !formData.local ||
+            !formData.periodo
+        ) {
+
             setSubmissionStatus('error')
             setErrorMessage('Preencha todos os campos obrigatórios.')
             return
@@ -56,16 +62,29 @@ export default function Inscricoes() {
         data.append('celular', formData.celular)
         data.append('email', formData.email)
         data.append('primeira_vez', formData.primeira_vez)
-        data.append('local_aula', formData.localAula)
-        data.append('horario_aula', formData.horarioAula)
+        data.append('local', formData.local)
+        data.append('periodo', formData.periodo)
 
         try {
-            // Simula tempo de processamento
             await new Promise(resolve => setTimeout(resolve, 1500))
 
-            await axios.post('https://back-end-fundesj.onrender.com/idbasico', data, {
-                headers: { 'Content-Type': 'multipart/form-data' }
-            })
+            await axios.post(
+                'https://back-end-fundesj.onrender.com/idbasico',
+                {
+                    nome: formData.nomeCompleto,
+                    nascimento: formData.dataNascimento,
+                    celular: formData.celular,
+                    email: formData.email,
+                    primeira_vez: formData.primeira_vez,
+                    local: formData.local,
+                    periodo: formData.periodo
+                },
+                {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                }
+            )
 
             setIsLoading(false)
             setSubmissionStatus('success')
@@ -89,8 +108,8 @@ export default function Inscricoes() {
             celular: '',
             email: '',
             primeira_vez: null,
-            localAula: '',
-            horarioAula: ''
+            local: '',
+            horario: ''
         })
         setIsSubmitted(false)
         setSubmissionStatus(null)
@@ -256,9 +275,9 @@ export default function Inscricoes() {
                                     <label className={`radio-option ${isLoading ? 'disabled' : ''}`}>
                                         <input
                                             type="radio"
-                                            name="localAula"
-                                            value="estacio"
-                                            checked={formData.localAula === 'estacio'}
+                                            name="local"
+                                            value="Estácio"
+                                            checked={formData.local === 'Estácio'}
                                             onChange={handleChange}
                                             disabled={isLoading}
                                             required
@@ -269,9 +288,9 @@ export default function Inscricoes() {
                                     <label className={`radio-option ${isLoading ? 'disabled' : ''}`}>
                                         <input
                                             type="radio"
-                                            name="localAula"
-                                            value="cati"
-                                            checked={formData.localAula === 'cati'}
+                                            name="local"
+                                            value="CATI"
+                                            checked={formData.local === 'CATI'}
                                             onChange={handleChange}
                                             disabled={isLoading}
                                             required
@@ -288,9 +307,9 @@ export default function Inscricoes() {
                                     <label className={`radio-option ${isLoading ? 'disabled' : ''}`}>
                                         <input
                                             type="radio"
-                                            name="horarioAula"
-                                            value="matutino"
-                                            checked={formData.horarioAula === 'matutino'}
+                                            name="periodo"
+                                            value="Matutino"
+                                            checked={formData.periodo === 'Matutino'}
                                             onChange={handleChange}
                                             disabled={isLoading}
                                             required
@@ -301,9 +320,9 @@ export default function Inscricoes() {
                                     <label className={`radio-option ${isLoading ? 'disabled' : ''}`}>
                                         <input
                                             type="radio"
-                                            name="horarioAula"
-                                            value="vespertino"
-                                            checked={formData.horarioAula === 'vespertino'}
+                                            name="periodo"
+                                            value="Vespertino"
+                                            checked={formData.periodo === 'Vespertino'}
                                             onChange={handleChange}
                                             disabled={isLoading}
                                             required
@@ -342,8 +361,8 @@ export default function Inscricoes() {
                         <div className="success-details">
                             <p><strong>Nome:</strong> {formData.nomeCompleto}</p>
                             <p><strong>Celular:</strong> {formData.celular}</p>
-                            <p><strong>Local preferido:</strong> {formData.localAula === 'estacio' ? 'Estácio de SC' : 'CATI'}</p>
-                            <p><strong>Horário preferido:</strong> {formData.horarioAula === 'matutino' ? 'Matutino (9h às 11h)' : 'Vespertino (14h às 16h)'}</p>
+                            <p><strong>Local preferido:</strong> {formData.local === 'estacio' ? 'Estácio de SC' : 'CATI'}</p>
+                            <p><strong>Horário preferido:</strong> {formData.periodo === 'matutino' ? 'Matutino (9h às 11h)' : 'Vespertino (14h às 16h)'}</p>
                             <p><strong>Data de envio:</strong> {new Date().toLocaleDateString('pt-BR')}</p>
                         </div>
 
