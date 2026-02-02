@@ -11,23 +11,16 @@ export default function Inscricoes() {
         email: '',
         primeira_vez: null,
         localAula: '',
+        horarioAula: ''
     })
 
     const [isSubmitted, setIsSubmitted] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
-    const [submissionStatus, setSubmissionStatus] = useState(null) // 'success', 'error', null
+    const [submissionStatus, setSubmissionStatus] = useState(null)
     const [errorMessage, setErrorMessage] = useState('')
 
     const handleChange = (e) => {
-        const { name, value, type, files } = e.target
-
-        if (type === 'file') {
-            setFormData(prev => ({
-                ...prev,
-                [name]: files[0]
-            }))
-            return
-        }
+        const { name, value, type } = e.target
 
         if (name === 'primeira_vez') {
             setFormData(prev => ({
@@ -46,9 +39,9 @@ export default function Inscricoes() {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
+        // Validação dos campos obrigatórios
         if (!formData.nomeCompleto || !formData.dataNascimento || !formData.celular ||
-            !formData.cursoAnterior || !formData.localAula ||
-            !formData.documentoFoto || !formData.comprovanteResidencia) {
+            formData.primeira_vez === null || !formData.localAula || !formData.horarioAula) {
             setSubmissionStatus('error')
             setErrorMessage('Preencha todos os campos obrigatórios.')
             return
@@ -63,11 +56,11 @@ export default function Inscricoes() {
         data.append('celular', formData.celular)
         data.append('email', formData.email)
         data.append('primeira_vez', formData.primeira_vez)
-        data.append('documento_foto', formData.documentoFoto)
-        data.append('comprovante_residencia', formData.comprovanteResidencia)
+        data.append('local_aula', formData.localAula)
+        data.append('horario_aula', formData.horarioAula)
 
         try {
-            // Simula um tempo de processamento para mostrar a animação
+            // Simula tempo de processamento
             await new Promise(resolve => setTimeout(resolve, 1500))
 
             await axios.post('https://back-end-fundesj.onrender.com/idbasico', data, {
@@ -77,7 +70,6 @@ export default function Inscricoes() {
             setIsLoading(false)
             setSubmissionStatus('success')
 
-            // Aguarda 2 segundos mostrando o sucesso antes de mostrar a página final
             setTimeout(() => {
                 setIsSubmitted(true)
             }, 2000)
@@ -97,9 +89,10 @@ export default function Inscricoes() {
             celular: '',
             email: '',
             primeira_vez: null,
-            documentoFoto: null,
-            comprovanteResidencia: null
+            localAula: '',
+            horarioAula: ''
         })
+        setIsSubmitted(false)
         setSubmissionStatus(null)
         setErrorMessage('')
     }
@@ -226,7 +219,7 @@ export default function Inscricoes() {
 
                             <div className="form-group">
                                 <label>É a primeira vez que participa? *</label>
-                                <div className="radio-group" required>
+                                <div className="radio-group">
                                     <label className={`radio-option ${isLoading ? 'disabled' : ''}`}>
                                         <input
                                             type="radio"
@@ -235,6 +228,7 @@ export default function Inscricoes() {
                                             checked={formData.primeira_vez === true}
                                             onChange={handleChange}
                                             disabled={isLoading}
+                                            required
                                         />
                                         <div className="radio-custom"></div>
                                         <span>Sim</span>
@@ -248,38 +242,74 @@ export default function Inscricoes() {
                                             checked={formData.primeira_vez === false}
                                             onChange={handleChange}
                                             disabled={isLoading}
+                                            required
                                         />
                                         <div className="radio-custom"></div>
                                         <span>Não</span>
                                     </label>
                                 </div>
                             </div>
+
                             <div className="form-group">
                                 <label htmlFor="localAula">Onde prefere assistir às aulas? *</label>
                                 <div className="radio-group">
-                                    <label className="radio-option">
+                                    <label className={`radio-option ${isLoading ? 'disabled' : ''}`}>
                                         <input
                                             type="radio"
                                             name="localAula"
                                             value="estacio"
                                             checked={formData.localAula === 'estacio'}
                                             onChange={handleChange}
+                                            disabled={isLoading}
                                             required
                                         />
-                                        <span className="radio-custom"></span>
+                                        <div className="radio-custom"></div>
                                         Estácio de SC
                                     </label>
-                                    <label className="radio-option">
+                                    <label className={`radio-option ${isLoading ? 'disabled' : ''}`}>
                                         <input
                                             type="radio"
                                             name="localAula"
                                             value="cati"
                                             checked={formData.localAula === 'cati'}
                                             onChange={handleChange}
+                                            disabled={isLoading}
                                             required
                                         />
-                                        <span className="radio-custom"></span>
+                                        <div className="radio-custom"></div>
                                         CATI (Centro de Atenção à Terceira Idade)
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div className="form-group">
+                                <label htmlFor="horarioAula">Horário preferível de aula *</label>
+                                <div className="radio-group">
+                                    <label className={`radio-option ${isLoading ? 'disabled' : ''}`}>
+                                        <input
+                                            type="radio"
+                                            name="horarioAula"
+                                            value="matutino"
+                                            checked={formData.horarioAula === 'matutino'}
+                                            onChange={handleChange}
+                                            disabled={isLoading}
+                                            required
+                                        />
+                                        <div className="radio-custom"></div>
+                                        Matutino (9h às 11h)
+                                    </label>
+                                    <label className={`radio-option ${isLoading ? 'disabled' : ''}`}>
+                                        <input
+                                            type="radio"
+                                            name="horarioAula"
+                                            value="vespertino"
+                                            checked={formData.horarioAula === 'vespertino'}
+                                            onChange={handleChange}
+                                            disabled={isLoading}
+                                            required
+                                        />
+                                        <div className="radio-custom"></div>
+                                        Vespertino (14h às 16h)
                                     </label>
                                 </div>
                             </div>
@@ -311,6 +341,9 @@ export default function Inscricoes() {
 
                         <div className="success-details">
                             <p><strong>Nome:</strong> {formData.nomeCompleto}</p>
+                            <p><strong>Celular:</strong> {formData.celular}</p>
+                            <p><strong>Local preferido:</strong> {formData.localAula === 'estacio' ? 'Estácio de SC' : 'CATI'}</p>
+                            <p><strong>Horário preferido:</strong> {formData.horarioAula === 'matutino' ? 'Matutino (9h às 11h)' : 'Vespertino (14h às 16h)'}</p>
                             <p><strong>Data de envio:</strong> {new Date().toLocaleDateString('pt-BR')}</p>
                         </div>
 

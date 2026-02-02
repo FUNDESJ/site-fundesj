@@ -439,6 +439,13 @@
   content: '' !important;
 }
 
+.inscricao-form {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+  /* Aumente este valor conforme necessário */
+}
+
 /* Responsividade */
 @media (max-width: 768px) {
   .inscricoes-hero {
