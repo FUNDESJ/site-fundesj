@@ -11,7 +11,8 @@ export default function Inscricoes() {
         email: '',
         primeira_vez: null,
         local: '',
-        periodo: ''
+        periodo: '',
+        dias: ''
     })
 
     const [isSubmitted, setIsSubmitted] = useState(false)
@@ -64,6 +65,7 @@ export default function Inscricoes() {
         data.append('primeira_vez', formData.primeira_vez)
         data.append('local', formData.local)
         data.append('periodo', formData.periodo)
+        data.append('dias', formData.dias)
 
         try {
             await new Promise(resolve => setTimeout(resolve, 1500))
@@ -77,7 +79,8 @@ export default function Inscricoes() {
                     email: formData.email,
                     primeira_vez: formData.primeira_vez,
                     local: formData.local,
-                    periodo: formData.periodo
+                    periodo: formData.periodo,
+                    dias: formData.dias
                 },
                 {
                     headers: {
@@ -109,7 +112,8 @@ export default function Inscricoes() {
             email: '',
             primeira_vez: null,
             local: '',
-            horario: ''
+            periodo: '',
+            dias: ''
         })
         setIsSubmitted(false)
         setSubmissionStatus(null)
@@ -329,6 +333,37 @@ export default function Inscricoes() {
                                         />
                                         <div className="radio-custom"></div>
                                         Vespertino (14h às 16h)
+                                    </label>
+                                </div>
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="horarioAula">Quais dias você deseja? *</label>
+                                <div className="radio-group">
+                                    <label className={`radio-option ${isLoading ? 'disabled' : ''}`}>
+                                        <input
+                                            type="radio"
+                                            name="dias"
+                                            value="Segunda e Quarta"
+                                            checked={formData.dias === 'Segunda e Quarta'}
+                                            onChange={handleChange}
+                                            disabled={isLoading}
+                                            required
+                                        />
+                                        <div className="radio-custom"></div>
+                                        Segunda e Quarta
+                                    </label>
+                                    <label className={`radio-option ${isLoading ? 'disabled' : ''}`}>
+                                        <input
+                                            type="radio"
+                                            name="dias"
+                                            value="Terça e Quinta"
+                                            checked={formData.dias === 'Terça e Quinta'}
+                                            onChange={handleChange}
+                                            disabled={isLoading}
+                                            required
+                                        />
+                                        <div className="radio-custom"></div>
+                                        Terça e Quinta
                                     </label>
                                 </div>
                             </div>
