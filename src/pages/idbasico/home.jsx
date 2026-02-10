@@ -45,9 +45,9 @@ function Home() {
 
           <div className="action-card card-chamada">
             <div className="card-content">
-              <h2>Chamada 2025</h2>
+              <h2>Inscrições</h2>
               <div className="card-overlay">
-                <button className="card-button" onClick={()=> navigate('chamada')}>Informações</button>
+                <button className="card-button" onClick={()=> navigate('inscricoes')}>Informações</button>
               </div>
             </div>
           </div>

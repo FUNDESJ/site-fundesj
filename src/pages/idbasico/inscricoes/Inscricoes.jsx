@@ -31,6 +31,16 @@ export default function Inscricoes() {
             return
         }
 
+        // Se o local mudar para "Estácio", definir automaticamente o período como "Vespertino"
+        if (name === 'local') {
+            setFormData(prev => ({
+                ...prev,
+                [name]: value,
+                periodo: value === 'Estácio' ? 'Vespertino' : prev.periodo
+            }))
+            return
+        }
+
         setFormData(prev => ({
             ...prev,
             [name]: value
@@ -40,15 +50,16 @@ export default function Inscricoes() {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
+        // Validação dos campos obrigatórios
         if (
             !formData.nomeCompleto ||
             !formData.dataNascimento ||
             !formData.celular ||
             formData.primeira_vez === null ||
             !formData.local ||
-            !formData.periodo
+            !formData.periodo ||
+            !formData.dias
         ) {
-
             setSubmissionStatus('error')
             setErrorMessage('Preencha todos os campos obrigatórios.')
             return
@@ -57,30 +68,26 @@ export default function Inscricoes() {
         setIsLoading(true)
         setSubmissionStatus(null)
 
-        const data = new FormData()
-        data.append('nome', formData.nomeCompleto)
-        data.append('nascimento', formData.dataNascimento)
-        data.append('celular', formData.celular)
-        data.append('email', formData.email)
-        data.append('primeira_vez', formData.primeira_vez)
-        data.append('local', formData.local)
-        data.append('periodo', formData.periodo)
-        data.append('dias', formData.dias)
+        // Garantir que se o local for "Estácio", o período seja "Vespertino"
+        const dadosParaEnviar = {
+            ...formData,
+            periodo: formData.local === 'Estácio' ? 'Vespertino' : formData.periodo
+        }
 
         try {
             await new Promise(resolve => setTimeout(resolve, 1500))
 
             await axios.post(
-                'https://back-end-fundesj.onrender.com/idbasico',
+                'https://back-end-fundesj.onrender.com/inscritosId',
                 {
-                    nome: formData.nomeCompleto,
-                    nascimento: formData.dataNascimento,
-                    celular: formData.celular,
-                    email: formData.email,
-                    primeira_vez: formData.primeira_vez,
-                    local: formData.local,
-                    periodo: formData.periodo,
-                    dias: formData.dias
+                    nome: dadosParaEnviar.nomeCompleto,
+                    nascimento: dadosParaEnviar.dataNascimento,
+                    celular: dadosParaEnviar.celular,
+                    email: dadosParaEnviar.email,
+                    primeira_vez: dadosParaEnviar.primeira_vez,
+                    local: dadosParaEnviar.local,
+                    periodo: dadosParaEnviar.periodo,
+                    dias: dadosParaEnviar.dias
                 },
                 {
                     headers: {
@@ -137,7 +144,6 @@ export default function Inscricoes() {
                             Preencha todos os campos abaixo com atenção. Os campos marcados com * são obrigatórios.
                         </p>
 
-                        {/* Overlay de carregamento */}
                         {isLoading && (
                             <div className="loading-overlay">
                                 <div className="loading-content">
@@ -148,7 +154,6 @@ export default function Inscricoes() {
                             </div>
                         )}
 
-                        {/* Mensagem de sucesso temporária */}
                         {submissionStatus === 'success' && !isLoading && (
                             <div className="success-overlay">
                                 <div className="success-animation">
@@ -166,7 +171,6 @@ export default function Inscricoes() {
                             </div>
                         )}
 
-                        {/* Mensagem de erro */}
                         {submissionStatus === 'error' && !isLoading && (
                             <div className="error-message">
                                 <div className="error-icon">!</div>
@@ -305,37 +309,48 @@ export default function Inscricoes() {
                                 </div>
                             </div>
 
-                            <div className="form-group">
-                                <label htmlFor="horarioAula">Horário preferível de aula *</label>
-                                <div className="radio-group">
-                                    <label className={`radio-option ${isLoading ? 'disabled' : ''}`}>
-                                        <input
-                                            type="radio"
-                                            name="periodo"
-                                            value="Matutino"
-                                            checked={formData.periodo === 'Matutino'}
-                                            onChange={handleChange}
-                                            disabled={isLoading}
-                                            required
-                                        />
-                                        <div className="radio-custom"></div>
-                                        Matutino (9h às 11h)
-                                    </label>
-                                    <label className={`radio-option ${isLoading ? 'disabled' : ''}`}>
-                                        <input
-                                            type="radio"
-                                            name="periodo"
-                                            value="Vespertino"
-                                            checked={formData.periodo === 'Vespertino'}
-                                            onChange={handleChange}
-                                            disabled={isLoading}
-                                            required
-                                        />
-                                        <div className="radio-custom"></div>
-                                        Vespertino (14h às 16h)
-                                    </label>
+                            {/* Campo de período - aparece apenas quando CATI é selecionado */}
+                            {formData.local === 'CATI' && (
+                                <div className="form-group">
+                                    <label htmlFor="horarioAula">Horário preferível de aula *</label>
+                                    <div className="radio-group">
+                                        <label className={`radio-option ${isLoading ? 'disabled' : ''}`}>
+                                            <input
+                                                type="radio"
+                                                name="periodo"
+                                                value="Matutino"
+                                                checked={formData.periodo === 'Matutino'}
+                                                onChange={handleChange}
+                                                disabled={isLoading}
+                                                required
+                                            />
+                                            <div className="radio-custom"></div>
+                                            Matutino (9h às 11h)
+                                        </label>
+                                        <label className={`radio-option ${isLoading ? 'disabled' : ''}`}>
+                                            <input
+                                                type="radio"
+                                                name="periodo"
+                                                value="Vespertino"
+                                                checked={formData.periodo === 'Vespertino'}
+                                                onChange={handleChange}
+                                                disabled={isLoading}
+                                                required
+                                            />
+                                            <div className="radio-custom"></div>
+                                            Vespertino (14h às 16h)
+                                        </label>
+                                    </div>
                                 </div>
-                            </div>
+                            )}
+
+                            {/* Mostrar informação quando Estácio é selecionado */}
+                            {formData.local === 'Estácio' && (
+                                <div className="form-info-notice">
+                                    <p><strong>Informação:</strong> Na Estácio só temos horários vespertinos (14h às 16h).</p>
+                                </div>
+                            )}
+
                             <div className="form-group">
                                 <label htmlFor="horarioAula">Quais dias você deseja? *</label>
                                 <div className="radio-group">
@@ -396,8 +411,8 @@ export default function Inscricoes() {
                         <div className="success-details">
                             <p><strong>Nome:</strong> {formData.nomeCompleto}</p>
                             <p><strong>Celular:</strong> {formData.celular}</p>
-                            <p><strong>Local preferido:</strong> {formData.local === 'estacio' ? 'Estácio de SC' : 'CATI'}</p>
-                            <p><strong>Horário preferido:</strong> {formData.periodo === 'matutino' ? 'Matutino (9h às 11h)' : 'Vespertino (14h às 16h)'}</p>
+                            <p><strong>Local preferido:</strong> {formData.local === 'Estácio' ? 'Estácio de SC' : 'CATI'}</p>
+                            <p><strong>Horário preferido:</strong> {formData.local === 'Estácio' ? 'Vespertino (14h às 16h)' : formData.periodo === 'Matutino' ? 'Matutino (9h às 11h)' : 'Vespertino (14h às 16h)'}</p>
                             <p><strong>Data de envio:</strong> {new Date().toLocaleDateString('pt-BR')}</p>
                         </div>
 
