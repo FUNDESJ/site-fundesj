@@ -88,7 +88,7 @@ function Home() {
                     </Link>
 
                     <a 
-                        href="https://forms.gle/seu-link-do-google-forms-aqui" 
+                        href="https://forms.gle/WXhmbwEmdcsLyWhX7" 
                         target="_blank" 
                         rel="noopener noreferrer" 
                         className="inscricao-link"
