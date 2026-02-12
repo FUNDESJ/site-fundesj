@@ -14,6 +14,7 @@ import Imagem2 from '../../images/pagina inicial/docs.png';
 import Imagem3 from '../../images/pagina inicial/book.png';
 import Imagem4 from '../../images/pagina inicial/team.png';
 import WhatsAppButton from '../../pages/whatsapp/whatsAppbutton.jsx'; // Importando o botão do WhatsApp
+
 function Home() {
     const projetos = [
         {
@@ -25,19 +26,20 @@ function Home() {
         },
         {
             id: 2,
-            titulo: "Curso de Inclusão Digital",
+            titulo: "Curso Básico Inclusão Digital",
             descricao: "Inclusão Digital Para Idosos são aulas semanais que levam conhecimentos para os 60+, abordando os conhecimentos básicos para a utilização de um Smartphone.",
             foto: inclusaoidosos,
             link: "./idbasico"
         },
         {
             id: 3,
-            titulo: "Oficina de Inclusão Digital",
-            descricao: "A Oficina Temática de Inclusão Digital oferece conhecimentos sobre as tecnologias atuais, com oficinas realizadas semanalmente no Centro de Atenção à Terceira Idade (CATI).",
+            titulo: "Inclusão Digital Intermediário",
+            descricao: "O Curso Inclusão Digital Intermediário oferece conhecimentos sobre as tecnologias atuais, com oficinas realizadas semanalmente no Centro de Atenção à Terceira Idade (CATI).",
             foto: idtodos,
             link: "./idintermediario"
         }
     ];
+
     const redesSociais = [
         {
             id: 1,
@@ -65,7 +67,7 @@ function Home() {
             <div className="hero">
                 <video
                     className="video-bg"
-                    src={background}
+                    src={background} 
                     type="video/mp4"
                     autoPlay
                     loop
@@ -84,6 +86,18 @@ function Home() {
                             <span className="btn-arrow">→</span>
                         </button>
                     </Link>
+
+                    <a 
+                        href="https://forms.gle/seu-link-do-google-forms-aqui" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="inscricao-link"
+                    >
+                        <button className="inscricao-btn teatro-btn">
+                            Inscrições Oficina de Teatro 2026
+                            <span className="btn-arrow">→</span>
+                        </button>
+                    </a>
                 </div>
             </div>
 
@@ -109,6 +123,7 @@ function Home() {
                     <p>CERTIFICADOS</p>
                 </div></a>
             </div>
+
             <div className="section-info">
                 <h2 className="subTitle">Nossos Projetos</h2>
                 <p>
@@ -116,27 +131,27 @@ function Home() {
                     população do Município.
                 </p>
             </div>
+
             <div className="cards-projetos">
                 {projetos.map((projeto) => (
                     <div className="card-projeto" key={projeto.id}>
                         <Link to={projeto.link} className="conheca-link">
                             <img src={projeto.foto} alt={projeto.titulo} />
                             <div className="card-body">
-
                                 <h3>{projeto.titulo}</h3>
                                 <p>{projeto.descricao}</p>
-
                                 Conheça <span>&raquo;</span>
                             </div>
                         </Link>
-
                     </div>
                 ))}
             </div>
+
             <div className="section-info">
                 <h2 className="subTitle">Redes Sociais</h2>
                 <p>Fique por dentro de todos nossos trabalhos </p>
             </div>
+
             <div className="cards-redes-sociais">
                 {redesSociais.map((app) => (
                     <div className="rede-social" key={app.id}>
@@ -146,6 +161,7 @@ function Home() {
                     </div>
                 ))}
             </div>
+
             <WhatsAppButton />
             <Footer />
         </div>
