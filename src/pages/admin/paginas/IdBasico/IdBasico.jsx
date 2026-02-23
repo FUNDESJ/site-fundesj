@@ -116,19 +116,16 @@ export default function IdBasico() {
         }));
     }
 
-    // Função para abrir modal de deletar
     function abrirModalDeletar(inscrito) {
         setInscritoSelecionado(inscrito);
         setOpenModalDeletar(true);
     }
 
-    // Função para fechar modal
     function fecharModalDeletar() {
         setOpenModalDeletar(false);
         setInscritoSelecionado(null);
     }
 
-    // Função para recarregar a lista de inscritos após deletar
     function recarregarListaInscritos() {
         carregarInscritos();
     }
@@ -170,7 +167,7 @@ export default function IdBasico() {
                             className={`tab ${activeTab === 'turmas' ? 'active' : ''}`}
                             onClick={() => setActiveTab('turmas')}
                         >
-                            <FaGraduationCap /> Turmas Ativas
+                            <FaGraduationCap /> Turmas Ativas/Pendentes
                             <span className="tab-count">{turmasAtivas.length}</span>
                         </button>
                         <button
@@ -323,7 +320,7 @@ export default function IdBasico() {
                         {activeTab === 'turmas' && (
                             <div className="content-card">
                                 <div className="card-header">
-                                    <h3><FaGraduationCap /> Turmas Ativas</h3>
+                                    <h3><FaGraduationCap /> Turmas Ativas/Pendentes</h3>
                                     <button 
                                         className="btn-nova-turma"
                                         onClick={() => setMostrarFormTurma(!mostrarFormTurma)}
@@ -513,7 +510,6 @@ export default function IdBasico() {
                 </p>
             </footer>
 
-            {/* Modal de deletar inscrito - Agora dentro do componente principal */}
             <DeletarInscrito
                 isOpen={openModalDeletar}
                 onClose={fecharModalDeletar}
