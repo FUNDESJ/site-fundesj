@@ -1,0 +1,587 @@
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 12px;
+    width: 95%;
+    max-width: 800px; /* Aumentado de 500px para 800px */
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.modal-header {
+    padding: 20px 24px;
+    border-bottom: 1px solid #e0e0e0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f8f9fa;
+    border-radius: 12px 12px 0 0;
+}
+
+.modal-header h2 {
+    margin: 0;
+    color: #2c3e50;
+    font-size: 1.5rem;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: #666;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.2s;
+}
+
+.modal-close:hover {
+    background: #e0e0e0;
+    color: #333;
+}
+
+.modal-body {
+    padding: 24px;
+}
+
+.turma-detalhes h3 {
+    margin: 0 0 12px 0;
+    color: #2c3e50;
+    font-size: 1.3rem;
+}
+
+.turma-status {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.turma-status.pendente {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.turma-status.ativa {
+    background: #d4edda;
+    color: #155724;
+}
+
+.turma-status.finalizada {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.detalhes-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.detalhe-item {
+    display: flex;
+    gap: 16px;
+    padding: 12px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+}
+
+.detalhe-icon {
+    font-size: 1.2rem;
+    color: #3498db;
+    margin-top: 4px;
+}
+
+.detalhe-item div {
+    flex: 1;
+}
+
+.detalhe-item strong {
+    display: block;
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 4px;
+}
+
+.detalhe-item p {
+    margin: 0;
+    color: #2c3e50;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.modal-footer {
+    padding: 20px 24px;
+    border-top: 1px solid #e0e0e0;
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    background: #f8f9fa;
+    border-radius: 0 0 12px 12px;
+}
+
+.btn-fechar {
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    background: white;
+    color: #666;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+}
+
+.btn-fechar:hover {
+    background: #e0e0e0;
+}
+
+.btn-finalizar {
+    padding: 10px 20px;
+    border: none;
+    background: #28a745;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+}
+
+.btn-finalizar:hover {
+    background: #218838;
+}
+
+/* Seção de Inscritos */
+.inscritos-section {
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid #e0e0e0;
+}
+
+.inscritos-section h4 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #2c3e50;
+    font-size: 1.1rem;
+    margin-bottom: 16px;
+}
+
+.inscritos-section h4 svg {
+    color: #3498db;
+}
+
+.loading-inscritos {
+    text-align: center;
+    color: #666;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+.nenhum-inscrito {
+    text-align: center;
+    color: #666;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    font-style: italic;
+}
+
+.lista-inscritos {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 250px; /* Aumentado de 200px para 250px */
+    overflow-y: auto;
+    padding-right: 8px;
+}
+
+/* Scrollbar personalizada para listas */
+.lista-inscritos::-webkit-scrollbar,
+.lista-disponiveis::-webkit-scrollbar {
+    width: 6px;
+}
+
+.lista-inscritos::-webkit-scrollbar-track,
+.lista-disponiveis::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.lista-inscritos::-webkit-scrollbar-thumb,
+.lista-disponiveis::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 10px;
+}
+
+.lista-inscritos::-webkit-scrollbar-thumb:hover,
+.lista-disponiveis::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+/* Header dos inscritos com botão de adicionar */
+.inscritos-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.inscritos-header h4 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #2c3e50;
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+.btn-adicionar-inscrito {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 12px;
+    background: #28a745;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-adicionar-inscrito:hover {
+    background: #218838;
+}
+
+/* Item de inscrito com botão de deletar */
+.inscrito-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 12px;
+    background: #f8f9fa;
+    border-radius: 6px;
+    border: 1px solid #e0e0e0;
+    transition: all 0.2s;
+}
+
+.inscrito-item:hover {
+    background: #e9ecef;
+    border-color: #ced4da;
+}
+
+.inscrito-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.inscrito-nome {
+    font-weight: 500;
+    color: #2c3e50;
+}
+
+.inscrito-telefone {
+    color: #666;
+    font-size: 0.85rem;
+}
+
+.btn-deletar-inscrito {
+    background: none;
+    border: none;
+    color: #dc3545;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.btn-deletar-inscrito:hover:not(:disabled) {
+    background: #fee;
+    color: #c82333;
+}
+
+.btn-deletar-inscrito:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Seção de adicionar inscrito */
+.adicionar-inscrito-section {
+    margin-top: 20px;
+    padding: 16px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+}
+
+.adicionar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.adicionar-header h5 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #2c3e50;
+    font-size: 1rem;
+    margin: 0;
+}
+
+.btn-fechar-form {
+    background: none;
+    border: none;
+    color: #666;
+    cursor: pointer;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+}
+
+.btn-fechar-form:hover {
+    background: #e0e0e0;
+    color: #333;
+}
+
+/* Busca */
+.busca-container {
+    position: relative;
+    margin-bottom: 16px;
+}
+
+.busca-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+}
+
+.busca-input {
+    width: 100%;
+    padding: 10px 12px 10px 36px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 0.95rem;
+}
+
+.busca-input:focus {
+    outline: none;
+    border-color: #3498db;
+}
+
+/* Lista de disponíveis */
+.lista-disponiveis {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 300px; /* Aumentado de 250px para 300px */
+    overflow-y: auto;
+    padding-right: 8px;
+}
+
+.disponivel-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    background: white;
+    border-radius: 6px;
+    border: 1px solid #e0e0e0;
+}
+
+.disponivel-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.disponivel-nome {
+    font-weight: 500;
+    color: #2c3e50;
+}
+
+.disponivel-telefone {
+    color: #666;
+    font-size: 0.85rem;
+}
+
+.btn-adicionar {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 6px 12px;
+    background: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-adicionar:hover:not(:disabled) {
+    background: #218838;
+}
+
+.btn-adicionar:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Loading states */
+.loading-disponiveis, .nenhum-disponivel {
+    text-align: center;
+    color: #666;
+    padding: 20px;
+    background: white;
+    border-radius: 6px;
+    border: 1px dashed #ccc;
+}
+
+.loading-spinner-small {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Compatibilidade info */
+.compatibilidade-info {
+    margin: 16px 0;
+    padding: 12px 16px;
+    background: #e3f2fd;
+    border-radius: 8px;
+    border-left: 4px solid #2196f3;
+}
+
+.compatibilidade-texto {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #1976d2;
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.compatibilidade-icon {
+    color: #4caf50;
+    font-size: 1.1rem;
+}
+
+/* Características */
+.disponivel-caracteristicas,
+.inscrito-caracteristicas {
+    display: flex;
+    gap: 8px;
+    margin-top: 4px;
+    flex-wrap: wrap;
+}
+
+.caracteristica-badge {
+    background: #e9ecef;
+    color: #495057;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: 500;
+}
+
+/* Estilo para alunos que já foram chamados */
+.inscrito-item.foi-chamado,
+.disponivel-item.foi-chamado {
+    background-color: #fff5f5;
+    border-left: 4px solid #dc3545;
+    position: relative;
+}
+
+.inscrito-item.foi-chamado:hover,
+.disponivel-item.foi-chamado:hover {
+    background-color: #ffe9e9;
+}
+
+.inscrito-nome-container,
+.disponivel-nome-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.chamado-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background-color: #dc3545;
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.chamado-badge svg {
+    font-size: 0.8rem;
+}
+
+/* Tooltip personalizado */
+.chamado-badge[title] {
+    cursor: help;
+}
+
+/* Animação sutil para chamar atenção */
+@keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.8;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.inscrito-item.foi-chamado .chamado-badge,
+.disponivel-item.foi-chamado .chamado-badge {
+    animation: pulse 2s infinite;
+}

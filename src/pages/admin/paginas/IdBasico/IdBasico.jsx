@@ -1,13 +1,15 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { FaUsers, FaEdit, FaTrash, FaList, FaSearch, FaPlus, FaCalendarAlt, FaMapMarkerAlt, FaClock, FaGraduationCap, FaCheckCircle, FaTimesCircle } from 'react-icons/fa';
+import { FaUsers, FaEdit, FaTrash, FaList, FaSearch, FaPlus, FaCalendarAlt, FaMapMarkerAlt, FaClock, FaGraduationCap, FaCheckCircle, FaTimesCircle, FaSpinner } from 'react-icons/fa';
 import './idbasico.css';
 import DeletarInscrito from './Modal/ModalDeletarInscrito';
+import ModalTurmaPendente from './Modal/ModalTurmaPendente';
 
 export default function IdBasico() {
     const [inscritos, setInscritos] = useState([]);
     const [turmasAtivas, setTurmasAtivas] = useState([]);
     const [turmasFinalizadas, setTurmasFinalizadas] = useState([]);
+    const [turmasPendentes, setTurmasPendentes] = useState([]);
     const [novaTurma, setNovaTurma] = useState({
         nome: '',
         local: '',
@@ -23,11 +25,16 @@ export default function IdBasico() {
     const [mostrarFormTurma, setMostrarFormTurma] = useState(false);
     const [inscritoSelecionado, setInscritoSelecionado] = useState(null);
     const [openModalDeletar, setOpenModalDeletar] = useState(false);
-
+    const [modalTurmaPendenteAberto, setModalTurmaPendenteAberto] = useState(false);
+    const [turmaSelecionada, setTurmaSelecionada] = useState(null);
+    const [ativandoTurma, setAtivandoTurma] = useState(null);
+    const [mensagemAnimacao, setMensagemAnimacao] = useState({ mostrar: false, texto: '', tipo: '' });
+    
     useEffect(() => {
         carregarInscritos();
         listarTurmasAtivas();
         listarTurmasFinalizadas();
+        listarTurmasPendentes();
     }, []);
 
     async function carregarInscritos() {
@@ -52,28 +59,61 @@ export default function IdBasico() {
     async function listarTurmasAtivas() {
         try {
             const token = localStorage.getItem('authToken');
-            const turmasAtivas = await axios.get('https://back-end-fundesj.onrender.com/turmaId/turmas/Ativa', {
+            const response = await axios.get('https://back-end-fundesj.onrender.com/turmaId/turmas/Ativa', {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
             });
-            setTurmasAtivas(turmasAtivas.data);
+            
+            if (response.data && Array.isArray(response.data.turmas)) {
+                setTurmasAtivas(response.data.turmas);
+            } else {
+                setTurmasAtivas([]);
+            }
         } catch (erro) {
             console.log(erro);
+            setTurmasAtivas([]);
+        }
+    }
+
+    async function listarTurmasPendentes() {
+        try {
+            const token = localStorage.getItem('authToken');
+            const response = await axios.get('https://back-end-fundesj.onrender.com/turmaId/turmas/Pendente', {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+            
+            if (response.data && Array.isArray(response.data.turmas)) {
+                setTurmasPendentes(response.data.turmas);
+            } else {
+                console.log('Estrutura de dados inesperada:', response.data);
+                setTurmasPendentes([]);
+            }
+        } catch (erro) {
+            console.log(erro);
+            setTurmasPendentes([]);
         }
     }
 
     async function listarTurmasFinalizadas() {
         try {
             const token = localStorage.getItem('authToken');
-            const turmasAnteriores = await axios.get('https://back-end-fundesj.onrender.com/turmaId/turmas/Finalizada', {
+            const response = await axios.get('https://back-end-fundesj.onrender.com/turmaId/turmas/Finalizada', {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
             });
-            setTurmasFinalizadas(turmasAnteriores.data);
+            
+            if (response.data && Array.isArray(response.data.turmas)) {
+                setTurmasFinalizadas(response.data.turmas);
+            } else {
+                setTurmasFinalizadas([]);
+            }
         } catch (erro) {
             console.log(erro);
+            setTurmasFinalizadas([]);
         }
     }
 
@@ -82,7 +122,7 @@ export default function IdBasico() {
         try {
             const token = localStorage.getItem('authToken');
             if (!novaTurma.nome || !novaTurma.local || !novaTurma.periodo || !novaTurma.dias || !novaTurma.dataInicio) {
-                alert("Complete todos os campos corretamente");
+                mostrarMensagem("Complete todos os campos corretamente", "erro");
                 return;
             }
 
@@ -92,7 +132,7 @@ export default function IdBasico() {
                 }
             });
 
-            alert('Turma criada com sucesso!');
+            mostrarMensagem("Turma criada com sucesso!", "sucesso");
             setNovaTurma({
                 nome: '',
                 local: '',
@@ -101,11 +141,48 @@ export default function IdBasico() {
                 dataInicio: '',
             });
             setMostrarFormTurma(false);
-            listarTurmasAtivas();
+            listarTurmasPendentes();
         } catch (erro) {
             console.log(erro);
-            alert('Erro ao criar turma');
+            mostrarMensagem("Erro ao criar turma", "erro");
         }
+    }
+
+    async function ativarTurma(turmaId) {
+        try {
+            setAtivandoTurma(turmaId);
+            const token = localStorage.getItem('authToken');
+            
+            await axios.put(`https://back-end-fundesj.onrender.com/turmaId/editar/${turmaId}`, 
+                { status: "Ativa" },
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                        'Content-Type': 'application/json'
+                    }
+                }
+            );
+            
+            // Mostra animação de sucesso
+            mostrarMensagem("Turma ativada com sucesso!", "sucesso");
+            
+            // Atualiza as listas
+            await listarTurmasPendentes();
+            await listarTurmasAtivas();
+            
+        } catch (erro) {
+            console.log("Erro ao ativar turma", erro);
+            mostrarMensagem("Erro ao ativar turma", "erro");
+        } finally {
+            setAtivandoTurma(null);
+        }
+    }
+
+    function mostrarMensagem(texto, tipo) {
+        setMensagemAnimacao({ mostrar: true, texto, tipo });
+        setTimeout(() => {
+            setMensagemAnimacao({ mostrar: false, texto: '', tipo: '' });
+        }, 3000);
     }
 
     function handleInputChange(e) {
@@ -126,13 +203,23 @@ export default function IdBasico() {
         setInscritoSelecionado(null);
     }
 
+    function abrirModalTurmaPendente(turma) {
+        setTurmaSelecionada(turma);
+        setModalTurmaPendenteAberto(true);
+    }
+
+    function fecharModalTurmaPendente() {
+        setModalTurmaPendenteAberto(false);
+        setTurmaSelecionada(null);
+    }
+
     function recarregarListaInscritos() {
         carregarInscritos();
     }
 
     const inscritosFiltrados = inscritos.filter(inscrito => {
-        const correspondeBusca = inscrito.nome.toLowerCase().includes(busca.toLowerCase()) ||
-            inscrito.celular.includes(busca);
+        const correspondeBusca = inscrito.nome?.toLowerCase().includes(busca.toLowerCase()) ||
+            inscrito.celular?.includes(busca);
         const correspondeLocal = filtroLocal === 'todos' || inscrito.local === filtroLocal;
         return correspondeBusca && correspondeLocal;
     });
@@ -141,6 +228,14 @@ export default function IdBasico() {
 
     return (
         <div className="idbasico-container">
+            {/* Mensagem de animação */}
+            {mensagemAnimacao.mostrar && (
+                <div className={`mensagem-animacao ${mensagemAnimacao.tipo}`}>
+                    {mensagemAnimacao.tipo === 'sucesso' ? <FaCheckCircle /> : <FaTimesCircle />}
+                    <span>{mensagemAnimacao.texto}</span>
+                </div>
+            )}
+
             <header className="idbasico-header">
                 <div className="header-content">
                     <div className="header-title">
@@ -164,10 +259,17 @@ export default function IdBasico() {
                             <span className="tab-count">{inscritos.length}</span>
                         </button>
                         <button
-                            className={`tab ${activeTab === 'turmas' ? 'active' : ''}`}
-                            onClick={() => setActiveTab('turmas')}
+                            className={`tab ${activeTab === 'turmasPendentes' ? 'active' : ''}`}
+                            onClick={() => setActiveTab('turmasPendentes')}
                         >
-                            <FaGraduationCap /> Turmas Ativas/Pendentes
+                            <FaGraduationCap /> Turmas Pendentes
+                            <span className="tab-count">{turmasPendentes.length}</span>
+                        </button>
+                        <button
+                            className={`tab ${activeTab === 'turmasAtivas' ? 'active' : ''}`}
+                            onClick={() => setActiveTab('turmasAtivas')}
+                        >
+                            <FaGraduationCap /> Turmas Ativas
                             <span className="tab-count">{turmasAtivas.length}</span>
                         </button>
                         <button
@@ -180,6 +282,7 @@ export default function IdBasico() {
                     </div>
 
                     <div className="tab-content">
+                        {/* Aba de Inscritos */}
                         {activeTab === 'inscritos' && (
                             <div className="content-card">
                                 <div className="card-header">
@@ -317,10 +420,11 @@ export default function IdBasico() {
                             </div>
                         )}
 
-                        {activeTab === 'turmas' && (
+                        {/* Aba de Turmas Pendentes */}
+                        {activeTab === 'turmasPendentes' && (
                             <div className="content-card">
                                 <div className="card-header">
-                                    <h3><FaGraduationCap /> Turmas Ativas/Pendentes</h3>
+                                    <h3><FaGraduationCap /> Turmas Pendentes</h3>
                                     <button 
                                         className="btn-nova-turma"
                                         onClick={() => setMostrarFormTurma(!mostrarFormTurma)}
@@ -407,16 +511,80 @@ export default function IdBasico() {
                                     </div>
                                 )}
 
-                                {turmasAtivas.length === 0 ? (
+                                {turmasPendentes.length === 0 ? (
                                     <div className="empty-state">
                                         <div className="empty-icon"><FaGraduationCap /></div>
-                                        <h3>Nenhuma turma ativa</h3>
+                                        <h3>Nenhuma turma Pendente</h3>
                                         <p>Crie uma nova turma para começar as aulas.</p>
                                     </div>
                                 ) : (
                                     <div className="turmas-grid">
+                                        {turmasPendentes.map((turma, index) => (
+                                            <div key={turma.id || index} className="turma-card pendente">
+                                                <div className="turma-header">
+                                                    <h4>{turma.nome}</h4>
+                                                    <span className="turma-status pendente">{turma.status || 'Pendente'}</span>
+                                                </div>
+                                                <div className="turma-info">
+                                                    <div className="info-item">
+                                                        <FaMapMarkerAlt />
+                                                        <span>{turma.local}</span>
+                                                    </div>
+                                                    <div className="info-item">
+                                                        <FaClock />
+                                                        <span>{turma.periodo}</span>
+                                                    </div>
+                                                    <div className="info-item">
+                                                        <FaCalendarAlt />
+                                                        <span>{turma.dias}</span>
+                                                    </div>
+                                                </div>
+                                                <div className="turma-actions">
+                                                    <button 
+                                                        className="btn-detalhes"
+                                                        onClick={() => abrirModalTurmaPendente(turma)}
+                                                    >
+                                                        Ver Detalhes
+                                                    </button>
+                                                    <button 
+                                                        className={`btn-ativar ${ativandoTurma === turma.id ? 'ativando' : ''}`}
+                                                        onClick={() => ativarTurma(turma.id)}
+                                                        disabled={ativandoTurma === turma.id}
+                                                    >
+                                                        {ativandoTurma === turma.id ? (
+                                                            <>
+                                                                <FaSpinner className="spinner" />
+                                                                Ativando...
+                                                            </>
+                                                        ) : (
+                                                            'Ativar Turma'
+                                                        )}
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
+                        )}
+
+                        {/* Aba de Turmas Ativas */}
+                        {activeTab === 'turmasAtivas' && (
+                            <div className="content-card">
+                                <div className="card-header">
+                                    <h3><FaGraduationCap /> Turmas Ativas</h3>
+                                </div>
+
+                                {turmasAtivas.length === 0 ? (
+                                    <div className="empty-state">
+                                        <div className="empty-icon"><FaGraduationCap /></div>
+                                        <h3>Nenhuma turma ativa</h3>
+                                        <p>As turmas ativas aparecerão aqui.</p>
+                                    </div>
+                                ) : (
+                                    <div className="turmas-grid">
                                         {turmasAtivas.map((turma, index) => (
-                                            <div key={index} className="turma-card">
+                                            <div key={turma.id || index} className="turma-card ativa">
                                                 <div className="turma-header">
                                                     <h4>{turma.nome}</h4>
                                                     <span className="turma-status ativa">Ativa</span>
@@ -450,6 +618,7 @@ export default function IdBasico() {
                             </div>
                         )}
 
+                        {/* Aba de Turmas Anteriores */}
                         {activeTab === 'anteriores' && (
                             <div className="content-card">
                                 <div className="card-header">
@@ -465,7 +634,7 @@ export default function IdBasico() {
                                 ) : (
                                     <div className="turmas-grid">
                                         {turmasFinalizadas.map((turma, index) => (
-                                            <div key={index} className="turma-card finalizada">
+                                            <div key={turma.id || index} className="turma-card finalizada">
                                                 <div className="turma-header">
                                                     <h4>{turma.nome}</h4>
                                                     <span className="turma-status finalizada">Finalizada</span>
@@ -507,6 +676,7 @@ export default function IdBasico() {
                     Sistema de Gerenciamento - Curso de Inclusão Digital
                     <span className="footer-count"> | Total de Inscritos: {inscritos.length}</span>
                     <span className="footer-count"> | Turmas Ativas: {turmasAtivas.length}</span>
+                    <span className="footer-count"> | Turmas Pendentes: {turmasPendentes.length}</span>
                 </p>
             </footer>
 
@@ -515,6 +685,12 @@ export default function IdBasico() {
                 onClose={fecharModalDeletar}
                 inscrito={inscritoSelecionado}
                 recarregarLista={recarregarListaInscritos}
+            />
+
+            <ModalTurmaPendente
+                isOpen={modalTurmaPendenteAberto}
+                onClose={fecharModalTurmaPendente}
+                turma={turmaSelecionada}
             />
         </div>
     );

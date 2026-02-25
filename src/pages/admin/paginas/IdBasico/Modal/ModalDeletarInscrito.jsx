@@ -28,7 +28,6 @@ export default function DeletarInscrito({ isOpen, onClose, inscrito, recarregarL
             await axios.delete(`https://back-end-fundesj.onrender.com/inscritosId/${id}`, {
                 headers: { Authorization: `Bearer ${token}` }
             });
-            // Agora chama recarregarLista em vez de deletarInscrito
             recarregarLista();
             setIsLoading(false);
             onClose();
