@@ -840,7 +840,128 @@
         flex-direction: column;
     }
 }
+/* Botão de Sincronizar */
+.btn-sincronizar {
+    margin-top: 1rem;
+    padding: 0.75rem 1.5rem;
+    background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
 
+.btn-sincronizar:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+}
+
+.btn-sincronizar:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.btn-sincronizar.sincronizando {
+    background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+    animation: pulse 1.5s infinite;
+}
+
+.sync-icon {
+    font-size: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.sync-icon.rotating {
+    animation: rotate 1s linear infinite;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Atualização da mensagem de animação para incluir tipo info */
+.mensagem-animacao.info {
+    background: linear-gradient(135deg, #4299e1 0%, #3182ce 100%);
+    color: white;
+}
+
+.mensagem-animacao.info svg {
+    animation: rotate 2s linear infinite;
+}
+
+.mensagem-animacao {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-weight: 600;
+    animation: slideIn 0.3s ease, fadeOut 0.3s ease 2.7s;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.mensagem-animacao.sucesso {
+    background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+    color: white;
+}
+
+.mensagem-animacao.erro {
+    background: linear-gradient(135deg, #f56565 0%, #c53030 100%);
+    color: white;
+}
+
+.mensagem-animacao svg {
+    font-size: 1.5rem;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(72, 187, 120, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(72, 187, 120, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(72, 187, 120, 0);
+    }
+}
 @media (max-width: 480px) {
     .idbasico-header {
         padding: 1.5rem;

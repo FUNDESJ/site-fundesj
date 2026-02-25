@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { FaUsers, FaEdit, FaTrash, FaList, FaSearch, FaPlus, FaCalendarAlt, FaMapMarkerAlt, FaClock, FaGraduationCap, FaCheckCircle, FaTimesCircle, FaSpinner } from 'react-icons/fa';
+import { FaUsers, FaEdit, FaTrash, FaList, FaSearch, FaPlus, FaCalendarAlt, FaMapMarkerAlt, FaClock, FaGraduationCap, FaCheckCircle, FaTimesCircle, FaSpinner, FaSyncAlt } from 'react-icons/fa';
 import './idbasico.css';
 import DeletarInscrito from './Modal/ModalDeletarInscrito';
 import ModalTurmaPendente from './Modal/ModalTurmaPendente';
@@ -28,6 +28,7 @@ export default function IdBasico() {
     const [modalTurmaPendenteAberto, setModalTurmaPendenteAberto] = useState(false);
     const [turmaSelecionada, setTurmaSelecionada] = useState(null);
     const [ativandoTurma, setAtivandoTurma] = useState(null);
+    const [sincronizando, setSincronizando] = useState(false);
     const [mensagemAnimacao, setMensagemAnimacao] = useState({ mostrar: false, texto: '', tipo: '' });
     
     useEffect(() => {
@@ -163,10 +164,8 @@ export default function IdBasico() {
                 }
             );
             
-            // Mostra animação de sucesso
             mostrarMensagem("Turma ativada com sucesso!", "sucesso");
             
-            // Atualiza as listas
             await listarTurmasPendentes();
             await listarTurmasAtivas();
             
@@ -175,6 +174,26 @@ export default function IdBasico() {
             mostrarMensagem("Erro ao ativar turma", "erro");
         } finally {
             setAtivandoTurma(null);
+        }
+    }
+
+    async function sincronizarPlanilha() {
+        try {
+            setSincronizando(true);
+            mostrarMensagem("Sincronizando com a planilha...", "info");
+            
+            await axios.post('https://back-end-fundesj.onrender.com/sheets/sync');
+            
+            mostrarMensagem("Planilha sincronizada com sucesso!", "sucesso");
+            
+            // Recarrega os dados após sincronização
+            await carregarInscritos();
+            
+        } catch (erro) {
+            console.log("Erro ao sincronizar com a planilha", erro);
+            mostrarMensagem("Erro ao sincronizar com a planilha", "erro");
+        } finally {
+            setSincronizando(false);
         }
     }
 
@@ -231,7 +250,9 @@ export default function IdBasico() {
             {/* Mensagem de animação */}
             {mensagemAnimacao.mostrar && (
                 <div className={`mensagem-animacao ${mensagemAnimacao.tipo}`}>
-                    {mensagemAnimacao.tipo === 'sucesso' ? <FaCheckCircle /> : <FaTimesCircle />}
+                    {mensagemAnimacao.tipo === 'sucesso' && <FaCheckCircle />}
+                    {mensagemAnimacao.tipo === 'erro' && <FaTimesCircle />}
+                    {mensagemAnimacao.tipo === 'info' && <FaSyncAlt className="rotating" />}
                     <span>{mensagemAnimacao.texto}</span>
                 </div>
             )}
@@ -245,6 +266,14 @@ export default function IdBasico() {
                     <p className="idbasico-subtitle">
                         Gerencie inscritos, turmas e acompanhe o progresso do curso
                     </p>
+                    <button 
+                        className={`btn-sincronizar ${sincronizando ? 'sincronizando' : ''}`}
+                        onClick={sincronizarPlanilha}
+                        disabled={sincronizando}
+                    >
+                        <FaSyncAlt className={`sync-icon ${sincronizando ? 'rotating' : ''}`} />
+                        {sincronizando ? 'Sincronizando...' : 'Sincronizar dados com a planilha'}
+                    </button>
                 </div>
             </header>
 

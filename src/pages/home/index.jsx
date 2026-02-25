@@ -1,7 +1,7 @@
 import './index.css';
-import background from '../../images/background.mp4'; // Caminho correto para o vídeo
+import background from '../../images/background.mp4'; 
 import { Link } from 'react-router-dom';
-import Header from '../../components/header/index.jsx'; // Corrigido o caminho do Header
+import Header from '../../components/header/index.jsx'; 
 import Footer from '../../components/footer/footer.jsx';
 import facebook from '../../images/icones redes sociais/facebook.png';
 import instagram from '../../images/icones redes sociais/instagram.png';
@@ -13,7 +13,7 @@ import Imagem1 from '../../images/pagina inicial/settings.png';
 import Imagem2 from '../../images/pagina inicial/docs.png';
 import Imagem3 from '../../images/pagina inicial/book.png';
 import Imagem4 from '../../images/pagina inicial/team.png';
-import WhatsAppButton from '../../pages/whatsapp/whatsAppbutton.jsx'; // Importando o botão do WhatsApp
+import WhatsAppButton from '../../pages/whatsapp/whatsAppbutton.jsx'; 
 
 function Home() {
     const projetos = [
@@ -95,6 +95,17 @@ function Home() {
                     >
                         <button className="inscricao-btn teatro-btn">
                             Inscrições Oficina de Teatro 2026
+                            <span className="btn-arrow">→</span>
+                        </button>
+                    </a>
+                    <a 
+                        href="https://docs.google.com/forms/d/e/1FAIpQLSddzS8bR2APTiuBJks249dhc_OuGvLrLxwviM2VaC4CTOoRXQ/viewform" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="inscricao-link"
+                    >
+                        <button className="inscricao-btn teatro-btn">
+                            Inscrições Escola de Oleiros 2026
                             <span className="btn-arrow">→</span>
                         </button>
                     </a>
