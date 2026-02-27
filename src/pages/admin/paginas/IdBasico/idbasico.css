@@ -78,6 +78,7 @@
         transform: translateX(100%);
         opacity: 0;
     }
+
     to {
         transform: translateX(0);
         opacity: 1;
@@ -88,6 +89,7 @@
     from {
         opacity: 1;
     }
+
     to {
         opacity: 0;
     }
@@ -385,9 +387,11 @@
     0% {
         box-shadow: 0 0 0 0 rgba(72, 187, 120, 0.4);
     }
+
     70% {
         box-shadow: 0 0 0 10px rgba(72, 187, 120, 0);
     }
+
     100% {
         box-shadow: 0 0 0 0 rgba(72, 187, 120, 0);
     }
@@ -505,9 +509,11 @@
     0% {
         opacity: 1;
     }
+
     50% {
         opacity: 0.7;
     }
+
     100% {
         opacity: 1;
     }
@@ -521,6 +527,7 @@
     from {
         transform: rotate(0deg);
     }
+
     to {
         transform: rotate(360deg);
     }
@@ -798,48 +805,49 @@
         text-align: center;
         gap: 0.5rem;
     }
-    
+
     .header-icon {
         font-size: 2rem;
     }
-    
+
     .header-title h1 {
         font-size: 1.5rem;
     }
-    
+
     .tabs {
         flex-direction: column;
     }
-    
+
     .card-header {
         flex-direction: column;
         align-items: stretch;
     }
-    
+
     .header-actions {
         flex-direction: column;
     }
-    
+
     .search-container {
         min-width: 100%;
     }
-    
+
     .filter-select {
         width: 100%;
     }
-    
+
     .turmas-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .form-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .turma-actions {
         flex-direction: column;
     }
 }
+
 /* Botão de Sincronizar */
 .btn-sincronizar {
     margin-top: 1rem;
@@ -887,6 +895,7 @@
     from {
         transform: rotate(0deg);
     }
+
     to {
         transform: rotate(360deg);
     }
@@ -931,11 +940,21 @@
     font-size: 1.5rem;
 }
 
+/* Linha de inscrito já chamado */
+.linha-chamado {
+    background-color: rgba(255, 0, 0, 0.15) !important;
+}
+
+.linha-chamado:hover {
+    background-color: rgba(255, 0, 0, 0.25) !important;
+}
+
 @keyframes slideIn {
     from {
         transform: translateX(100%);
         opacity: 0;
     }
+
     to {
         transform: translateX(0);
         opacity: 1;
@@ -946,6 +965,7 @@
     from {
         opacity: 1;
     }
+
     to {
         opacity: 0;
     }
@@ -955,31 +975,34 @@
     0% {
         box-shadow: 0 0 0 0 rgba(72, 187, 120, 0.4);
     }
+
     70% {
         box-shadow: 0 0 0 10px rgba(72, 187, 120, 0);
     }
+
     100% {
         box-shadow: 0 0 0 0 rgba(72, 187, 120, 0);
     }
 }
+
 @media (max-width: 480px) {
     .idbasico-header {
         padding: 1.5rem;
     }
-    
+
     .content-card {
         padding: 1rem;
     }
-    
+
     .inscritos-table td,
     .inscritos-table th {
         padding: 0.75rem;
     }
-    
+
     .acao-btn span {
         display: none;
     }
-    
+
     .acao-btn {
         padding: 0.5rem;
     }

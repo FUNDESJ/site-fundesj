@@ -1,6 +1,10 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { FaUsers, FaEdit, FaTrash, FaList, FaSearch, FaPlus, FaCalendarAlt, FaMapMarkerAlt, FaClock, FaGraduationCap, FaCheckCircle, FaTimesCircle, FaSpinner, FaSyncAlt } from 'react-icons/fa';
+import { 
+  FaUsers, FaEdit, FaTrash, FaList, FaSearch, FaPlus, 
+  FaCalendarAlt, FaMapMarkerAlt, FaClock, FaGraduationCap, 
+  FaCheckCircle, FaTimesCircle, FaSpinner, FaSyncAlt 
+} from 'react-icons/fa';
 import './idbasico.css';
 import DeletarInscrito from './Modal/ModalDeletarInscrito';
 import ModalTurmaPendente from './Modal/ModalTurmaPendente';
@@ -186,7 +190,6 @@ export default function IdBasico() {
             
             mostrarMensagem("Planilha sincronizada com sucesso!", "sucesso");
             
-            // Recarrega os dados após sincronização
             await carregarInscritos();
             
         } catch (erro) {
@@ -386,7 +389,10 @@ export default function IdBasico() {
                                             </thead>
                                             <tbody>
                                                 {inscritosFiltrados.map((inscrito, index) => (
-                                                    <tr key={index}>
+                                                    <tr 
+                                                        key={index} 
+                                                        className={inscrito.foiChamado ? 'linha-chamado' : ''}
+                                                    >
                                                         <td>
                                                             <div className="nome-cell">
                                                                 <span className="nome-text">{inscrito.nome}</span>
