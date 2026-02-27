@@ -63,7 +63,7 @@ export default function ModalTurmaPendente({ isOpen, onClose, turma }) {
             // 2. Têm local = "CATI"
             const disponiveis = retorno.data.filter(inscrito => {
                 const naoEstaNaTurma = !idsInscritosNaTurma.includes(inscrito.id);
-                const localCati = inscrito.local === "CATI";;
+                const localCati = inscrito.local === "CATI" || inscrito.local === "Estácio" ;
                 const turma_id = inscrito.turma_id === null
                 
                 return naoEstaNaTurma && localCati && turma_id;
@@ -352,9 +352,6 @@ export default function ModalTurmaPendente({ isOpen, onClose, turma }) {
                 <div className="modal-footer">
                     <button className="btn-fechar" onClick={onClose}>
                         Fechar
-                    </button>
-                    <button className="btn-finalizar">
-                        Finalizar Turma
                     </button>
                 </div>
             </div>
