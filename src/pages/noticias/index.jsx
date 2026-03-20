@@ -8,8 +8,32 @@ const Noticias = () => {
     // Estado para paginação
     const [paginaAtual, setPaginaAtual] = useState(1);
     const [itensPorPagina] = useState(6); // 3 notícias por página
-    
+
     const noticias = [
+        {
+            titulo: 'Projeto, em São José, vai capacitar mulheres para ter autonomia financeira',
+            imagem: 'https://saojose.sc.gov.br/wp-content/uploads/2026/03/Instituto-Elas-primeiro-encontro-12-960x720.jpeg',
+            data: '12/03/2026',
+            url: 'https://saojose.sc.gov.br/projeto-em-sao-jose-vai-capacitar-mulheres-para-ter-autonomia-financeira/97138/'
+        },
+        {
+            titulo: 'Idosos de São José aprendem a usar o smartphone',
+            imagem: 'https://saojose.sc.gov.br/wp-content/uploads/2026/03/Inclusao-Digital-para-Pessoas-Idosas-4-1-960x576.jpeg',
+            data: '11/03/2026',
+            url: 'https://saojose.sc.gov.br/idosos-de-sao-jose-aprendem-a-usar-o-smartphone/97130/'
+        },
+        {
+            titulo: 'Evento em São José orienta mulheres sobre direitos, saúde emocional, autocuidado e sobrevivência',
+            imagem: 'https://saojose.sc.gov.br/wp-content/uploads/2026/03/Evento-Mulheres-COMDIMSJ-3-960x720.jpeg',
+            data: '10/03/2026',
+            url: 'https://saojose.sc.gov.br/evento-em-sao-jose-orienta-mulheres-sobre-direitos-saude-emocional-autocuidado-e-sobrevivencia/97062/'
+        },
+        {
+            titulo: 'São José lança Movimento Mulher Viva para prevenção e enfrentamento à violência',
+            imagem: 'https://saojose.sc.gov.br/wp-content/uploads/2026/03/Lancamento-Mulher-Viva-3-1.jpeg',
+            data: '9/03/2026',
+            url: 'https://saojose.sc.gov.br/sao-jose-lanca-movimento-mulher-viva-para-prevencao-e-enfrentamento-a-violencia/97003/'
+        },
         {
             titulo: 'Programa Longevidade Ativa promove palestra sobre nutrição para idosos em São José',
             imagem: 'https://i0.wp.com/saojose.sc.gov.br/wp-content/uploads/2025/08/WhatsApp-Image-2025-08-19-at-16.35.45.jpeg?fit=1200%2C701&ssl=1',
@@ -292,7 +316,7 @@ const Noticias = () => {
             data: '23/02/2024',
             url: 'https://saojose.sc.gov.br/nucleo-da-escola-federativa-de-sao-jose-vai-oferecer-formacao-permanente/26716/'
         },
-        
+
     ];
 
     // Lógica de paginação
@@ -335,14 +359,14 @@ const Noticias = () => {
                 {/* Paginação */}
                 {totalPaginas > 1 && (
                     <div className="paginacao">
-                        <button 
-                            onClick={() => setPaginaAtual(paginaAtual - 1)} 
+                        <button
+                            onClick={() => setPaginaAtual(paginaAtual - 1)}
                             disabled={paginaAtual === 1}
                             className="botao-paginacao"
                         >
                             <FaChevronLeft /> Anterior
                         </button>
-                        
+
                         {Array.from({ length: totalPaginas }, (_, i) => i + 1).map(numero => (
                             <button
                                 key={numero}
@@ -352,9 +376,9 @@ const Noticias = () => {
                                 {numero}
                             </button>
                         ))}
-                        
-                        <button 
-                            onClick={() => setPaginaAtual(paginaAtual + 1)} 
+
+                        <button
+                            onClick={() => setPaginaAtual(paginaAtual + 1)}
                             disabled={paginaAtual === totalPaginas}
                             className="botao-paginacao"
                         >

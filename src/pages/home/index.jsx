@@ -87,7 +87,7 @@ function Home() {
                         </button>
                     </Link>
 
-                    <a 
+                   {/*  <a 
                         href="https://forms.gle/WXhmbwEmdcsLyWhX7" 
                         target="_blank" 
                         rel="noopener noreferrer" 
@@ -97,15 +97,15 @@ function Home() {
                             Inscrições Oficina de Teatro 2026
                             <span className="btn-arrow">→</span>
                         </button>
-                    </a>
+                    </a> */}
                     <a 
-                        href="https://docs.google.com/forms/d/e/1FAIpQLSddzS8bR2APTiuBJks249dhc_OuGvLrLxwviM2VaC4CTOoRXQ/viewform" 
+                        href="https://static.dom.sc.gov.br/?r=site/atoView&id=8086054" 
                         target="_blank" 
                         rel="noopener noreferrer" 
                         className="inscricao-link"
                     >
                         <button className="inscricao-btn teatro-btn">
-                            Inscrições Escola de Oleiros 2026
+                            Relativo às inscrições para Oficina de Teatro e Escola de Oleiros: Comunicamos que a divulgação dos resultados das matrículas está temporariamente suspensa. A medida visa atender à manifestação do Conselho Municipal de Cultura, processo que já foi encaminhado à Procuradoria Geral do Município para análise e decisão final
                             <span className="btn-arrow">→</span>
                         </button>
                     </a>

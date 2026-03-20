@@ -1,37 +1,236 @@
-.realizacoesbanner{
-  width: 1180px;
-  height: 400px;
+/* Reset e variáveis */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --text-dark: #2c3e50;
+  --text-light: #7f8c8d;
+  --bg-light: #f8f9fa;
+  --border-color: #e0e0e0;
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+  --azul: #007bff;
+  --vermelho-escuro: #8B0000;
+}
+
+/* Container principal */
+.realizacoes-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Banner Section */
+.banner-section {
+  width: 100%;
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: center;
+  animation: fadeIn 0.5s ease;
+}
+
+.ano-banner {
+  width: 100%;
+  max-width: 1200px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
   display: block;
-  margin: 2px auto;
-
 }
 
-.realizacoes{
-  border: 2px solid #52525229;
-      padding: 2px;
-      width: fit-content;
-      font-size: 12px;
-      font-weight: bold;
-      margin: 50px auto;
-      text-align: center;
+/* Tabs Container */
+.tabs-container {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  margin-bottom: 40px;
+  background: #fff;
+  border-radius: 50px;
+  padding: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.h2realizacoes {
-text-align: center;
-  margin-bottom: 10px;
+.tab-button {
+  flex: 1;
+  background: transparent;
+  border: none;
+  padding: 12px 24px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #666;
+  cursor: pointer;
+  transition: var(--transition);
+  border-radius: 50px;
+  letter-spacing: 0.3px;
+  position: relative;
 }
 
-.imagem {
-    width: 25%;
-    height: 10%;
-    object-fit: cover;
-    border-radius: 8px;
+.tab-button.active {
+  color: white;
+  background: #000;
 }
 
-.todasimagens {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1px;
-    padding: 40px;
+.tab-button:first-child.active {
+  background: var(--azul);
+}
+
+.tab-button:last-child.active {
+  background: var(--vermelho-escuro);
+}
+
+.tab-button:not(.active):hover {
+  background: #f5f5f5;
+  color: #333;
+}
+
+/* Gallery Grid - Imagens se tocando */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  background: transparent;
+  aspect-ratio: 4 / 3;
+}
+
+.image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.gallery-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+  display: block;
+}
+
+.gallery-item:hover .gallery-image {
+  transform: scale(1.05);
+}
+
+.image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: var(--transition);
+}
+
+.gallery-item:hover .image-overlay {
+  opacity: 1;
+}
+
+.overlay-icon {
+  color: white;
+  font-size: 2rem;
+  transform: scale(0.8);
+  transition: transform 0.3s ease;
+}
+
+.gallery-item:hover .overlay-icon {
+  transform: scale(1);
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .realizacoes-container {
+    padding: 15px;
+  }
+
+  .banner-section {
+    margin-bottom: 30px;
+  }
+
+  .tabs-container {
+    max-width: 320px;
+    margin-bottom: 30px;
+  }
+
+  .tab-button {
+    padding: 10px 20px;
+    font-size: 0.85rem;
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tabs-container {
+    max-width: 280px;
+  }
+
+  .tab-button {
+    padding: 8px 16px;
+    font-size: 0.8rem;
+  }
+
+  .banner-section {
+    margin-bottom: 20px;
+  }
+}
+
+/* Scrollbar personalizada */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-light);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #000;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #333;
 }
