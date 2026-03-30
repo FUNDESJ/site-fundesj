@@ -65,7 +65,7 @@ function App() {
         <Route path="/idintermediario/conheca" element={<Conheca />} />
         <Route path="/idintermediario/inscricao" element={<InscricoesIntermediario />} />
         <Route path="/idintermediario/chamada" element={<ChamadaIntermediario />} />
-        <Route path="/ilpi" element={<Ilpi />} />
+        <Route path="/projetos-anteriores/ilpi" element={<Ilpi />} />
         <Route path='/voluntariado' element={<Voluntariado />} />
         <Route path='/bombeiro-mirim' element={<BombeiroMirim />} />
         <Route path="/cursos/nef" element={<Nef />} />

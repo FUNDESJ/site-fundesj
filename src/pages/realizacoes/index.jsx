@@ -85,9 +85,6 @@ function Realizacoes() {
             <div key={imagem.id} className="gallery-item">
               <div className="image-wrapper">
                 <img src={imagem.src} alt={imagem.alt} className="gallery-image" />
-                <div className="image-overlay">
-                  <span className="overlay-icon">🔍</span>
-                </div>
               </div>
             </div>
           ))}

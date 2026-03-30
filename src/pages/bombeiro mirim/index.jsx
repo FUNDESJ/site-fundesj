@@ -65,7 +65,6 @@ const BombeiroMirim = () => {
 
       
 
-        {/* Stats Section */}
         <section className="stats-section">
           <div className="stats-container">
             <div className="stat-item">
@@ -73,8 +72,8 @@ const BombeiroMirim = () => {
               <p>Alunos do <strong>7º ano do Ensino Fundamental</strong> em escolas da rede municipal</p>
             </div>
             <div className="stat-item highlight">
-              <h3>Alcance em 2023</h3>
-              <p><strong>242 estudantes</strong> atendidos em <strong>4 unidades escolares</strong></p>
+              <h3>Alcance do programa </h3>
+              <p><strong>1.270 estudantes</strong> atendidos desde 2023 </p>
             </div>
           </div>
         </section>

@@ -16,7 +16,6 @@
   padding: 0 2rem;
 }
 
-/* Scroll Reveal Animation */
 /* Titles and Text */
 .pa-title {
   font-size: 2.8rem;
@@ -24,7 +23,6 @@
   color: darkred;
   margin: 1rem;
   text-align: center;
-  transition-delay: 0.1s;
 }
 
 .pa-intro {
@@ -33,15 +31,15 @@
   margin: 0 auto 3rem;
   text-align: center;
   color: black;
-  transition-delay: 0.2s;
 }
 
-/* Grid Layout */
+/* Grid Layout - Cards alinhados */
 .pa-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
   margin-bottom: 4rem;
+  justify-content: center;
 }
 
 /* Cards */
@@ -52,6 +50,9 @@
   overflow: hidden;
   border-left: 3px solid darkred;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .pa-card:hover {
@@ -59,11 +60,19 @@
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
 }
 
-.pa-content {
-  padding: 2rem;
-  height: 100%;
+.pa-card a {
+  text-decoration: none;
   display: flex;
   flex-direction: column;
+  height: 100%;
+}
+
+.pa-content {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  flex: 1;
 }
 
 .pa-card-title {
@@ -99,9 +108,11 @@
   background-color: #e74c3c;
   transition: width 0.3s ease;
 }
-.pa-link:hover{
-  color: red
+
+.pa-link:hover {
+  color: red;
 }
+
 .pa-link:hover::after {
   width: 100%;
 }
@@ -121,12 +132,18 @@
   font-size: 2rem;
   color: darkred;
   margin-bottom: 1.5rem;
-  transition-delay: 0.1s;
 }
 
 .pa-section p {
   color: #555;
-  transition-delay: 0.2s;
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+  .pa-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.8rem;
+  }
 }
 
 @media (max-width: 768px) {

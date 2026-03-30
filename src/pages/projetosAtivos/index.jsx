@@ -30,12 +30,7 @@ const ProjetosAtivos = () => {
             image: idtodos,
             link: '/idintermediario'
         },
-        {
-            title: "Projeto ILPI",
-            description: "Voltado ao cuidado e à conectividade de idosos em instituições de longa permanência, melhorando sua qualidade de vida.",
-            image: bemEstar,
-            link: '/ilpi'
-        },
+
 
     ];
 
