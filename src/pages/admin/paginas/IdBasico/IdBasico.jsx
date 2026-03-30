@@ -281,61 +281,61 @@ export default function IdBasico() {
             </header>
 
             <main className="idbasico-main">
-                <div className="tabs-container">
-                    <div className="tabs">
+                <div className="idbasico-tabs-container">
+                    <div className="idbasico-tabs">
                         <button
-                            className={`tab ${activeTab === 'inscritos' ? 'active' : ''}`}
+                            className={`idbasico-tab ${activeTab === 'inscritos' ? 'active' : ''}`}
                             onClick={() => setActiveTab('inscritos')}
                         >
                             <FaUsers /> Inscritos
-                            <span className="tab-count">{inscritos.length}</span>
+                            <span className="idbasico-tab-count">{inscritos.length}</span>
                         </button>
                         <button
-                            className={`tab ${activeTab === 'turmasPendentes' ? 'active' : ''}`}
+                            className={`idbasico-tab ${activeTab === 'turmasPendentes' ? 'active' : ''}`}
                             onClick={() => setActiveTab('turmasPendentes')}
                         >
                             <FaGraduationCap /> Turmas Pendentes
-                            <span className="tab-count">{turmasPendentes.length}</span>
+                            <span className="idbasico-tab-count">{turmasPendentes.length}</span>
                         </button>
                         <button
-                            className={`tab ${activeTab === 'turmasAtivas' ? 'active' : ''}`}
+                            className={`idbasico-tab ${activeTab === 'turmasAtivas' ? 'active' : ''}`}
                             onClick={() => setActiveTab('turmasAtivas')}
                         >
                             <FaGraduationCap /> Turmas Ativas
-                            <span className="tab-count">{turmasAtivas.length}</span>
+                            <span className="idbasico-tab-count">{turmasAtivas.length}</span>
                         </button>
                         <button
-                            className={`tab ${activeTab === 'anteriores' ? 'active' : ''}`}
+                            className={`idbasico-tab ${activeTab === 'anteriores' ? 'active' : ''}`}
                             onClick={() => setActiveTab('anteriores')}
                         >
                             <FaCalendarAlt /> Turmas Anteriores
-                            <span className="tab-count">{turmasFinalizadas.length}</span>
+                            <span className="idbasico-tab-count">{turmasFinalizadas.length}</span>
                         </button>
                     </div>
 
-                    <div className="tab-content">
+                    <div className="idbasico-tab-content">
                         {/* Aba de Inscritos */}
                         {activeTab === 'inscritos' && (
-                            <div className="content-card">
-                                <div className="card-header">
+                            <div className="idbasico-content-card">
+                                <div className="idbasico-card-header">
                                     <h3>
                                         <FaList /> Lista de Inscritos
                                     </h3>
-                                    <div className="header-actions">
-                                        <div className="search-container">
-                                            <FaSearch className="search-icon" />
+                                    <div className="idbasico-header-actions">
+                                        <div className="idbasico-search-container">
+                                            <FaSearch className="idbasico-search-icon" />
                                             <input
                                                 type="text"
                                                 placeholder="Buscar por nome ou telefone..."
                                                 value={busca}
                                                 onChange={(e) => setBusca(e.target.value)}
-                                                className="search-input"
+                                                className="idbasico-search-input"
                                             />
                                         </div>
                                         <select
                                             value={filtroLocal}
                                             onChange={(e) => setFiltroLocal(e.target.value)}
-                                            className="filter-select"
+                                            className="idbasico-filter-select"
                                         >
                                             <option value="todos">Todos os locais</option>
                                             {locaisDisponiveis.map((local, index) => (
@@ -346,21 +346,21 @@ export default function IdBasico() {
                                 </div>
 
                                 {carregandoInscritos ? (
-                                    <div className="loading-container">
-                                        <div className="loading-spinner"></div>
+                                    <div className="idbasico-loading-container">
+                                        <div className="idbasico-loading-spinner"></div>
                                         <p>Carregando lista de inscritos...</p>
                                     </div>
                                 ) : erroInscritos ? (
-                                    <div className="error-container">
-                                        <div className="error-icon">!</div>
-                                        <p className="error-message">{erroInscritos}</p>
-                                        <button className="retry-button" onClick={carregarInscritos}>
+                                    <div className="idbasico-error-container">
+                                        <div className="idbasico-error-icon">!</div>
+                                        <p className="idbasico-error-message">{erroInscritos}</p>
+                                        <button className="idbasico-retry-button" onClick={carregarInscritos}>
                                             <FaSearch /> Tentar Novamente
                                         </button>
                                     </div>
                                 ) : inscritosFiltrados.length === 0 ? (
-                                    <div className="empty-state">
-                                        <div className="empty-icon"><FaUsers /></div>
+                                    <div className="idbasico-empty-state">
+                                        <div className="idbasico-empty-icon"><FaUsers /></div>
                                         <h3>Nenhum inscrito encontrado</h3>
                                         <p>
                                             {busca || filtroLocal !== 'todos' 
@@ -369,13 +369,13 @@ export default function IdBasico() {
                                         </p>
                                     </div>
                                 ) : (
-                                    <div className="table-container">
-                                        <div className="table-info">
-                                            <span className="info-count">
+                                    <div className="idbasico-table-container">
+                                        <div className="idbasico-table-info">
+                                            <span className="idbasico-info-count">
                                                 Mostrando {inscritosFiltrados.length} de {inscritos.length} inscritos
                                             </span>
                                         </div>
-                                        <table className="inscritos-table">
+                                        <table className="idbasico-inscritos-table">
                                             <thead>
                                                 <tr>
                                                     <th>Nome</th>
@@ -391,21 +391,21 @@ export default function IdBasico() {
                                                 {inscritosFiltrados.map((inscrito, index) => (
                                                     <tr 
                                                         key={index} 
-                                                        className={inscrito.foiChamado ? 'linha-chamado' : ''}
+                                                        className={inscrito.foiChamado ? 'idbasico-linha-chamado' : ''}
                                                     >
                                                         <td>
-                                                            <div className="nome-cell">
-                                                                <span className="nome-text">{inscrito.nome}</span>
+                                                            <div className="idbasico-nome-cell">
+                                                                <span className="idbasico-nome-text">{inscrito.nome}</span>
                                                             </div>
                                                         </td>
                                                         <td>
-                                                            <div className="telefone-cell">
-                                                                <span className="telefone-text">{inscrito.celular}</span>
+                                                            <div className="idbasico-telefone-cell">
+                                                                <span className="idbasico-telefone-text">{inscrito.celular}</span>
                                                             </div>
                                                         </td>
                                                         <td>
-                                                            <div className={`primeira-vez-cell ${inscrito.primeira_vez ? 'sim' : 'nao'}`}>
-                                                                <span className="primeira-vez-badge">
+                                                            <div className={`idbasico-primeira-vez-cell ${inscrito.primeira_vez ? 'sim' : 'nao'}`}>
+                                                                <span className="idbasico-primeira-vez-badge">
                                                                     {inscrito.primeira_vez ? 
                                                                         <><FaCheckCircle /> Sim</> : 
                                                                         <><FaTimesCircle /> Não</>
@@ -414,34 +414,34 @@ export default function IdBasico() {
                                                             </div>
                                                         </td>
                                                         <td>
-                                                            <div className="local-cell">
-                                                                <FaMapMarkerAlt className="local-icon" />
-                                                                <span className="local-text">{inscrito.local}</span>
+                                                            <div className="idbasico-local-cell">
+                                                                <FaMapMarkerAlt className="idbasico-local-icon" />
+                                                                <span className="idbasico-local-text">{inscrito.local}</span>
                                                             </div>
                                                         </td>
                                                         <td>
-                                                            <div className="periodo-cell">
-                                                                <FaClock className="periodo-icon" />
-                                                                <span className="periodo-text">{inscrito.periodo}</span>
+                                                            <div className="idbasico-periodo-cell">
+                                                                <FaClock className="idbasico-periodo-icon" />
+                                                                <span className="idbasico-periodo-text">{inscrito.periodo}</span>
                                                             </div>
                                                         </td>
                                                         <td>
-                                                            <div className="dias-cell">
-                                                                <span className="dias-text">{inscrito.dias}</span>
+                                                            <div className="idbasico-dias-cell">
+                                                                <span className="idbasico-dias-text">{inscrito.dias}</span>
                                                             </div>
                                                         </td>
                                                         <td>
-                                                            <div className="acoes-cell">
-                                                                <button className="acao-btn editar-btn" title="Editar">
-                                                                    <FaEdit className="acao-icon" />
+                                                            <div className="idbasico-acoes-cell">
+                                                                <button className="idbasico-acao-btn idbasico-editar-btn" title="Editar">
+                                                                    <FaEdit className="idbasico-acao-icon" />
                                                                     <span>Editar</span>
                                                                 </button>
                                                                 <button 
-                                                                    className="acao-btn excluir-btn" 
+                                                                    className="idbasico-acao-btn idbasico-excluir-btn" 
                                                                     title="Excluir"
                                                                     onClick={() => abrirModalDeletar(inscrito)}
                                                                 >
-                                                                    <FaTrash className="acao-icon" />
+                                                                    <FaTrash className="idbasico-acao-icon" />
                                                                     <span>Excluir</span>
                                                                 </button>
                                                             </div>
@@ -457,11 +457,11 @@ export default function IdBasico() {
 
                         {/* Aba de Turmas Pendentes */}
                         {activeTab === 'turmasPendentes' && (
-                            <div className="content-card">
-                                <div className="card-header">
+                            <div className="idbasico-content-card">
+                                <div className="idbasico-card-header">
                                     <h3><FaGraduationCap /> Turmas Pendentes</h3>
                                     <button 
-                                        className="btn-nova-turma"
+                                        className="idbasico-btn-nova-turma"
                                         onClick={() => setMostrarFormTurma(!mostrarFormTurma)}
                                     >
                                         <FaPlus /> Nova Turma
@@ -469,11 +469,11 @@ export default function IdBasico() {
                                 </div>
 
                                 {mostrarFormTurma && (
-                                    <div className="form-turma-container">
-                                        <form onSubmit={criarTurma} className="form-turma">
+                                    <div className="idbasico-form-turma-container">
+                                        <form onSubmit={criarTurma} className="idbasico-form-turma">
                                             <h4><FaPlus /> Criar Nova Turma</h4>
-                                            <div className="form-grid">
-                                                <div className="form-group">
+                                            <div className="idbasico-form-grid">
+                                                <div className="idbasico-form-group">
                                                     <label>Nome da Turma *</label>
                                                     <input
                                                         type="text"
@@ -484,7 +484,7 @@ export default function IdBasico() {
                                                         required
                                                     />
                                                 </div>
-                                                <div className="form-group">
+                                                <div className="idbasico-form-group">
                                                     <label>Local *</label>
                                                     <select
                                                         name="local"
@@ -497,7 +497,7 @@ export default function IdBasico() {
                                                         <option value="Estácio">Estácio</option>
                                                     </select>
                                                 </div>
-                                                <div className="form-group">
+                                                <div className="idbasico-form-group">
                                                     <label>Período *</label>
                                                     <select
                                                         name="periodo"
@@ -510,7 +510,7 @@ export default function IdBasico() {
                                                         <option value="Vespertino">Vespertino</option>
                                                     </select>
                                                 </div>
-                                                <div className="form-group">
+                                                <div className="idbasico-form-group">
                                                     <label>Dias da Semana *</label>
                                                     <select
                                                         name="dias"
@@ -523,7 +523,7 @@ export default function IdBasico() {
                                                         <option value="Terça e Quinta">Terça e Quinta</option>
                                                     </select>
                                                 </div>
-                                                <div className="form-group">
+                                                <div className="idbasico-form-group">
                                                     <label>Data de Início *</label>
                                                     <input
                                                         type="date"
@@ -534,11 +534,11 @@ export default function IdBasico() {
                                                     />
                                                 </div>
                                             </div>
-                                            <div className="form-actions">
-                                                <button type="button" className="btn-cancelar" onClick={() => setMostrarFormTurma(false)}>
+                                            <div className="idbasico-form-actions">
+                                                <button type="button" className="idbasico-btn-cancelar" onClick={() => setMostrarFormTurma(false)}>
                                                     Cancelar
                                                 </button>
-                                                <button type="submit" className="btn-salvar">
+                                                <button type="submit" className="idbasico-btn-salvar">
                                                     <FaPlus /> Criar Turma
                                                 </button>
                                             </div>
@@ -547,48 +547,48 @@ export default function IdBasico() {
                                 )}
 
                                 {turmasPendentes.length === 0 ? (
-                                    <div className="empty-state">
-                                        <div className="empty-icon"><FaGraduationCap /></div>
+                                    <div className="idbasico-empty-state">
+                                        <div className="idbasico-empty-icon"><FaGraduationCap /></div>
                                         <h3>Nenhuma turma Pendente</h3>
                                         <p>Crie uma nova turma para começar as aulas.</p>
                                     </div>
                                 ) : (
-                                    <div className="turmas-grid">
+                                    <div className="idbasico-turmas-grid">
                                         {turmasPendentes.map((turma, index) => (
-                                            <div key={turma.id || index} className="turma-card pendente">
-                                                <div className="turma-header">
+                                            <div key={turma.id || index} className="idbasico-turma-card idbasico-pendente">
+                                                <div className="idbasico-turma-header">
                                                     <h4>{turma.nome}</h4>
-                                                    <span className="turma-status pendente">{turma.status || 'Pendente'}</span>
+                                                    <span className="idbasico-turma-status idbasico-pendente">{turma.status || 'Pendente'}</span>
                                                 </div>
-                                                <div className="turma-info">
-                                                    <div className="info-item">
+                                                <div className="idbasico-turma-info">
+                                                    <div className="idbasico-info-item">
                                                         <FaMapMarkerAlt />
                                                         <span>{turma.local}</span>
                                                     </div>
-                                                    <div className="info-item">
+                                                    <div className="idbasico-info-item">
                                                         <FaClock />
                                                         <span>{turma.periodo}</span>
                                                     </div>
-                                                    <div className="info-item">
+                                                    <div className="idbasico-info-item">
                                                         <FaCalendarAlt />
                                                         <span>{turma.dias}</span>
                                                     </div>
                                                 </div>
-                                                <div className="turma-actions">
+                                                <div className="idbasico-turma-actions">
                                                     <button 
-                                                        className="btn-detalhes"
+                                                        className="idbasico-btn-detalhes"
                                                         onClick={() => abrirModalTurmaPendente(turma)}
                                                     >
                                                         Ver Detalhes
                                                     </button>
                                                     <button 
-                                                        className={`btn-ativar ${ativandoTurma === turma.id ? 'ativando' : ''}`}
+                                                        className={`idbasico-btn-ativar ${ativandoTurma === turma.id ? 'ativando' : ''}`}
                                                         onClick={() => ativarTurma(turma.id)}
                                                         disabled={ativandoTurma === turma.id}
                                                     >
                                                         {ativandoTurma === turma.id ? (
                                                             <>
-                                                                <FaSpinner className="spinner" />
+                                                                <FaSpinner className="idbasico-spinner" />
                                                                 Ativando...
                                                             </>
                                                         ) : (
@@ -605,46 +605,46 @@ export default function IdBasico() {
 
                         {/* Aba de Turmas Ativas */}
                         {activeTab === 'turmasAtivas' && (
-                            <div className="content-card">
-                                <div className="card-header">
+                            <div className="idbasico-content-card">
+                                <div className="idbasico-card-header">
                                     <h3><FaGraduationCap /> Turmas Ativas</h3>
                                 </div>
 
                                 {turmasAtivas.length === 0 ? (
-                                    <div className="empty-state">
-                                        <div className="empty-icon"><FaGraduationCap /></div>
+                                    <div className="idbasico-empty-state">
+                                        <div className="idbasico-empty-icon"><FaGraduationCap /></div>
                                         <h3>Nenhuma turma ativa</h3>
                                         <p>As turmas ativas aparecerão aqui.</p>
                                     </div>
                                 ) : (
-                                    <div className="turmas-grid">
+                                    <div className="idbasico-turmas-grid">
                                         {turmasAtivas.map((turma, index) => (
-                                            <div key={turma.id || index} className="turma-card ativa">
-                                                <div className="turma-header">
+                                            <div key={turma.id || index} className="idbasico-turma-card idbasico-ativa">
+                                                <div className="idbasico-turma-header">
                                                     <h4>{turma.nome}</h4>
-                                                    <span className="turma-status ativa">Ativa</span>
+                                                    <span className="idbasico-turma-status idbasico-ativa">Ativa</span>
                                                 </div>
-                                                <div className="turma-info">
-                                                    <div className="info-item">
+                                                <div className="idbasico-turma-info">
+                                                    <div className="idbasico-info-item">
                                                         <FaMapMarkerAlt />
                                                         <span>{turma.local}</span>
                                                     </div>
-                                                    <div className="info-item">
+                                                    <div className="idbasico-info-item">
                                                         <FaClock />
                                                         <span>{turma.periodo}</span>
                                                     </div>
-                                                    <div className="info-item">
+                                                    <div className="idbasico-info-item">
                                                         <FaCalendarAlt />
                                                         <span>{turma.dias}</span>
                                                     </div>
-                                                    <div className="info-item">
+                                                    <div className="idbasico-info-item">
                                                         <FaUsers />
                                                         <span>0 alunos</span>
                                                     </div>
                                                 </div>
-                                                <div className="turma-actions">
-                                                    <button className="btn-detalhes">Ver Detalhes</button>
-                                                    <button className="btn-finalizar">Finalizar Turma</button>
+                                                <div className="idbasico-turma-actions">
+                                                    <button className="idbasico-btn-detalhes">Ver Detalhes</button>
+                                                    <button className="idbasico-btn-finalizar">Finalizar Turma</button>
                                                 </div>
                                             </div>
                                         ))}
@@ -655,46 +655,46 @@ export default function IdBasico() {
 
                         {/* Aba de Turmas Anteriores */}
                         {activeTab === 'anteriores' && (
-                            <div className="content-card">
-                                <div className="card-header">
+                            <div className="idbasico-content-card">
+                                <div className="idbasico-card-header">
                                     <h3><FaCalendarAlt /> Turmas Anteriores</h3>
                                 </div>
 
                                 {turmasFinalizadas.length === 0 ? (
-                                    <div className="empty-state">
-                                        <div className="empty-icon"><FaCalendarAlt /></div>
+                                    <div className="idbasico-empty-state">
+                                        <div className="idbasico-empty-icon"><FaCalendarAlt /></div>
                                         <h3>Nenhuma turma finalizada</h3>
                                         <p>As turmas finalizadas aparecerão aqui.</p>
                                     </div>
                                 ) : (
-                                    <div className="turmas-grid">
+                                    <div className="idbasico-turmas-grid">
                                         {turmasFinalizadas.map((turma, index) => (
-                                            <div key={turma.id || index} className="turma-card finalizada">
-                                                <div className="turma-header">
+                                            <div key={turma.id || index} className="idbasico-turma-card idbasico-finalizada">
+                                                <div className="idbasico-turma-header">
                                                     <h4>{turma.nome}</h4>
-                                                    <span className="turma-status finalizada">Finalizada</span>
+                                                    <span className="idbasico-turma-status idbasico-finalizada">Finalizada</span>
                                                 </div>
-                                                <div className="turma-info">
-                                                    <div className="info-item">
+                                                <div className="idbasico-turma-info">
+                                                    <div className="idbasico-info-item">
                                                         <FaMapMarkerAlt />
                                                         <span>{turma.local}</span>
                                                     </div>
-                                                    <div className="info-item">
+                                                    <div className="idbasico-info-item">
                                                         <FaClock />
                                                         <span>{turma.periodo}</span>
                                                     </div>
-                                                    <div className="info-item">
+                                                    <div className="idbasico-info-item">
                                                         <FaCalendarAlt />
                                                         <span>{turma.dias}</span>
                                                     </div>
-                                                    <div className="info-item">
+                                                    <div className="idbasico-info-item">
                                                         <FaUsers />
                                                         <span>0 alunos</span>
                                                     </div>
                                                 </div>
-                                                <div className="turma-actions">
-                                                    <button className="btn-detalhes">Ver Histórico</button>
-                                                    <button className="btn-reabrir">Reabrir Turma</button>
+                                                <div className="idbasico-turma-actions">
+                                                    <button className="idbasico-btn-detalhes">Ver Histórico</button>
+                                                    <button className="idbasico-btn-reabrir">Reabrir Turma</button>
                                                 </div>
                                             </div>
                                         ))}
@@ -709,9 +709,9 @@ export default function IdBasico() {
             <footer className="idbasico-footer">
                 <p>
                     Sistema de Gerenciamento - Curso de Inclusão Digital
-                    <span className="footer-count"> | Total de Inscritos: {inscritos.length}</span>
-                    <span className="footer-count"> | Turmas Ativas: {turmasAtivas.length}</span>
-                    <span className="footer-count"> | Turmas Pendentes: {turmasPendentes.length}</span>
+                    <span className="idbasico-footer-count"> | Total de Inscritos: {inscritos.length}</span>
+                    <span className="idbasico-footer-count"> | Turmas Ativas: {turmasAtivas.length}</span>
+                    <span className="idbasico-footer-count"> | Turmas Pendentes: {turmasPendentes.length}</span>
                 </p>
             </footer>
 
