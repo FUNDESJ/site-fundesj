@@ -1,14 +1,15 @@
 import React from 'react';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import { 
-  FaTimes, FaMapMarkerAlt, FaClock, FaCalendarAlt, FaUsers, 
-  FaTrash, FaPlus, FaSearch, FaCheckCircle, FaExclamationTriangle,
-  FaSpinner, FaUserPlus, FaUserMinus, FaHourglassHalf
+import {
+    FaTimes, FaMapMarkerAlt, FaClock, FaCalendarAlt, FaUsers,
+    FaTrash, FaPlus, FaSearch, FaCheckCircle, FaExclamationTriangle,
+    FaChartLine, FaUserGraduate, FaCalendarCheck, FaPlay, FaStop,
+    FaSpinner, FaUserPlus, FaUserMinus, FaHistory, FaFileAlt
 } from 'react-icons/fa';
-import './ModalTurmaPendente.css';
+import './ModalTurmaAtiva.css';
 
-export default function ModalTurmaPendente({ isOpen, onClose, turma, onTurmaUpdated }) {
+export default function ModalTurmaAtiva({ isOpen, onClose, turma, onTurmaUpdated }) {
     const [inscritos, setInscritos] = useState([]);
     const [carregando, setCarregando] = useState(false);
     const [deletandoInscrito, setDeletandoInscrito] = useState(null);
@@ -17,7 +18,13 @@ export default function ModalTurmaPendente({ isOpen, onClose, turma, onTurmaUpda
     const [inscritosDisponiveis, setInscritosDisponiveis] = useState([]);
     const [carregandoDisponiveis, setCarregandoDisponiveis] = useState(false);
     const [adicionandoInscrito, setAdicionandoInscrito] = useState(null);
-    const [ativandoTurma, setAtivandoTurma] = useState(false);
+    const [finalizandoTurma, setFinalizandoTurma] = useState(false);
+    const [estatisticas, setEstatisticas] = useState({
+        totalAlunos: 0,
+        primeiraVez: 0,
+        retornantes: 0,
+        taxaOcupacao: 0
+    });
     const [activeSubTab, setActiveSubTab] = useState('alunos');
 
     useEffect(() => {
@@ -25,6 +32,12 @@ export default function ModalTurmaPendente({ isOpen, onClose, turma, onTurmaUpda
             listarInscritos();
         }
     }, [turma, isOpen]);
+
+    useEffect(() => {
+        if (inscritos.length > 0) {
+            calcularEstatisticas();
+        }
+    }, [inscritos]);
 
     async function listarInscritos() {
         try {
@@ -51,6 +64,19 @@ export default function ModalTurmaPendente({ isOpen, onClose, turma, onTurmaUpda
         }
     }
 
+    function calcularEstatisticas() {
+        const primeiraVezCount = inscritos.filter(i => i.primeira_vez === true || i.primeira_vez === 1).length;
+        const retornantesCount = inscritos.length - primeiraVezCount;
+        const taxaOcupacao = (inscritos.length / 15) * 100; // Considerando capacidade máxima de 30 alunos
+
+        setEstatisticas({
+            totalAlunos: inscritos.length,
+            primeiraVez: primeiraVezCount,
+            retornantes: retornantesCount,
+            taxaOcupacao: Math.min(taxaOcupacao, 100)
+        });
+    }
+
     async function listarInscritosDisponiveis() {
         try {
             setCarregandoDisponiveis(true);
@@ -65,9 +91,9 @@ export default function ModalTurmaPendente({ isOpen, onClose, turma, onTurmaUpda
 
             const disponiveis = retorno.data.filter(inscrito => {
                 const naoEstaNaTurma = !idsInscritosNaTurma.includes(inscrito.id);
-                const localCompativel = inscrito.local === "CATI" || inscrito.local === "Estácio";
+                const localCompativel = inscrito.local === turma.local;
                 const semTurma = inscrito.turma_id === null;
-                
+
                 return naoEstaNaTurma && localCompativel && semTurma;
             });
 
@@ -90,7 +116,7 @@ export default function ModalTurmaPendente({ isOpen, onClose, turma, onTurmaUpda
             const token = localStorage.getItem('authToken');
 
             await axios.put(`https://back-end-fundesj.onrender.com/inscritosId/${inscritoId}`,
-                { turma_id: null },
+                { turma_id: null, foiChamado: false },
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,
@@ -99,9 +125,10 @@ export default function ModalTurmaPendente({ isOpen, onClose, turma, onTurmaUpda
                 }
             );
 
+            const alunoRemovido = inscritos.find(i => i.id === inscritoId);
             setInscritos(inscritos.filter(i => i.id !== inscritoId));
 
-            if (mostrarFormAdicionar) {
+            if (mostrarFormAdicionar && alunoRemovido && alunoRemovido.local === turma.local) {
                 listarInscritosDisponiveis();
             }
 
@@ -137,7 +164,7 @@ export default function ModalTurmaPendente({ isOpen, onClose, turma, onTurmaUpda
                 }
             );
 
-            setInscritos([...inscritos, { ...inscrito, foiChamado: true }]);
+            setInscritos([...inscritos, { ...inscrito, foiChamado: true, turma_id: turma.id }]);
             setInscritosDisponiveis(inscritosDisponiveis.filter(i => i.id !== inscrito.id));
 
             mostrarNotificacao(`${inscrito.nome} foi adicionado à turma!`, 'success');
@@ -149,17 +176,17 @@ export default function ModalTurmaPendente({ isOpen, onClose, turma, onTurmaUpda
         }
     }
 
-    async function ativarTurma() {
-        if (!window.confirm('Deseja ativar esta turma? Os alunos serão notificados e a turma ficará disponível para início das aulas.')) {
+    async function finalizarTurma() {
+        if (!window.confirm('Tem certeza que deseja finalizar esta turma?\n\nEsta ação não poderá ser desfeita e os alunos serão liberados para novas turmas.')) {
             return;
         }
 
         try {
-            setAtivandoTurma(true);
+            setFinalizandoTurma(true);
             const token = localStorage.getItem('authToken');
-            
-            await axios.put(`https://back-end-fundesj.onrender.com/turmaId/editar/${turma.id}`, 
-                { status: "Ativa" },
+
+            await axios.put(`https://back-end-fundesj.onrender.com/turmaId/editar/${turma.id}`,
+                { status: "Finalizada" },
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,
@@ -167,28 +194,41 @@ export default function ModalTurmaPendente({ isOpen, onClose, turma, onTurmaUpda
                     }
                 }
             );
-            
-            mostrarNotificacao('Turma ativada com sucesso!', 'success');
-            
+
+            // Liberar todos os alunos da turma
+            for (const inscrito of inscritos) {
+                await axios.put(`https://back-end-fundesj.onrender.com/inscritosId/${inscrito.id}`,
+                    { turma_id: null, foiChamado: false },
+                    {
+                        headers: {
+                            Authorization: `Bearer ${token}`,
+                            'Content-Type': 'application/json'
+                        }
+                    }
+                );
+            }
+
+            mostrarNotificacao('Turma finalizada com sucesso!', 'success');
+
             if (onTurmaUpdated) {
                 onTurmaUpdated();
             }
-            
+
             setTimeout(() => {
                 onClose();
             }, 1500);
-            
+
         } catch (erro) {
-            console.error('Erro ao ativar turma:', erro);
-            mostrarNotificacao('Erro ao ativar turma.', 'error');
+            console.error('Erro ao finalizar turma:', erro);
+            mostrarNotificacao('Erro ao finalizar turma.', 'error');
         } finally {
-            setAtivandoTurma(false);
+            setFinalizandoTurma(false);
         }
     }
 
     function mostrarNotificacao(mensagem, tipo) {
         const notificacao = document.createElement('div');
-        notificacao.className = `notificacao-turma-pendente notificacao-${tipo}`;
+        notificacao.className = `notificacao-turma-ativa notificacao-${tipo}`;
         notificacao.innerHTML = `
             <div class="notificacao-conteudo">
                 ${tipo === 'success' ? '✓' : '✗'}
@@ -196,7 +236,7 @@ export default function ModalTurmaPendente({ isOpen, onClose, turma, onTurmaUpda
             </div>
         `;
         document.body.appendChild(notificacao);
-        
+
         setTimeout(() => {
             notificacao.classList.add('notificacao-fade-out');
             setTimeout(() => {
@@ -208,13 +248,11 @@ export default function ModalTurmaPendente({ isOpen, onClose, turma, onTurmaUpda
     function abrirFormAdicionar() {
         setMostrarFormAdicionar(true);
         listarInscritosDisponiveis();
-        setActiveSubTab('adicionar');
     }
 
     function fecharFormAdicionar() {
         setMostrarFormAdicionar(false);
         setBuscaInscritos('');
-        setActiveSubTab('alunos');
     }
 
     const inscritosDisponiveisFiltrados = inscritosDisponiveis.filter(inscrito =>
@@ -231,16 +269,16 @@ export default function ModalTurmaPendente({ isOpen, onClose, turma, onTurmaUpda
     });
 
     return (
-        <div className="modal-turma-pendente-overlay" onClick={onClose}>
-            <div className="modal-turma-pendente-content" onClick={(e) => e.stopPropagation()}>
-                <div className="modal-turma-pendente-header">
+        <div className="modal-turma-ativa-overlay" onClick={onClose}>
+            <div className="modal-turma-ativa-content" onClick={(e) => e.stopPropagation()}>
+                <div className="modal-turma-ativa-header">
                     <div className="header-left">
                         <div className="header-icon-wrapper">
-                            <FaHourglassHalf className="header-icon" />
+                            <FaUserGraduate className="header-icon" />
                         </div>
                         <div>
                             <h2>{turma.nome}</h2>
-                            <span className="turma-status-badge pendente">Pendente</span>
+                            <span className="turma-status-badge ativa">Ativa</span>
                         </div>
                     </div>
                     <button className="modal-close-btn" onClick={onClose}>
@@ -248,41 +286,52 @@ export default function ModalTurmaPendente({ isOpen, onClose, turma, onTurmaUpda
                     </button>
                 </div>
 
-                <div className="modal-turma-pendente-body">
+                <div className="modal-turma-ativa-body">
                     {/* Cards de Informações */}
-                    <div className="info-cards-grid">
-                        <div className="info-card">
-                            <div className="info-card-icon">
-                                <FaMapMarkerAlt />
+
+                    {/* Cards de Estatísticas */}
+                    <div className="estatisticas-grid">
+                        <div className="estatistica-card">
+                            <div className="estatistica-icon total">
+                                <FaUsers />
                             </div>
-                            <div className="info-card-content">
-                                <span className="info-card-label">Local</span>
-                                <strong className="info-card-value">{turma.local}</strong>
+                            <div className="estatistica-info">
+                                <span className="estatistica-valor">{estatisticas.totalAlunos}</span>
+                                <span className="estatistica-label">Total de Alunos</span>
                             </div>
                         </div>
 
-                        <div className="info-card">
-                            <div className="info-card-icon">
-                                <FaClock />
+                        <div className="estatistica-card">
+                            <div className="estatistica-icon primeira-vez">
+                                <FaCheckCircle />
                             </div>
-                            <div className="info-card-content">
-                                <span className="info-card-label">Período</span>
-                                <strong className="info-card-value">{turma.periodo}</strong>
-                            </div>
-                        </div>
-
-                        <div className="info-card">
-                            <div className="info-card-icon">
-                                <FaCalendarAlt />
-                            </div>
-                            <div className="info-card-content">
-                                <span className="info-card-label">Dias da Semana</span>
-                                <strong className="info-card-value">{turma.dias}</strong>
+                            <div className="estatistica-info">
+                                <span className="estatistica-valor">{estatisticas.primeiraVez}</span>
+                                <span className="estatistica-label">Primeira Vez</span>
                             </div>
                         </div>
 
-                        <div className="info-card">
-                            <div className="info-card-icon">
+                        <div className="estatistica-card">
+                            <div className="estatistica-icon retornantes">
+                                <FaHistory />
+                            </div>
+                            <div className="estatistica-info">
+                                <span className="estatistica-valor">{estatisticas.retornantes}</span>
+                                <span className="estatistica-label">Retornantes</span>
+                            </div>
+                        </div>
+
+                        <div className="estatistica-card">
+                            <div className="estatistica-icon ocupacao">
+                                <FaChartLine />
+                            </div>
+                            <div className="estatistica-info">
+                                <span className="estatistica-valor">{Math.round(estatisticas.taxaOcupacao)}%</span>
+                                <span className="estatistica-label">Taxa de Ocupação</span>
+                            </div>
+                        </div>
+                        <div className="estatistica-card">
+                            <div className="estatistica-icon data">
                                 <FaCalendarAlt />
                             </div>
                             <div className="info-card-content">
@@ -292,12 +341,17 @@ export default function ModalTurmaPendente({ isOpen, onClose, turma, onTurmaUpda
                         </div>
                     </div>
 
-                    {/* Aviso de Compatibilidade */}
-                    <div className="compatibilidade-card">
-                        <FaCheckCircle className="compatibilidade-icon" />
-                        <div className="compatibilidade-texto">
-                            <strong>Alunos do CATI e Estácio</strong>
-                            <p>Esta turma está configurada para receber alunos dos locais: CATI e Estácio</p>
+                    {/* Barra de Progresso de Ocupação */}
+                    <div className="ocupacao-progresso">
+                        <div className="progresso-header">
+                            <span>Capacidade da Turma</span>
+                            <span>{inscritos.length} / 15 alunos</span>
+                        </div>
+                        <div className="progresso-bar">
+                            <div
+                                className="progresso-fill"
+                                style={{ width: `${estatisticas.taxaOcupacao}%` }}
+                            ></div>
                         </div>
                     </div>
 
@@ -312,10 +366,9 @@ export default function ModalTurmaPendente({ isOpen, onClose, turma, onTurmaUpda
                         <button
                             className={`sub-tab ${activeSubTab === 'adicionar' ? 'active' : ''}`}
                             onClick={() => {
+                                setActiveSubTab('adicionar');
                                 if (!mostrarFormAdicionar) {
                                     abrirFormAdicionar();
-                                } else {
-                                    setActiveSubTab('adicionar');
                                 }
                             }}
                         >
@@ -338,9 +391,12 @@ export default function ModalTurmaPendente({ isOpen, onClose, turma, onTurmaUpda
                                     </div>
                                     <h4>Nenhum aluno matriculado</h4>
                                     <p>Esta turma ainda não possui alunos matriculados.</p>
-                                    <button 
+                                    <button
                                         className="btn-adicionar-aluno"
-                                        onClick={abrirFormAdicionar}
+                                        onClick={() => {
+                                            setActiveSubTab('adicionar');
+                                            abrirFormAdicionar();
+                                        }}
                                     >
                                         <FaUserPlus /> Adicionar Alunos
                                     </button>
@@ -366,10 +422,6 @@ export default function ModalTurmaPendente({ isOpen, onClose, turma, onTurmaUpda
                                                     </div>
                                                     <div className="aluno-metadados">
                                                         <span className="metadado">
-                                                            <FaMapMarkerAlt className="metadado-icon" />
-                                                            {inscrito.local}
-                                                        </span>
-                                                        <span className="metadado">
                                                             <FaClock className="metadado-icon" />
                                                             {inscrito.periodo}
                                                         </span>
@@ -392,7 +444,9 @@ export default function ModalTurmaPendente({ isOpen, onClose, turma, onTurmaUpda
                                                 {deletandoInscrito === inscrito.id ? (
                                                     <FaSpinner className="spinner-small rotating" />
                                                 ) : (
-                                                    <FaUserMinus />
+                                                    <div className="estatistica-icon apagar">
+                                                        <FaTrash />
+                                                    </div>
                                                 )}
                                             </button>
                                         </div>
@@ -430,13 +484,13 @@ export default function ModalTurmaPendente({ isOpen, onClose, turma, onTurmaUpda
                                     <p>
                                         {buscaInscritos
                                             ? 'Não encontramos alunos com esta busca.'
-                                            : `Não há alunos disponíveis no CATI ou Estácio para esta turma.`}
+                                            : `Não há alunos disponíveis no ${turma.local} para esta turma.`}
                                     </p>
                                 </div>
                             ) : (
                                 <div className="alunos-disponiveis-lista">
                                     {inscritosDisponiveisFiltrados.map((inscrito) => (
-                                        <div key={inscrito.id} className={`aluno-disponivel-card ${inscrito.foiChamado ? 'foi-chamado' : ''}`}>
+                                        <div key={inscrito.id} className="aluno-disponivel-card">
                                             <div className="aluno-disponivel-info">
                                                 <div className="aluno-avatar">
                                                     <span className="avatar-inicial">
@@ -452,16 +506,12 @@ export default function ModalTurmaPendente({ isOpen, onClose, turma, onTurmaUpda
                                                             </span>
                                                         )}
                                                         {inscrito.foiChamado && (
-                                                            <span className="chamado-badge" title="Este aluno já foi chamado anteriormente">
-                                                                <FaExclamationTriangle /> Já Chamado
+                                                            <span className="chamado-badge">
+                                                                <FaExclamationTriangle /> Já foi Chamado
                                                             </span>
                                                         )}
                                                     </div>
                                                     <div className="aluno-metadados">
-                                                        <span className="metadado">
-                                                            <FaMapMarkerAlt className="metadado-icon" />
-                                                            {inscrito.local}
-                                                        </span>
                                                         <span className="metadado">
                                                             <FaClock className="metadado-icon" />
                                                             {inscrito.periodo}
@@ -495,28 +545,28 @@ export default function ModalTurmaPendente({ isOpen, onClose, turma, onTurmaUpda
                     )}
                 </div>
 
-                <div className="modal-turma-pendente-footer">
+                <div className="modal-turma-ativa-footer">
                     <button className="btn-fechar" onClick={onClose}>
                         Fechar
                     </button>
-                    <button 
-                        className="btn-ativar-turma"
-                        onClick={ativarTurma}
-                        disabled={ativandoTurma}
+                    <button
+                        className="btn-finalizar-turma"
+                        onClick={finalizarTurma}
+                        disabled={finalizandoTurma}
                     >
-                        {ativandoTurma ? (
+                        {finalizandoTurma ? (
                             <>
                                 <FaSpinner className="spinner-small rotating" />
-                                Ativando...
+                                Finalizando...
                             </>
                         ) : (
                             <>
-                                <FaCheckCircle /> Ativar Turma
+                                <FaStop /> Finalizar Turma
                             </>
                         )}
                     </button>
                 </div>
             </div>
-        </div>
+        </div >
     );
 }

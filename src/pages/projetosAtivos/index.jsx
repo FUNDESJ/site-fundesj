@@ -6,7 +6,7 @@ import Footer from '../../components/footer/footer.jsx';
 import ciclo from '../../images/pagina inicial/ciclo.jpg';
 import inclusaoidosos from '../../images/pagina inicial/inclusao.png';
 import idtodos from '../../images/pagina inicial/idtodosfi.jpeg';
-import bemEstar from '../../images/pagina inicial/bemEstar.jpeg';
+import oficinaFuturo from '../../images/pagina inicial/oficinaFuturo.jpeg';
 import HeroPages from '../../components/heros/hero_pages.jsx';
 const ProjetosAtivos = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -28,6 +28,18 @@ const ProjetosAtivos = () => {
             title: "Oficina Temática de Inclusão Digital",
             description: "Aprofunda habilidades digitais já adquiridas, permitindo maior domínio tecnológico e oportunidades.",
             image: idtodos,
+            link: '/idintermediario'
+        },
+        {
+            title: "Oficina do Futuro",
+            description: "Capacitação de jovens em vulnerabilidade social em funilaria e pintura automotiva, promovendo inclusão e acesso ao mercado de trabalho.",
+            image: oficinaFuturo,
+            link: '/idintermediario'
+        },
+        {
+            title: "Incerção de egressos da Univali",
+            description: "Projeto de inscerção de egressos da Univali em projetos e ações comunitárias.",
+            image: oficinaFuturo,
             link: '/idintermediario'
         },
 

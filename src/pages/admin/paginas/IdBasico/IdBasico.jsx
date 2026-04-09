@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { 
-  FaUsers, FaEdit, FaTrash, FaList, FaSearch, FaPlus, 
-  FaCalendarAlt, FaMapMarkerAlt, FaClock, FaGraduationCap, 
-  FaCheckCircle, FaTimesCircle, FaSpinner, FaSyncAlt 
+import {
+    FaUsers, FaEdit, FaTrash, FaList, FaSearch, FaPlus,
+    FaCalendarAlt, FaMapMarkerAlt, FaClock, FaGraduationCap,
+    FaCheckCircle, FaTimesCircle, FaSpinner, FaSyncAlt
 } from 'react-icons/fa';
 import './idbasico.css';
 import DeletarInscrito from './Modal/ModalDeletarInscrito';
 import ModalTurmaPendente from './Modal/ModalTurmaPendente';
+import ModalTurmaAtiva from './Modal/ModalTurmaAtiva';
 
 export default function IdBasico() {
     const [inscritos, setInscritos] = useState([]);
@@ -30,11 +31,13 @@ export default function IdBasico() {
     const [inscritoSelecionado, setInscritoSelecionado] = useState(null);
     const [openModalDeletar, setOpenModalDeletar] = useState(false);
     const [modalTurmaPendenteAberto, setModalTurmaPendenteAberto] = useState(false);
+    const [modalTurmaAtivaAberto, setModalTurmaAtivaAberto] = useState(false);
+    const [turmaAtivaSelecionada, setTurmaAtivaSelecionada] = useState(null);
     const [turmaSelecionada, setTurmaSelecionada] = useState(null);
     const [ativandoTurma, setAtivandoTurma] = useState(null);
     const [sincronizando, setSincronizando] = useState(false);
     const [mensagemAnimacao, setMensagemAnimacao] = useState({ mostrar: false, texto: '', tipo: '' });
-    
+
     useEffect(() => {
         carregarInscritos();
         listarTurmasAtivas();
@@ -69,7 +72,7 @@ export default function IdBasico() {
                     Authorization: `Bearer ${token}`
                 }
             });
-            
+
             if (response.data && Array.isArray(response.data.turmas)) {
                 setTurmasAtivas(response.data.turmas);
             } else {
@@ -89,7 +92,7 @@ export default function IdBasico() {
                     Authorization: `Bearer ${token}`
                 }
             });
-            
+
             if (response.data && Array.isArray(response.data.turmas)) {
                 setTurmasPendentes(response.data.turmas);
             } else {
@@ -110,7 +113,7 @@ export default function IdBasico() {
                     Authorization: `Bearer ${token}`
                 }
             });
-            
+
             if (response.data && Array.isArray(response.data.turmas)) {
                 setTurmasFinalizadas(response.data.turmas);
             } else {
@@ -157,8 +160,8 @@ export default function IdBasico() {
         try {
             setAtivandoTurma(turmaId);
             const token = localStorage.getItem('authToken');
-            
-            await axios.put(`https://back-end-fundesj.onrender.com/turmaId/editar/${turmaId}`, 
+
+            await axios.put(`https://back-end-fundesj.onrender.com/turmaId/editar/${turmaId}`,
                 { status: "Ativa" },
                 {
                     headers: {
@@ -167,12 +170,12 @@ export default function IdBasico() {
                     }
                 }
             );
-            
+
             mostrarMensagem("Turma ativada com sucesso!", "sucesso");
-            
+
             await listarTurmasPendentes();
             await listarTurmasAtivas();
-            
+
         } catch (erro) {
             console.log("Erro ao ativar turma", erro);
             mostrarMensagem("Erro ao ativar turma", "erro");
@@ -185,13 +188,13 @@ export default function IdBasico() {
         try {
             setSincronizando(true);
             mostrarMensagem("Sincronizando com a planilha...", "info");
-            
+
             await axios.post('https://back-end-fundesj.onrender.com/sheets/sync');
-            
+
             mostrarMensagem("Planilha sincronizada com sucesso!", "sucesso");
-            
+
             await carregarInscritos();
-            
+
         } catch (erro) {
             console.log("Erro ao sincronizar com a planilha", erro);
             mostrarMensagem("Erro ao sincronizar com a planilha", "erro");
@@ -238,7 +241,22 @@ export default function IdBasico() {
     function recarregarListaInscritos() {
         carregarInscritos();
     }
+    function abrirModalTurmaAtiva(turma) {
+        setTurmaAtivaSelecionada(turma);
+        setModalTurmaAtivaAberto(true);
+    }
 
+    function fecharModalTurmaAtiva() {
+        setModalTurmaAtivaAberto(false);
+        setTurmaAtivaSelecionada(null);
+    }
+
+    // Função para recarregar as turmas após atualizações
+    async function recarregarTurmas() {
+        await listarTurmasAtivas();
+        await listarTurmasPendentes();
+        await listarTurmasFinalizadas();
+    }
     const inscritosFiltrados = inscritos.filter(inscrito => {
         const correspondeBusca = inscrito.nome?.toLowerCase().includes(busca.toLowerCase()) ||
             inscrito.celular?.includes(busca);
@@ -269,7 +287,7 @@ export default function IdBasico() {
                     <p className="idbasico-subtitle">
                         Gerencie inscritos, turmas e acompanhe o progresso do curso
                     </p>
-                    <button 
+                    <button
                         className={`btn-sincronizar ${sincronizando ? 'sincronizando' : ''}`}
                         onClick={sincronizarPlanilha}
                         disabled={sincronizando}
@@ -363,8 +381,8 @@ export default function IdBasico() {
                                         <div className="idbasico-empty-icon"><FaUsers /></div>
                                         <h3>Nenhum inscrito encontrado</h3>
                                         <p>
-                                            {busca || filtroLocal !== 'todos' 
-                                                ? 'Tente ajustar os filtros de busca.' 
+                                            {busca || filtroLocal !== 'todos'
+                                                ? 'Tente ajustar os filtros de busca.'
                                                 : 'Não há inscrições para o curso de Inclusão Digital no momento.'}
                                         </p>
                                     </div>
@@ -389,8 +407,8 @@ export default function IdBasico() {
                                             </thead>
                                             <tbody>
                                                 {inscritosFiltrados.map((inscrito, index) => (
-                                                    <tr 
-                                                        key={index} 
+                                                    <tr
+                                                        key={index}
                                                         className={inscrito.foiChamado ? 'idbasico-linha-chamado' : ''}
                                                     >
                                                         <td>
@@ -406,8 +424,8 @@ export default function IdBasico() {
                                                         <td>
                                                             <div className={`idbasico-primeira-vez-cell ${inscrito.primeira_vez ? 'sim' : 'nao'}`}>
                                                                 <span className="idbasico-primeira-vez-badge">
-                                                                    {inscrito.primeira_vez ? 
-                                                                        <><FaCheckCircle /> Sim</> : 
+                                                                    {inscrito.primeira_vez ?
+                                                                        <><FaCheckCircle /> Sim</> :
                                                                         <><FaTimesCircle /> Não</>
                                                                     }
                                                                 </span>
@@ -436,8 +454,8 @@ export default function IdBasico() {
                                                                     <FaEdit className="idbasico-acao-icon" />
                                                                     <span>Editar</span>
                                                                 </button>
-                                                                <button 
-                                                                    className="idbasico-acao-btn idbasico-excluir-btn" 
+                                                                <button
+                                                                    className="idbasico-acao-btn idbasico-excluir-btn"
                                                                     title="Excluir"
                                                                     onClick={() => abrirModalDeletar(inscrito)}
                                                                 >
@@ -460,7 +478,7 @@ export default function IdBasico() {
                             <div className="idbasico-content-card">
                                 <div className="idbasico-card-header">
                                     <h3><FaGraduationCap /> Turmas Pendentes</h3>
-                                    <button 
+                                    <button
                                         className="idbasico-btn-nova-turma"
                                         onClick={() => setMostrarFormTurma(!mostrarFormTurma)}
                                     >
@@ -575,13 +593,13 @@ export default function IdBasico() {
                                                     </div>
                                                 </div>
                                                 <div className="idbasico-turma-actions">
-                                                    <button 
+                                                    <button
                                                         className="idbasico-btn-detalhes"
                                                         onClick={() => abrirModalTurmaPendente(turma)}
                                                     >
                                                         Ver Detalhes
                                                     </button>
-                                                    <button 
+                                                    <button
                                                         className={`idbasico-btn-ativar ${ativandoTurma === turma.id ? 'ativando' : ''}`}
                                                         onClick={() => ativarTurma(turma.id)}
                                                         disabled={ativandoTurma === turma.id}
@@ -643,7 +661,8 @@ export default function IdBasico() {
                                                     </div>
                                                 </div>
                                                 <div className="idbasico-turma-actions">
-                                                    <button className="idbasico-btn-detalhes">Ver Detalhes</button>
+                                                    <button className="idbasico-btn-detalhes"
+                                                        onClick={() => abrirModalTurmaAtiva(turma)}>Ver Detalhes</button>
                                                     <button className="idbasico-btn-finalizar">Finalizar Turma</button>
                                                 </div>
                                             </div>
@@ -726,6 +745,12 @@ export default function IdBasico() {
                 isOpen={modalTurmaPendenteAberto}
                 onClose={fecharModalTurmaPendente}
                 turma={turmaSelecionada}
+            />
+            <ModalTurmaAtiva
+                isOpen={modalTurmaAtivaAberto}
+                onClose={fecharModalTurmaAtiva}
+                turma={turmaAtivaSelecionada}
+                onTurmaUpdated={recarregarTurmas}
             />
         </div>
     );
