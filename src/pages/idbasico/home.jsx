@@ -1,3 +1,4 @@
+import "./idBasico.css";
 import { useNavigate } from "react-router-dom";
 import voluntario from "../../images/fotos idbasico/voluntarios.png";
 import conheca from "../../images/fotos idbasico/conheca1.png";
@@ -7,52 +8,83 @@ function Home() {
 
   return (
     <>
-      <div className="projeto-hero">
-        <h1 className="projeto-title">CONHEÇA O PROJETO</h1>
-        <div className="title-decoration">
-          <div className="decoration-line"></div>
-          <div className="decoration-dot"></div>
-          <div className="decoration-line"></div>
-        </div>
-      </div>
+      <main className="projeto-page">
+        <section className="projeto-hero">
+          <div className="projeto-container">
+            <div className="projeto-hero-content">
 
-      <div className="projeto-grid">
-        <div className="top-row">
-          <div className="action-card card-sobre">
-            <div className="card-content">
-              <h2>SOBRE O PROJETO</h2>
-              <img src={conheca} alt="Conheça o projeto" className="card-image" />
-              <div className="card-overlay">
-             <button className="card-button" onClick={()=> navigate('conheca')}>Saiba mais</button> 
-              </div>
+              <h1 className="projeto-title">Conheça o Projeto</h1>
+
+              <p className="projeto-subtitle">
+                Um espaço dedicado à informação, participação e engajamento
+                social. Conheça a iniciativa, descubra como contribuir como
+                voluntário e acompanhe as inscrições.
+              </p>
             </div>
           </div>
+        </section>
 
-          <div className="action-card card-voluntario">
-            <div className="card-content">
-              <h2>SEJA UM VOLUNTÁRIO</h2>
-              <img src={voluntario} alt="Voluntários" className="card-image" />
-              <div className="card-overlay">
-                <button className="card-button" onClick={() => navigate("voluntarios")}>
-                  Participar
-                </button>
-              </div>
+        <section className="projeto-cards-section">
+          <div className="projeto-container">
+            <div className="projeto-grid">
+              <article className="action-card card-sobre">
+              
+                <div className="card-content">
+                  <span className="card-tag">Apresentação</span>
+                  <h2>Sobre o Projeto</h2>
+                  <p>
+                    Saiba mais sobre os objetivos, a proposta e o impacto social
+                    da iniciativa.
+                  </p>
+
+                  <button
+                    className="card-button"
+                    onClick={() => navigate("conheca")}
+                  >
+                    Saiba mais
+                  </button>
+                </div>
+              </article>
+
+              <article className="action-card card-voluntario">
+                <div className="card-content">
+                  <span className="card-tag">Participação</span>
+                  <h2>Seja um Voluntário</h2>
+                  <p>
+                    Faça parte da iniciativa e contribua para transformar vidas
+                    por meio do engajamento social.
+                  </p>
+
+                  <button
+                    className="card-button"
+                    onClick={() => navigate("voluntarios")}
+                  >
+                    Participar
+                  </button>
+                </div>
+              </article>
+
+              <article className="action-card card-chamada card-wide">
+                <div className="card-content">
+                  <span className="card-tag">Acesso</span>
+                  <h2>Inscrições</h2>
+                  <p>
+                    Consulte as informações disponíveis e acompanhe os detalhes
+                    sobre o processo de inscrição.
+                  </p>
+
+                  <button
+                    className="card-button"
+                    onClick={() => navigate("inscricoes")}
+                  >
+                    Informações
+                  </button>
+                </div>
+              </article>
             </div>
           </div>
-        </div>
-
-        <div className="bottom-row">
-
-          <div className="action-card card-chamada">
-            <div className="card-content">
-              <h2>Inscrições</h2>
-              <div className="card-overlay">
-                <button className="card-button" onClick={()=> navigate('inscricoes')}>Informações</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+        </section>
+      </main>
     </>
   );
 }

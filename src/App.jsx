@@ -36,6 +36,8 @@ import RedacaoOficial from "./pages/redacao oficial/index.jsx";
 import Golfinho from "./pages/golfinho/index.jsx";
 import IdTodos from "./pages/idTodos/index.jsx";
 import AfertarAfeto from "./pages/afeto/index.jsx";
+import OficinaDoFuturo from "./pages/oficinaDoFuturo/index.jsx";
+import EgressosUnivali from "./pages/egressosUnivali/index.jsx";
 function App() {
   return (
     <BrowserRouter>
@@ -70,11 +72,13 @@ function App() {
         <Route path='/bombeiro-mirim' element={<BombeiroMirim />} />
         <Route path="/cursos/nef" element={<Nef />} />
         <Route path="/cursos/inteligencia-artificial" element={<InteligenciaArtificial />} />
-        <Route path= "/cursos/orientacao-parental" element={<OrientacaoParental/>}/>
-        <Route path="/cursos/redacao-oficial" element= {<RedacaoOficial/>}/>
-        <Route path="/projetos-anteriores/golfinho" element={<Golfinho/>}/>
-        <Route path="/projetos-anteriores/id-todos" element={<IdTodos/>}/>
-        <Route path="/projetos-anteriores/afetar-com-afeto" element={<AfertarAfeto/>}/>
+        <Route path="/cursos/orientacao-parental" element={<OrientacaoParental />} />
+        <Route path="/cursos/redacao-oficial" element={<RedacaoOficial />} />
+        <Route path="/projetos-anteriores/golfinho" element={<Golfinho />} />
+        <Route path="/projetos-anteriores/id-todos" element={<IdTodos />} />
+        <Route path="/projetos-anteriores/afetar-com-afeto" element={<AfertarAfeto />} />
+        <Route path='/oficina-do-futuro' element={<OficinaDoFuturo />} />
+        <Route path='/egressos-univali' element={<EgressosUnivali/>} />
         <Route path='/admin/*'
           element={
             <PrivateRoute>

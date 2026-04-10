@@ -29,7 +29,7 @@ import banner2024 from '../../images/fotos realizacoes/banner2024.png';
 import banner2025 from '../../images/fotos realizacoes/banner2025.png';
 
 function Realizacoes() {
-  const [anoAtivo, setAnoAtivo] = useState('2024');
+  const [anoAtivo, setAnoAtivo] = useState('2025');
 
   const imagens2024 = [
     { id: 1, src: Imagem1, alt: "Realização 2024 - 1" },

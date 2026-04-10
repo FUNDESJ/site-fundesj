@@ -4,6 +4,7 @@ import styles from './ProjetosAtivos.module.css';
 import Header from '../../components/header/index.jsx';
 import Footer from '../../components/footer/footer.jsx';
 import ciclo from '../../images/pagina inicial/ciclo.jpg';
+import univali from '../../images/pagina inicial/univali.jpg';
 import inclusaoidosos from '../../images/pagina inicial/inclusao.png';
 import idtodos from '../../images/pagina inicial/idtodosfi.jpeg';
 import oficinaFuturo from '../../images/pagina inicial/oficinaFuturo.jpeg';
@@ -34,13 +35,13 @@ const ProjetosAtivos = () => {
             title: "Oficina do Futuro",
             description: "Capacitação de jovens em vulnerabilidade social em funilaria e pintura automotiva, promovendo inclusão e acesso ao mercado de trabalho.",
             image: oficinaFuturo,
-            link: '/idintermediario'
+            link: '/oficina-do-futuro'
         },
         {
             title: "Incerção de egressos da Univali",
             description: "Projeto de inscerção de egressos da Univali em projetos e ações comunitárias.",
-            image: oficinaFuturo,
-            link: '/idintermediario'
+            image: univali,
+            link: '/egressos-univali'
         },
 
 

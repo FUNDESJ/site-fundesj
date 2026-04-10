@@ -1,0 +1,19 @@
+.egressos-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.egressos-content {
+    flex: 1; /* 🔥 ISSO EMPURRA O FOOTER PRA BAIXO */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px;
+}
+
+.egressos-content h1 {
+    font-size: 2rem;
+    color: var(--primary-color);
+}
