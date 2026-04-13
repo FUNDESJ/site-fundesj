@@ -44,6 +44,7 @@ export default function ModalTurmaAtiva({ isOpen, onClose, turma, onTurmaUpdated
     useEffect(() => {
         if (inscritos.length > 0) {
             calcularEstatisticas();
+            console.log(inscritos);
         } else {
             setEstatisticas({
                 totalAlunos: 0,
@@ -110,7 +111,7 @@ export default function ModalTurmaAtiva({ isOpen, onClose, turma, onTurmaUpdated
 
             await axios.put(
                 `https://back-end-fundesj.onrender.com/inscritosId/${inscritoId}`,
-                { Situacao: 'desistente' },
+                { Situacao: 'Desistente' },
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,
@@ -140,7 +141,7 @@ export default function ModalTurmaAtiva({ isOpen, onClose, turma, onTurmaUpdated
 
             await axios.put(
                 `https://back-end-fundesj.onrender.com/inscritosId/${inscritoId}`,
-                { Situacao: 'aprovado' },
+                { Situacao: 'Aprovado' },
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,
