@@ -1,5 +1,4 @@
-/* Overlay do Modal */
-.modal-turma-pendente-overlay {
+.mtp-overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -11,10 +10,10 @@
     align-items: center;
     justify-content: center;
     z-index: 1000;
-    animation: fadeIn 0.3s ease;
+    animation: mtpFadeIn 0.3s ease;
 }
 
-@keyframes fadeIn {
+@keyframes mtpFadeIn {
     from {
         opacity: 0;
     }
@@ -23,8 +22,7 @@
     }
 }
 
-/* Conteúdo do Modal */
-.modal-turma-pendente-content {
+.mtp-content {
     background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
     border-radius: 24px;
     width: 90%;
@@ -32,10 +30,10 @@
     max-height: 90vh;
     overflow: hidden;
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-    animation: slideUp 0.3s ease;
+    animation: mtpSlideUp 0.3s ease;
 }
 
-@keyframes slideUp {
+@keyframes mtpSlideUp {
     from {
         transform: translateY(30px);
         opacity: 0;
@@ -46,8 +44,7 @@
     }
 }
 
-/* Header do Modal */
-.modal-turma-pendente-header {
+.mtp-header {
     background: white;
     padding: 24px 32px;
     display: flex;
@@ -56,13 +53,13 @@
     border-bottom: 2px solid #f0f0f0;
 }
 
-.header-left {
+.mtp-header-left {
     display: flex;
     align-items: center;
     gap: 16px;
 }
 
-.header-icon-wrapper {
+.mtp-header-icon-wrapper {
     width: 56px;
     height: 56px;
     background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
@@ -72,19 +69,19 @@
     justify-content: center;
 }
 
-.header-icon {
+.mtp-header-icon {
     font-size: 28px;
     color: white;
 }
 
-.modal-turma-pendente-header h2 {
+.mtp-header h2 {
     font-size: 24px;
     font-weight: 700;
     color: #1a1a2e;
     margin: 0 0 8px 0;
 }
 
-.turma-status-badge {
+.mtp-status-badge {
     display: inline-block;
     padding: 4px 12px;
     border-radius: 20px;
@@ -93,14 +90,14 @@
     text-transform: uppercase;
 }
 
-.turma-status-badge.pendente {
+.mtp-status-badge.mtp-pendente {
     background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
     color: white;
 }
 
-.modal-close-btn {
-    width: 40px;
-    height: 40px;
+.mtp-close-btn {
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
     border: none;
     background: #f3f4f6;
@@ -110,31 +107,30 @@
     align-items: center;
     justify-content: center;
     transition: all 0.3s ease;
+    font-size: 18px;
 }
 
-.modal-close-btn:hover {
+.mtp-close-btn:hover {
     background: #ef4444;
     color: white;
     transform: rotate(90deg);
 }
 
-/* Body do Modal */
-.modal-turma-pendente-body {
+.mtp-body {
     background: #f9fafb;
     padding: 32px;
     max-height: calc(90vh - 140px);
     overflow-y: auto;
 }
 
-/* Cards de Informações */
-.info-cards-grid {
+.mtp-info-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 16px;
     margin-bottom: 24px;
 }
 
-.info-card {
+.mtp-info-card {
     background: white;
     border-radius: 16px;
     padding: 16px;
@@ -145,12 +141,12 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.info-card:hover {
+.mtp-info-card:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-.info-card-icon {
+.mtp-info-icon {
     width: 48px;
     height: 48px;
     background: linear-gradient(135deg, #f59e0b20 0%, #d9770620 100%);
@@ -162,24 +158,23 @@
     color: #f59e0b;
 }
 
-.info-card-content {
+.mtp-info-content {
     flex: 1;
 }
 
-.info-card-label {
+.mtp-info-label {
     display: block;
     font-size: 12px;
     color: #6b7280;
     margin-bottom: 4px;
 }
 
-.info-card-value {
+.mtp-info-value {
     font-size: 16px;
     color: #1f2937;
 }
 
-/* Card de Compatibilidade */
-.compatibilidade-card {
+.mtp-compatibilidade-card {
     background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
     border-radius: 16px;
     padding: 16px 20px;
@@ -190,37 +185,36 @@
     border-left: 4px solid #f59e0b;
 }
 
-.compatibilidade-icon {
+.mtp-compatibilidade-icon {
     font-size: 28px;
     color: #d97706;
 }
 
-.compatibilidade-texto {
+.mtp-compatibilidade-texto {
     flex: 1;
 }
 
-.compatibilidade-texto strong {
+.mtp-compatibilidade-texto strong {
     display: block;
     font-size: 14px;
     color: #92400e;
     margin-bottom: 4px;
 }
 
-.compatibilidade-texto p {
+.mtp-compatibilidade-texto p {
     font-size: 13px;
     color: #78350f;
     margin: 0;
 }
 
-/* Sub-tabs */
-.sub-tabs {
+.mtp-sub-tabs {
     display: flex;
     gap: 12px;
     margin-bottom: 24px;
     border-bottom: 2px solid #e5e7eb;
 }
 
-.sub-tab {
+.mtp-sub-tab {
     padding: 12px 20px;
     background: none;
     border: none;
@@ -235,15 +229,15 @@
     position: relative;
 }
 
-.sub-tab:hover {
+.mtp-sub-tab:hover {
     color: #f59e0b;
 }
 
-.sub-tab.active {
+.mtp-sub-tab.active {
     color: #f59e0b;
 }
 
-.sub-tab.active::after {
+.mtp-sub-tab.active::after {
     content: '';
     position: absolute;
     bottom: -2px;
@@ -253,18 +247,17 @@
     background: #f59e0b;
 }
 
-/* Lista de Alunos */
-.alunos-section {
+.mtp-alunos-section {
     min-height: 300px;
 }
 
-.alunos-lista {
+.mtp-alunos-lista {
     display: flex;
     flex-direction: column;
     gap: 12px;
 }
 
-.aluno-card {
+.mtp-aluno-card {
     background: white;
     border-radius: 12px;
     padding: 16px;
@@ -275,39 +268,41 @@
     border: 1px solid #e5e7eb;
 }
 
-.aluno-card:hover {
+.mtp-aluno-card:hover {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     transform: translateX(4px);
 }
 
-.aluno-info {
+.mtp-aluno-info {
     display: flex;
     align-items: center;
     gap: 16px;
     flex: 1;
 }
 
-.aluno-avatar {
-    width: 48px;
-    height: 48px;
+.mtp-aluno-avatar {
+    width: 52px;
+    height: 52px;
     background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
     border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0;
 }
 
-.avatar-inicial {
+.mtp-avatar-inicial {
     font-size: 20px;
     font-weight: 600;
     color: white;
 }
 
-.aluno-detalhes {
+.mtp-aluno-detalhes,
+.mtp-aluno-disponivel-detalhes {
     flex: 1;
 }
 
-.aluno-nome-container {
+.mtp-aluno-nome-container {
     display: flex;
     align-items: center;
     gap: 12px;
@@ -315,93 +310,98 @@
     margin-bottom: 8px;
 }
 
-.aluno-nome {
+.mtp-aluno-nome {
     font-size: 16px;
     color: #1f2937;
 }
 
-.primeira-vez-badge {
+.mtp-primeira-vez-badge {
     display: inline-flex;
     align-items: center;
     gap: 4px;
-    padding: 2px 8px;
+    padding: 4px 10px;
     background: #d1fae5;
     color: #065f46;
     border-radius: 12px;
     font-size: 11px;
-    font-weight: 500;
+    font-weight: 600;
 }
 
-.chamado-badge {
+.mtp-chamado-badge {
     display: inline-flex;
     align-items: center;
     gap: 4px;
-    padding: 2px 8px;
+    padding: 4px 10px;
     background: #fed7aa;
     color: #92400e;
     border-radius: 12px;
     font-size: 11px;
-    font-weight: 500;
+    font-weight: 600;
 }
 
-.aluno-metadados {
+.mtp-aluno-metadados {
     display: flex;
     gap: 16px;
     flex-wrap: wrap;
 }
 
-.metadado {
+.mtp-metadado {
     display: inline-flex;
     align-items: center;
-    gap: 4px;
+    gap: 6px;
     font-size: 12px;
     color: #6b7280;
 }
 
-.metadado-icon {
-    font-size: 10px;
+.mtp-metadado-icon {
+    font-size: 12px;
 }
 
-.metadado.telefone {
-    color: #8b5cf6;
+.mtp-telefone {
+    color: #7c3aed;
 }
 
-.btn-remover-aluno {
-    width: 40px;
-    height: 40px;
-    border-radius: 10px;
+.mtp-btn-remover-aluno {
+    width: 52px;
+    height: 52px;
+    border-radius: 12px;
     border: none;
     background: #fee2e2;
-    color: #ef4444;
+    color: #dc2626;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: all 0.3s ease;
+    flex-shrink: 0;
 }
 
-.btn-remover-aluno:hover:not(:disabled) {
-    background: #ef4444;
+.mtp-btn-remover-aluno:hover:not(:disabled) {
+    background: #dc2626;
     color: white;
-    transform: scale(1.05);
+    transform: scale(1.06);
 }
 
-.btn-remover-aluno:disabled {
+.mtp-btn-remover-aluno:disabled {
     opacity: 0.6;
     cursor: not-allowed;
 }
 
-/* Adicionar Alunos Section */
-.adicionar-alunos-section {
+.mtp-icone-remover {
+    font-size: 22px !important;
+    line-height: 1;
+}
+
+.mtp-adicionar-section {
     min-height: 300px;
 }
 
-.busca-alunos {
+.mtp-busca-alunos {
     position: relative;
     margin-bottom: 20px;
 }
 
-.busca-icon {
+.mtp-busca-icon {
     position: absolute;
     left: 16px;
     top: 50%;
@@ -409,7 +409,7 @@
     color: #9ca3af;
 }
 
-.busca-input {
+.mtp-busca-input {
     width: 100%;
     padding: 12px 16px 12px 48px;
     border: 2px solid #e5e7eb;
@@ -418,13 +418,13 @@
     transition: all 0.3s ease;
 }
 
-.busca-input:focus {
+.mtp-busca-input:focus {
     outline: none;
     border-color: #f59e0b;
     box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.1);
 }
 
-.alunos-disponiveis-lista {
+.mtp-alunos-disponiveis-lista {
     display: flex;
     flex-direction: column;
     gap: 12px;
@@ -432,7 +432,7 @@
     overflow-y: auto;
 }
 
-.aluno-disponivel-card {
+.mtp-aluno-disponivel-card {
     background: white;
     border-radius: 12px;
     padding: 16px;
@@ -443,28 +443,24 @@
     border: 1px solid #e5e7eb;
 }
 
-.aluno-disponivel-card.foi-chamado {
+.mtp-aluno-disponivel-card.mtp-foi-chamado {
     background: #fffbeb;
     border-left: 3px solid #f59e0b;
 }
 
-.aluno-disponivel-card:hover {
+.mtp-aluno-disponivel-card:hover {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     transform: translateX(4px);
 }
 
-.aluno-disponivel-info {
+.mtp-aluno-disponivel-info {
     display: flex;
     align-items: center;
     gap: 16px;
     flex: 1;
 }
 
-.aluno-disponivel-detalhes {
-    flex: 1;
-}
-
-.btn-adicionar-aluno-lista {
+.mtp-btn-adicionar-lista {
     padding: 8px 20px;
     background: linear-gradient(135deg, #10b981 0%, #059669 100%);
     color: white;
@@ -479,41 +475,40 @@
     transition: all 0.3s ease;
 }
 
-.btn-adicionar-aluno-lista:hover:not(:disabled) {
+.mtp-btn-adicionar-lista:hover:not(:disabled) {
     transform: scale(1.05);
     box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
 }
 
-.btn-adicionar-aluno-lista:disabled {
+.mtp-btn-adicionar-lista:disabled {
     opacity: 0.6;
     cursor: not-allowed;
 }
 
-/* Estados de Loading e Empty */
-.loading-state {
+.mtp-loading-state {
     text-align: center;
     padding: 60px 20px;
 }
 
-.loading-state p {
+.mtp-loading-state p {
     margin-top: 16px;
     color: #6b7280;
 }
 
-.spinner {
+.mtp-spinner {
     font-size: 40px;
     color: #f59e0b;
 }
 
-.spinner-small {
-    font-size: 16px;
+.mtp-spinner-small {
+    font-size: 18px;
 }
 
-.rotating {
-    animation: spin 1s linear infinite;
+.mtp-rotating {
+    animation: mtpSpin 1s linear infinite;
 }
 
-@keyframes spin {
+@keyframes mtpSpin {
     from {
         transform: rotate(0deg);
     }
@@ -522,29 +517,29 @@
     }
 }
 
-.empty-state {
+.mtp-empty-state {
     text-align: center;
     padding: 60px 20px;
 }
 
-.empty-icon {
+.mtp-empty-icon {
     font-size: 64px;
     color: #d1d5db;
     margin-bottom: 16px;
 }
 
-.empty-state h4 {
+.mtp-empty-state h4 {
     font-size: 18px;
     color: #374151;
     margin-bottom: 8px;
 }
 
-.empty-state p {
+.mtp-empty-state p {
     color: #6b7280;
     margin-bottom: 20px;
 }
 
-.btn-adicionar-aluno {
+.mtp-btn-adicionar {
     padding: 10px 20px;
     background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
     color: white;
@@ -559,13 +554,12 @@
     transition: all 0.3s ease;
 }
 
-.btn-adicionar-aluno:hover {
+.mtp-btn-adicionar:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
 }
 
-/* Footer */
-.modal-turma-pendente-footer {
+.mtp-footer {
     background: white;
     padding: 20px 32px;
     display: flex;
@@ -574,7 +568,7 @@
     border-top: 2px solid #f0f0f0;
 }
 
-.btn-fechar {
+.mtp-btn-fechar {
     padding: 10px 24px;
     background: #f3f4f6;
     color: #6b7280;
@@ -586,12 +580,12 @@
     transition: all 0.3s ease;
 }
 
-.btn-fechar:hover {
+.mtp-btn-fechar:hover {
     background: #e5e7eb;
     transform: translateY(-1px);
 }
 
-.btn-ativar-turma {
+.mtp-btn-ativar {
     padding: 10px 24px;
     background: linear-gradient(135deg, #10b981 0%, #059669 100%);
     color: white;
@@ -599,33 +593,32 @@
     border-radius: 10px;
     cursor: pointer;
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 600;
     display: flex;
     align-items: center;
     gap: 8px;
     transition: all 0.3s ease;
 }
 
-.btn-ativar-turma:hover:not(:disabled) {
+.mtp-btn-ativar:hover:not(:disabled) {
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
 }
 
-.btn-ativar-turma:disabled {
+.mtp-btn-ativar:disabled {
     opacity: 0.6;
     cursor: not-allowed;
 }
 
-/* Notificações */
-.notificacao-turma-pendente {
+.mtp-notificacao {
     position: fixed;
     top: 20px;
     right: 20px;
     z-index: 1100;
-    animation: slideInRight 0.3s ease;
+    animation: mtpSlideInRight 0.3s ease;
 }
 
-.notificacao-conteudo {
+.mtp-notificacao-conteudo {
     background: white;
     padding: 16px 24px;
     border-radius: 12px;
@@ -636,21 +629,21 @@
     font-weight: 500;
 }
 
-.notificacao-success .notificacao-conteudo {
+.mtp-notificacao-success .mtp-notificacao-conteudo {
     background: #10b981;
     color: white;
 }
 
-.notificacao-error .notificacao-conteudo {
+.mtp-notificacao-error .mtp-notificacao-conteudo {
     background: #ef4444;
     color: white;
 }
 
-.notificacao-fade-out {
-    animation: fadeOut 0.3s ease forwards;
+.mtp-notificacao-fade-out {
+    animation: mtpFadeOut 0.3s ease forwards;
 }
 
-@keyframes slideInRight {
+@keyframes mtpSlideInRight {
     from {
         transform: translateX(100%);
         opacity: 0;
@@ -661,79 +654,77 @@
     }
 }
 
-@keyframes fadeOut {
+@keyframes mtpFadeOut {
     to {
         opacity: 0;
         transform: translateX(100%);
     }
 }
 
-/* Scrollbar Personalizada */
-.modal-turma-pendente-body::-webkit-scrollbar {
+.mtp-body::-webkit-scrollbar {
     width: 8px;
 }
 
-.modal-turma-pendente-body::-webkit-scrollbar-track {
+.mtp-body::-webkit-scrollbar-track {
     background: #f1f1f1;
     border-radius: 4px;
 }
 
-.modal-turma-pendente-body::-webkit-scrollbar-thumb {
+.mtp-body::-webkit-scrollbar-thumb {
     background: #cbd5e1;
     border-radius: 4px;
 }
 
-.modal-turma-pendente-body::-webkit-scrollbar-thumb:hover {
+.mtp-body::-webkit-scrollbar-thumb:hover {
     background: #94a3b8;
 }
 
-/* Responsividade */
 @media (max-width: 768px) {
-    .modal-turma-pendente-content {
+    .mtp-content {
         width: 95%;
         max-height: 95vh;
     }
 
-    .modal-turma-pendente-header {
+    .mtp-header {
         padding: 16px 20px;
     }
 
-    .modal-turma-pendente-body {
+    .mtp-body {
         padding: 20px;
     }
 
-    .info-cards-grid {
+    .mtp-info-grid {
         grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
         gap: 12px;
     }
 
-    .aluno-card,
-    .aluno-disponivel-card {
+    .mtp-aluno-card,
+    .mtp-aluno-disponivel-card {
         flex-direction: column;
         align-items: flex-start;
         gap: 12px;
     }
 
-    .btn-remover-aluno,
-    .btn-adicionar-aluno-lista {
+    .mtp-btn-remover-aluno,
+    .mtp-btn-adicionar-lista {
         align-self: flex-end;
     }
 
-    .aluno-nome-container {
+    .mtp-aluno-nome-container {
         flex-direction: column;
         align-items: flex-start;
     }
 
-    .modal-turma-pendente-footer {
+    .mtp-footer {
         flex-direction: column-reverse;
     }
 
-    .btn-fechar,
-    .btn-ativar-turma {
+    .mtp-btn-fechar,
+    .mtp-btn-ativar {
         width: 100%;
     }
 
-    .compatibilidade-card {
+    .mtp-compatibilidade-card {
         flex-direction: column;
         text-align: center;
     }

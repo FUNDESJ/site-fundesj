@@ -213,6 +213,55 @@
     border-color: #667eea;
 }
 
+/* Legenda */
+.idbasico-legenda-status {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.idbasico-legenda-titulo {
+    font-weight: 700;
+    color: #2d3748;
+}
+
+.idbasico-legenda-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #4a5568;
+    font-size: 0.95rem;
+}
+
+.idbasico-legenda-cor {
+    width: 18px;
+    height: 18px;
+    border-radius: 6px;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.idbasico-legenda-matriculado {
+    background: #ffffff;
+}
+
+.idbasico-legenda-desistente {
+    background: rgba(128, 90, 213, 0.22);
+}
+
+.idbasico-legenda-aprovado {
+    background: rgba(72, 187, 120, 0.22);
+}
+
+.idbasico-legenda-chamado {
+    background: rgba(255, 0, 0, 0.15);
+}
+
 /* Botões */
 .idbasico-btn-nova-turma {
     padding: 0.75rem 1.5rem;
@@ -550,7 +599,7 @@
 .idbasico-inscritos-table {
     width: 100%;
     border-collapse: collapse;
-    min-width: 1000px;
+    min-width: 1100px;
 }
 
 .idbasico-inscritos-table thead {
@@ -622,6 +671,16 @@
 .idbasico-local-icon,
 .idbasico-periodo-icon {
     color: #667eea;
+}
+
+.idbasico-situacao-badge {
+    padding: 0.35rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    background: rgba(255, 255, 255, 0.65);
+    color: #2d3748;
+    display: inline-block;
 }
 
 .idbasico-acoes-cell {
@@ -745,6 +804,23 @@
     color: #a0aec0;
     max-width: 400px;
     margin: 0 auto;
+}
+
+/* Linhas da tabela por situação */
+.idbasico-linha-desistente {
+    background-color: rgba(128, 90, 213, 0.22) !important;
+}
+
+.idbasico-linha-desistente:hover {
+    background-color: rgba(128, 90, 213, 0.32) !important;
+}
+
+.idbasico-linha-aprovado {
+    background-color: rgba(72, 187, 120, 0.22) !important;
+}
+
+.idbasico-linha-aprovado:hover {
+    background-color: rgba(72, 187, 120, 0.32) !important;
 }
 
 /* Linha de inscrito já chamado */
@@ -874,44 +950,49 @@
     .idbasico-main {
         padding: 1rem;
     }
-    
+
     .idbasico-tabs {
         flex-direction: column;
     }
-    
+
     .idbasico-tab {
         width: 100%;
         justify-content: center;
     }
-    
+
     .idbasico-card-header {
         flex-direction: column;
         align-items: stretch;
     }
-    
+
     .idbasico-header-actions {
         flex-direction: column;
     }
-    
+
     .idbasico-search-container {
         min-width: 100%;
     }
-    
+
     .idbasico-filter-select {
         width: 100%;
     }
-    
+
     .idbasico-turmas-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .idbasico-content-card {
         padding: 1rem;
     }
-    
+
     .header-title {
         flex-direction: column;
         text-align: center;
+    }
+
+    .idbasico-legenda-status {
+        flex-direction: column;
+        align-items: flex-start;
     }
 }
 
@@ -919,24 +1000,24 @@
     .idbasico-header {
         padding: 1rem;
     }
-    
+
     .header-title h1 {
         font-size: 1.2rem;
     }
-    
+
     .idbasico-inscritos-table th,
     .idbasico-inscritos-table td {
         padding: 0.75rem;
     }
-    
+
     .idbasico-acao-btn span {
         display: none;
     }
-    
+
     .idbasico-acao-btn {
         padding: 0.5rem;
     }
-    
+
     .idbasico-turma-actions {
         flex-direction: column;
     }

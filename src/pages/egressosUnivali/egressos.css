@@ -5,7 +5,7 @@
 }
 
 .egressos-content {
-    flex: 1; /* 🔥 ISSO EMPURRA O FOOTER PRA BAIXO */
+    flex: 1; 
     display: flex;
     align-items: center;
     justify-content: center;

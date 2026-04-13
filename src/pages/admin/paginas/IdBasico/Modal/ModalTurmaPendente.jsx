@@ -1,10 +1,20 @@
 import React from 'react';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import { 
-  FaTimes, FaMapMarkerAlt, FaClock, FaCalendarAlt, FaUsers, 
-  FaTrash, FaPlus, FaSearch, FaCheckCircle, FaExclamationTriangle,
-  FaSpinner, FaUserPlus, FaUserMinus, FaHourglassHalf
+import {
+    FaTimes,
+    FaMapMarkerAlt,
+    FaClock,
+    FaCalendarAlt,
+    FaUsers,
+    FaSearch,
+    FaCheckCircle,
+    FaExclamationTriangle,
+    FaSpinner,
+    FaUserPlus,
+    FaUserMinus,
+    FaHourglassHalf,
+    FaPhoneAlt
 } from 'react-icons/fa';
 import './ModalTurmaPendente.css';
 
@@ -26,23 +36,49 @@ export default function ModalTurmaPendente({ isOpen, onClose, turma, onTurmaUpda
         }
     }, [turma, isOpen]);
 
+    function normalizarTexto(texto) {
+        return (texto || '')
+            .toString()
+            .trim()
+            .toLowerCase()
+            .normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, '');
+    }
+
+    function ehLocalCompativelComTurma(localAluno) {
+        const localTurmaNormalizado = normalizarTexto(turma?.local);
+        const localAlunoNormalizado = normalizarTexto(localAluno);
+
+        return localAlunoNormalizado === localTurmaNormalizado;
+    }
+
     async function listarInscritos() {
         try {
             setCarregando(true);
             const token = localStorage.getItem('authToken');
-            const retorno = await axios.get(`https://back-end-fundesj.onrender.com/turmaId/inscrito/${turma.id}`, {
-                headers: {
-                    Authorization: `Bearer ${token}`
+
+            const retorno = await axios.get(
+                `https://back-end-fundesj.onrender.com/turmaId/inscrito/${turma.id}`,
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
                 }
-            });
+            );
+
+            let lista = [];
 
             if (Array.isArray(retorno.data)) {
-                setInscritos(retorno.data);
+                lista = retorno.data;
             } else if (retorno.data && Array.isArray(retorno.data.inscritos)) {
-                setInscritos(retorno.data.inscritos);
-            } else {
-                setInscritos([]);
+                lista = retorno.data.inscritos;
             }
+
+            const inscritosCompativeis = lista.filter((inscrito) =>
+                ehLocalCompativelComTurma(inscrito.local)
+            );
+
+            setInscritos(inscritosCompativeis);
         } catch (erro) {
             console.error('Erro ao carregar inscritos:', erro);
             setInscritos([]);
@@ -55,25 +91,29 @@ export default function ModalTurmaPendente({ isOpen, onClose, turma, onTurmaUpda
         try {
             setCarregandoDisponiveis(true);
             const token = localStorage.getItem('authToken');
-            const retorno = await axios.get('https://back-end-fundesj.onrender.com/inscritosId/ordenados', {
-                headers: {
-                    Authorization: `Bearer ${token}`
+
+            const retorno = await axios.get(
+                'https://back-end-fundesj.onrender.com/inscritosId/ordenados',
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
                 }
-            });
+            );
 
             const idsInscritosNaTurma = inscritos.map(i => i.id);
 
-            const disponiveis = retorno.data.filter(inscrito => {
+            const disponiveis = retorno.data.filter((inscrito) => {
                 const naoEstaNaTurma = !idsInscritosNaTurma.includes(inscrito.id);
-                const localCompativel = inscrito.local === "CATI" || inscrito.local === "Estácio";
+                const localCompativel = ehLocalCompativelComTurma(inscrito.local);
                 const semTurma = inscrito.turma_id === null;
-                
+
                 return naoEstaNaTurma && localCompativel && semTurma;
             });
 
             setInscritosDisponiveis(disponiveis);
         } catch (erro) {
-            console.error("Erro ao carregar inscritos disponíveis:", erro);
+            console.error('Erro ao carregar inscritos disponíveis:', erro);
             setInscritosDisponiveis([]);
         } finally {
             setCarregandoDisponiveis(false);
@@ -89,7 +129,8 @@ export default function ModalTurmaPendente({ isOpen, onClose, turma, onTurmaUpda
             setDeletandoInscrito(inscritoId);
             const token = localStorage.getItem('authToken');
 
-            await axios.put(`https://back-end-fundesj.onrender.com/inscritosId/${inscritoId}`,
+            await axios.put(
+                `https://back-end-fundesj.onrender.com/inscritosId/${inscritoId}`,
                 { turma_id: null },
                 {
                     headers: {
@@ -157,9 +198,10 @@ export default function ModalTurmaPendente({ isOpen, onClose, turma, onTurmaUpda
         try {
             setAtivandoTurma(true);
             const token = localStorage.getItem('authToken');
-            
-            await axios.put(`https://back-end-fundesj.onrender.com/turmaId/editar/${turma.id}`, 
-                { status: "Ativa" },
+
+            await axios.put(
+                `https://back-end-fundesj.onrender.com/turmaId/editar/${turma.id}`,
+                { status: 'Ativa' },
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,
@@ -167,17 +209,16 @@ export default function ModalTurmaPendente({ isOpen, onClose, turma, onTurmaUpda
                     }
                 }
             );
-            
+
             mostrarNotificacao('Turma ativada com sucesso!', 'success');
-            
+
             if (onTurmaUpdated) {
                 onTurmaUpdated();
             }
-            
+
             setTimeout(() => {
                 onClose();
             }, 1500);
-            
         } catch (erro) {
             console.error('Erro ao ativar turma:', erro);
             mostrarNotificacao('Erro ao ativar turma.', 'error');
@@ -188,19 +229,21 @@ export default function ModalTurmaPendente({ isOpen, onClose, turma, onTurmaUpda
 
     function mostrarNotificacao(mensagem, tipo) {
         const notificacao = document.createElement('div');
-        notificacao.className = `notificacao-turma-pendente notificacao-${tipo}`;
+        notificacao.className = `mtp-notificacao mtp-notificacao-${tipo}`;
         notificacao.innerHTML = `
-            <div class="notificacao-conteudo">
+            <div class="mtp-notificacao-conteudo">
                 ${tipo === 'success' ? '✓' : '✗'}
                 <span>${mensagem}</span>
             </div>
         `;
         document.body.appendChild(notificacao);
-        
+
         setTimeout(() => {
-            notificacao.classList.add('notificacao-fade-out');
+            notificacao.classList.add('mtp-notificacao-fade-out');
             setTimeout(() => {
-                document.body.removeChild(notificacao);
+                if (document.body.contains(notificacao)) {
+                    document.body.removeChild(notificacao);
+                }
             }, 300);
         }, 3000);
     }
@@ -224,93 +267,94 @@ export default function ModalTurmaPendente({ isOpen, onClose, turma, onTurmaUpda
 
     if (!isOpen || !turma) return null;
 
-    const dataInicioFormatada = new Date(turma.dataInicio).toLocaleDateString('pt-BR', {
-        day: '2-digit',
-        month: '2-digit',
-        year: 'numeric'
-    });
+    const dataInicioFormatada = turma.dataInicio
+        ? new Date(turma.dataInicio).toLocaleDateString('pt-BR', {
+              day: '2-digit',
+              month: '2-digit',
+              year: 'numeric'
+          })
+        : '-';
 
     return (
-        <div className="modal-turma-pendente-overlay" onClick={onClose}>
-            <div className="modal-turma-pendente-content" onClick={(e) => e.stopPropagation()}>
-                <div className="modal-turma-pendente-header">
-                    <div className="header-left">
-                        <div className="header-icon-wrapper">
-                            <FaHourglassHalf className="header-icon" />
+        <div className="mtp-overlay" onClick={onClose}>
+            <div className="mtp-content" onClick={(e) => e.stopPropagation()}>
+                <div className="mtp-header">
+                    <div className="mtp-header-left">
+                        <div className="mtp-header-icon-wrapper">
+                            <FaHourglassHalf className="mtp-header-icon" />
                         </div>
                         <div>
                             <h2>{turma.nome}</h2>
-                            <span className="turma-status-badge pendente">Pendente</span>
+                            <span className="mtp-status-badge mtp-pendente">Pendente</span>
                         </div>
                     </div>
-                    <button className="modal-close-btn" onClick={onClose}>
+
+                    <button className="mtp-close-btn" onClick={onClose}>
                         <FaTimes />
                     </button>
                 </div>
 
-                <div className="modal-turma-pendente-body">
-                    {/* Cards de Informações */}
-                    <div className="info-cards-grid">
-                        <div className="info-card">
-                            <div className="info-card-icon">
+                <div className="mtp-body">
+                    <div className="mtp-info-grid">
+                        <div className="mtp-info-card">
+                            <div className="mtp-info-icon">
                                 <FaMapMarkerAlt />
                             </div>
-                            <div className="info-card-content">
-                                <span className="info-card-label">Local</span>
-                                <strong className="info-card-value">{turma.local}</strong>
+                            <div className="mtp-info-content">
+                                <span className="mtp-info-label">Local</span>
+                                <strong className="mtp-info-value">{turma.local}</strong>
                             </div>
                         </div>
 
-                        <div className="info-card">
-                            <div className="info-card-icon">
+                        <div className="mtp-info-card">
+                            <div className="mtp-info-icon">
                                 <FaClock />
                             </div>
-                            <div className="info-card-content">
-                                <span className="info-card-label">Período</span>
-                                <strong className="info-card-value">{turma.periodo}</strong>
+                            <div className="mtp-info-content">
+                                <span className="mtp-info-label">Período</span>
+                                <strong className="mtp-info-value">{turma.periodo}</strong>
                             </div>
                         </div>
 
-                        <div className="info-card">
-                            <div className="info-card-icon">
+                        <div className="mtp-info-card">
+                            <div className="mtp-info-icon">
                                 <FaCalendarAlt />
                             </div>
-                            <div className="info-card-content">
-                                <span className="info-card-label">Dias da Semana</span>
-                                <strong className="info-card-value">{turma.dias}</strong>
+                            <div className="mtp-info-content">
+                                <span className="mtp-info-label">Dias da Semana</span>
+                                <strong className="mtp-info-value">{turma.dias}</strong>
                             </div>
                         </div>
 
-                        <div className="info-card">
-                            <div className="info-card-icon">
+                        <div className="mtp-info-card">
+                            <div className="mtp-info-icon">
                                 <FaCalendarAlt />
                             </div>
-                            <div className="info-card-content">
-                                <span className="info-card-label">Data de Início</span>
-                                <strong className="info-card-value">{dataInicioFormatada}</strong>
+                            <div className="mtp-info-content">
+                                <span className="mtp-info-label">Data de Início</span>
+                                <strong className="mtp-info-value">{dataInicioFormatada}</strong>
                             </div>
                         </div>
                     </div>
 
-                    {/* Aviso de Compatibilidade */}
-                    <div className="compatibilidade-card">
-                        <FaCheckCircle className="compatibilidade-icon" />
-                        <div className="compatibilidade-texto">
-                            <strong>Alunos do CATI e Estácio</strong>
-                            <p>Esta turma está configurada para receber alunos dos locais: CATI e Estácio</p>
+                    <div className="mtp-compatibilidade-card">
+                        <FaCheckCircle className="mtp-compatibilidade-icon" />
+                        <div className="mtp-compatibilidade-texto">
+                            <strong>Alunos compatíveis com o local da turma</strong>
+                            <p>Esta lista mostra apenas inscritos cujo local escolhido é igual ao local desta turma.</p>
                         </div>
                     </div>
 
-                    {/* Sub-tabs */}
-                    <div className="sub-tabs">
+                    <div className="mtp-sub-tabs">
                         <button
-                            className={`sub-tab ${activeSubTab === 'alunos' ? 'active' : ''}`}
+                            className={`mtp-sub-tab ${activeSubTab === 'alunos' ? 'active' : ''}`}
                             onClick={() => setActiveSubTab('alunos')}
                         >
                             <FaUsers /> Alunos Matriculados ({inscritos.length})
                         </button>
+
                         <button
-                            className={`sub-tab ${activeSubTab === 'adicionar' ? 'active' : ''}`}
+                            className={`mtp-sub-tab ${activeSubTab === 'adicionar' ? 'active' : ''}`}
                             onClick={() => {
                                 if (!mostrarFormAdicionar) {
                                     abrirFormAdicionar();
@@ -323,76 +367,76 @@ export default function ModalTurmaPendente({ isOpen, onClose, turma, onTurmaUpda
                         </button>
                     </div>
 
-                    {/* Lista de Alunos */}
                     {activeSubTab === 'alunos' && (
-                        <div className="alunos-section">
+                        <div className="mtp-alunos-section">
                             {carregando ? (
-                                <div className="loading-state">
-                                    <FaSpinner className="spinner rotating" />
+                                <div className="mtp-loading-state">
+                                    <FaSpinner className="mtp-spinner mtp-rotating" />
                                     <p>Carregando lista de alunos...</p>
                                 </div>
                             ) : inscritos.length === 0 ? (
-                                <div className="empty-state">
-                                    <div className="empty-icon">
+                                <div className="mtp-empty-state">
+                                    <div className="mtp-empty-icon">
                                         <FaUsers />
                                     </div>
-                                    <h4>Nenhum aluno matriculado</h4>
-                                    <p>Esta turma ainda não possui alunos matriculados.</p>
-                                    <button 
-                                        className="btn-adicionar-aluno"
-                                        onClick={abrirFormAdicionar}
-                                    >
+                                    <h4>Nenhum aluno compatível matriculado</h4>
+                                    <p>Esta turma ainda não possui alunos compatíveis com o local selecionado.</p>
+                                    <button className="mtp-btn-adicionar" onClick={abrirFormAdicionar}>
                                         <FaUserPlus /> Adicionar Alunos
                                     </button>
                                 </div>
                             ) : (
-                                <div className="alunos-lista">
+                                <div className="mtp-alunos-lista">
                                     {inscritos.map((inscrito) => (
-                                        <div key={inscrito.id} className="aluno-card">
-                                            <div className="aluno-info">
-                                                <div className="aluno-avatar">
-                                                    <span className="avatar-inicial">
+                                        <div key={inscrito.id} className="mtp-aluno-card">
+                                            <div className="mtp-aluno-info">
+                                                <div className="mtp-aluno-avatar">
+                                                    <span className="mtp-avatar-inicial">
                                                         {inscrito.nome.charAt(0).toUpperCase()}
                                                     </span>
                                                 </div>
-                                                <div className="aluno-detalhes">
-                                                    <div className="aluno-nome-container">
-                                                        <strong className="aluno-nome">{inscrito.nome}</strong>
+
+                                                <div className="mtp-aluno-detalhes">
+                                                    <div className="mtp-aluno-nome-container">
+                                                        <strong className="mtp-aluno-nome">{inscrito.nome}</strong>
                                                         {inscrito.primeira_vez && (
-                                                            <span className="primeira-vez-badge">
+                                                            <span className="mtp-primeira-vez-badge">
                                                                 <FaCheckCircle /> Primeira Vez
                                                             </span>
                                                         )}
                                                     </div>
-                                                    <div className="aluno-metadados">
-                                                        <span className="metadado">
-                                                            <FaMapMarkerAlt className="metadado-icon" />
+
+                                                    <div className="mtp-aluno-metadados">
+                                                        <span className="mtp-metadado">
+                                                            <FaMapMarkerAlt className="mtp-metadado-icon" />
                                                             {inscrito.local}
                                                         </span>
-                                                        <span className="metadado">
-                                                            <FaClock className="metadado-icon" />
+                                                        <span className="mtp-metadado">
+                                                            <FaClock className="mtp-metadado-icon" />
                                                             {inscrito.periodo}
                                                         </span>
-                                                        <span className="metadado">
-                                                            <FaCalendarAlt className="metadado-icon" />
+                                                        <span className="mtp-metadado">
+                                                            <FaCalendarAlt className="mtp-metadado-icon" />
                                                             {inscrito.dias}
                                                         </span>
-                                                        <span className="metadado telefone">
-                                                            📱 {inscrito.celular}
+                                                        <span className="mtp-metadado mtp-telefone">
+                                                            <FaPhoneAlt className="mtp-metadado-icon" />
+                                                            {inscrito.celular}
                                                         </span>
                                                     </div>
                                                 </div>
                                             </div>
+
                                             <button
-                                                className="btn-remover-aluno"
+                                                className="mtp-btn-remover-aluno"
                                                 onClick={() => deletarInscritoDaTurma(inscrito.id)}
                                                 disabled={deletandoInscrito === inscrito.id}
                                                 title="Remover da turma"
                                             >
                                                 {deletandoInscrito === inscrito.id ? (
-                                                    <FaSpinner className="spinner-small rotating" />
+                                                    <FaSpinner className="mtp-spinner-small mtp-rotating" />
                                                 ) : (
-                                                    <FaUserMinus />
+                                                    <FaUserMinus className="mtp-icone-remover" />
                                                 )}
                                             </button>
                                         </div>
@@ -402,89 +446,102 @@ export default function ModalTurmaPendente({ isOpen, onClose, turma, onTurmaUpda
                         </div>
                     )}
 
-                    {/* Adicionar Alunos */}
                     {activeSubTab === 'adicionar' && mostrarFormAdicionar && (
-                        <div className="adicionar-alunos-section">
-                            <div className="busca-alunos">
-                                <FaSearch className="busca-icon" />
+                        <div className="mtp-adicionar-section">
+                            <div className="mtp-busca-alunos">
+                                <FaSearch className="mtp-busca-icon" />
                                 <input
                                     type="text"
                                     placeholder="Buscar por nome ou telefone..."
                                     value={buscaInscritos}
                                     onChange={(e) => setBuscaInscritos(e.target.value)}
-                                    className="busca-input"
+                                    className="mtp-busca-input"
                                 />
                             </div>
 
                             {carregandoDisponiveis ? (
-                                <div className="loading-state">
-                                    <FaSpinner className="spinner rotating" />
+                                <div className="mtp-loading-state">
+                                    <FaSpinner className="mtp-spinner mtp-rotating" />
                                     <p>Carregando alunos disponíveis...</p>
                                 </div>
                             ) : inscritosDisponiveisFiltrados.length === 0 ? (
-                                <div className="empty-state">
-                                    <div className="empty-icon">
+                                <div className="mtp-empty-state">
+                                    <div className="mtp-empty-icon">
                                         <FaExclamationTriangle />
                                     </div>
                                     <h4>Nenhum aluno disponível</h4>
                                     <p>
                                         {buscaInscritos
                                             ? 'Não encontramos alunos com esta busca.'
-                                            : `Não há alunos disponíveis no CATI ou Estácio para esta turma.`}
+                                            : `Não há alunos disponíveis compatíveis com o local ${turma.local} para esta turma.`}
                                     </p>
                                 </div>
                             ) : (
-                                <div className="alunos-disponiveis-lista">
+                                <div className="mtp-alunos-disponiveis-lista">
                                     {inscritosDisponiveisFiltrados.map((inscrito) => (
-                                        <div key={inscrito.id} className={`aluno-disponivel-card ${inscrito.foiChamado ? 'foi-chamado' : ''}`}>
-                                            <div className="aluno-disponivel-info">
-                                                <div className="aluno-avatar">
-                                                    <span className="avatar-inicial">
+                                        <div
+                                            key={inscrito.id}
+                                            className={`mtp-aluno-disponivel-card ${inscrito.foiChamado ? 'mtp-foi-chamado' : ''}`}
+                                        >
+                                            <div className="mtp-aluno-disponivel-info">
+                                                <div className="mtp-aluno-avatar">
+                                                    <span className="mtp-avatar-inicial">
                                                         {inscrito.nome.charAt(0).toUpperCase()}
                                                     </span>
                                                 </div>
-                                                <div className="aluno-disponivel-detalhes">
-                                                    <div className="aluno-nome-container">
-                                                        <strong className="aluno-nome">{inscrito.nome}</strong>
+
+                                                <div className="mtp-aluno-disponivel-detalhes">
+                                                    <div className="mtp-aluno-nome-container">
+                                                        <strong className="mtp-aluno-nome">{inscrito.nome}</strong>
+
                                                         {inscrito.primeira_vez && (
-                                                            <span className="primeira-vez-badge">
+                                                            <span className="mtp-primeira-vez-badge">
                                                                 <FaCheckCircle /> Primeira Vez
                                                             </span>
                                                         )}
+
                                                         {inscrito.foiChamado && (
-                                                            <span className="chamado-badge" title="Este aluno já foi chamado anteriormente">
+                                                            <span
+                                                                className="mtp-chamado-badge"
+                                                                title="Este aluno já foi chamado anteriormente"
+                                                            >
                                                                 <FaExclamationTriangle /> Já Chamado
                                                             </span>
                                                         )}
                                                     </div>
-                                                    <div className="aluno-metadados">
-                                                        <span className="metadado">
-                                                            <FaMapMarkerAlt className="metadado-icon" />
+
+                                                    <div className="mtp-aluno-metadados">
+                                                        <span className="mtp-metadado">
+                                                            <FaMapMarkerAlt className="mtp-metadado-icon" />
                                                             {inscrito.local}
                                                         </span>
-                                                        <span className="metadado">
-                                                            <FaClock className="metadado-icon" />
+                                                        <span className="mtp-metadado">
+                                                            <FaClock className="mtp-metadado-icon" />
                                                             {inscrito.periodo}
                                                         </span>
-                                                        <span className="metadado">
-                                                            <FaCalendarAlt className="metadado-icon" />
+                                                        <span className="mtp-metadado">
+                                                            <FaCalendarAlt className="mtp-metadado-icon" />
                                                             {inscrito.dias}
                                                         </span>
-                                                        <span className="metadado telefone">
-                                                            📱 {inscrito.celular}
+                                                        <span className="mtp-metadado mtp-telefone">
+                                                            <FaPhoneAlt className="mtp-metadado-icon" />
+                                                            {inscrito.celular}
                                                         </span>
                                                     </div>
                                                 </div>
                                             </div>
+
                                             <button
-                                                className="btn-adicionar-aluno-lista"
+                                                className="mtp-btn-adicionar-lista"
                                                 onClick={() => adicionarInscritoTurma(inscrito)}
                                                 disabled={adicionandoInscrito === inscrito.id}
                                             >
                                                 {adicionandoInscrito === inscrito.id ? (
-                                                    <FaSpinner className="spinner-small rotating" />
+                                                    <FaSpinner className="mtp-spinner-small mtp-rotating" />
                                                 ) : (
-                                                    <><FaUserPlus /> Adicionar</>
+                                                    <>
+                                                        <FaUserPlus /> Adicionar
+                                                    </>
                                                 )}
                                             </button>
                                         </div>
@@ -495,18 +552,19 @@ export default function ModalTurmaPendente({ isOpen, onClose, turma, onTurmaUpda
                     )}
                 </div>
 
-                <div className="modal-turma-pendente-footer">
-                    <button className="btn-fechar" onClick={onClose}>
+                <div className="mtp-footer">
+                    <button className="mtp-btn-fechar" onClick={onClose}>
                         Fechar
                     </button>
-                    <button 
-                        className="btn-ativar-turma"
+
+                    <button
+                        className="mtp-btn-ativar"
                         onClick={ativarTurma}
                         disabled={ativandoTurma}
                     >
                         {ativandoTurma ? (
                             <>
-                                <FaSpinner className="spinner-small rotating" />
+                                <FaSpinner className="mtp-spinner-small mtp-rotating" />
                                 Ativando...
                             </>
                         ) : (

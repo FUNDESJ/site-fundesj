@@ -2,22 +2,26 @@ import React from 'react';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import {
-    FaTimes, FaMapMarkerAlt, FaClock, FaCalendarAlt, FaUsers,
-    FaTrash, FaPlus, FaSearch, FaCheckCircle, FaExclamationTriangle,
-    FaChartLine, FaUserGraduate, FaCalendarCheck, FaPlay, FaStop,
-    FaSpinner, FaUserPlus, FaUserMinus, FaHistory, FaFileAlt
+    FaTimes,
+    FaClock,
+    FaCalendarAlt,
+    FaUsers,
+    FaCheckCircle,
+    FaChartLine,
+    FaUserGraduate,
+    FaStop,
+    FaSpinner,
+    FaHistory,
+    FaThumbsUp,
+    FaUserSlash,
+    FaPhoneAlt
 } from 'react-icons/fa';
 import './ModalTurmaAtiva.css';
 
 export default function ModalTurmaAtiva({ isOpen, onClose, turma, onTurmaUpdated }) {
     const [inscritos, setInscritos] = useState([]);
     const [carregando, setCarregando] = useState(false);
-    const [deletandoInscrito, setDeletandoInscrito] = useState(null);
-    const [mostrarFormAdicionar, setMostrarFormAdicionar] = useState(false);
-    const [buscaInscritos, setBuscaInscritos] = useState('');
-    const [inscritosDisponiveis, setInscritosDisponiveis] = useState([]);
-    const [carregandoDisponiveis, setCarregandoDisponiveis] = useState(false);
-    const [adicionandoInscrito, setAdicionandoInscrito] = useState(null);
+    const [reprovandoInstrido, setReprovandoInscrito] = useState(null);
     const [finalizandoTurma, setFinalizandoTurma] = useState(false);
     const [estatisticas, setEstatisticas] = useState({
         totalAlunos: 0,
@@ -26,16 +30,27 @@ export default function ModalTurmaAtiva({ isOpen, onClose, turma, onTurmaUpdated
         taxaOcupacao: 0
     });
     const [activeSubTab, setActiveSubTab] = useState('alunos');
+    const [dataFinalizacao, setDataFinalizacao] = useState('');
+    const [finalizaTurma, setFinalizaTurma] = useState(false);
 
     useEffect(() => {
         if (turma && turma.id && isOpen) {
             listarInscritos();
+            setFinalizaTurma(false);
+            setDataFinalizacao('');
         }
     }, [turma, isOpen]);
 
     useEffect(() => {
         if (inscritos.length > 0) {
             calcularEstatisticas();
+        } else {
+            setEstatisticas({
+                totalAlunos: 0,
+                primeiraVez: 0,
+                retornantes: 0,
+                taxaOcupacao: 0
+            });
         }
     }, [inscritos]);
 
@@ -43,11 +58,15 @@ export default function ModalTurmaAtiva({ isOpen, onClose, turma, onTurmaUpdated
         try {
             setCarregando(true);
             const token = localStorage.getItem('authToken');
-            const retorno = await axios.get(`https://back-end-fundesj.onrender.com/turmaId/inscrito/${turma.id}`, {
-                headers: {
-                    Authorization: `Bearer ${token}`
+
+            const retorno = await axios.get(
+                `https://back-end-fundesj.onrender.com/turmaId/inscrito/${turma.id}`,
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
                 }
-            });
+            );
 
             if (Array.isArray(retorno.data)) {
                 setInscritos(retorno.data);
@@ -65,9 +84,12 @@ export default function ModalTurmaAtiva({ isOpen, onClose, turma, onTurmaUpdated
     }
 
     function calcularEstatisticas() {
-        const primeiraVezCount = inscritos.filter(i => i.primeira_vez === true || i.primeira_vez === 1).length;
+        const primeiraVezCount = inscritos.filter(
+            i => i.primeira_vez === true || i.primeira_vez === 1
+        ).length;
+
         const retornantesCount = inscritos.length - primeiraVezCount;
-        const taxaOcupacao = (inscritos.length / 15) * 100; // Considerando capacidade máxima de 30 alunos
+        const taxaOcupacao = (inscritos.length / 15) * 100;
 
         setEstatisticas({
             totalAlunos: inscritos.length,
@@ -77,46 +99,18 @@ export default function ModalTurmaAtiva({ isOpen, onClose, turma, onTurmaUpdated
         });
     }
 
-    async function listarInscritosDisponiveis() {
-        try {
-            setCarregandoDisponiveis(true);
-            const token = localStorage.getItem('authToken');
-            const retorno = await axios.get('https://back-end-fundesj.onrender.com/inscritosId/ordenados', {
-                headers: {
-                    Authorization: `Bearer ${token}`
-                }
-            });
-
-            const idsInscritosNaTurma = inscritos.map(i => i.id);
-
-            const disponiveis = retorno.data.filter(inscrito => {
-                const naoEstaNaTurma = !idsInscritosNaTurma.includes(inscrito.id);
-                const localCompativel = inscrito.local === turma.local;
-                const semTurma = inscrito.turma_id === null;
-
-                return naoEstaNaTurma && localCompativel && semTurma;
-            });
-
-            setInscritosDisponiveis(disponiveis);
-        } catch (erro) {
-            console.error("Erro ao carregar inscritos disponíveis:", erro);
-            setInscritosDisponiveis([]);
-        } finally {
-            setCarregandoDisponiveis(false);
-        }
-    }
-
-    async function deletarInscritoDaTurma(inscritoId) {
-        if (!window.confirm('Tem certeza que deseja remover este aluno da turma?')) {
+    async function reprovarAluno(inscritoId) {
+        if (!window.confirm('Tem certeza que deseja definir este aluno como desistente?')) {
             return;
         }
 
         try {
-            setDeletandoInscrito(inscritoId);
+            setReprovandoInscrito(inscritoId);
             const token = localStorage.getItem('authToken');
 
-            await axios.put(`https://back-end-fundesj.onrender.com/inscritosId/${inscritoId}`,
-                { turma_id: null, foiChamado: false },
+            await axios.put(
+                `https://back-end-fundesj.onrender.com/inscritosId/${inscritoId}`,
+                { Situacao: 'desistente' },
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,
@@ -125,36 +119,71 @@ export default function ModalTurmaAtiva({ isOpen, onClose, turma, onTurmaUpdated
                 }
             );
 
-            const alunoRemovido = inscritos.find(i => i.id === inscritoId);
-            setInscritos(inscritos.filter(i => i.id !== inscritoId));
-
-            if (mostrarFormAdicionar && alunoRemovido && alunoRemovido.local === turma.local) {
-                listarInscritosDisponiveis();
-            }
-
-            mostrarNotificacao('Aluno removido da turma com sucesso!', 'success');
+            await listarInscritos();
+            mostrarNotificacao('Aluno definido como desistente com sucesso!', 'success');
         } catch (erro) {
-            console.error('Erro ao remover aluno:', erro);
-            mostrarNotificacao('Erro ao remover aluno da turma.', 'error');
+            console.error('Erro ao reprovar aluno:', erro);
+            mostrarNotificacao('Erro ao definir aluno como desistente.', 'error');
         } finally {
-            setDeletandoInscrito(null);
+            setReprovandoInscrito(null);
         }
     }
 
-    async function adicionarInscritoTurma(inscrito) {
-        if (!window.confirm(`Deseja adicionar ${inscrito.nome} à turma ${turma.nome}?`)) {
+    async function aprovarAluno(inscritoId) {
+        if (!window.confirm('Tem certeza que deseja aprovar este aluno da turma?')) {
             return;
         }
 
         try {
-            setAdicionandoInscrito(inscrito.id);
+            setReprovandoInscrito(inscritoId);
             const token = localStorage.getItem('authToken');
 
             await axios.put(
-                `https://back-end-fundesj.onrender.com/inscritosId/${inscrito.id}`,
+                `https://back-end-fundesj.onrender.com/inscritosId/${inscritoId}`,
+                { Situacao: 'aprovado' },
                 {
-                    turma_id: turma.id,
-                    foiChamado: true
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                        'Content-Type': 'application/json'
+                    }
+                }
+            );
+
+            await listarInscritos();
+            mostrarNotificacao('Aluno aprovado com sucesso!', 'success');
+        } catch (erro) {
+            console.error('Erro ao aprovar aluno:', erro);
+            mostrarNotificacao('Erro ao aprovar aluno.', 'error');
+        } finally {
+            setReprovandoInscrito(null);
+        }
+    }
+
+    async function finalizarTurma() {
+        if (!dataFinalizacao) {
+            mostrarNotificacao('Selecione a data de finalização da turma.', 'error');
+            return;
+        }
+
+        if (
+            !window.confirm(
+                `Tem certeza que deseja finalizar esta turma com a data ${new Date(
+                    `${dataFinalizacao}T00:00:00`
+                ).toLocaleDateString('pt-BR')}?\n\nEsta ação não poderá ser desfeita.`
+            )
+        ) {
+            return;
+        }
+
+        try {
+            setFinalizandoTurma(true);
+            const token = localStorage.getItem('authToken');
+
+            await axios.put(
+                `https://back-end-fundesj.onrender.com/turmaId/editar/${turma.id}`,
+                {
+                    status: 'Finalizada',
+                    dataFim: dataFinalizacao
                 },
                 {
                     headers: {
@@ -164,51 +193,9 @@ export default function ModalTurmaAtiva({ isOpen, onClose, turma, onTurmaUpdated
                 }
             );
 
-            setInscritos([...inscritos, { ...inscrito, foiChamado: true, turma_id: turma.id }]);
-            setInscritosDisponiveis(inscritosDisponiveis.filter(i => i.id !== inscrito.id));
-
-            mostrarNotificacao(`${inscrito.nome} foi adicionado à turma!`, 'success');
-        } catch (erro) {
-            console.error('Erro ao adicionar aluno:', erro);
-            mostrarNotificacao('Erro ao adicionar aluno à turma.', 'error');
-        } finally {
-            setAdicionandoInscrito(null);
-        }
-    }
-
-    async function finalizarTurma() {
-        if (!window.confirm('Tem certeza que deseja finalizar esta turma?\n\nEsta ação não poderá ser desfeita e os alunos serão liberados para novas turmas.')) {
-            return;
-        }
-
-        try {
-            setFinalizandoTurma(true);
-            const token = localStorage.getItem('authToken');
-
-            await axios.put(`https://back-end-fundesj.onrender.com/turmaId/editar/${turma.id}`,
-                { status: "Finalizada" },
-                {
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                        'Content-Type': 'application/json'
-                    }
-                }
-            );
-
-            // Liberar todos os alunos da turma
-            for (const inscrito of inscritos) {
-                await axios.put(`https://back-end-fundesj.onrender.com/inscritosId/${inscrito.id}`,
-                    { turma_id: null, foiChamado: false },
-                    {
-                        headers: {
-                            Authorization: `Bearer ${token}`,
-                            'Content-Type': 'application/json'
-                        }
-                    }
-                );
-            }
-
             mostrarNotificacao('Turma finalizada com sucesso!', 'success');
+            setFinalizaTurma(false);
+            setDataFinalizacao('');
 
             if (onTurmaUpdated) {
                 onTurmaUpdated();
@@ -217,7 +204,6 @@ export default function ModalTurmaAtiva({ isOpen, onClose, turma, onTurmaUpdated
             setTimeout(() => {
                 onClose();
             }, 1500);
-
         } catch (erro) {
             console.error('Erro ao finalizar turma:', erro);
             mostrarNotificacao('Erro ao finalizar turma.', 'error');
@@ -240,37 +226,56 @@ export default function ModalTurmaAtiva({ isOpen, onClose, turma, onTurmaUpdated
         setTimeout(() => {
             notificacao.classList.add('notificacao-fade-out');
             setTimeout(() => {
-                document.body.removeChild(notificacao);
+                if (document.body.contains(notificacao)) {
+                    document.body.removeChild(notificacao);
+                }
             }, 300);
         }, 3000);
     }
 
-    function abrirFormAdicionar() {
-        setMostrarFormAdicionar(true);
-        listarInscritosDisponiveis();
+    function normalizarSituacao(situacao) {
+        return (situacao || '').toString().trim().toLowerCase();
     }
 
-    function fecharFormAdicionar() {
-        setMostrarFormAdicionar(false);
-        setBuscaInscritos('');
+    function getAlunoCardClassName(inscrito) {
+        const situacao = normalizarSituacao(inscrito.Situacao);
+
+        if (situacao === 'desistente') return 'aluno-card aluno-card-desistente';
+        if (situacao === 'aprovado') return 'aluno-card aluno-card-aprovado';
+
+        return 'aluno-card';
     }
 
-    const inscritosDisponiveisFiltrados = inscritosDisponiveis.filter(inscrito =>
-        inscrito.nome.toLowerCase().includes(buscaInscritos.toLowerCase()) ||
-        inscrito.celular.includes(buscaInscritos)
-    );
+    function getSituacaoBadge(inscrito) {
+        const situacao = normalizarSituacao(inscrito.Situacao);
+
+        if (situacao === 'desistente') {
+            return <span className="situacao-badge desistente">Desistente</span>;
+        }
+
+        if (situacao === 'aprovado') {
+            return <span className="situacao-badge aprovado">Aprovado</span>;
+        }
+
+        return <span className="situacao-badge matriculado">Matriculado</span>;
+    }
 
     if (!isOpen || !turma) return null;
 
-    const dataInicioFormatada = new Date(turma.dataInicio).toLocaleDateString('pt-BR', {
-        day: '2-digit',
-        month: '2-digit',
-        year: 'numeric'
-    });
+    const dataInicioFormatada = turma.dataInicio
+        ? new Date(turma.dataInicio).toLocaleDateString('pt-BR', {
+              day: '2-digit',
+              month: '2-digit',
+              year: 'numeric'
+          })
+        : '-';
 
     return (
         <div className="modal-turma-ativa-overlay" onClick={onClose}>
-            <div className="modal-turma-ativa-content" onClick={(e) => e.stopPropagation()}>
+            <div
+                className="modal-turma-ativa-content"
+                onClick={(e) => e.stopPropagation()}
+            >
                 <div className="modal-turma-ativa-header">
                     <div className="header-left">
                         <div className="header-icon-wrapper">
@@ -281,15 +286,13 @@ export default function ModalTurmaAtiva({ isOpen, onClose, turma, onTurmaUpdated
                             <span className="turma-status-badge ativa">Ativa</span>
                         </div>
                     </div>
+
                     <button className="modal-close-btn" onClick={onClose}>
                         <FaTimes />
                     </button>
                 </div>
 
                 <div className="modal-turma-ativa-body">
-                    {/* Cards de Informações */}
-
-                    {/* Cards de Estatísticas */}
                     <div className="estatisticas-grid">
                         <div className="estatistica-card">
                             <div className="estatistica-icon total">
@@ -326,10 +329,13 @@ export default function ModalTurmaAtiva({ isOpen, onClose, turma, onTurmaUpdated
                                 <FaChartLine />
                             </div>
                             <div className="estatistica-info">
-                                <span className="estatistica-valor">{Math.round(estatisticas.taxaOcupacao)}%</span>
+                                <span className="estatistica-valor">
+                                    {Math.round(estatisticas.taxaOcupacao)}%
+                                </span>
                                 <span className="estatistica-label">Taxa de Ocupação</span>
                             </div>
                         </div>
+
                         <div className="estatistica-card">
                             <div className="estatistica-icon data">
                                 <FaCalendarAlt />
@@ -341,7 +347,64 @@ export default function ModalTurmaAtiva({ isOpen, onClose, turma, onTurmaUpdated
                         </div>
                     </div>
 
-                    {/* Barra de Progresso de Ocupação */}
+                    <div className="finalizacao-bloco">
+                        <button
+                            className="btn-finalizar-turma"
+                            onClick={() => setFinalizaTurma(true)}
+                            disabled={finalizandoTurma}
+                        >
+                            <FaStop />
+                            Finalizar Turma
+                        </button>
+
+                        {finalizaTurma && (
+                            <div className="finalizar-container">
+                                <label className="finalizar-label" htmlFor="dataFimTurma">
+                                    Data de finalização
+                                </label>
+
+                                <input
+                                    id="dataFimTurma"
+                                    className="finalizar-input"
+                                    type="date"
+                                    value={dataFinalizacao}
+                                    onChange={(e) => setDataFinalizacao(e.target.value)}
+                                />
+
+                                <div className="finalizar-acoes">
+                                    <button
+                                        className="btn-confirmar-finalizacao"
+                                        onClick={finalizarTurma}
+                                        disabled={finalizandoTurma}
+                                    >
+                                        {finalizandoTurma ? (
+                                            <>
+                                                <FaSpinner className="spinner-btn rotating" />
+                                                Finalizando...
+                                            </>
+                                        ) : (
+                                            <>
+                                                <FaCheckCircle />
+                                                Confirmar Finalização
+                                            </>
+                                        )}
+                                    </button>
+
+                                    <button
+                                        className="btn-cancelar-finalizacao"
+                                        onClick={() => {
+                                            setFinalizaTurma(false);
+                                            setDataFinalizacao('');
+                                        }}
+                                        disabled={finalizandoTurma}
+                                    >
+                                        Cancelar
+                                    </button>
+                                </div>
+                            </div>
+                        )}
+                    </div>
+
                     <div className="ocupacao-progresso">
                         <div className="progresso-header">
                             <span>Capacidade da Turma</span>
@@ -355,7 +418,6 @@ export default function ModalTurmaAtiva({ isOpen, onClose, turma, onTurmaUpdated
                         </div>
                     </div>
 
-                    {/* Sub-tabs */}
                     <div className="sub-tabs">
                         <button
                             className={`sub-tab ${activeSubTab === 'alunos' ? 'active' : ''}`}
@@ -363,20 +425,8 @@ export default function ModalTurmaAtiva({ isOpen, onClose, turma, onTurmaUpdated
                         >
                             <FaUsers /> Alunos Matriculados ({inscritos.length})
                         </button>
-                        <button
-                            className={`sub-tab ${activeSubTab === 'adicionar' ? 'active' : ''}`}
-                            onClick={() => {
-                                setActiveSubTab('adicionar');
-                                if (!mostrarFormAdicionar) {
-                                    abrirFormAdicionar();
-                                }
-                            }}
-                        >
-                            <FaUserPlus /> Adicionar Aluno
-                        </button>
                     </div>
 
-                    {/* Lista de Alunos */}
                     {activeSubTab === 'alunos' && (
                         <div className="alunos-section">
                             {carregando ? (
@@ -391,152 +441,77 @@ export default function ModalTurmaAtiva({ isOpen, onClose, turma, onTurmaUpdated
                                     </div>
                                     <h4>Nenhum aluno matriculado</h4>
                                     <p>Esta turma ainda não possui alunos matriculados.</p>
-                                    <button
-                                        className="btn-adicionar-aluno"
-                                        onClick={() => {
-                                            setActiveSubTab('adicionar');
-                                            abrirFormAdicionar();
-                                        }}
-                                    >
-                                        <FaUserPlus /> Adicionar Alunos
-                                    </button>
                                 </div>
                             ) : (
                                 <div className="alunos-lista">
                                     {inscritos.map((inscrito) => (
-                                        <div key={inscrito.id} className="aluno-card">
+                                        <div key={inscrito.id} className={getAlunoCardClassName(inscrito)}>
                                             <div className="aluno-info">
                                                 <div className="aluno-avatar">
                                                     <span className="avatar-inicial">
-                                                        {inscrito.nome.charAt(0).toUpperCase()}
+                                                        {inscrito.nome?.charAt(0)?.toUpperCase() || '?'}
                                                     </span>
                                                 </div>
+
                                                 <div className="aluno-detalhes">
                                                     <div className="aluno-nome-container">
                                                         <strong className="aluno-nome">{inscrito.nome}</strong>
+
                                                         {inscrito.primeira_vez && (
                                                             <span className="primeira-vez-badge">
                                                                 <FaCheckCircle /> Primeira Vez
                                                             </span>
                                                         )}
+
+                                                        {getSituacaoBadge(inscrito)}
                                                     </div>
+
                                                     <div className="aluno-metadados">
                                                         <span className="metadado">
                                                             <FaClock className="metadado-icon" />
                                                             {inscrito.periodo}
                                                         </span>
+
                                                         <span className="metadado">
                                                             <FaCalendarAlt className="metadado-icon" />
                                                             {inscrito.dias}
                                                         </span>
+
                                                         <span className="metadado telefone">
-                                                            📱 {inscrito.celular}
+                                                            <FaPhoneAlt className="metadado-icon" />
+                                                            {inscrito.celular}
                                                         </span>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <button
-                                                className="btn-remover-aluno"
-                                                onClick={() => deletarInscritoDaTurma(inscrito.id)}
-                                                disabled={deletandoInscrito === inscrito.id}
-                                                title="Remover da turma"
-                                            >
-                                                {deletandoInscrito === inscrito.id ? (
-                                                    <FaSpinner className="spinner-small rotating" />
-                                                ) : (
-                                                    <div className="estatistica-icon apagar">
-                                                        <FaTrash />
-                                                    </div>
-                                                )}
-                                            </button>
-                                        </div>
-                                    ))}
-                                </div>
-                            )}
-                        </div>
-                    )}
 
-                    {/* Adicionar Alunos */}
-                    {activeSubTab === 'adicionar' && mostrarFormAdicionar && (
-                        <div className="adicionar-alunos-section">
-                            <div className="busca-alunos">
-                                <FaSearch className="busca-icon" />
-                                <input
-                                    type="text"
-                                    placeholder="Buscar por nome ou telefone..."
-                                    value={buscaInscritos}
-                                    onChange={(e) => setBuscaInscritos(e.target.value)}
-                                    className="busca-input"
-                                />
-                            </div>
+                                            <div className="aluno-acoes">
+                                                <button
+                                                    className="btn-aprovar-aluno"
+                                                    onClick={() => aprovarAluno(inscrito.id)}
+                                                    disabled={reprovandoInstrido === inscrito.id}
+                                                    title="Aprovar aluno"
+                                                >
+                                                    {reprovandoInstrido === inscrito.id ? (
+                                                        <FaSpinner className="spinner-btn rotating" />
+                                                    ) : (
+                                                        <FaThumbsUp className="icone-botao-acao" />
+                                                    )}
+                                                </button>
 
-                            {carregandoDisponiveis ? (
-                                <div className="loading-state">
-                                    <FaSpinner className="spinner rotating" />
-                                    <p>Carregando alunos disponíveis...</p>
-                                </div>
-                            ) : inscritosDisponiveisFiltrados.length === 0 ? (
-                                <div className="empty-state">
-                                    <div className="empty-icon">
-                                        <FaExclamationTriangle />
-                                    </div>
-                                    <h4>Nenhum aluno disponível</h4>
-                                    <p>
-                                        {buscaInscritos
-                                            ? 'Não encontramos alunos com esta busca.'
-                                            : `Não há alunos disponíveis no ${turma.local} para esta turma.`}
-                                    </p>
-                                </div>
-                            ) : (
-                                <div className="alunos-disponiveis-lista">
-                                    {inscritosDisponiveisFiltrados.map((inscrito) => (
-                                        <div key={inscrito.id} className="aluno-disponivel-card">
-                                            <div className="aluno-disponivel-info">
-                                                <div className="aluno-avatar">
-                                                    <span className="avatar-inicial">
-                                                        {inscrito.nome.charAt(0).toUpperCase()}
-                                                    </span>
-                                                </div>
-                                                <div className="aluno-disponivel-detalhes">
-                                                    <div className="aluno-nome-container">
-                                                        <strong className="aluno-nome">{inscrito.nome}</strong>
-                                                        {inscrito.primeira_vez && (
-                                                            <span className="primeira-vez-badge">
-                                                                <FaCheckCircle /> Primeira Vez
-                                                            </span>
-                                                        )}
-                                                        {inscrito.foiChamado && (
-                                                            <span className="chamado-badge">
-                                                                <FaExclamationTriangle /> Já foi Chamado
-                                                            </span>
-                                                        )}
-                                                    </div>
-                                                    <div className="aluno-metadados">
-                                                        <span className="metadado">
-                                                            <FaClock className="metadado-icon" />
-                                                            {inscrito.periodo}
-                                                        </span>
-                                                        <span className="metadado">
-                                                            <FaCalendarAlt className="metadado-icon" />
-                                                            {inscrito.dias}
-                                                        </span>
-                                                        <span className="metadado telefone">
-                                                            📱 {inscrito.celular}
-                                                        </span>
-                                                    </div>
-                                                </div>
+                                                <button
+                                                    className="btn-remover-aluno"
+                                                    onClick={() => reprovarAluno(inscrito.id)}
+                                                    disabled={reprovandoInstrido === inscrito.id}
+                                                    title="Definir como desistente"
+                                                >
+                                                    {reprovandoInstrido === inscrito.id ? (
+                                                        <FaSpinner className="spinner-btn rotating" />
+                                                    ) : (
+                                                        <FaUserSlash className="icone-botao-acao" />
+                                                    )}
+                                                </button>
                                             </div>
-                                            <button
-                                                className="btn-adicionar-aluno-lista"
-                                                onClick={() => adicionarInscritoTurma(inscrito)}
-                                                disabled={adicionandoInscrito === inscrito.id}
-                                            >
-                                                {adicionandoInscrito === inscrito.id ? (
-                                                    <FaSpinner className="spinner-small rotating" />
-                                                ) : (
-                                                    <><FaUserPlus /> Adicionar</>
-                                                )}
-                                            </button>
                                         </div>
                                     ))}
                                 </div>
@@ -549,24 +524,8 @@ export default function ModalTurmaAtiva({ isOpen, onClose, turma, onTurmaUpdated
                     <button className="btn-fechar" onClick={onClose}>
                         Fechar
                     </button>
-                    <button
-                        className="btn-finalizar-turma"
-                        onClick={finalizarTurma}
-                        disabled={finalizandoTurma}
-                    >
-                        {finalizandoTurma ? (
-                            <>
-                                <FaSpinner className="spinner-small rotating" />
-                                Finalizando...
-                            </>
-                        ) : (
-                            <>
-                                <FaStop /> Finalizar Turma
-                            </>
-                        )}
-                    </button>
                 </div>
             </div>
-        </div >
+        </div>
     );
 }
