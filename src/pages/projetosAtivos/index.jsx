@@ -43,6 +43,12 @@ const ProjetosAtivos = () => {
             image: univali,
             link: '/egressos-univali'
         },
+        {
+            title: "Projeto Mulher Viva",
+            description: "Projeto de inscerção de egressos da Univali em projetos e ações comunitárias.",
+            image: univali,
+            link: '/egressos-univali'
+        },
 
 
     ];
