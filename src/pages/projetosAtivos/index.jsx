@@ -38,7 +38,7 @@ const ProjetosAtivos = () => {
             link: '/oficina-do-futuro'
         },
         {
-            title: "Incerção de egressos da Univali",
+            title: "Inserção de egressos da Univali",
             description: "Projeto de inscerção de egressos da Univali em projetos e ações comunitárias.",
             image: univali,
             link: '/egressos-univali'
