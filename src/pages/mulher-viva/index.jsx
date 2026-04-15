@@ -12,8 +12,6 @@ function MulherViva() {
                 <section className="mv-hero">
                     <div className="mv-container mv-hero-content">
                         <div className="mv-hero-text">
-                            <span className="mv-badge">Movimento comunitário • São José/SC</span>
-
                             <h1>Movimento Mulher Viva</h1>
 
                             <p className="mv-hero-subtitle">
