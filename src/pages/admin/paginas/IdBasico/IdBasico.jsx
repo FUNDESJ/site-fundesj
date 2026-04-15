@@ -27,6 +27,7 @@ export default function IdBasico() {
     const [activeTab, setActiveTab] = useState('inscritos');
     const [busca, setBusca] = useState('');
     const [filtroLocal, setFiltroLocal] = useState('todos');
+    const [filtroSituacao, setFiltroSituacao] = useState('todos');
     const [mostrarFormTurma, setMostrarFormTurma] = useState(false);
     const [inscritoSelecionado, setInscritoSelecionado] = useState(null);
     const [openModalDeletar, setOpenModalDeletar] = useState(false);
@@ -286,18 +287,40 @@ export default function IdBasico() {
         return inscrito.Situacao || 'Matriculado';
     }
 
-    const inscritosFiltrados = inscritos.filter(inscrito => {
+    const inscritosFiltrados = inscritos.filter((inscrito) => {
+        const nome = inscrito.nome?.toLowerCase() || '';
+        const celular = inscrito.celular || '';
+        const buscaNormalizada = busca.toLowerCase();
+
         const correspondeBusca =
-            inscrito.nome?.toLowerCase().includes(busca.toLowerCase()) ||
-            inscrito.celular?.includes(busca);
+            nome.includes(buscaNormalizada) ||
+            celular.includes(busca);
 
-        const correspondeLocal = filtroLocal === 'todos' || inscrito.local === filtroLocal;
+        const correspondeLocal =
+            filtroLocal === 'todos' || inscrito.local === filtroLocal;
 
-        return correspondeBusca && correspondeLocal;
+        const situacaoNormalizada = normalizarSituacao(inscrito.Situacao);
+
+        let correspondeSituacao = true;
+
+        if (filtroSituacao === 'aprovado') {
+            correspondeSituacao = situacaoNormalizada === 'aprovado';
+        } else if (filtroSituacao === 'desistente') {
+            correspondeSituacao = situacaoNormalizada === 'desistente';
+        } else if (filtroSituacao === 'chamado') {
+            correspondeSituacao = inscrito.foiChamado === true;
+        } else if (filtroSituacao === 'matriculado') {
+            correspondeSituacao =
+                situacaoNormalizada !== 'aprovado' &&
+                situacaoNormalizada !== 'desistente' &&
+                inscrito.foiChamado !== true;
+        }
+
+        return correspondeBusca && correspondeLocal && correspondeSituacao;
     });
 
     const locaisDisponiveis = [...new Set(inscritos.map(i => i.local))];
-
+    let situacoesDisponiveis = [...new Set(inscritos.map(i => i.Situacao))]
     return (
         <div className="idbasico-container">
             {mensagemAnimacao.mostrar && (
@@ -396,6 +419,17 @@ export default function IdBasico() {
                                                     {local}
                                                 </option>
                                             ))}
+                                        </select>
+                                        <select
+                                            value={filtroSituacao}
+                                            onChange={(e) => setFiltroSituacao(e.target.value)}
+                                            className="idbasico-filter-select"
+                                        >
+                                            <option value="todos">Todas as situações</option>
+                                            <option value="matriculado">Matriculado</option>
+                                            <option value="aprovado">Aprovado</option>
+                                            <option value="desistente">Desistente</option>
+                                            <option value="chamado">Foi chamado</option>
                                         </select>
                                     </div>
                                 </div>
