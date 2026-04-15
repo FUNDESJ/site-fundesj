@@ -1,4 +1,4 @@
-import "./idBasico.css";
+import "./idbasico.css";
 import { useNavigate } from "react-router-dom";
 import voluntario from "../../images/fotos idbasico/voluntarios.png";
 import conheca from "../../images/fotos idbasico/conheca1.png";
