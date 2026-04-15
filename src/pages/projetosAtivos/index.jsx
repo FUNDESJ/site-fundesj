@@ -39,7 +39,7 @@ const ProjetosAtivos = () => {
         },
         {
             title: "Inserção de egressos da Univali",
-            description: "Projeto de inscerção de egressos da Univali em projetos e ações comunitárias.",
+            description: "Projeto de inserção de egressos da Univali em projetos e ações comunitárias.",
             image: univali,
             link: '/egressos-univali'
         },
