@@ -35,9 +35,8 @@ import OrientacaoParental from "./pages/orientacao parental/index.jsx";
 import RedacaoOficial from "./pages/redacao oficial/index.jsx";
 import Golfinho from "./pages/golfinho/index.jsx";
 import IdTodos from "./pages/idTodos/index.jsx";
+import MulherViva from "./pages/mulher-viva/index.jsx";
 import AfertarAfeto from "./pages/afeto/index.jsx";
-import OficinaDoFuturo from "./pages/oficinaDoFuturo/index.jsx";
-import EgressosUnivali from "./pages/egressosUnivali/index.jsx";
 function App() {
   return (
     <BrowserRouter>
@@ -67,18 +66,17 @@ function App() {
         <Route path="/idintermediario/conheca" element={<Conheca />} />
         <Route path="/idintermediario/inscricao" element={<InscricoesIntermediario />} />
         <Route path="/idintermediario/chamada" element={<ChamadaIntermediario />} />
-        <Route path="/projetos-anteriores/ilpi" element={<Ilpi />} />
+        <Route path="/ilpi" element={<Ilpi />} />
         <Route path='/voluntariado' element={<Voluntariado />} />
         <Route path='/bombeiro-mirim' element={<BombeiroMirim />} />
         <Route path="/cursos/nef" element={<Nef />} />
         <Route path="/cursos/inteligencia-artificial" element={<InteligenciaArtificial />} />
-        <Route path="/cursos/orientacao-parental" element={<OrientacaoParental />} />
-        <Route path="/cursos/redacao-oficial" element={<RedacaoOficial />} />
-        <Route path="/projetos-anteriores/golfinho" element={<Golfinho />} />
-        <Route path="/projetos-anteriores/id-todos" element={<IdTodos />} />
-        <Route path="/projetos-anteriores/afetar-com-afeto" element={<AfertarAfeto />} />
-        <Route path='/oficina-do-futuro' element={<OficinaDoFuturo />} />
-        <Route path='/egressos-univali' element={<EgressosUnivali/>} />
+        <Route path= "/cursos/orientacao-parental" element={<OrientacaoParental/>}/>
+        <Route path="/cursos/redacao-oficial" element= {<RedacaoOficial/>}/>
+        <Route path="/projetos-anteriores/golfinho" element={<Golfinho/>}/>
+        <Route path="/projetos-anteriores/id-todos" element={<IdTodos/>}/>
+        <Route path="/projetos-anteriores/afetar-com-afeto" element={<AfertarAfeto/>}/>
+        <Route path="/projetos-ativos/mulher-viva" element={<MulherViva/>}/>
         <Route path='/admin/*'
           element={
             <PrivateRoute>
