@@ -9,6 +9,7 @@ import inclusaoidosos from '../../images/pagina inicial/inclusao.png';
 import idtodos from '../../images/pagina inicial/idtodosfi.jpeg';
 import oficinaFuturo from '../../images/pagina inicial/oficinaFuturo.jpeg';
 import HeroPages from '../../components/heros/hero_pages.jsx';
+import movmulherviva from '../../images/projetos/mulher-viva.jpeg'
 const ProjetosAtivos = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const carosselRef = useRef(null);
@@ -45,9 +46,9 @@ const ProjetosAtivos = () => {
         },
         {
             title: "Projeto Mulher Viva",
-            description: "Projeto de inscerção de egressos da Univali em projetos e ações comunitárias.",
-            image: univali,
-            link: '/egressos-univali'
+            description: "Movimento de prevenção à violência contra mulheres, com foco em acolhimento e autonomia.",
+            image: movmulherviva,
+            link: '/mulher-viva'
         },
 
 
