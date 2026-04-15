@@ -232,12 +232,12 @@ function MulherViva() {
                         </div>
 
                         <div className="mv-partners-grid">
-                            <div className="mv-partner-item">OAB São José</div>
-                            <div className="mv-partner-item">Conselho Municipal dos Direitos das Mulheres</div>
-                            <div className="mv-partner-item">Procuradoria da Mulher</div>
+                            <a href="https://oab-sc.org.br/" target='blank'><div className="mv-partner-item">OAB São José</div></a>
+                            <a href="https://www.sas.sc.gov.br/index.php/conselhos/cedim/conselhos-municipais-do-direito-da-mulher" target='blank'><div className="mv-partner-item">Conselho Municipal dos Direitos das Mulheres</div></a>
+                            <a href="https://www2.camara.leg.br/a-camara/estruturaadm/secretarias/secretaria-da-mulher/procuradoria-da-mulher-1" target='blank'><div className="mv-partner-item">Procuradoria da Mulher</div></a>
                             <div className="mv-partner-item">Instituições de ensino</div>
                             <div className="mv-partner-item">Secretarias municipais</div>
-                            <div className="mv-partner-item">Câmara Municipal</div>
+                            <a href="https://www.cmsj.sc.gov.br/" target='blank'><div className="mv-partner-item">Câmara Municipal</div></a>
                             <div className="mv-partner-item">Sociedade civil</div>
                         </div>
                     </div>
