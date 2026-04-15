@@ -37,6 +37,8 @@ import Golfinho from "./pages/golfinho/index.jsx";
 import IdTodos from "./pages/idTodos/index.jsx";
 import MulherViva from "./pages/mulher-viva/index.jsx";
 import AfertarAfeto from "./pages/afeto/index.jsx";
+import OficinaDoFuturo from './pages/oficinaDoFuturo/index.jsx';
+import EgressosUnivali from './pages/egressosUnivali/index.jsx';
 function App() {
   return (
     <BrowserRouter>
@@ -76,7 +78,9 @@ function App() {
         <Route path="/projetos-anteriores/golfinho" element={<Golfinho/>}/>
         <Route path="/projetos-anteriores/id-todos" element={<IdTodos/>}/>
         <Route path="/projetos-anteriores/afetar-com-afeto" element={<AfertarAfeto/>}/>
-        <Route path="/projetos-ativos/mulher-viva" element={<MulherViva/>}/>
+        <Route path="/mulher-viva" element={<MulherViva/>}/>
+        <Route path="/oficina-do-futuro" element={<OficinaDoFuturo/>}/>
+        <Route path="/egressos-univali" element={<EgressosUnivali/>}/>
         <Route path='/admin/*'
           element={
             <PrivateRoute>
