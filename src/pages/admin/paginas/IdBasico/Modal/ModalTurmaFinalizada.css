@@ -1,0 +1,608 @@
+.modal-turma-finalizada-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.modal-turma-finalizada-content {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 24px;
+    width: 90%;
+    max-width: 980px;
+    max-height: 90vh;
+    overflow: hidden;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal-turma-finalizada-header {
+    background: white;
+    padding: 24px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.header-icon-wrapper {
+    width: 56px;
+    height: 56px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header-icon {
+    font-size: 28px;
+    color: white;
+}
+
+.modal-turma-finalizada-header h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin: 0 0 8px 0;
+}
+
+.turma-status-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.turma-status-badge.finalizada {
+    background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+    color: white;
+}
+
+.modal-close-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: none;
+    background: #f3f4f6;
+    color: #6b7280;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    font-size: 18px;
+}
+
+.modal-close-btn:hover {
+    background: #ef4444;
+    color: white;
+    transform: rotate(90deg);
+}
+
+.modal-turma-finalizada-body {
+    background: #f9fafb;
+    padding: 32px;
+    max-height: calc(90vh - 140px);
+    overflow-y: auto;
+}
+
+.estatisticas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.estatistica-card {
+    background: white;
+    border-radius: 16px;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.estatistica-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.estatistica-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: white;
+}
+
+.estatistica-icon.total {
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+}
+
+.estatistica-icon.aprovados {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+}
+
+.estatistica-icon.desistentes {
+    background: linear-gradient(135deg, #9333ea 0%, #7e22ce 100%);
+}
+
+.estatistica-icon.duracao {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+}
+
+.estatistica-icon.retorno {
+    background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+}
+
+.estatistica-icon.aprovacao {
+    background: linear-gradient(135deg, #aa0d34 0%, #eb5562 100%);
+}
+
+.estatistica-info {
+    flex: 1;
+}
+
+.estatistica-valor {
+    display: block;
+    font-size: 28px;
+    font-weight: 700;
+    color: #1f2937;
+    line-height: 1;
+    margin-bottom: 4px;
+}
+
+.estatistica-label {
+    font-size: 12px;
+    color: #6b7280;
+}
+
+.turma-resumo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.turma-resumo-card {
+    background: white;
+    border-radius: 16px;
+    padding: 18px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.turma-resumo-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.turma-resumo-icon {
+    font-size: 18px;
+    color: #667eea;
+    margin-top: 2px;
+}
+
+.turma-resumo-label {
+    display: block;
+    font-size: 12px;
+    color: #6b7280;
+    margin-bottom: 4px;
+}
+
+.ocupacao-progresso {
+    background: white;
+    border-radius: 16px;
+    padding: 16px;
+    margin-bottom: 20px;
+}
+
+.progresso-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    font-size: 14px;
+    color: #6b7280;
+    gap: 12px;
+}
+
+.progresso-bar {
+    height: 8px;
+    background: #e5e7eb;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progresso-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.5s ease;
+}
+
+.aprovacao-fill {
+    background: linear-gradient(90deg, #10b981 0%, #059669 100%);
+}
+
+.retorno-fill {
+    background: linear-gradient(90deg, #8b5cf6 0%, #7c3aed 100%);
+}
+
+.sub-tabs {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+    border-bottom: 2px solid #e5e7eb;
+}
+
+.sub-tab {
+    padding: 12px 20px;
+    background: none;
+    border: none;
+    color: #6b7280;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.sub-tab:hover {
+    color: #667eea;
+}
+
+.sub-tab.active {
+    color: #667eea;
+}
+
+.sub-tab.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: #667eea;
+}
+
+.alunos-section {
+    min-height: 300px;
+}
+
+.alunos-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.aluno-card {
+    background: white;
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+    border: 1px solid #e5e7eb;
+}
+
+.aluno-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateX(4px);
+}
+
+.aluno-card-desistente {
+    background: rgba(128, 90, 213, 0.18) !important;
+    border: 1px solid rgba(128, 90, 213, 0.45) !important;
+}
+
+.aluno-card-desistente:hover {
+    background: rgba(128, 90, 213, 0.24) !important;
+}
+
+.aluno-card-aprovado {
+    background: rgba(72, 187, 120, 0.18) !important;
+    border: 1px solid rgba(72, 187, 120, 0.45) !important;
+}
+
+.aluno-card-aprovado:hover {
+    background: rgba(72, 187, 120, 0.24) !important;
+}
+
+.aluno-info {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex: 1;
+}
+
+.aluno-avatar {
+    width: 52px;
+    height: 52px;
+    background: rgb(41, 9, 114);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.avatar-inicial {
+    font-size: 20px;
+    font-weight: 600;
+    color: white;
+}
+
+.aluno-detalhes {
+    flex: 1;
+}
+
+.aluno-nome-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+}
+
+.aluno-nome {
+    font-size: 16px;
+    color: #1f2937;
+}
+
+.primeira-vez-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 10px;
+    background: #d1fae5;
+    color: #065f46;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.retornante-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 10px;
+    background: #ede9fe;
+    color: #5b21b6;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.situacao-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.situacao-badge.matriculado {
+    background: #e5e7eb;
+    color: #374151;
+}
+
+.situacao-badge.desistente {
+    background: rgba(128, 90, 213, 0.24);
+    color: #5b21b6;
+}
+
+.situacao-badge.aprovado {
+    background: rgba(72, 187, 120, 0.24);
+    color: #166534;
+}
+
+.aluno-metadados {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.metadado {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: #6b7280;
+}
+
+.metadado-icon {
+    font-size: 12px;
+}
+
+.loading-state {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.loading-state p {
+    margin-top: 16px;
+    color: #6b7280;
+}
+
+.spinner {
+    font-size: 40px;
+    color: #667eea;
+}
+
+.rotating {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.empty-icon {
+    font-size: 64px;
+    color: #d1d5db;
+    margin-bottom: 16px;
+}
+
+.empty-state h4 {
+    font-size: 18px;
+    color: #374151;
+    margin-bottom: 8px;
+}
+
+.empty-state p {
+    color: #6b7280;
+    margin-bottom: 20px;
+}
+
+.modal-turma-finalizada-footer {
+    background: white;
+    padding: 20px 32px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    border-top: 2px solid #f0f0f0;
+}
+
+.btn-fechar {
+    padding: 10px 24px;
+    background: #f3f4f6;
+    color: #6b7280;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-fechar:hover {
+    background: #e5e7eb;
+    transform: translateY(-1px);
+}
+
+.modal-turma-finalizada-body::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal-turma-finalizada-body::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.modal-turma-finalizada-body::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+}
+
+.modal-turma-finalizada-body::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+@media (max-width: 768px) {
+    .modal-turma-finalizada-content {
+        width: 95%;
+        max-height: 95vh;
+    }
+
+    .modal-turma-finalizada-header {
+        padding: 16px 20px;
+    }
+
+    .modal-turma-finalizada-body {
+        padding: 20px;
+    }
+
+    .estatisticas-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 12px;
+    }
+
+    .turma-resumo-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .aluno-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .aluno-nome-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .modal-turma-finalizada-footer {
+        flex-direction: column-reverse;
+    }
+
+    .btn-fechar {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .progresso-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}

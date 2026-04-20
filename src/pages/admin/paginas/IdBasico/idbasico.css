@@ -136,6 +136,7 @@
         opacity: 0;
         transform: translateY(10px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -259,7 +260,11 @@
 }
 
 .idbasico-legenda-chamado {
-    background: rgba(255, 0, 0, 0.15);
+    background-color: rgba(253, 191, 20, 0.15);
+}
+
+.idbasico-legenda-cancelado {
+    background-color: rgba(248, 8, 8, 0.15);
 }
 
 /* Botões */
@@ -823,13 +828,20 @@
     background-color: rgba(72, 187, 120, 0.32) !important;
 }
 
-/* Linha de inscrito já chamado */
 .idbasico-linha-chamado {
-    background-color: rgba(255, 0, 0, 0.15) !important;
+    background-color: rgba(253, 191, 20, 0.15) !important;
 }
 
 .idbasico-linha-chamado:hover {
-    background-color: rgba(255, 0, 0, 0.25) !important;
+    background-color: rgba(250, 198, 28, 0.25) !important;
+}
+
+.idbasico-linha-cancelado {
+    background-color: rgba(248, 8, 8, 0.15) !important;
+}
+
+.idbasico-linha-cancelado:hover {
+    background-color: rgba(248, 8, 8, 0.25) !important;
 }
 
 /* Mensagem de Animação */
@@ -894,6 +906,7 @@
         transform: translateX(100%);
         opacity: 0;
     }
+
     to {
         transform: translateX(0);
         opacity: 1;
@@ -904,6 +917,7 @@
     from {
         opacity: 1;
     }
+
     to {
         opacity: 0;
     }
@@ -913,6 +927,7 @@
     from {
         transform: rotate(0deg);
     }
+
     to {
         transform: rotate(360deg);
     }
@@ -922,6 +937,7 @@
     from {
         transform: rotate(0deg);
     }
+
     to {
         transform: rotate(360deg);
     }
@@ -931,9 +947,11 @@
     0% {
         box-shadow: 0 0 0 0 rgba(72, 187, 120, 0.4);
     }
+
     70% {
         box-shadow: 0 0 0 10px rgba(72, 187, 120, 0);
     }
+
     100% {
         box-shadow: 0 0 0 0 rgba(72, 187, 120, 0);
     }

@@ -9,6 +9,7 @@ import './idbasico.css';
 import DeletarInscrito from './Modal/ModalDeletarInscrito';
 import ModalTurmaPendente from './Modal/ModalTurmaPendente';
 import ModalTurmaAtiva from './Modal/ModalTurmaAtiva';
+import ModalTurmaFinalizada from './Modal/ModalTurmaFinalizada.jsx';
 
 export default function IdBasico() {
     const [inscritos, setInscritos] = useState([]);
@@ -33,7 +34,9 @@ export default function IdBasico() {
     const [openModalDeletar, setOpenModalDeletar] = useState(false);
     const [modalTurmaPendenteAberto, setModalTurmaPendenteAberto] = useState(false);
     const [modalTurmaAtivaAberto, setModalTurmaAtivaAberto] = useState(false);
+    const [modalTurmaFinalizadaAberto, setModalTurmaFinalizadaAberto] = useState(false);
     const [turmaAtivaSelecionada, setTurmaAtivaSelecionada] = useState(null);
+    const [turmaFinalizadaSelecionada, setTurmaFinalizadaSelecionada] = useState(null);
     const [turmaSelecionada, setTurmaSelecionada] = useState(null);
     const [ativandoTurma, setAtivandoTurma] = useState(null);
     const [sincronizando, setSincronizando] = useState(false);
@@ -257,6 +260,16 @@ export default function IdBasico() {
         setTurmaAtivaSelecionada(null);
     }
 
+    function abrirModalTurmaFinalizada(turma) {
+        setTurmaFinalizadaSelecionada(turma);
+        setModalTurmaFinalizadaAberto(true);
+    }
+
+    function fecharModalTurmaFinalizada() {
+        setModalTurmaFinalizadaAberto(false);
+        setTurmaFinalizadaSelecionada(null);
+    }
+
     async function recarregarTurmas() {
         await listarTurmasAtivas();
         await listarTurmasPendentes();
@@ -270,9 +283,12 @@ export default function IdBasico() {
     function getLinhaClassName(inscrito) {
         const situacao = normalizarSituacao(inscrito.Situacao);
 
+        if (situacao === 'cancelado') return 'idbasico-linha-cancelado';
         if (situacao === 'desistente') return 'idbasico-linha-desistente';
         if (situacao === 'aprovado') return 'idbasico-linha-aprovado';
-        if (inscrito.foiChamado && situacao !== "desistente") return 'idbasico-linha-chamado';
+        if (inscrito.foiChamado && situacao !== 'desistente' && situacao !== 'cancelado') {
+            return 'idbasico-linha-chamado';
+        }
 
         return '';
     }
@@ -282,6 +298,7 @@ export default function IdBasico() {
 
         if (situacao === 'desistente') return 'Desistente';
         if (situacao === 'aprovado') return 'Aprovado';
+        if (situacao === 'cancelado') return 'Matricula Cancelada';
         if (inscrito.foiChamado) return 'Já chamado';
 
         return inscrito.Situacao || 'Matriculado';
@@ -309,10 +326,13 @@ export default function IdBasico() {
             correspondeSituacao = situacaoNormalizada === 'desistente';
         } else if (filtroSituacao === 'chamado') {
             correspondeSituacao = inscrito.foiChamado === true;
+        } else if (filtroSituacao === 'cancelado') {
+            correspondeSituacao = situacaoNormalizada === 'cancelado';
         } else if (filtroSituacao === 'matriculado') {
             correspondeSituacao =
                 situacaoNormalizada !== 'aprovado' &&
                 situacaoNormalizada !== 'desistente' &&
+                situacaoNormalizada !== 'cancelado' &&
                 inscrito.foiChamado !== true;
         }
 
@@ -320,7 +340,7 @@ export default function IdBasico() {
     });
 
     const locaisDisponiveis = [...new Set(inscritos.map(i => i.local))];
-    let situacoesDisponiveis = [...new Set(inscritos.map(i => i.Situacao))]
+
     return (
         <div className="idbasico-container">
             {mensagemAnimacao.mostrar && (
@@ -420,6 +440,7 @@ export default function IdBasico() {
                                                 </option>
                                             ))}
                                         </select>
+
                                         <select
                                             value={filtroSituacao}
                                             onChange={(e) => setFiltroSituacao(e.target.value)}
@@ -429,6 +450,7 @@ export default function IdBasico() {
                                             <option value="matriculado">Matriculado</option>
                                             <option value="aprovado">Aprovado</option>
                                             <option value="desistente">Desistente</option>
+                                            <option value="cancelado">Cancelado</option>
                                             <option value="chamado">Foi chamado</option>
                                         </select>
                                     </div>
@@ -456,6 +478,11 @@ export default function IdBasico() {
                                         <span className="idbasico-legenda-cor idbasico-legenda-chamado"></span>
                                         <span>Já chamado</span>
                                     </div>
+
+                                    <div className="idbasico-legenda-item">
+                                        <span className="idbasico-legenda-cor idbasico-legenda-cancelado"></span>
+                                        <span>Inscrição cancelada</span>
+                                    </div>
                                 </div>
 
                                 {carregandoInscritos ? (
@@ -476,7 +503,7 @@ export default function IdBasico() {
                                         <div className="idbasico-empty-icon"><FaUsers /></div>
                                         <h3>Nenhum inscrito encontrado</h3>
                                         <p>
-                                            {busca || filtroLocal !== 'todos'
+                                            {busca || filtroLocal !== 'todos' || filtroSituacao !== 'todos'
                                                 ? 'Tente ajustar os filtros de busca.'
                                                 : 'Não há inscrições para o curso de Inclusão Digital no momento.'}
                                         </p>
@@ -836,14 +863,15 @@ export default function IdBasico() {
                                                         <FaCalendarAlt />
                                                         <span>{turma.dias}</span>
                                                     </div>
-                                                    <div className="idbasico-info-item">
-                                                        <FaUsers />
-                                                        <span>0 alunos</span>
-                                                    </div>
                                                 </div>
 
                                                 <div className="idbasico-turma-actions">
-                                                    <button className="idbasico-btn-detalhes">Ver Informações</button>
+                                                    <button
+                                                        className="idbasico-btn-detalhes"
+                                                        onClick={() => abrirModalTurmaFinalizada(turma)}
+                                                    >
+                                                        Ver Informações
+                                                    </button>
                                                 </div>
                                             </div>
                                         ))}
@@ -882,6 +910,12 @@ export default function IdBasico() {
                 onClose={fecharModalTurmaAtiva}
                 turma={turmaAtivaSelecionada}
                 onTurmaUpdated={recarregarTurmas}
+            />
+
+            <ModalTurmaFinalizada
+                isOpen={modalTurmaFinalizadaAberto}
+                onClose={fecharModalTurmaFinalizada}
+                turma={turmaFinalizadaSelecionada}
             />
         </div>
     );

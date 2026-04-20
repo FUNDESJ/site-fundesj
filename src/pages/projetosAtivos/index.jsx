@@ -44,12 +44,12 @@ const ProjetosAtivos = () => {
             image: univali,
             link: '/egressos-univali'
         },
-        {
+        /*{
             title: "Projeto Mulher Viva",
             description: "Movimento de prevenção à violência contra mulheres, com foco em acolhimento e autonomia.",
             image: movmulherviva,
             link: '/mulher-viva'
-        },
+        },*/
 
 
     ];

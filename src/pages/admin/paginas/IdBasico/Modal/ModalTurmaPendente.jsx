@@ -30,6 +30,10 @@ export default function ModalTurmaPendente({ isOpen, onClose, turma, onTurmaUpda
     const [ativandoTurma, setAtivandoTurma] = useState(false);
     const [activeSubTab, setActiveSubTab] = useState('alunos');
 
+    const [mostrarModalRemocao, setMostrarModalRemocao] = useState(false);
+    const [inscritoSelecionadoRemocao, setInscritoSelecionadoRemocao] = useState(null);
+    const [tipoRemocao, setTipoRemocao] = useState('');
+
     useEffect(() => {
         if (turma && turma.id && isOpen) {
             listarInscritos();
@@ -105,10 +109,10 @@ export default function ModalTurmaPendente({ isOpen, onClose, turma, onTurmaUpda
 
             const disponiveis = retorno.data.filter((inscrito) => {
                 const naoEstaNaTurma = !idsInscritosNaTurma.includes(inscrito.id);
-                const localCompativel = ehLocalCompativelComTurma(inscrito.local);
                 const semTurma = inscrito.turma_id === null;
+                const localCompativel = ehLocalCompativelComTurma(inscrito.local);
 
-                return naoEstaNaTurma && localCompativel && semTurma;
+                return naoEstaNaTurma && semTurma && localCompativel;
             });
 
             setInscritosDisponiveis(disponiveis);
@@ -120,18 +124,44 @@ export default function ModalTurmaPendente({ isOpen, onClose, turma, onTurmaUpda
         }
     }
 
-    async function deletarInscritoDaTurma(inscritoId) {
-        if (!window.confirm('Tem certeza que deseja remover este aluno da turma?')) {
+    function abrirModalRemocao(inscrito) {
+        setInscritoSelecionadoRemocao(inscrito);
+        setTipoRemocao('');
+        setMostrarModalRemocao(true);
+    }
+
+    function fecharModalRemocao() {
+        if (deletandoInscrito) return;
+        setMostrarModalRemocao(false);
+        setInscritoSelecionadoRemocao(null);
+        setTipoRemocao('');
+    }
+
+    async function confirmarRemocaoInscrito() {
+        if (!inscritoSelecionadoRemocao || !tipoRemocao) {
+            mostrarNotificacao('Selecione uma opção para continuar.', 'error');
             return;
         }
 
         try {
-            setDeletandoInscrito(inscritoId);
+            setDeletandoInscrito(inscritoSelecionadoRemocao.id);
             const token = localStorage.getItem('authToken');
 
+            const payload = {
+                turma_id: null
+            };
+
+            if (tipoRemocao === 'jaChamado') {
+                payload.foiChamado = true;
+            }
+
+            if (tipoRemocao === 'cancelado') {
+                payload.Situacao = 'Cancelado';
+            }
+
             await axios.put(
-                `https://back-end-fundesj.onrender.com/inscritosId/${inscritoId}`,
-                { turma_id: null },
+                `https://back-end-fundesj.onrender.com/inscritosId/${inscritoSelecionadoRemocao.id}`,
+                payload,
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,
@@ -140,13 +170,21 @@ export default function ModalTurmaPendente({ isOpen, onClose, turma, onTurmaUpda
                 }
             );
 
-            setInscritos(inscritos.filter(i => i.id !== inscritoId));
+            setInscritos((prev) =>
+                prev.filter((i) => i.id !== inscritoSelecionadoRemocao.id)
+            );
 
             if (mostrarFormAdicionar) {
                 listarInscritosDisponiveis();
             }
 
-            mostrarNotificacao('Aluno removido da turma com sucesso!', 'success');
+            const mensagemSucesso =
+                tipoRemocao === 'jaChamado'
+                    ? 'Aluno removido da turma e marcado como já chamado!'
+                    : 'Aluno removido da turma e marcado como Cancelado!';
+
+            mostrarNotificacao(mensagemSucesso, 'success');
+            fecharModalRemocao();
         } catch (erro) {
             console.error('Erro ao remover aluno:', erro);
             mostrarNotificacao('Erro ao remover aluno da turma.', 'error');
@@ -276,305 +314,381 @@ export default function ModalTurmaPendente({ isOpen, onClose, turma, onTurmaUpda
         : '-';
 
     return (
-        <div className="mtp-overlay" onClick={onClose}>
-            <div className="mtp-content" onClick={(e) => e.stopPropagation()}>
-                <div className="mtp-header">
-                    <div className="mtp-header-left">
-                        <div className="mtp-header-icon-wrapper">
-                            <FaHourglassHalf className="mtp-header-icon" />
-                        </div>
-                        <div>
-                            <h2>{turma.nome}</h2>
-                            <span className="mtp-status-badge mtp-pendente">Pendente</span>
-                        </div>
-                    </div>
-
-                    <button className="mtp-close-btn" onClick={onClose}>
-                        <FaTimes />
-                    </button>
-                </div>
-
-                <div className="mtp-body">
-                    <div className="mtp-info-grid">
-                        <div className="mtp-info-card">
-                            <div className="mtp-info-icon">
-                                <FaMapMarkerAlt />
+        <>
+            <div className="mtp-overlay" onClick={onClose}>
+                <div className="mtp-content" onClick={(e) => e.stopPropagation()}>
+                    <div className="mtp-header">
+                        <div className="mtp-header-left">
+                            <div className="mtp-header-icon-wrapper">
+                                <FaHourglassHalf className="mtp-header-icon" />
                             </div>
-                            <div className="mtp-info-content">
-                                <span className="mtp-info-label">Local</span>
-                                <strong className="mtp-info-value">{turma.local}</strong>
+                            <div>
+                                <h2>{turma.nome}</h2>
+                                <span className="mtp-status-badge mtp-pendente">Pendente</span>
                             </div>
                         </div>
 
-                        <div className="mtp-info-card">
-                            <div className="mtp-info-icon">
-                                <FaClock />
-                            </div>
-                            <div className="mtp-info-content">
-                                <span className="mtp-info-label">Período</span>
-                                <strong className="mtp-info-value">{turma.periodo}</strong>
-                            </div>
-                        </div>
-
-                        <div className="mtp-info-card">
-                            <div className="mtp-info-icon">
-                                <FaCalendarAlt />
-                            </div>
-                            <div className="mtp-info-content">
-                                <span className="mtp-info-label">Dias da Semana</span>
-                                <strong className="mtp-info-value">{turma.dias}</strong>
-                            </div>
-                        </div>
-
-                        <div className="mtp-info-card">
-                            <div className="mtp-info-icon">
-                                <FaCalendarAlt />
-                            </div>
-                            <div className="mtp-info-content">
-                                <span className="mtp-info-label">Data de Início</span>
-                                <strong className="mtp-info-value">{dataInicioFormatada}</strong>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="mtp-compatibilidade-card">
-                        <FaCheckCircle className="mtp-compatibilidade-icon" />
-                        <div className="mtp-compatibilidade-texto">
-                            <strong>Alunos compatíveis com o local da turma</strong>
-                            <p>Esta lista mostra apenas inscritos cujo local escolhido é igual ao local desta turma.</p>
-                        </div>
-                    </div>
-
-                    <div className="mtp-sub-tabs">
-                        <button
-                            className={`mtp-sub-tab ${activeSubTab === 'alunos' ? 'active' : ''}`}
-                            onClick={() => setActiveSubTab('alunos')}
-                        >
-                            <FaUsers /> Alunos Matriculados ({inscritos.length})
-                        </button>
-
-                        <button
-                            className={`mtp-sub-tab ${activeSubTab === 'adicionar' ? 'active' : ''}`}
-                            onClick={() => {
-                                if (!mostrarFormAdicionar) {
-                                    abrirFormAdicionar();
-                                } else {
-                                    setActiveSubTab('adicionar');
-                                }
-                            }}
-                        >
-                            <FaUserPlus /> Adicionar Aluno
+                        <button className="mtp-close-btn" onClick={onClose}>
+                            <FaTimes />
                         </button>
                     </div>
 
-                    {activeSubTab === 'alunos' && (
-                        <div className="mtp-alunos-section">
-                            {carregando ? (
-                                <div className="mtp-loading-state">
-                                    <FaSpinner className="mtp-spinner mtp-rotating" />
-                                    <p>Carregando lista de alunos...</p>
+                    <div className="mtp-body">
+                        <div className="mtp-info-grid">
+                            <div className="mtp-info-card">
+                                <div className="mtp-info-icon">
+                                    <FaMapMarkerAlt />
                                 </div>
-                            ) : inscritos.length === 0 ? (
-                                <div className="mtp-empty-state">
-                                    <div className="mtp-empty-icon">
-                                        <FaUsers />
-                                    </div>
-                                    <h4>Nenhum aluno compatível matriculado</h4>
-                                    <p>Esta turma ainda não possui alunos compatíveis com o local selecionado.</p>
-                                    <button className="mtp-btn-adicionar" onClick={abrirFormAdicionar}>
-                                        <FaUserPlus /> Adicionar Alunos
-                                    </button>
+                                <div className="mtp-info-content">
+                                    <span className="mtp-info-label">Local</span>
+                                    <strong className="mtp-info-value">{turma.local}</strong>
                                 </div>
-                            ) : (
-                                <div className="mtp-alunos-lista">
-                                    {inscritos.map((inscrito) => (
-                                        <div key={inscrito.id} className="mtp-aluno-card">
-                                            <div className="mtp-aluno-info">
-                                                <div className="mtp-aluno-avatar">
-                                                    <span className="mtp-avatar-inicial">
-                                                        {inscrito.nome.charAt(0).toUpperCase()}
-                                                    </span>
-                                                </div>
-
-                                                <div className="mtp-aluno-detalhes">
-                                                    <div className="mtp-aluno-nome-container">
-                                                        <strong className="mtp-aluno-nome">{inscrito.nome}</strong>
-                                                        {inscrito.primeira_vez && (
-                                                            <span className="mtp-primeira-vez-badge">
-                                                                <FaCheckCircle /> Primeira Vez
-                                                            </span>
-                                                        )}
-                                                    </div>
-
-                                                    <div className="mtp-aluno-metadados">
-                                                        <span className="mtp-metadado">
-                                                            <FaMapMarkerAlt className="mtp-metadado-icon" />
-                                                            {inscrito.local}
-                                                        </span>
-                                                        <span className="mtp-metadado">
-                                                            <FaClock className="mtp-metadado-icon" />
-                                                            {inscrito.periodo}
-                                                        </span>
-                                                        <span className="mtp-metadado">
-                                                            <FaCalendarAlt className="mtp-metadado-icon" />
-                                                            {inscrito.dias}
-                                                        </span>
-                                                        <span className="mtp-metadado mtp-telefone">
-                                                            <FaPhoneAlt className="mtp-metadado-icon" />
-                                                            {inscrito.celular}
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <button
-                                                className="mtp-btn-remover-aluno"
-                                                onClick={() => deletarInscritoDaTurma(inscrito.id)}
-                                                disabled={deletandoInscrito === inscrito.id}
-                                                title="Remover da turma"
-                                            >
-                                                {deletandoInscrito === inscrito.id ? (
-                                                    <FaSpinner className="mtp-spinner-small mtp-rotating" />
-                                                ) : (
-                                                    <FaUserMinus className="mtp-icone-remover" />
-                                                )}
-                                            </button>
-                                        </div>
-                                    ))}
-                                </div>
-                            )}
-                        </div>
-                    )}
-
-                    {activeSubTab === 'adicionar' && mostrarFormAdicionar && (
-                        <div className="mtp-adicionar-section">
-                            <div className="mtp-busca-alunos">
-                                <FaSearch className="mtp-busca-icon" />
-                                <input
-                                    type="text"
-                                    placeholder="Buscar por nome ou telefone..."
-                                    value={buscaInscritos}
-                                    onChange={(e) => setBuscaInscritos(e.target.value)}
-                                    className="mtp-busca-input"
-                                />
                             </div>
 
-                            {carregandoDisponiveis ? (
-                                <div className="mtp-loading-state">
-                                    <FaSpinner className="mtp-spinner mtp-rotating" />
-                                    <p>Carregando alunos disponíveis...</p>
+                            <div className="mtp-info-card">
+                                <div className="mtp-info-icon">
+                                    <FaClock />
                                 </div>
-                            ) : inscritosDisponiveisFiltrados.length === 0 ? (
-                                <div className="mtp-empty-state">
-                                    <div className="mtp-empty-icon">
-                                        <FaExclamationTriangle />
-                                    </div>
-                                    <h4>Nenhum aluno disponível</h4>
-                                    <p>
-                                        {buscaInscritos
-                                            ? 'Não encontramos alunos com esta busca.'
-                                            : `Não há alunos disponíveis compatíveis com o local ${turma.local} para esta turma.`}
-                                    </p>
+                                <div className="mtp-info-content">
+                                    <span className="mtp-info-label">Período</span>
+                                    <strong className="mtp-info-value">{turma.periodo}</strong>
                                 </div>
-                            ) : (
-                                <div className="mtp-alunos-disponiveis-lista">
-                                    {inscritosDisponiveisFiltrados.map((inscrito) => (
-                                        <div
-                                            key={inscrito.id}
-                                            className={`mtp-aluno-disponivel-card ${inscrito.foiChamado ? 'mtp-foi-chamado' : ''}`}
-                                        >
-                                            <div className="mtp-aluno-disponivel-info">
-                                                <div className="mtp-aluno-avatar">
-                                                    <span className="mtp-avatar-inicial">
-                                                        {inscrito.nome.charAt(0).toUpperCase()}
-                                                    </span>
-                                                </div>
+                            </div>
 
-                                                <div className="mtp-aluno-disponivel-detalhes">
-                                                    <div className="mtp-aluno-nome-container">
-                                                        <strong className="mtp-aluno-nome">{inscrito.nome}</strong>
-
-                                                        {inscrito.primeira_vez && (
-                                                            <span className="mtp-primeira-vez-badge">
-                                                                <FaCheckCircle /> Primeira Vez
-                                                            </span>
-                                                        )}
-
-                                                        {inscrito.foiChamado && (
-                                                            <span
-                                                                className="mtp-chamado-badge"
-                                                                title="Este aluno já foi chamado anteriormente"
-                                                            >
-                                                                <FaExclamationTriangle /> Já Chamado
-                                                            </span>
-                                                        )}
-                                                    </div>
-
-                                                    <div className="mtp-aluno-metadados">
-                                                        <span className="mtp-metadado">
-                                                            <FaMapMarkerAlt className="mtp-metadado-icon" />
-                                                            {inscrito.local}
-                                                        </span>
-                                                        <span className="mtp-metadado">
-                                                            <FaClock className="mtp-metadado-icon" />
-                                                            {inscrito.periodo}
-                                                        </span>
-                                                        <span className="mtp-metadado">
-                                                            <FaCalendarAlt className="mtp-metadado-icon" />
-                                                            {inscrito.dias}
-                                                        </span>
-                                                        <span className="mtp-metadado mtp-telefone">
-                                                            <FaPhoneAlt className="mtp-metadado-icon" />
-                                                            {inscrito.celular}
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <button
-                                                className="mtp-btn-adicionar-lista"
-                                                onClick={() => adicionarInscritoTurma(inscrito)}
-                                                disabled={adicionandoInscrito === inscrito.id}
-                                            >
-                                                {adicionandoInscrito === inscrito.id ? (
-                                                    <FaSpinner className="mtp-spinner-small mtp-rotating" />
-                                                ) : (
-                                                    <>
-                                                        <FaUserPlus /> Adicionar
-                                                    </>
-                                                )}
-                                            </button>
-                                        </div>
-                                    ))}
+                            <div className="mtp-info-card">
+                                <div className="mtp-info-icon">
+                                    <FaCalendarAlt />
                                 </div>
-                            )}
+                                <div className="mtp-info-content">
+                                    <span className="mtp-info-label">Dias da Semana</span>
+                                    <strong className="mtp-info-value">{turma.dias}</strong>
+                                </div>
+                            </div>
+
+                            <div className="mtp-info-card">
+                                <div className="mtp-info-icon">
+                                    <FaCalendarAlt />
+                                </div>
+                                <div className="mtp-info-content">
+                                    <span className="mtp-info-label">Data de Início</span>
+                                    <strong className="mtp-info-value">{dataInicioFormatada}</strong>
+                                </div>
+                            </div>
                         </div>
-                    )}
-                </div>
 
-                <div className="mtp-footer">
-                    <button className="mtp-btn-fechar" onClick={onClose}>
-                        Fechar
-                    </button>
+                        <div className="mtp-compatibilidade-card">
+                            <FaCheckCircle className="mtp-compatibilidade-icon" />
+                            <div className="mtp-compatibilidade-texto">
+                                <strong>Alunos compatíveis com o local da turma</strong>
+                                <p>Esta lista mostra apenas inscritos cujo local escolhido é igual ao local desta turma.</p>
+                            </div>
+                        </div>
 
-                    <button
-                        className="mtp-btn-ativar"
-                        onClick={ativarTurma}
-                        disabled={ativandoTurma}
-                    >
-                        {ativandoTurma ? (
-                            <>
-                                <FaSpinner className="mtp-spinner-small mtp-rotating" />
-                                Ativando...
-                            </>
-                        ) : (
-                            <>
-                                <FaCheckCircle /> Ativar Turma
-                            </>
+                        <div className="mtp-sub-tabs">
+                            <button
+                                className={`mtp-sub-tab ${activeSubTab === 'alunos' ? 'active' : ''}`}
+                                onClick={() => setActiveSubTab('alunos')}
+                            >
+                                <FaUsers /> Alunos Matriculados ({inscritos.length})
+                            </button>
+
+                            <button
+                                className={`mtp-sub-tab ${activeSubTab === 'adicionar' ? 'active' : ''}`}
+                                onClick={() => {
+                                    if (!mostrarFormAdicionar) {
+                                        abrirFormAdicionar();
+                                    } else {
+                                        setActiveSubTab('adicionar');
+                                    }
+                                }}
+                            >
+                                <FaUserPlus /> Adicionar Aluno
+                            </button>
+                        </div>
+
+                        {activeSubTab === 'alunos' && (
+                            <div className="mtp-alunos-section">
+                                {carregando ? (
+                                    <div className="mtp-loading-state">
+                                        <FaSpinner className="mtp-spinner mtp-rotating" />
+                                        <p>Carregando lista de alunos...</p>
+                                    </div>
+                                ) : inscritos.length === 0 ? (
+                                    <div className="mtp-empty-state">
+                                        <div className="mtp-empty-icon">
+                                            <FaUsers />
+                                        </div>
+                                        <h4>Nenhum aluno compatível matriculado</h4>
+                                        <p>Esta turma ainda não possui alunos compatíveis com o local selecionado.</p>
+                                        <button className="mtp-btn-adicionar" onClick={abrirFormAdicionar}>
+                                            <FaUserPlus /> Adicionar Alunos
+                                        </button>
+                                    </div>
+                                ) : (
+                                    <div className="mtp-alunos-lista">
+                                        {inscritos.map((inscrito) => (
+                                            <div key={inscrito.id} className="mtp-aluno-card">
+                                                <div className="mtp-aluno-info">
+                                                    <div className="mtp-aluno-avatar">
+                                                        <span className="mtp-avatar-inicial">
+                                                            {inscrito.nome.charAt(0).toUpperCase()}
+                                                        </span>
+                                                    </div>
+
+                                                    <div className="mtp-aluno-detalhes">
+                                                        <div className="mtp-aluno-nome-container">
+                                                            <strong className="mtp-aluno-nome">{inscrito.nome}</strong>
+                                                            {inscrito.primeira_vez && (
+                                                                <span className="mtp-primeira-vez-badge">
+                                                                    <FaCheckCircle /> Primeira Vez
+                                                                </span>
+                                                            )}
+                                                        </div>
+
+                                                        <div className="mtp-aluno-metadados">
+                                                            <span className="mtp-metadado">
+                                                                <FaMapMarkerAlt className="mtp-metadado-icon" />
+                                                                {inscrito.local}
+                                                            </span>
+                                                            <span className="mtp-metadado">
+                                                                <FaClock className="mtp-metadado-icon" />
+                                                                {inscrito.periodo}
+                                                            </span>
+                                                            <span className="mtp-metadado">
+                                                                <FaCalendarAlt className="mtp-metadado-icon" />
+                                                                {inscrito.dias}
+                                                            </span>
+                                                            <span className="mtp-metadado mtp-telefone">
+                                                                <FaPhoneAlt className="mtp-metadado-icon" />
+                                                                {inscrito.celular}
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <button
+                                                    className="mtp-btn-remover-aluno"
+                                                    onClick={() => abrirModalRemocao(inscrito)}
+                                                    disabled={deletandoInscrito === inscrito.id}
+                                                    title="Remover da turma"
+                                                >
+                                                    {deletandoInscrito === inscrito.id ? (
+                                                        <FaSpinner className="mtp-spinner-small mtp-rotating" />
+                                                    ) : (
+                                                        <FaUserMinus className="mtp-icone-remover" />
+                                                    )}
+                                                </button>
+                                            </div>
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
                         )}
-                    </button>
+
+                        {activeSubTab === 'adicionar' && mostrarFormAdicionar && (
+                            <div className="mtp-adicionar-section">
+                                <div className="mtp-busca-alunos">
+                                    <FaSearch className="mtp-busca-icon" />
+                                    <input
+                                        type="text"
+                                        placeholder="Buscar por nome ou telefone..."
+                                        value={buscaInscritos}
+                                        onChange={(e) => setBuscaInscritos(e.target.value)}
+                                        className="mtp-busca-input"
+                                    />
+                                </div>
+
+                                {carregandoDisponiveis ? (
+                                    <div className="mtp-loading-state">
+                                        <FaSpinner className="mtp-spinner mtp-rotating" />
+                                        <p>Carregando alunos disponíveis...</p>
+                                    </div>
+                                ) : inscritosDisponiveisFiltrados.length === 0 ? (
+                                    <div className="mtp-empty-state">
+                                        <div className="mtp-empty-icon">
+                                            <FaExclamationTriangle />
+                                        </div>
+                                        <h4>Nenhum aluno disponível</h4>
+                                        <p>
+                                            {buscaInscritos
+                                                ? 'Não encontramos alunos com esta busca.'
+                                                : `Não há alunos disponíveis compatíveis com o local ${turma.local} para esta turma.`}
+                                        </p>
+                                    </div>
+                                ) : (
+                                    <div className="mtp-alunos-disponiveis-lista">
+                                        {inscritosDisponiveisFiltrados.map((inscrito) => (
+                                            <div
+                                                key={inscrito.id}
+                                                className={`mtp-aluno-disponivel-card ${inscrito.foiChamado ? 'mtp-foi-chamado' : ''}`}
+                                            >
+                                                <div className="mtp-aluno-disponivel-info">
+                                                    <div className="mtp-aluno-avatar">
+                                                        <span className="mtp-avatar-inicial">
+                                                            {inscrito.nome.charAt(0).toUpperCase()}
+                                                        </span>
+                                                    </div>
+
+                                                    <div className="mtp-aluno-disponivel-detalhes">
+                                                        <div className="mtp-aluno-nome-container">
+                                                            <strong className="mtp-aluno-nome">{inscrito.nome}</strong>
+
+                                                            {inscrito.primeira_vez && (
+                                                                <span className="mtp-primeira-vez-badge">
+                                                                    <FaCheckCircle /> Primeira Vez
+                                                                </span>
+                                                            )}
+
+                                                            {inscrito.foiChamado && (
+                                                                <span
+                                                                    className="mtp-chamado-badge"
+                                                                    title="Este aluno já foi chamado anteriormente"
+                                                                >
+                                                                    <FaExclamationTriangle /> Já Chamado
+                                                                </span>
+                                                            )}
+                                                        </div>
+
+                                                        <div className="mtp-aluno-metadados">
+                                                            <span className="mtp-metadado">
+                                                                <FaMapMarkerAlt className="mtp-metadado-icon" />
+                                                                {inscrito.local}
+                                                            </span>
+                                                            <span className="mtp-metadado">
+                                                                <FaClock className="mtp-metadado-icon" />
+                                                                {inscrito.periodo}
+                                                            </span>
+                                                            <span className="mtp-metadado">
+                                                                <FaCalendarAlt className="mtp-metadado-icon" />
+                                                                {inscrito.dias}
+                                                            </span>
+                                                            <span className="mtp-metadado mtp-telefone">
+                                                                <FaPhoneAlt className="mtp-metadado-icon" />
+                                                                {inscrito.celular}
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <button
+                                                    className="mtp-btn-adicionar-lista"
+                                                    onClick={() => adicionarInscritoTurma(inscrito)}
+                                                    disabled={adicionandoInscrito === inscrito.id}
+                                                >
+                                                    {adicionandoInscrito === inscrito.id ? (
+                                                        <FaSpinner className="mtp-spinner-small mtp-rotating" />
+                                                    ) : (
+                                                        <>
+                                                            <FaUserPlus /> Adicionar
+                                                        </>
+                                                    )}
+                                                </button>
+                                            </div>
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
+                        )}
+                    </div>
+
+                    <div className="mtp-footer">
+                        <button className="mtp-btn-fechar" onClick={onClose}>
+                            Fechar
+                        </button>
+
+                        <button
+                            className="mtp-btn-ativar"
+                            onClick={ativarTurma}
+                            disabled={ativandoTurma}
+                        >
+                            {ativandoTurma ? (
+                                <>
+                                    <FaSpinner className="mtp-spinner-small mtp-rotating" />
+                                    Ativando...
+                                </>
+                            ) : (
+                                <>
+                                    <FaCheckCircle /> Ativar Turma
+                                </>
+                            )}
+                        </button>
+                    </div>
                 </div>
             </div>
-        </div>
+
+            {mostrarModalRemocao && inscritoSelecionadoRemocao && (
+                <div className="mtp-overlay" onClick={fecharModalRemocao}>
+                    <div
+                        className="mtp-modal-remocao"
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        <div className="mtp-modal-remocao-header">
+                            <h3>Remover aluno da turma</h3>
+                            <button
+                                className="mtp-close-btn"
+                                onClick={fecharModalRemocao}
+                                disabled={!!deletandoInscrito}
+                            >
+                                <FaTimes />
+                            </button>
+                        </div>
+
+                        <div className="mtp-modal-remocao-body">
+                            <p>
+                                Selecione o que deve acontecer com{' '}
+                                <strong>{inscritoSelecionadoRemocao.nome}</strong>:
+                            </p>
+
+                            <label className="mtp-opcao-remocao">
+                                <input
+                                    type="radio"
+                                    name="tipoRemocao"
+                                    value="jaChamado"
+                                    checked={tipoRemocao === 'jaChamado'}
+                                    onChange={(e) => setTipoRemocao(e.target.value)}
+                                />
+                                <span>Marcar apenas como já chamado</span>
+                            </label>
+
+                            <label className="mtp-opcao-remocao">
+                                <input
+                                    type="radio"
+                                    name="tipoRemocao"
+                                    value="cancelado"
+                                    checked={tipoRemocao === 'cancelado'}
+                                    onChange={(e) => setTipoRemocao(e.target.value)}
+                                />
+                                <span>Marcar como Cancelado</span>
+                            </label>
+                        </div>
+
+                        <div className="mtp-modal-remocao-footer">
+                            <button
+                                className="mtp-btn-fechar"
+                                onClick={fecharModalRemocao}
+                                disabled={!!deletandoInscrito}
+                            >
+                                Voltar
+                            </button>
+
+                            <button
+                                className="mtp-btn-ativar"
+                                onClick={confirmarRemocaoInscrito}
+                                disabled={!tipoRemocao || !!deletandoInscrito}
+                            >
+                                {deletandoInscrito ? (
+                                    <>
+                                        <FaSpinner className="mtp-spinner-small mtp-rotating" />
+                                        Salvando...
+                                    </>
+                                ) : (
+                                    'Confirmar'
+                                )}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
+        </>
     );
 }

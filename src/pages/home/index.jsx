@@ -1,7 +1,7 @@
 import './index.css';
-import background from '../../images/background.mp4'; 
+import background from '../../images/background.mp4';
 import { Link } from 'react-router-dom';
-import Header from '../../components/header/index.jsx'; 
+import Header from '../../components/header/index.jsx';
 import Footer from '../../components/footer/footer.jsx';
 import facebook from '../../images/icones redes sociais/facebook.png';
 import instagram from '../../images/icones redes sociais/instagram.png';
@@ -13,7 +13,7 @@ import Imagem1 from '../../images/pagina inicial/settings.png';
 import Imagem2 from '../../images/pagina inicial/docs.png';
 import Imagem3 from '../../images/pagina inicial/book.png';
 import Imagem4 from '../../images/pagina inicial/team.png';
-import WhatsAppButton from '../../pages/whatsapp/whatsAppbutton.jsx'; 
+import WhatsAppButton from '../../pages/whatsapp/whatsAppbutton.jsx';
 
 function Home() {
     const projetos = [
@@ -67,7 +67,7 @@ function Home() {
             <div className="hero">
                 <video
                     className="video-bg"
-                    src={background} 
+                    src={background}
                     type="video/mp4"
                     autoPlay
                     loop
@@ -87,7 +87,7 @@ function Home() {
                         </button>
                     </Link>
 
-                   {/*  <a 
+                    {/*  <a 
                         href="https://forms.gle/WXhmbwEmdcsLyWhX7" 
                         target="_blank" 
                         rel="noopener noreferrer" 
@@ -98,15 +98,14 @@ function Home() {
                             <span className="btn-arrow">→</span>
                         </button>
                     </a> */}
-                    <a 
-                        href="https://static.dom.sc.gov.br/?r=site/atoView&id=8086054" 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
+                    <a
+                        href="https://drive.google.com/file/d/184FBJhVyv6voc1H2Hlf-bl8RVMTiXbci/view?usp=sharing"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="inscricao-link"
                     >
                         <button className="inscricao-btn teatro-btn">
-                            Relativo às inscrições para Oficina de Teatro e Escola de Oleiros: Comunicamos que a divulgação dos resultados das matrículas está temporariamente suspensa. A medida visa atender à manifestação do Conselho Municipal de Cultura, processo que já foi encaminhado à Procuradoria Geral do Município para análise e decisão final
-                            <span className="btn-arrow">→</span>
+                            Confira aqui a lista completa dos resultados dos sorteios das turmas da Escola de Oleiros Joaquim Antônio de Medeiros e da Oficina do Teatro Adolpho Mello, bem como os editais publicados anteriormente.                            <span className="btn-arrow">→</span>
                         </button>
                     </a>
                 </div>

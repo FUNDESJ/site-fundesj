@@ -78,7 +78,7 @@ function App() {
         <Route path="/projetos-anteriores/golfinho" element={<Golfinho/>}/>
         <Route path="/projetos-anteriores/id-todos" element={<IdTodos/>}/>
         <Route path="/projetos-anteriores/afetar-com-afeto" element={<AfertarAfeto/>}/>
-        <Route path="/mulher-viva" element={<MulherViva/>}/>
+        {/*<Route path="/mulher-viva" element={<MulherViva/>}/>*/}
         <Route path="/oficina-do-futuro" element={<OficinaDoFuturo/>}/>
         <Route path="/egressos-univali" element={<EgressosUnivali/>}/>
         <Route path='/admin/*'
