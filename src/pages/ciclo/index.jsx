@@ -90,34 +90,6 @@ function Ciclo() {
                         </div>
                     </div>
                 </section>
-
-                <section className="ciclo-info-section">
-                    <div className="ciclo-container">
-                        <div className="ciclo-info-header">
-                            <span className="ciclo-section-tag">Longevidade Ativa</span>
-                            <h2>Conhecimento, bem-estar e qualidade de vida</h2>
-                        </div>
-
-                        <div className="ciclo-info-card">
-                            <p>
-                                O ciclo de palestras foi pensado para oferecer conhecimento
-                                prático e orientação de qualidade às pessoas idosas, fortalecendo
-                                o cuidado com a saúde e a participação ativa na comunidade.
-                            </p>
-
-                            <p>
-                                Mais do que encontros informativos, a iniciativa promove
-                                convivência, valorização da experiência de vida e incentivo a uma
-                                rotina mais saudável, autônoma e conectada.
-                            </p>
-
-                            <p className="ciclo-final-message">
-                                Envelhecer com qualidade é viver com mais dignidade, saúde e
-                                participação.
-                            </p>
-                        </div>
-                    </div>
-                </section>
             </main>
 
             <Footer />

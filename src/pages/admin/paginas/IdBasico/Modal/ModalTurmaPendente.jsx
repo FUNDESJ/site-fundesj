@@ -53,6 +53,22 @@ export default function ModalTurmaPendente({ isOpen, onClose, turma, onTurmaUpda
         const localTurmaNormalizado = normalizarTexto(turma?.local);
         const localAlunoNormalizado = normalizarTexto(localAluno);
 
+        const mapaLocais = {
+            estacio: ['estacio', 'estacio de sa', 'estacio de sa', 'estácio', 'estácio de sá'],
+            cati: ['cati']
+        };
+
+        const turmaEhEstacio = mapaLocais.estacio.includes(localTurmaNormalizado);
+        const turmaEhCati = mapaLocais.cati.includes(localTurmaNormalizado);
+
+        if (turmaEhEstacio) {
+            return mapaLocais.estacio.includes(localAlunoNormalizado);
+        }
+
+        if (turmaEhCati) {
+            return mapaLocais.cati.includes(localAlunoNormalizado);
+        }
+
         return localAlunoNormalizado === localTurmaNormalizado;
     }
 
@@ -78,11 +94,10 @@ export default function ModalTurmaPendente({ isOpen, onClose, turma, onTurmaUpda
                 lista = retorno.data.inscritos;
             }
 
-            const inscritosCompativeis = lista.filter((inscrito) =>
-                ehLocalCompativelComTurma(inscrito.local)
-            );
-
-            setInscritos(inscritosCompativeis);
+            // IMPORTANTE:
+            // Aqui não filtramos por local.
+            // Se o aluno já está vinculado à turma no back-end, ele deve aparecer.
+            setInscritos(lista);
         } catch (erro) {
             console.error('Erro ao carregar inscritos:', erro);
             setInscritos([]);
@@ -105,14 +120,16 @@ export default function ModalTurmaPendente({ isOpen, onClose, turma, onTurmaUpda
                 }
             );
 
+            const listaRetornada = Array.isArray(retorno.data) ? retorno.data : [];
             const idsInscritosNaTurma = inscritos.map(i => i.id);
 
-            const disponiveis = retorno.data.filter((inscrito) => {
-                const naoEstaNaTurma = !idsInscritosNaTurma.includes(inscrito.id);
+            const disponiveis = listaRetornada.filter((inscrito) => {
+                const naoEstaNaTurmaAtual = !idsInscritosNaTurma.includes(inscrito.id);
                 const semTurma = inscrito.turma_id === null;
                 const localCompativel = ehLocalCompativelComTurma(inscrito.local);
+                const naoCancelado = (inscrito.Situacao || '').trim().toLowerCase() !== 'cancelado';
 
-                return naoEstaNaTurma && semTurma && localCompativel;
+                return naoEstaNaTurmaAtual && semTurma && localCompativel && naoCancelado;
             });
 
             setInscritosDisponiveis(disponiveis);
@@ -216,7 +233,7 @@ export default function ModalTurmaPendente({ isOpen, onClose, turma, onTurmaUpda
                 }
             );
 
-            setInscritos([...inscritos, { ...inscrito, foiChamado: true }]);
+            setInscritos([...inscritos, { ...inscrito, foiChamado: true, turma_id: turma.id }]);
             setInscritosDisponiveis(inscritosDisponiveis.filter(i => i.id !== inscrito.id));
 
             mostrarNotificacao(`${inscrito.nome} foi adicionado à turma!`, 'success');
@@ -299,18 +316,18 @@ export default function ModalTurmaPendente({ isOpen, onClose, turma, onTurmaUpda
     }
 
     const inscritosDisponiveisFiltrados = inscritosDisponiveis.filter(inscrito =>
-        inscrito.nome.toLowerCase().includes(buscaInscritos.toLowerCase()) ||
-        inscrito.celular.includes(buscaInscritos)
+        (inscrito.nome || '').toLowerCase().includes(buscaInscritos.toLowerCase()) ||
+        (inscrito.celular || '').includes(buscaInscritos)
     );
 
     if (!isOpen || !turma) return null;
 
     const dataInicioFormatada = turma.dataInicio
         ? new Date(turma.dataInicio).toLocaleDateString('pt-BR', {
-              day: '2-digit',
-              month: '2-digit',
-              year: 'numeric'
-          })
+            day: '2-digit',
+            month: '2-digit',
+            year: 'numeric'
+        })
         : '-';
 
     return (
@@ -379,8 +396,8 @@ export default function ModalTurmaPendente({ isOpen, onClose, turma, onTurmaUpda
                         <div className="mtp-compatibilidade-card">
                             <FaCheckCircle className="mtp-compatibilidade-icon" />
                             <div className="mtp-compatibilidade-texto">
-                                <strong>Alunos compatíveis com o local da turma</strong>
-                                <p>Esta lista mostra apenas inscritos cujo local escolhido é igual ao local desta turma.</p>
+                                <strong>Gerenciamento de alunos da turma</strong>
+                                <p>Na aba de adicionar, são exibidos apenas inscritos compatíveis com o local desta turma. Já os matriculados mostram todos os que já pertencem à turma.</p>
                             </div>
                         </div>
 
@@ -418,8 +435,8 @@ export default function ModalTurmaPendente({ isOpen, onClose, turma, onTurmaUpda
                                         <div className="mtp-empty-icon">
                                             <FaUsers />
                                         </div>
-                                        <h4>Nenhum aluno compatível matriculado</h4>
-                                        <p>Esta turma ainda não possui alunos compatíveis com o local selecionado.</p>
+                                        <h4>Nenhum aluno matriculado</h4>
+                                        <p>Esta turma ainda não possui alunos vinculados.</p>
                                         <button className="mtp-btn-adicionar" onClick={abrirFormAdicionar}>
                                             <FaUserPlus /> Adicionar Alunos
                                         </button>
