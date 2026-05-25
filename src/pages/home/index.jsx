@@ -172,7 +172,6 @@ function Home() {
                 ))}
             </div>
 
-            <WhatsAppButton />
             <Footer />
         </div>
     );

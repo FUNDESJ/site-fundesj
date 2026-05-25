@@ -44,7 +44,7 @@ html,
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 90%;
   object-fit: cover;
   z-index: 0;
   pointer-events: none;
@@ -56,7 +56,7 @@ html,
   left: 0;
   bottom: 0;
   width: 100%;
-  height: 100%;
+  height: 90%;
   background-color: rgba(0, 0, 0, 0.497);
   z-index: 1;
 }
@@ -233,7 +233,7 @@ html,
   align-items: stretch;
   background-color: #fff;
   position: relative;
-  top: -50px;
+  top: -180px;
   margin: 0 auto;
   width: 95%;
   max-width: 900px;

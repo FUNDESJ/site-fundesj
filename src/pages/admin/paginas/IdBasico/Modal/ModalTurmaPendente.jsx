@@ -128,8 +128,9 @@ export default function ModalTurmaPendente({ isOpen, onClose, turma, onTurmaUpda
                 const semTurma = inscrito.turma_id === null;
                 const localCompativel = ehLocalCompativelComTurma(inscrito.local);
                 const naoCancelado = (inscrito.Situacao || '').trim().toLowerCase() !== 'cancelado';
+                const naoDesistente = (inscrito.Situacao || '').trim().toLowerCase() !== 'desistente';
 
-                return naoEstaNaTurmaAtual && semTurma && localCompativel && naoCancelado;
+                return naoEstaNaTurmaAtual && semTurma && localCompativel && naoCancelado && naoDesistente;
             });
 
             setInscritosDisponiveis(disponiveis);

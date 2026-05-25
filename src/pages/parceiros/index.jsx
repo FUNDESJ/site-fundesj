@@ -20,66 +20,139 @@ import Imagem17 from '../../images/fotos parceiros/redeFemininaContraCancer.png'
 import Imagem18 from '../../images/fotos parceiros/funiber.png'
 import Imagem19 from '../../images/fotos parceiros/Logo-AVOS-Coracao.jpg'
 function Parceiros() {
+
+    const parceiros = [
+        {
+            id: 1,
+            nome: "Avos",
+            link: "https://avos.org.br/",
+            img: Imagem19
+        },
+        {
+            id: 2,
+            nome: "Banco do Brasil",
+            link: "https://www.bb.com.br/site/",
+            img: Imagem15
+        },
+        {
+            id: 3,
+            nome: "Corpo de Bombeiros Militar de Santa Catarina",
+            link: "https://www.cbm.sc.gov.br/",
+            img: Imagem2
+        },
+        {
+            id: 4,
+            nome: "Cittadino",
+            link: "https://cittadino.com.br/",
+            img: Imagem1,
+        },
+        {
+            id: 5,
+            nome: "Faculdade Fadesc",
+            link: "https://www.fadesc.com.br/",
+            img: Imagem4,
+        },
+        {
+            id: 6,
+            nome: "Faculdade Municipal da Palhoça",
+            link: "https://fmpsc.edu.br/",
+            img: Imagem5
+        },
+        {
+            id: 7,
+            nome: "Funiber",
+            link: "https://www.funiber.org.br/",
+            img: Imagem18
+        },
+        {
+            id: 8,
+            nome: "Instituto ELA",
+            link: "https://www.institutoela.org.br/",
+            img: Imagem16
+        },
+        {
+            id: 9,
+            nome: "JA Santa Catarina",
+            link: "https://www.instagram.com/jasantacatarina/",
+            img: Imagem6
+        },
+        {
+            id: 10,
+            nome: "Marista Escola Social São José",
+            link: "https://maristaescolassociais.org.br/escola/marista-escola-social-sao-jose/",
+            img: Imagem7
+        },
+        {
+            id: 11,
+            nome: "NETI UFSC",
+            link: "https://neti.ufsc.br/",
+            img: Imagem9
+        },
+        {
+            id: 12,
+            nome: "Naturação Brasil",
+            link: "https://www.linkedin.com/company/natura%C3%A7%C3%A3o-brasil/?originalSubdomain=br",
+            img: Imagem8
+        },
+        {
+            id: 13,
+            nome: "OAB São José",
+            link: "https://www.instagram.com/oabsaojose/",
+            img: Imagem10
+        },
+        {
+            id: 14,
+            nome: "Rede Feminina de Combate ao Câncer",
+            link: "https://redefemininasc.com.br/",
+            img: Imagem17
+        },
+        {
+            id: 15,
+            nome: "Senac",
+            link: "https://portal.sc.senac.br/portal/novo/",
+            img: Imagem11
+        },
+        {
+            id: 16,
+            nome: "Universidade Estácio",
+            link: "https://estacio.br/",
+            img: Imagem3
+        },
+        {
+            id: 17,
+            nome: "Unicesumar",
+            link: "https://www.unicesumar.edu.br/",
+            img: Imagem13
+        },
+        {
+            id: 18,
+            nome: "Univali",
+            link: "https://univali.br/Paginas/default.aspx",
+            img: Imagem14
+        }
+    ];
     return (
         <>
             <Header />
-            <div className='parceiros'>
-                <a href="https://www.instagram.com/cittadinogames/" target='_blank' rel='noopener noreferrer'>
-                    <img src={Imagem1} alt="img Cittadino" className='imgparceiros'/>
-                </a>
-                <a href="https://www.cbm.sc.gov.br/" target='_blank' rel='noopener noreferrer'>
-                    <img src={Imagem2} alt="img Bombeiros" className='imgparceiros'/>
-                </a>
-                <a href="https://estacio.br/" target='_blank' rel='noopener noreferrer'>
-                    <img src={Imagem3} alt="img Estácio" className='imgparceiros'/>
-                </a>
-                <a href="https://www.fadesc.com.br/" target='_blank' rel='noopener noreferrer'>
-                    <img src={Imagem4} alt="img Uniasselvi" className='imgparceiros'/>
-                </a>
-                <a href="https://fmpsc.edu.br/" target='_blank' rel='noopener noreferrer'>
-                    <img src={Imagem5} alt="img FMP" className='imgparceiros'/>
-                </a>
-                <a href="https://www.instagram.com/jasantacatarina/" target='_blank' rel='noopener noreferrer'>
-                    <img src={Imagem6} alt="img JA" className='imgparceiros'/>
-                </a>
-                <a href="https://maristaescolassociais.org.br/escola/marista-escola-social-sao-jose/" target='_blank' rel='noopener noreferrer'>
-                    <img src={Imagem7} alt="img Marista" className='imgparceiros'/>
-                </a>
-                <a href="https://www.linkedin.com/company/natura%C3%A7%C3%A3o-brasil/?originalSubdomain=br" target='_blank' rel='noopener noreferrer'>
-                    <img src={Imagem8} alt="img Naturação" className='imgparceiros'/>
-                </a>
-                <a href="https://neti.ufsc.br/" target='_blank' rel='noopener noreferrer'>
-                    <img src={Imagem9} alt="img UFSC NETI" className='imgparceiros'/>
-                </a>
-                <a href="https://www.instagram.com/oabsaojose/" target='_blank' rel='noopener noreferrer'>
-                    <img src={Imagem10} alt="img OAB" className='imgparceiros'/>
-                </a>
-                <a href="https://portal.sc.senac.br/portal/novo/" target='_blank' rel='noopener noreferrer'>
-                    <img src={Imagem11} alt="img Senac" className='imgparceiros'/>
-                </a>
-                <a href="https://www.unicesumar.edu.br/" target='_blank' rel='noopener noreferrer'>
-                    <img src={Imagem13} alt="img Unicesumar" className='imgparceiros'/>
-                </a>
-                <a href="https://univali.br/Paginas/default.aspx" target='_blank' rel='noopener noreferrer'>
-                    <img src={Imagem14} alt="img Univali" className='imgparceiros'/>
-                </a>
-                <a href="https://www.bb.com.br/site/" target='_blank' rel='noopener noreferrer'>
-                    <img src={Imagem15} alt="img BB" className='imgparceiros'/>
-                </a>
-                <a href="https://www.institutoela.org.br/" target='_blank' rel='noopener noreferrer'>
-                    <img src={Imagem16} alt="img ELA" className='imgparceiros'/>
-                </a>
-                <a href="https://redefemininasc.com.br/" target='_blank' rel='noopener noreferrer'>
-                    <img src={Imagem17} alt="img Rede feminina de combate ao cancer" className='imgparceiros'/>
-                </a>
-                <a href="https://www.funiber.org.br/" target='_blank' rel='noopener noreferrer'>
-                    <img src={Imagem18} alt="img funiber" className='imgparceiros'/>
-                </a>
-                <a href="https://avos.org.br/" target='_blank' rel='noopener noreferrer'>
-                    <img src={Imagem19} alt="img funiber" className='imgparceiros'/>
-                </a>
-                
+
+            <div className="parceiros-container">
+                {parceiros.map((parceiro) => (
+                    <div className="parceiro-card" key={parceiro.id}>
+                        <a href={parceiro.link} target="_blank" rel="noopener noreferrer">
+                            <div className="logo-box">
+                                <img
+                                    src={parceiro.img}
+                                    alt={parceiro.nome}
+                                    className="imgparceiros"
+                                />
+                            </div>
+
+                            <span className="nome-parceiro">{parceiro.nome}</span>
+                        </a>
+                    </div>
+                ))}
             </div>
+
             <Footer />
         </>
     );

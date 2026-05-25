@@ -33,18 +33,20 @@ export default function Inscricoes() {
 
             const evento = retorno.data.consulta;
             const dataOriginal = evento.data;
-            const dataEvento = new Date(dataOriginal);
-            const hoje = new Date();
 
-            const dataEventoSemHora = new Date(dataEvento.getFullYear(), dataEvento.getMonth(), dataEvento.getDate());
-            const hojeSemHora = new Date(hoje.getFullYear(), hoje.getMonth(), hoje.getDate());
+            const [ano, mes, dia] = dataOriginal.split("T")[0].split("-");
 
-            if (dataEventoSemHora.getTime() < hojeSemHora.getTime()) {
-                setMensagem("Não há palestras para se inscrever no momento");
+            const limiteInscricao = new Date(ano, mes - 1, dia, 14, 0, 0);
+
+            const agora = new Date();
+
+            if (agora.getTime() > limiteInscricao.getTime()) {
+                setMensagem("As inscrições para esta palestra foram encerradas");
                 return;
             }
 
-            const dataFormatada = dataOriginal.split("T")[0].split("-").reverse().join("/");
+            const dataFormatada = `${dia}/${mes}/${ano}`;
+
 
             let horarioFormatado = evento.horario;
             if (horarioFormatado.includes(':')) {
