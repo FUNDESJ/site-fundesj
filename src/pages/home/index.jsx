@@ -98,7 +98,8 @@ function Home() {
                             <span className="btn-arrow">→</span>
                         </button>
                     </a> */}
-                    <a
+
+                    {/*<a
                         href="https://drive.google.com/file/d/184FBJhVyv6voc1H2Hlf-bl8RVMTiXbci/view?usp=sharing"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -107,7 +108,8 @@ function Home() {
                         <button className="inscricao-btn teatro-btn">
                             Confira aqui a lista completa dos resultados dos sorteios das turmas da Escola de Oleiros Joaquim Antônio de Medeiros e da Oficina do Teatro Adolpho Mello, bem como os editais publicados anteriormente.                            <span className="btn-arrow">→</span>
                         </button>
-                    </a>
+                    </a> */}
+                    
                 </div>
             </div>
 
