@@ -32,24 +32,24 @@ const ProjetosAtivos = () => {
             image: idtodos,
             link: '/idintermediario'
         },
-        {
+        /*{
             title: "Oficina do Futuro",
             description: "Capacitação de jovens em vulnerabilidade social em funilaria e pintura automotiva, promovendo inclusão e acesso ao mercado de trabalho.",
             image: oficinaFuturo,
             link: '/oficina-do-futuro'
-        },
+        },*/
         {
             title: "Inserção de egressos da Univali",
             description: "Projeto de inserção de egressos da Univali em projetos e ações comunitárias.",
             image: univali,
             link: '/egressos-univali'
         },
-        /*{
+        {
             title: "Projeto Mulher Viva",
             description: "Movimento de prevenção à violência contra mulheres, com foco em acolhimento e autonomia.",
             image: movmulherviva,
             link: '/mulher-viva'
-        },*/
+        },
 
 
     ];
@@ -79,7 +79,7 @@ const ProjetosAtivos = () => {
             <main className={styles.container}>
 
                 <HeroPages
-                    titulo="Nossos Projetos Ativos"
+                    titulo="Nossos Projetos"
                     descricao="Cada iniciativa da Fundação Educacional de São José é cuidadosamente planejada para transformar vidas e
                             fortalecer vínculos sociais por meio da educação, inclusão e bem-estar comunitário."
                 />

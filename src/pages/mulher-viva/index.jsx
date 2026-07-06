@@ -15,14 +15,16 @@ function MulherViva() {
                             <h1>Movimento Mulher Viva</h1>
 
                             <p className="mv-hero-subtitle">
-                                Um movimento comunitário por respeito, proteção e autonomia.
+                                Prevenção e enfrentamento da violência contra mulheres em São José/SC.
                             </p>
 
                             <p className="mv-hero-description">
-                                O Movimento Mulher Viva reúne organizações públicas, privadas e a
-                                sociedade civil para atuar de forma integrada na prevenção e no
-                                enfrentamento da violência contra mulheres em São José, unindo
-                                educação, acolhimento e geração de oportunidades.
+                                O Movimento Mulher Viva, coordenado pela FUNDESJ, é uma iniciativa
+                                voltada à prevenção e ao enfrentamento da violência contra mulheres
+                                no município de São José/SC. O movimento nasce com o propósito de
+                                articular ações permanentes de educação, conscientização, acolhimento
+                                e fortalecimento da autonomia feminina, contribuindo para uma cultura
+                                de respeito, igualdade de gênero e não violência.
                             </p>
 
                             <div className="mv-hero-actions">
@@ -75,14 +77,17 @@ function MulherViva() {
                     <div className="mv-container">
                         <div className="mv-section-heading">
                             <span className="mv-section-tag">Sobre o Movimento</span>
-                            <h2>Respeito, proteção e autonomia para transformar realidades</h2>
+                            <h2>Articulação permanente por respeito, proteção e autonomia</h2>
                             <p>
-                                O Movimento Mulher Viva foi criado para fortalecer uma comunidade
-                                mais segura e justa. A proposta é atuar de forma integrada na
-                                prevenção da violência contra mulheres, no acolhimento de quem
-                                precisa de apoio e na criação de oportunidades que ampliem a
-                                autonomia e a independência das mulheres em situação de
-                                vulnerabilidade.
+                                O Movimento Mulher Viva, coordenado pela FUNDESJ, nasce com o
+                                propósito de articular ações permanentes de educação,
+                                conscientização, acolhimento e fortalecimento da autonomia feminina.
+                                A proposta reúne órgãos públicos, instituições de ensino, entidades
+                                de proteção, organizações da sociedade civil e demais parceiros que
+                                atuam direta ou indiretamente na defesa dos direitos das mulheres,
+                                fortalecendo a rede local de apoio e criando caminhos mais claros
+                                para orientação, escuta qualificada e encaminhamento aos serviços
+                                especializados.
                             </p>
                         </div>
                     </div>
@@ -145,10 +150,10 @@ function MulherViva() {
                                 <div className="mv-pillar-icon">01</div>
                                 <h3>Prevenção</h3>
                                 <p>
-                                    Rodas de conversa em comunidades, oficinas para jovens,
-                                    campanhas permanentes com linguagem acessível, formação de
-                                    lideranças comunitárias e engajamento de homens e meninos como
-                                    aliados na prevenção.
+                                    Rodas de conversa, oficinas educativas e campanhas permanentes
+                                    voltadas à conscientização sobre respeito, igualdade de gênero
+                                    e não violência, com envolvimento de homens e meninos como
+                                    aliados responsáveis na prevenção.
                                 </p>
                             </article>
 
@@ -156,9 +161,9 @@ function MulherViva() {
                                 <div className="mv-pillar-icon">02</div>
                                 <h3>Acolhimento e Encaminhamento</h3>
                                 <p>
-                                    Escuta qualificada, orientação segura, encaminhamento para
-                                    atendimento psicológico e jurídico, além de acompanhamento para
-                                    ampliar o acesso aos serviços necessários.
+                                    Apoio psicossocial e jurídico por meio da rede parceira, com
+                                    escuta qualificada, orientação segura e encaminhamento aos
+                                    serviços especializados de proteção às mulheres.
                                 </p>
                             </article>
 
@@ -166,10 +171,10 @@ function MulherViva() {
                                 <div className="mv-pillar-icon">03</div>
                                 <h3>Autonomia Econômica</h3>
                                 <p>
-                                    Cursos rápidos sobre finanças, emprego e empreendedorismo, apoio
-                                    com currículo e entrevistas, conexão com oportunidades de
-                                    trabalho e geração de renda, além de articulação de rede de
-                                    apoio.
+                                    Cursos, mentorias e conexão com oportunidades de renda e
+                                    trabalho para mulheres em situação de vulnerabilidade,
+                                    fortalecendo sua independência financeira e ampliando suas
+                                    possibilidades de escolha.
                                 </p>
                             </article>
                         </div>
