@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Instituicao from './pages/instituicao/index.jsx';
 import Realizacoes from './pages/realizacoes/index.jsx';
 import Programas from './pages/programas/index.jsx';
-import ProjetosAnteriores from './pages/projetosAnteriores/index.jsx';
+//import ProjetosAnteriores from './pages/projetosAnteriores/index.jsx';
 import Cursos from './pages/cursos/index.jsx';
 import Home from './pages/home/index.jsx';
 import Certificados from './pages/certificados/index.jsx';
@@ -39,6 +39,7 @@ import MulherViva from "./pages/mulher-viva/index.jsx";
 import AfertarAfeto from "./pages/afeto/index.jsx";
 import OficinaDoFuturo from './pages/oficinaDoFuturo/index.jsx';
 import EgressosUnivali from './pages/egressosUnivali/index.jsx';
+import InstitutoEla from './pages/instituto-ela/index.jsx';
 function App() {
   return (
     <BrowserRouter>
@@ -47,7 +48,7 @@ function App() {
         <Route path='/instituição' element={<Instituicao />} />
         <Route path='/realizações' element={<Realizacoes />} />
         <Route path='/programas' element={<Programas />} />
-        <Route path='/projetos-anteriores' element={<ProjetosAnteriores />} />
+        {/*<Route path='/projetos-anteriores' element={<ProjetosAnteriores />} />*/}
         <Route path='/cursos' element={<Cursos />} />
         <Route path='/validador' element={<Certificados />} />
         <Route path='/noticias' element={<Noticias />} />
@@ -81,6 +82,7 @@ function App() {
         <Route path="/mulher-viva" element={<MulherViva/>}/>
         <Route path="/oficina-do-futuro" element={<OficinaDoFuturo/>}/>
         <Route path="/egressos-univali" element={<EgressosUnivali/>}/>
+        <Route path="/instituto-ela" element={<InstitutoEla/>}/>
         <Route path='/admin/*'
           element={
             <PrivateRoute>

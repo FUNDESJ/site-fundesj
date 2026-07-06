@@ -10,6 +10,7 @@ import idtodos from '../../images/pagina inicial/idtodosfi.jpeg';
 import oficinaFuturo from '../../images/pagina inicial/oficinaFuturo.jpeg';
 import HeroPages from '../../components/heros/hero_pages.jsx';
 import movmulherviva from '../../images/projetos/mulher-viva.jpeg'
+import institutoElaImg from '../../images/fotos parceiros/ela.png'
 const ProjetosAtivos = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const carosselRef = useRef(null);
@@ -49,6 +50,12 @@ const ProjetosAtivos = () => {
             description: "Movimento de prevenção à violência contra mulheres, com foco em acolhimento e autonomia.",
             image: movmulherviva,
             link: '/mulher-viva'
+        },
+        {
+            title: "Instituto ELA – Educadoras do Brasil",
+            description: "Parceria com o Instituto ELA para valorização da força feminina por meio da educação, acolhimento e transformação social.",
+            image: institutoElaImg,
+            link: '/instituto-ela'
         },
 
 

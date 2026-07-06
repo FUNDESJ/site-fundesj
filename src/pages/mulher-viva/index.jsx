@@ -19,22 +19,13 @@ function MulherViva() {
                             </p>
 
                             <p className="mv-hero-description">
-                                O Movimento Mulher Viva, coordenado pela FUNDESJ, é uma iniciativa
+                                O Movimento Mulher Viva, coordenado pela FUNDESJ, é uma iniciativa sem fins lucrativos,
                                 voltada à prevenção e ao enfrentamento da violência contra mulheres
                                 no município de São José/SC. O movimento nasce com o propósito de
                                 articular ações permanentes de educação, conscientização, acolhimento
                                 e fortalecimento da autonomia feminina, contribuindo para uma cultura
                                 de respeito, igualdade de gênero e não violência.
                             </p>
-
-                            <div className="mv-hero-actions">
-                                <a href="#sobre" className="mv-btn mv-btn-primary">
-                                    Conheça o movimento
-                                </a>
-                                <a href="#contato" className="mv-btn mv-btn-secondary">
-                                    Participar
-                                </a>
-                            </div>
                         </div>
 
                         <div className="mv-hero-image-wrapper">
@@ -47,41 +38,12 @@ function MulherViva() {
                     </div>
                 </section>
 
-                <section className="mv-overview-cards mv-container">
-                    <article className="mv-info-card">
-                        <h3>Integração comunitária</h3>
-                        <p>
-                            O projeto conecta poder público, instituições, organizações locais e a
-                            sociedade civil em uma atuação conjunta e contínua.
-                        </p>
-                    </article>
-
-                    <article className="mv-info-card">
-                        <h3>Proteção e apoio</h3>
-                        <p>
-                            A iniciativa fortalece o acesso à escuta qualificada, orientação segura
-                            e encaminhamento para serviços essenciais.
-                        </p>
-                    </article>
-
-                    <article className="mv-info-card">
-                        <h3>Autonomia e oportunidades</h3>
-                        <p>
-                            Além da prevenção, o movimento também incentiva independência
-                            financeira, geração de renda e novas possibilidades de futuro.
-                        </p>
-                    </article>
-                </section>
-
-                <section id="sobre" className="mv-section">
+                <section className="mv-section">
                     <div className="mv-container">
                         <div className="mv-section-heading">
                             <span className="mv-section-tag">Sobre o Movimento</span>
                             <h2>Articulação permanente por respeito, proteção e autonomia</h2>
                             <p>
-                                O Movimento Mulher Viva, coordenado pela FUNDESJ, nasce com o
-                                propósito de articular ações permanentes de educação,
-                                conscientização, acolhimento e fortalecimento da autonomia feminina.
                                 A proposta reúne órgãos públicos, instituições de ensino, entidades
                                 de proteção, organizações da sociedade civil e demais parceiros que
                                 atuam direta ou indiretamente na defesa dos direitos das mulheres,
@@ -96,53 +58,8 @@ function MulherViva() {
                 <section className="mv-section mv-section-light">
                     <div className="mv-container">
                         <div className="mv-section-heading">
-                            <span className="mv-section-tag">O que queremos transformar</span>
-                            <h2>Uma comunidade mais segura, justa e consciente</h2>
-                        </div>
-
-                        <div className="mv-objective-grid">
-                            <div className="mv-objective-card">
-                                <h3>Prevenção pela educação</h3>
-                                <p>
-                                    Fortalecer a prevenção desde a base, com informação,
-                                    conscientização e diálogo sobre respeito, igualdade e sinais de
-                                    alerta.
-                                </p>
-                            </div>
-
-                            <div className="mv-objective-card">
-                                <h3>Apoio rápido e seguro</h3>
-                                <p>
-                                    Garantir que mulheres tenham acesso mais ágil a apoio
-                                    psicológico e jurídico por meio de orientação e encaminhamento.
-                                </p>
-                            </div>
-
-                            <div className="mv-objective-card">
-                                <h3>Homens e meninos como aliados</h3>
-                                <p>
-                                    Incentivar a participação ativa de homens e meninos como parte
-                                    da solução e da mudança cultural.
-                                </p>
-                            </div>
-
-                            <div className="mv-objective-card">
-                                <h3>Autonomia financeira</h3>
-                                <p>
-                                    Criar caminhos para que mulheres em situação de vulnerabilidade
-                                    fortaleçam sua independência e ampliem suas possibilidades de
-                                    escolha.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <section className="mv-section">
-                    <div className="mv-container">
-                        <div className="mv-section-heading">
-                            <span className="mv-section-tag">Como o projeto funciona</span>
-                            <h2>Três eixos de atuação para gerar impacto real</h2>
+                            <span className="mv-section-tag">Eixos de Atuação</span>
+                            <h2>Três eixos principais</h2>
                         </div>
 
                         <div className="mv-pillars">
@@ -150,10 +67,7 @@ function MulherViva() {
                                 <div className="mv-pillar-icon">01</div>
                                 <h3>Prevenção</h3>
                                 <p>
-                                    Rodas de conversa, oficinas educativas e campanhas permanentes
-                                    voltadas à conscientização sobre respeito, igualdade de gênero
-                                    e não violência, com envolvimento de homens e meninos como
-                                    aliados responsáveis na prevenção.
+                                    Rodas de conversa, oficinas educativas e campanhas permanentes.
                                 </p>
                             </article>
 
@@ -161,9 +75,7 @@ function MulherViva() {
                                 <div className="mv-pillar-icon">02</div>
                                 <h3>Acolhimento e Encaminhamento</h3>
                                 <p>
-                                    Apoio psicossocial e jurídico por meio da rede parceira, com
-                                    escuta qualificada, orientação segura e encaminhamento aos
-                                    serviços especializados de proteção às mulheres.
+                                    Apoio psicossocial e jurídico por meio da rede parceira.
                                 </p>
                             </article>
 
@@ -172,54 +84,9 @@ function MulherViva() {
                                 <h3>Autonomia Econômica</h3>
                                 <p>
                                     Cursos, mentorias e conexão com oportunidades de renda e
-                                    trabalho para mulheres em situação de vulnerabilidade,
-                                    fortalecendo sua independência financeira e ampliando suas
-                                    possibilidades de escolha.
+                                    trabalho para mulheres em situação de vulnerabilidade.
                                 </p>
                             </article>
-                        </div>
-                    </div>
-                </section>
-
-                <section className="mv-section mv-section-light">
-                    <div className="mv-container">
-                        <div className="mv-section-heading">
-                            <span className="mv-section-tag">Por que isso é importante</span>
-                            <h2>Uma mudança que começa na comunidade</h2>
-                        </div>
-
-                        <div className="mv-change-grid">
-                            <div className="mv-change-card">
-                                <h3>Informação salva vidas</h3>
-                                <p>
-                                    O acesso à informação ajuda a reconhecer violências, orientar
-                                    decisões e ampliar a prevenção.
-                                </p>
-                            </div>
-
-                            <div className="mv-change-card">
-                                <h3>Apoio acessível reduz barreiras</h3>
-                                <p>
-                                    Quando o acolhimento é claro e próximo, mulheres conseguem
-                                    acessar ajuda com mais segurança.
-                                </p>
-                            </div>
-
-                            <div className="mv-change-card">
-                                <h3>Autonomia amplia escolhas</h3>
-                                <p>
-                                    Independência financeira fortalece a liberdade, a proteção e as
-                                    possibilidades de reconstrução.
-                                </p>
-                            </div>
-
-                            <div className="mv-change-card">
-                                <h3>A mudança cultural é coletiva</h3>
-                                <p>
-                                    O envolvimento de toda a comunidade é essencial para construir
-                                    relações mais respeitosas e igualitárias.
-                                </p>
-                            </div>
                         </div>
                     </div>
                 </section>
@@ -227,60 +94,14 @@ function MulherViva() {
                 <section className="mv-section">
                     <div className="mv-container">
                         <div className="mv-section-heading">
-                            <span className="mv-section-tag">Quem participa</span>
-                            <h2>Parcerias que fortalecem o movimento</h2>
+                            <span className="mv-section-tag">Formato de Atuação</span>
+                            <h2>Projeto-piloto com mobilização comunitária</h2>
                             <p>
-                                O projeto é construído em parceria com instituições e organizações
-                                locais comprometidas com a proteção, a justiça social e a
-                                transformação da comunidade.
+                                Com atuação inicial em formato de projeto-piloto, o Movimento busca
+                                mobilizar a comunidade, envolver homens e meninos como aliados
+                                responsáveis e fortalecer políticas e práticas integradas de
+                                proteção às mulheres em São José.
                             </p>
-                        </div>
-
-                        <div className="mv-partners-grid">
-                            <a href="https://oab-sc.org.br/" target='blank'><div className="mv-partner-item">OAB São José</div></a>
-                            <a href="https://www.sas.sc.gov.br/index.php/conselhos/cedim/conselhos-municipais-do-direito-da-mulher" target='blank'><div className="mv-partner-item">Conselho Municipal dos Direitos das Mulheres</div></a>
-                            <a href="https://www2.camara.leg.br/a-camara/estruturaadm/secretarias/secretaria-da-mulher/procuradoria-da-mulher-1" target='blank'><div className="mv-partner-item">Procuradoria da Mulher</div></a>
-                            <div className="mv-partner-item">Instituições de ensino</div>
-                            <div className="mv-partner-item">Secretarias municipais</div>
-                            <a href="https://www.cmsj.sc.gov.br/" target='blank'><div className="mv-partner-item">Câmara Municipal</div></a>
-                            <div className="mv-partner-item">Sociedade civil</div>
-                        </div>
-                    </div>
-                </section>
-
-                <section id="contato" className="mv-cta-section">
-                    <div className="mv-container">
-                        <div className="mv-cta-box">
-                            <h2>Participe do Movimento Mulher Viva</h2>
-                            <p>
-                                Você pode contribuir participando das ações e rodas de conversa,
-                                divulgando as campanhas, tornando-se voluntário(a) ou oferecendo
-                                oportunidades e parcerias. Juntos, podemos construir uma comunidade
-                                mais segura, respeitosa e igualitária para todas as mulheres.
-                            </p>
-
-                            <div className="mv-cta-actions">
-                                <a
-                                    href="mailto:secretaria@fundesj.com.br"
-                                    className="mv-btn mv-btn-light"
-                                >
-                                    secretaria@fundesj.com.br
-                                </a>
-
-                                <a
-                                    href="https://www.fundesj.com.br"
-                                    target="_blank"
-                                    rel="noreferrer"
-                                    className="mv-btn mv-btn-outline-light"
-                                >
-                                    Saiba mais
-                                </a>
-                            </div>
-
-                            <div className="mv-contact-extra">
-                                <p>Av. Acioni Souza Filho, 403 • São José - SC • CEP 88.103-790</p>
-                                <p>(48) 3381-0070</p>
-                            </div>
                         </div>
                     </div>
                 </section>

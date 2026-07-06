@@ -1,0 +1,249 @@
+:root {
+    --iela-primary: #881433;
+    --iela-primary-dark: #6f0a25;
+    --iela-bg: #f7f4f5;
+    --iela-surface: #ffffff;
+    --iela-text: #2f2a2d;
+    --iela-text-soft: #625961;
+    --iela-border: rgba(139, 13, 47, 0.08);
+    --iela-shadow: 0 18px 45px rgba(41, 14, 22, 0.08);
+    --iela-shadow-soft: 0 12px 30px rgba(41, 14, 22, 0.06);
+    --iela-radius-xl: 28px;
+    --iela-radius-lg: 22px;
+    --iela-radius-md: 16px;
+    --iela-container: 1200px;
+    --iela-transition: all 0.3s ease;
+}
+
+.iela-page {
+    background: linear-gradient(180deg, #ffffff 0%, var(--iela-bg) 100%);
+    color: var(--iela-text);
+    min-height: 100vh;
+}
+
+.iela-container {
+    width: min(100% - 32px, var(--iela-container));
+    margin: 0 auto;
+}
+
+/* HERO */
+.iela-hero {
+    position: relative;
+    overflow: hidden;
+    padding: 60px 0 110px;
+    background:
+        linear-gradient(135deg, rgba(139, 13, 47, 0.98) 0%, rgba(176, 54, 84, 0.9) 100%);
+}
+
+.iela-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+    background-size: 28px 28px;
+    opacity: 0.28;
+    pointer-events: none;
+}
+
+.iela-hero-content {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 40px;
+    align-items: center;
+}
+
+.iela-hero-text h1 {
+    margin: 0 0 14px;
+    font-size: clamp(2.35rem, 5vw, 4.2rem);
+    line-height: 1;
+    color: #ffffff;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    max-width: 700px;
+}
+
+.iela-hero-subtitle {
+    margin: 0 0 14px;
+    font-size: 1.08rem;
+    line-height: 1.6;
+    color: #ffffff;
+    font-weight: 600;
+    max-width: 760px;
+}
+
+.iela-hero-description {
+    margin: 0;
+    font-size: 0.99rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.92);
+    max-width: 720px;
+}
+
+.iela-hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.iela-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 0 22px;
+    border-radius: 14px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: var(--iela-transition);
+    border: 1px solid transparent;
+    font-family: inherit;
+}
+
+.iela-btn-primary {
+    background: #ffffff;
+    color: var(--iela-primary);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+}
+
+.iela-btn-primary:hover {
+    transform: translateY(-2px);
+    background: #f8f2f4;
+}
+
+.iela-hero-image-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.iela-hero-image {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    object-fit: contain;
+    border-radius: 24px;
+    padding: 24px;
+    background: rgba(255, 255, 255, 0.12);
+    border: 2px solid rgba(255, 255, 255, 0.20);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.16);
+}
+
+/* SECTIONS */
+.iela-section {
+    padding: 68px 0;
+}
+
+.iela-section-light {
+    background: linear-gradient(180deg, #fbf8f9 0%, #f5eff1 100%);
+}
+
+.iela-section-heading {
+    max-width: 840px;
+    margin-bottom: 30px;
+}
+
+.iela-section-tag {
+    display: inline-block;
+    padding: 7px 13px;
+    border-radius: 999px;
+    background: rgba(139, 13, 47, 0.08);
+    color: var(--iela-primary);
+    font-size: 0.86rem;
+    font-weight: 700;
+    margin-bottom: 14px;
+}
+
+.iela-section-heading h2 {
+    margin: 0 0 12px;
+    font-size: clamp(1.85rem, 3vw, 2.65rem);
+    line-height: 1.15;
+    color: var(--iela-text);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+}
+
+.iela-section-heading p {
+    margin: 0;
+    color: var(--iela-text-soft);
+    line-height: 1.8;
+    font-size: 0.98rem;
+}
+
+/* HIGHLIGHT CARD */
+.iela-highlight-card {
+    margin-top: 24px;
+    padding: 26px 28px;
+    background: var(--iela-surface);
+    border-radius: var(--iela-radius-lg);
+    box-shadow: var(--iela-shadow-soft);
+    border: 1px solid var(--iela-border);
+    text-align: center;
+}
+
+.iela-highlight-text {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--iela-primary);
+    line-height: 1.7;
+    margin: 0 0 8px;
+}
+
+.iela-highlight-source {
+    font-size: 0.9rem;
+    color: var(--iela-text-soft);
+    font-style: italic;
+}
+
+.iela-highlight-link {
+    margin-top: 14px;
+}
+
+.iela-link {
+    color: var(--iela-primary);
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 0.95rem;
+}
+
+.iela-link:hover {
+    text-decoration: underline;
+}
+
+/* RESPONSIVE */
+@media (max-width: 860px) {
+    .iela-hero {
+        padding: 50px 0 95px;
+    }
+
+    .iela-hero-content {
+        grid-template-columns: 1fr;
+    }
+
+    .iela-hero-image {
+        max-width: 200px;
+    }
+
+    .iela-section {
+        padding: 56px 0;
+    }
+}
+
+@media (max-width: 540px) {
+    .iela-container {
+        width: min(100% - 20px, var(--iela-container));
+    }
+
+    .iela-hero-text h1 {
+        font-size: 2.15rem;
+    }
+
+    .iela-hero-subtitle,
+    .iela-hero-description,
+    .iela-section-heading p {
+        font-size: 0.96rem;
+    }
+}
