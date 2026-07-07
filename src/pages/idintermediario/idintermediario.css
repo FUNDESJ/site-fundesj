@@ -12,19 +12,25 @@
   position: relative;
   width: 100%;
   overflow: hidden;
-  padding: 88px 0 68px;
+  padding: 88px max(24px, calc((100vw - 1200px) / 2)) 86px;
   background:
-    linear-gradient(135deg, rgba(128, 0, 32, 0.96), rgba(163, 51, 61, 0.92)),
+    linear-gradient(135deg, rgba(128, 0, 32, 0.97), rgba(163, 51, 61, 0.93)),
     radial-gradient(circle at top right, rgba(255, 255, 255, 0.15), transparent 35%);
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  align-items: center;
+  gap: 54px;
 }
 
+/* GRADES NO BACKGROUND VERMELHO */
 .idintermediario-hero::before {
   content: "";
   position: absolute;
   inset: 0;
+  z-index: 1;
   background:
-        linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    linear-gradient(to right, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
   background-size: 32px 32px;
   pointer-events: none;
 }
@@ -36,39 +42,39 @@
   height: 620px;
   top: -150px;
   right: -120px;
+  z-index: 1;
   background: radial-gradient(circle, rgba(255, 255, 255, 0.15), transparent 70%);
   filter: blur(80px);
   animation: idintermediarioGlowFloat 8s ease-in-out infinite alternate;
   pointer-events: none;
 }
 
-/* CONTEÚDO CENTRALIZADO DENTRO DO HERO */
-.idintermediario-hero>.idintermediario-content,
-.idintermediario-hero>.idintermediario-image {
+.idintermediario-hero > .idintermediario-content,
+.idintermediario-hero > .idintermediario-image-wrapper {
   position: relative;
   z-index: 2;
 }
 
-.idintermediario-hero {
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  align-items: center;
-  gap: 40px;
-}
-
-.idintermediario-hero>.idintermediario-content,
-.idintermediario-hero>.idintermediario-image {
-  width: 100%;
-}
-
-.idintermediario-hero {
-  padding-left: max(24px, calc((100vw - 1200px) / 2));
-  padding-right: max(24px, calc((100vw - 1200px) / 2));
-}
-
 .idintermediario-content {
   color: #ffffff;
-  max-width: 700px;
+  max-width: 720px;
+}
+
+.idintermediario-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  margin-bottom: 18px;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  backdrop-filter: blur(12px);
 }
 
 .idintermediario-content h1 {
@@ -88,19 +94,40 @@
   max-width: 680px;
 }
 
-.idintermediario-image {
+/* IMAGEM */
+.idintermediario-image-wrapper {
   display: flex;
   justify-content: flex-end;
   align-items: center;
 }
 
+.idintermediario-image {
+  position: relative;
+  width: min(100%, 560px);
+  aspect-ratio: 16 / 10;
+  border-radius: 28px;
+  overflow: hidden;
+  background: transparent;
+  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.24);
+}
+
+.idintermediario-image::before,
+.idintermediario-image::after {
+  display: none;
+  content: none;
+}
+
 .idintermediario-image img {
-  width: 100%;
-  max-width: 500px;
-  height: 340px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 102%;
+  height: 164%;
+  display: block;
   object-fit: cover;
-  border-radius: 24px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.16);
+  object-position: center;
+  transform: translate(-50%, -50%) rotate(90deg);
+  transform-origin: center;
 }
 
 /* CARDS */
@@ -108,7 +135,7 @@
   position: relative;
   z-index: 3;
   max-width: 1200px;
-  margin: -32px auto 0;
+  margin: -42px auto 0;
   padding: 0 24px 90px;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -117,13 +144,18 @@
 
 .modern-card {
   position: relative;
+  min-height: 310px;
   background: #ffffff;
   border: 1px solid rgba(128, 0, 32, 0.08);
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
   overflow: hidden;
   transition: var(--transition);
-  min-height: 320px;
+}
+
+.modern-card::before {
+  display: none;
+  content: none;
 }
 
 .modern-card:hover {
@@ -132,14 +164,36 @@
 }
 
 .modern-card a {
+  position: relative;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   height: 100%;
-  padding: 32px;
+  padding: 34px;
   color: inherit;
   text-decoration: none;
-  position: relative;
-  z-index: 2;
+}
+
+.modern-card-highlight {
+  border-color: rgba(128, 0, 32, 0.12);
+  box-shadow:
+    var(--box-shadow),
+    0 18px 45px rgba(128, 0, 32, 0.06);
+}
+
+.card-label {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  margin-bottom: 18px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: rgba(128, 0, 32, 0.08);
+  color: var(--primary-color);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
 }
 
 .card-icon {
@@ -153,7 +207,7 @@
   background: linear-gradient(135deg, rgba(128, 0, 32, 0.10), rgba(163, 51, 61, 0.12));
   color: var(--primary-color);
   font-size: 1.8rem;
-  box-shadow: inset 0 0 0 1px rgba(128, 0, 32, 0.08);
+  box-shadow: none;
 }
 
 .modern-card h2 {
@@ -204,30 +258,7 @@
   pointer-events: none;
 }
 
-@keyframes idintermediarioGradientMove {
-  0% {
-    background-position: 0% 50%;
-  }
-
-  50% {
-    background-position: 100% 50%;
-  }
-
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-@keyframes idintermediarioGridMove {
-  from {
-    background-position: 0 0;
-  }
-
-  to {
-    background-position: 60px 60px;
-  }
-}
-
+/* ANIMAÇÕES */
 @keyframes idintermediarioGlowFloat {
   from {
     transform: translate(0, 0);
@@ -241,8 +272,9 @@
 @media (max-width: 992px) {
   .idintermediario-hero {
     grid-template-columns: 1fr;
+    gap: 38px;
     padding-top: 80px;
-    padding-bottom: 60px;
+    padding-bottom: 76px;
     padding-left: 24px;
     padding-right: 24px;
   }
@@ -251,24 +283,31 @@
     max-width: 100%;
   }
 
-  .idintermediario-image {
+  .idintermediario-image-wrapper {
     justify-content: flex-start;
   }
 
+  .idintermediario-image {
+    width: 100%;
+    max-width: 620px;
+    aspect-ratio: 16 / 10;
+  }
+
   .idintermediario-image img {
-    max-width: 100%;
-    height: 320px;
+    width: 102%;
+    height: 164%;
   }
 
   .cards-container {
     grid-template-columns: 1fr;
+    margin-top: -36px;
   }
 }
 
 @media (max-width: 768px) {
   .idintermediario-hero {
-    gap: 28px;
-    padding: 72px 18px 54px;
+    gap: 30px;
+    padding: 72px 18px 62px;
   }
 
   .cards-container {
@@ -284,8 +323,20 @@
     line-height: 1.8;
   }
 
+  .idintermediario-image {
+    width: 100%;
+    max-width: 100%;
+    border-radius: 24px;
+    aspect-ratio: 4 / 3;
+  }
+
+  .idintermediario-image img {
+    width: 102%;
+    height: 138%;
+  }
+
   .modern-card a {
-    padding: 24px;
+    padding: 26px;
   }
 
   .modern-card h2 {
@@ -305,7 +356,7 @@
   }
 
   .idintermediario-hero {
-    padding: 64px 16px 48px;
+    padding: 64px 16px 54px;
   }
 
   .idintermediario-content h1 {
@@ -317,13 +368,19 @@
     font-size: 0.96rem;
   }
 
-  .idintermediario-image img {
-    height: 240px;
+  .idintermediario-image {
+    width: 100%;
+    aspect-ratio: 4 / 3;
     border-radius: 20px;
   }
 
+  .idintermediario-image img {
+    width: 104%;
+    height: 138%;
+  }
+
   .cards-container {
-    margin-top: -24px;
+    margin-top: -28px;
     padding: 0 16px 60px;
   }
 
