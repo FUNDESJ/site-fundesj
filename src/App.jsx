@@ -40,6 +40,7 @@ import AfertarAfeto from "./pages/afeto/index.jsx";
 import OficinaDoFuturo from './pages/oficinaDoFuturo/index.jsx';
 import EgressosUnivali from './pages/egressosUnivali/index.jsx';
 import InstitutoEla from './pages/instituto-ela/index.jsx';
+import Avos from './pages/avos/index.jsx';
 function App() {
   return (
     <BrowserRouter>
@@ -83,6 +84,7 @@ function App() {
         <Route path="/oficina-do-futuro" element={<OficinaDoFuturo/>}/>
         <Route path="/egressos-univali" element={<EgressosUnivali/>}/>
         <Route path="/instituto-ela" element={<InstitutoEla/>}/>
+        <Route path="/avos" element={<Avos/>}/>
         <Route path='/admin/*'
           element={
             <PrivateRoute>

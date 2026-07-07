@@ -11,6 +11,7 @@ import oficinaFuturo from '../../images/pagina inicial/oficinaFuturo.jpeg';
 import HeroPages from '../../components/heros/hero_pages.jsx';
 import movmulherviva from '../../images/projetos/mulher-viva.jpeg'
 import institutoElaImg from '../../images/fotos parceiros/ela.png'
+import avosImg from '../../images/fotos parceiros/Logo-AVOS-Coracao.jpg'
 const ProjetosAtivos = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const carosselRef = useRef(null);
@@ -56,6 +57,12 @@ const ProjetosAtivos = () => {
             description: "Parceria com o Instituto ELA para valorização da força feminina por meio da educação, acolhimento e transformação social.",
             image: institutoElaImg,
             link: '/instituto-ela'
+        },
+        {
+            title: "Formação e Capacitação FUNDESJ e AVOS",
+            description: "Parceria com a AVOS para formação de colaboradores e voluntários, com foco em comunicação, escuta qualificada e cuidado emocional.",
+            image: avosImg,
+            link: '/avos'
         },
 
 
