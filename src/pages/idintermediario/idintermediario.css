@@ -90,7 +90,7 @@
 
 .idintermediario-image {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
 }
 
@@ -99,10 +99,8 @@
   max-width: 500px;
   height: 340px;
   object-fit: cover;
-  border-radius: 22px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.20);
-  background: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.16);
 }
 
 /* CARDS */
@@ -321,7 +319,7 @@
 
   .idintermediario-image img {
     height: 240px;
-    border-radius: 18px;
+    border-radius: 20px;
   }
 
   .cards-container {

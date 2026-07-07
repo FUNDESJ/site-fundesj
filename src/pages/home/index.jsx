@@ -20,21 +20,21 @@ function Home() {
         {
             id: 1,
             titulo: "Ciclo de Palestras",
-            descricao: "Ciclo de Palestra traz temas relevantes para a saúde e bem estar dos 60+, de 15 em 15 dias É realizada uma palestra com a participação de um especialista no tema abordado.",
+            descricao: "Traz temas relevantes para a saúde e bem estar dos 60+, de 15 em 15 dias É realizada uma palestra com a participação de um especialista no tema abordado.",
             foto: ciclo,
             link: "./ciclo"
         },
         {
             id: 2,
             titulo: "Curso Básico Inclusão Digital",
-            descricao: "Inclusão Digital Para Idosos são aulas semanais que levam conhecimentos para os 60+, abordando os conhecimentos básicos para a utilização de um Smartphone.",
+            descricao: "São aulas semanais que levam conhecimentos para os 60+, abordando os conhecimentos básicos para a utilização de um Smartphone.",
             foto: inclusaoidosos,
             link: "./idbasico"
         },
         {
             id: 3,
-            titulo: "Inclusão Digital Intermediário",
-            descricao: "O Curso Inclusão Digital Intermediário oferece conhecimentos sobre as tecnologias atuais, com oficinas realizadas semanalmente no Centro de Atenção à Terceira Idade (CATI).",
+            titulo: "Oficina Temática de Inclusão Digital",
+            descricao: "Oferece conhecimentos sobre as tecnologias atuais, com oficinas realizadas semanalmente no Centro de Atenção à Terceira Idade (CATI).",
             foto: idtodos,
             link: "./idintermediario"
         }

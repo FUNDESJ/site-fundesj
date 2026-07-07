@@ -1,6 +1,7 @@
 import './idintermediario.css';
 import Header from '../../components/header/index.jsx';
 import Footer from '../../components/footer/footer.jsx';
+import oficinaImg from '../../images/projetos/foto-pag-oficina-tematica.jpeg'
 
 function Idintermediario() {
     return (
@@ -16,12 +17,8 @@ function Idintermediario() {
                         </p>
                     </div>
                     <div className="idintermediario-image">
-                        <img src="https://apadep.org.br/wp-content/uploads/2020/06/WhatsApp-Image-2020-06-09-at-15.51.27.jpeg"
-                            alt="Curso de Inclusão Digital Intermediário"
-                            onError={(e) => {
-                                e.target.onerror = null;
-                                e.target.src = "https://via.placeholder.com/800x600?text=Curso+Inclusão+Digital";
-                            }} />
+                        <img src={oficinaImg}
+                            alt="Oficina Temática de Inclusão Digital" />
                     </div>
                 </div>
 
