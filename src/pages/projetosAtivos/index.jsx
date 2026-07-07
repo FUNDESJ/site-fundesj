@@ -11,7 +11,7 @@ import oficinaFuturo from '../../images/pagina inicial/oficinaFuturo.jpeg';
 import HeroPages from '../../components/heros/hero_pages.jsx';
 import movmulherviva from '../../images/projetos/mulher-viva.jpeg'
 import institutoElaImg from '../../images/fotos parceiros/ela.png'
-import avosImg from '../../images/fotos parceiros/Logo-AVOS-Coracao.jpg'
+import avosImg from '../../images/projetos/avos-carrosel.png'
 const ProjetosAtivos = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const carosselRef = useRef(null);

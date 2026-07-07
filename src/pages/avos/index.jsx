@@ -1,7 +1,7 @@
 import Header from '../../components/header/index.jsx';
 import Footer from '../../components/footer/footer.jsx';
 import './avos.css';
-import image1 from "../../images/fotos parceiros/Logo-AVOS-Coracao.jpg"
+import image1 from "../../images/projetos/avos-pagina.jpg"
 
 function Avos() {
     return (
@@ -12,7 +12,7 @@ function Avos() {
                 <section className="avos-hero">
                     <div className="avos-container avos-hero-content">
                         <div className="avos-hero-text">
-                            <h1>Projeto de Formação e Capacitação FUNDESJ e AVOS</h1>
+                            <h1>FUNDESJ e AVOS</h1>
 
                             <p className="avos-hero-subtitle">
                                 Fortalecimento da comunicação, escuta qualificada e cuidado emocional.
@@ -30,7 +30,7 @@ function Avos() {
                         <div className="avos-hero-image-wrapper">
                             <img
                                 src={image1}
-                                alt="Logo da AVOS – Associação de Voluntários de Apoio e Assistência à Criança e ao Adolescente"
+                                alt="Voluntários da AVOS em ação com crianças e famílias"
                                 className="avos-hero-image"
                             />
                         </div>
