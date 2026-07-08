@@ -16,10 +16,7 @@
   background:
     linear-gradient(135deg, rgba(128, 0, 32, 0.97), rgba(163, 51, 61, 0.93)),
     radial-gradient(circle at top right, rgba(255, 255, 255, 0.15), transparent 35%);
-  display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
-  align-items: center;
-  gap: 54px;
+  text-align: center;
 }
 
 /* GRADES NO BACKGROUND VERMELHO */
@@ -49,8 +46,7 @@
   pointer-events: none;
 }
 
-.idintermediario-hero > .idintermediario-content,
-.idintermediario-hero > .idintermediario-image-wrapper {
+.idintermediario-hero > .idintermediario-content {
   position: relative;
   z-index: 2;
 }
@@ -58,6 +54,7 @@
 .idintermediario-content {
   color: #ffffff;
   max-width: 720px;
+  margin: 0 auto;
 }
 
 .idintermediario-eyebrow {
@@ -92,42 +89,6 @@
   color: rgba(255, 255, 255, 0.92);
   margin: 0;
   max-width: 680px;
-}
-
-/* IMAGEM */
-.idintermediario-image-wrapper {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
-
-.idintermediario-image {
-  position: relative;
-  width: min(100%, 560px);
-  aspect-ratio: 16 / 10;
-  border-radius: 28px;
-  overflow: hidden;
-  background: transparent;
-  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.24);
-}
-
-.idintermediario-image::before,
-.idintermediario-image::after {
-  display: none;
-  content: none;
-}
-
-.idintermediario-image img {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 102%;
-  height: 164%;
-  display: block;
-  object-fit: cover;
-  object-position: center;
-  transform: translate(-50%, -50%) rotate(90deg);
-  transform-origin: center;
 }
 
 /* CARDS */
@@ -271,8 +232,6 @@
 
 @media (max-width: 992px) {
   .idintermediario-hero {
-    grid-template-columns: 1fr;
-    gap: 38px;
     padding-top: 80px;
     padding-bottom: 76px;
     padding-left: 24px;
@@ -281,21 +240,6 @@
 
   .idintermediario-content {
     max-width: 100%;
-  }
-
-  .idintermediario-image-wrapper {
-    justify-content: flex-start;
-  }
-
-  .idintermediario-image {
-    width: 100%;
-    max-width: 620px;
-    aspect-ratio: 16 / 10;
-  }
-
-  .idintermediario-image img {
-    width: 102%;
-    height: 164%;
   }
 
   .cards-container {
@@ -321,18 +265,6 @@
   .idintermediario-content p {
     font-size: 1rem;
     line-height: 1.8;
-  }
-
-  .idintermediario-image {
-    width: 100%;
-    max-width: 100%;
-    border-radius: 24px;
-    aspect-ratio: 4 / 3;
-  }
-
-  .idintermediario-image img {
-    width: 102%;
-    height: 138%;
   }
 
   .modern-card a {
@@ -366,17 +298,6 @@
   .idintermediario-content p,
   .modern-card p {
     font-size: 0.96rem;
-  }
-
-  .idintermediario-image {
-    width: 100%;
-    aspect-ratio: 4 / 3;
-    border-radius: 20px;
-  }
-
-  .idintermediario-image img {
-    width: 104%;
-    height: 138%;
   }
 
   .cards-container {

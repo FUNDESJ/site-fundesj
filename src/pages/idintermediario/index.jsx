@@ -1,7 +1,6 @@
 import './idintermediario.css';
 import Header from '../../components/header/index.jsx';
 import Footer from '../../components/footer/footer.jsx';
-import oficinaImg from '../../images/projetos/foto-pag-oficina-tematica.jpeg';
 
 function Idintermediario() {
     return (
@@ -20,15 +19,6 @@ function Idintermediario() {
                             a qualidade de vida e a participação social dos idosos na era tecnológica, por meio
                             de oficinas presenciais temáticas e estruturadas.
                         </p>
-                    </div>
-
-                    <div className="idintermediario-image-wrapper">
-                        <div className="idintermediario-image">
-                            <img
-                                src={oficinaImg}
-                                alt="Participantes da Oficina Temática de Inclusão Digital"
-                            />
-                        </div>
                     </div>
                 </section>
 
