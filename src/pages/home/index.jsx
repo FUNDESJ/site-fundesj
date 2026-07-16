@@ -114,10 +114,10 @@ function Home() {
             </div>
 
             <div className="section-cards">
-                <a href="./programas"><div className="card">
+                <a href="./longevidade-ativa"><div className="card">
                     <i className="fas fa-sitemap"></i>
-                    <img src={Imagem1} alt="imagem Programas" className='programas' />
-                    <p>PROGRAMAS</p>
+                    <img src={Imagem1} alt="imagem Longevidade Ativa" className='programas' />
+                    <p>LONGEVIDADE ATIVA</p>
                 </div></a>
                 <a href="./projetos-ativos"><div className="card">
                     <i className="fas fa-file-alt"></i>
