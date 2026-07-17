@@ -12,10 +12,10 @@ const Noticias = () => {
     const noticias = [
         {
             titulo: 'Idosos de São José aprendem a usar smartphone e conquistam mais autonomia com projeto de Inclusão Digital',
-            imagem: 'https://saojose.sc.gov.br/wp-content/uploads/2026/07/MG_5275-1920x1280.jpg',
+            imagem: 'https://i0.wp.com/saojose.sc.gov.br/wp-content/uploads/2026/07/MG_5275-1920x1280.jpg?resize=960%2C640&ssl=1',  
             data: '10/07/2026',
             url: 'https://saojose.sc.gov.br/idosos-de-sao-jose-aprendem-a-usar-smartphone-e-conquistam-mais-autonomia-com-projeto-de-inclusao-digital/103524/'
-        }, 
+        },
         {
             titulo: 'Projeto, em São José, vai capacitar mulheres para ter autonomia financeira',
             imagem: 'https://i0.wp.com/saojose.sc.gov.br/wp-content/uploads/2026/03/Instituto-Elas-primeiro-encontro-12-960x720.jpeg?resize=960%2C720&ssl=1',

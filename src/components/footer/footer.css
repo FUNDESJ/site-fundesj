@@ -1,27 +1,35 @@
 .footer {
   position: relative;
-  background-color: #000;
-  color: #fff;
-  text-align: center;
-  padding: 24px 16px;
   overflow: hidden;
+  background-color: #ffffff;
+  border-top: 1px solid rgba(119, 119, 119, 0.23);
+  box-shadow: 0 -5px 8px rgba(0, 0, 0, 0.08);
+  padding: 30px 20px;
 }
 
 .footer-overlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  opacity: 0.2;
-  z-index: 1;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(to bottom,
+      rgba(255, 255, 255, 0),
+      rgba(0, 0, 0, 0.030));
 }
 
 .footer-content {
   position: relative;
   z-index: 2;
-  font-size: 14px;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
 }
 
+.footer-content p {
+  margin: 0;
+  font-family: "Lato", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #555;
+  line-height: 1.7;
+  letter-spacing: 0.2px;
+}

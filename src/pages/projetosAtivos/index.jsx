@@ -4,7 +4,7 @@ import styles from './ProjetosAtivos.module.css';
 import Header from '../../components/header/index.jsx';
 import Footer from '../../components/footer/footer.jsx';
 import ciclo from '../../images/pagina inicial/ciclo.jpg';
-import univali from '../../images/pagina inicial/univali.jpg';
+import univali from '../../images/fotos parceiros/univali.png';
 import inclusaoidosos from '../../images/pagina inicial/inclusao.png';
 import idtodos from '../../images/pagina inicial/idtodosfi.jpeg';
 import oficinaFuturo from '../../images/pagina inicial/oficinaFuturo.jpeg';
