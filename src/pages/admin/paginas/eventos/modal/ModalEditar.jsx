@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from 'axios';
 import "./ModalEditar.css"; 
 
-export default function ModalEditar({ isOpen, onClose, evento, atualizarEvento, ativarEvento }) {
+export default function ModalEditar({ isOpen, onClose, evento, atualizarEvento }) {
     const [titulo, setTitulo] = useState('')
     const [local, setLocal] = useState('')
     const [data, setData] = useState('')
@@ -30,52 +30,30 @@ export default function ModalEditar({ isOpen, onClose, evento, atualizarEvento, 
 
     async function editarEvento() {
         const token = localStorage.getItem('authToken');
-        try {
-            await axios.put(`https://back-end-fundesj.onrender.com/eventos/${evento.id}`, {
-                titulo,
-                local,
-                data,
-                horario,
-                palestrante,
-                projeto,
-                subTitulo,
-                foto,
-            }, {
-                headers: { Authorization: `Bearer ${token}` }
-            })
-            atualizarEvento();
-            onClose();
-        } catch (erro) {
-            console.log("Erro ao editar evento", erro);
-            throw erro;
-        }
-    }
-
-    async function atualizarStatus() {
-        const token = localStorage.getItem('authToken');
-        try {
-            await axios.put('https://back-end-fundesj.onrender.com/eventos', {
-                titulo,
-                projeto,
-                ativa
-            }, {
-                headers: { Authorization: `Bearer ${token}` }
-            })
-            ativarEvento();
-        } catch (erro) {
-            console.log("Não foi possivel ativar a o evento", erro);
-            throw erro;
-        }
+        await axios.put(`https://back-end-fundesj.onrender.com/eventos/${evento.id}`, {
+            titulo,
+            local,
+            data,
+            horario,
+            palestrante,
+            projeto,
+            subTitulo,
+            foto,
+            ativa,
+        }, {
+            headers: { Authorization: `Bearer ${token}` }
+        });
     }
 
     async function atualizar() {
         setIsLoading(true);
         try {
             await editarEvento();
-            await atualizarStatus();
+            atualizarEvento();
             onClose();
         } catch(erro) {
             console.log(erro);
+            alert("Não foi possível salvar as alterações.");
         } finally {
             setIsLoading(false);
         }

@@ -160,7 +160,6 @@ export default function Eventos() {
                 onClose={() => setOpenModalEditar(false)}
                 evento={eventoSelecionado}
                 atualizarEvento={listarEventos}
-                ativarEvento={listarEventos}
             />
         </div>
     );

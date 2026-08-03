@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './ModalEvento.css';
 import axios from 'axios';
 
-export default function ModalEvento({ isOpen, onClose }) {
+export default function ModalEvento({ isOpen, onClose, atualizarEventos }) {
     const [titulo, setTitulo] = useState('');
     const [local, setLocal] = useState('');
     const [data, setData] = useState('');
@@ -38,6 +38,7 @@ export default function ModalEvento({ isOpen, onClose }) {
             })
             
             onClose()
+            atualizarEventos?.();
             alert("Evento criado com sucesso")
         } catch (erro) {
             alert("Erro no sistema")
