@@ -118,14 +118,18 @@ await axios.post('https://back-end-fundesj.onrender.com/eventos', {
 
                         <div className="form-group">
                             <label htmlFor="evento-local">Projeto</label>
-                            <input
+                            <select
                                 id="Projeto"
-                                type="text"
-                                placeholder="Digite qual projeto é esse evento"
                                 value={projeto}
                                 onChange={(e) => setProjeto(e.target.value)}
                                 disabled={isLoading}
-                            />
+                            >
+                                <option value="">Selecione o projeto</option>
+                                <option value="Ciclo de palestras">Ciclo de palestras</option>
+                                <option value="Cati Jovem">Cati Jovem</option>
+                                <option value="ID Básico">ID Básico</option>
+                                <option value="Outros">Outros</option>
+                            </select>
                         </div>
 
                         <div className="form-group">

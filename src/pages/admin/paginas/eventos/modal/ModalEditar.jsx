@@ -90,7 +90,13 @@ export default function ModalEditar({ isOpen, onClose, evento, atualizarEvento }
                     </div>
                     <div className="form-group">
                         <label>Projeto</label>
-                        <input type="text" value={projeto} onChange={(e) => setProjeto(e.target.value)} />
+                        <select value={projeto} onChange={(e) => setProjeto(e.target.value)}>
+                            <option value="">Selecione o projeto</option>
+                            <option value="Ciclo de palestras">Ciclo de palestras</option>
+                            <option value="Cati Jovem">Cati Jovem</option>
+                            <option value="ID Básico">ID Básico</option>
+                            <option value="Outros">Outros</option>
+                        </select>
                     </div>
                     <div className="form-group">
                         <label>Descrição</label>
