@@ -27,11 +27,15 @@ export default function Inscricoes() {
 
     async function buscarEvento() {
         try {
-            const retorno = await axios.post('https://back-end-fundesj.onrender.com/eventos/ativa', {
-                projeto: "Ciclo de palestras"
-            });
+            const retorno = await axios.get('https://back-end-fundesj.onrender.com/palestras');
 
-            const evento = retorno.data.consulta;
+            const palestras = retorno.data;
+            const evento = palestras.find(p => p.ativa === true);
+
+            if (!evento) {
+                setMensagem("Não há palestras para se inscrever no momento");
+                return;
+            }
             const dataOriginal = evento.data;
 
             const [ano, mes, dia] = dataOriginal.split("T")[0].split("-");

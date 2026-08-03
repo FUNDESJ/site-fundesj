@@ -24,15 +24,16 @@ export default function ModalEvento({ isOpen, onClose, atualizarEventos }) {
         const token = localStorage.getItem('authToken');
         
         try {
-            await axios.post('https://back-end-fundesj.onrender.com/eventos', {
-                titulo,
-                local,
-                data,
-                horario,
-                palestrante,
-                projeto,
-                subTitulo,
-                foto,
+await axios.post('https://back-end-fundesj.onrender.com/eventos', {
+            titulo,
+            local,
+            data,
+            horario,
+            palestrante,
+            projeto,
+            subTitulo,
+            foto,
+            ativa: true,
             }, {
                 headers: { Authorization: `Bearer ${token}` }
             })
