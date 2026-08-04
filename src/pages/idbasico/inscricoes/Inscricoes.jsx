@@ -31,12 +31,18 @@ export default function Inscricoes() {
             return
         }
 
-        // Se o local mudar para "Estácio", definir automaticamente o período como "Vespertino"
+        // Se o local mudar, definir automaticamente o período e os dias quando aplicável
         if (name === 'local') {
+            const locaisVespertinoFixo = ['UNISUL', 'UNIASSELVI']
+            const diasFixosPorLocal = {
+                UNISUL: 'Segunda e Quinta',
+                UNIASSELVI: 'Terça e Quarta'
+            }
             setFormData(prev => ({
                 ...prev,
                 [name]: value,
-                periodo: value === 'Estácio' ? 'Vespertino' : prev.periodo
+                periodo: locaisVespertinoFixo.includes(value) ? 'Vespertino' : prev.periodo,
+                dias: diasFixosPorLocal[value] || prev.dias
             }))
             return
         }
@@ -68,10 +74,16 @@ export default function Inscricoes() {
         setIsLoading(true)
         setSubmissionStatus(null)
 
-        // Garantir que se o local for "Estácio", o período seja "Vespertino"
+        // Garantir período Vespertino e dias fixos para locais sem escolha
+        const locaisVespertinoFixo = ['UNISUL', 'UNIASSELVI']
+        const diasFixosPorLocal = {
+            UNISUL: 'Segunda e Quinta',
+            UNIASSELVI: 'Terça e Quarta'
+        }
         const dadosParaEnviar = {
             ...formData,
-            periodo: formData.local === 'Estácio' ? 'Vespertino' : formData.periodo
+            periodo: locaisVespertinoFixo.includes(formData.local) ? 'Vespertino' : formData.periodo,
+            dias: diasFixosPorLocal[formData.local] || formData.dias
         }
 
         try {
@@ -284,19 +296,6 @@ export default function Inscricoes() {
                                         <input
                                             type="radio"
                                             name="local"
-                                            value="Estácio"
-                                            checked={formData.local === 'Estácio'}
-                                            onChange={handleChange}
-                                            disabled={isLoading}
-                                            required
-                                        />
-                                        <div className="radio-custom"></div>
-                                        Estácio de SC
-                                    </label>
-                                    <label className={`radio-option ${isLoading ? 'disabled' : ''}`}>
-                                        <input
-                                            type="radio"
-                                            name="local"
                                             value="CATI"
                                             checked={formData.local === 'CATI'}
                                             onChange={handleChange}
@@ -304,7 +303,33 @@ export default function Inscricoes() {
                                             required
                                         />
                                         <div className="radio-custom"></div>
-                                        CATI (Centro de Atenção à Terceira Idade)
+                                        <span>CATI — Centro de Atenção à Terceira Idade</span>
+                                    </label>
+                                    <label className={`radio-option ${isLoading ? 'disabled' : ''}`}>
+                                        <input
+                                            type="radio"
+                                            name="local"
+                                            value="UNISUL"
+                                            checked={formData.local === 'UNISUL'}
+                                            onChange={handleChange}
+                                            disabled={isLoading}
+                                            required
+                                        />
+                                        <div className="radio-custom"></div>
+                                        <span>UNISUL (Continente) — Vespertino 14h às 16h</span>
+                                    </label>
+                                    <label className={`radio-option ${isLoading ? 'disabled' : ''}`}>
+                                        <input
+                                            type="radio"
+                                            name="local"
+                                            value="UNIASSELVI"
+                                            checked={formData.local === 'UNIASSELVI'}
+                                            onChange={handleChange}
+                                            disabled={isLoading}
+                                            required
+                                        />
+                                        <div className="radio-custom"></div>
+                                        <span>UNIASSELVI (Forquilhas) — Vespertino 14h às 16h</span>
                                     </label>
                                 </div>
                             </div>
@@ -344,44 +369,54 @@ export default function Inscricoes() {
                                 </div>
                             )}
 
-                            {/* Mostrar informação quando Estácio é selecionado */}
-                            {formData.local === 'Estácio' && (
+                            {/* Aviso de horário e dias fixos para UNISUL */}
+                            {formData.local === 'UNISUL' && (
                                 <div className="form-info-notice">
-                                    <p><strong>Informação:</strong> Na Estácio só temos horários vespertinos (14h às 16h).</p>
+                                    <p><strong>Importante:</strong> Na UNISUL oferecemos turmas no período <strong>vespertino (14h às 16h)</strong>, às <strong>segundas e quintas-feiras</strong>.</p>
                                 </div>
                             )}
 
-                            <div className="form-group">
-                                <label htmlFor="horarioAula">Quais dias você deseja? *</label>
-                                <div className="radio-group">
-                                    <label className={`radio-option ${isLoading ? 'disabled' : ''}`}>
-                                        <input
-                                            type="radio"
-                                            name="dias"
-                                            value="Segunda e Quarta"
-                                            checked={formData.dias === 'Segunda e Quarta'}
-                                            onChange={handleChange}
-                                            disabled={isLoading}
-                                            required
-                                        />
-                                        <div className="radio-custom"></div>
-                                        Segunda e Quarta
-                                    </label>
-                                    <label className={`radio-option ${isLoading ? 'disabled' : ''}`}>
-                                        <input
-                                            type="radio"
-                                            name="dias"
-                                            value="Terça e Quinta"
-                                            checked={formData.dias === 'Terça e Quinta'}
-                                            onChange={handleChange}
-                                            disabled={isLoading}
-                                            required
-                                        />
-                                        <div className="radio-custom"></div>
-                                        Terça e Quinta
-                                    </label>
+                            {/* Aviso de horário e dias fixos para UNIASSELVI */}
+                            {formData.local === 'UNIASSELVI' && (
+                                <div className="form-info-notice">
+                                    <p><strong>Importante:</strong> Na UNIASSELVI oferecemos turmas no período <strong>vespertino (14h às 16h)</strong>, às <strong>terças e quartas-feiras</strong>.</p>
                                 </div>
-                            </div>
+                            )}
+
+                            {/* Campo de dias - aparece apenas quando CATI é selecionado */}
+                            {formData.local === 'CATI' && (
+                                <div className="form-group">
+                                    <label htmlFor="horarioAula">Quais dias você deseja? *</label>
+                                    <div className="radio-group">
+                                        <label className={`radio-option ${isLoading ? 'disabled' : ''}`}>
+                                            <input
+                                                type="radio"
+                                                name="dias"
+                                                value="Segunda e Quarta"
+                                                checked={formData.dias === 'Segunda e Quarta'}
+                                                onChange={handleChange}
+                                                disabled={isLoading}
+                                                required
+                                            />
+                                            <div className="radio-custom"></div>
+                                            Segunda e Quarta
+                                        </label>
+                                        <label className={`radio-option ${isLoading ? 'disabled' : ''}`}>
+                                            <input
+                                                type="radio"
+                                                name="dias"
+                                                value="Terça e Quinta"
+                                                checked={formData.dias === 'Terça e Quinta'}
+                                                onChange={handleChange}
+                                                disabled={isLoading}
+                                                required
+                                            />
+                                            <div className="radio-custom"></div>
+                                            Terça e Quinta
+                                        </label>
+                                    </div>
+                                </div>
+                            )}
 
                             <div className="form-info">
                                 <p>
@@ -411,8 +446,9 @@ export default function Inscricoes() {
                         <div className="success-details">
                             <p><strong>Nome:</strong> {formData.nomeCompleto}</p>
                             <p><strong>Celular:</strong> {formData.celular}</p>
-                            <p><strong>Local preferido:</strong> {formData.local === 'Estácio' ? 'Estácio de SC' : 'CATI'}</p>
-                            <p><strong>Horário preferido:</strong> {formData.local === 'Estácio' ? 'Vespertino (14h às 16h)' : formData.periodo === 'Matutino' ? 'Matutino (9h às 11h)' : 'Vespertino (14h às 16h)'}</p>
+                            <p><strong>Local preferido:</strong> {formData.local === 'CATI' ? 'CATI (Centro de Atenção à Terceira Idade)' : formData.local === 'UNISUL' ? 'UNISUL (Continente)' : formData.local === 'UNIASSELVI' ? 'UNIASSELVI (Forquilhas)' : formData.local}</p>
+                            <p><strong>Horário preferido:</strong> {formData.local === 'CATI' ? (formData.periodo === 'Matutino' ? 'Matutino (9h às 11h)' : 'Vespertino (14h às 16h)') : 'Vespertino (14h às 16h)'}</p>
+                            <p><strong>Dias:</strong> {formData.local === 'UNISUL' ? 'Segunda e Quinta' : formData.local === 'UNIASSELVI' ? 'Terça e Quarta' : formData.dias}</p>
                             <p><strong>Data de envio:</strong> {new Date().toLocaleDateString('pt-BR')}</p>
                         </div>
 

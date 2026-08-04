@@ -1254,3 +1254,61 @@
     font-size: 1.5rem;
   }
 }
+
+/* === Aviso de horário fixo (UNISUL / UNIASSELVI) === */
+.form-info-notice {
+  margin-top: -10px;
+  padding: 14px 18px;
+  background: #fdf6f0;
+  border-left: 4px solid #8B0000;
+  border-radius: 8px;
+  font-size: 0.98rem;
+  color: #5a4a42;
+  line-height: 1.5;
+}
+
+.form-info-notice p {
+  margin: 0;
+}
+
+/* === Grid de locais: empilha Cards em telas pequenas === */
+.radio-group {
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .radio-group {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .radio-option {
+    justify-content: flex-start;
+    padding: 14px 18px;
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 769px) {
+  /* Em telas grandes, 3 colunas para os locais */
+  .form-group .radio-group {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+
+  .radio-option {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 16px 12px;
+    font-size: 0.95rem;
+    line-height: 1.35;
+    min-height: 84px;
+    justify-content: center;
+  }
+
+  .radio-option .radio-custom {
+    margin-bottom: 8px;
+  }
+}
