@@ -83,7 +83,6 @@ function Home() {
                     <Link to="/idbasico/inscricoes" className="inscricao-link">
                         <button className="inscricao-btn">
                             Inscrições Inclusão Digital 2026
-                            <span className="btn-arrow">→</span>
                         </button>
                     </Link>
 

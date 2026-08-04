@@ -655,7 +655,8 @@ export default function IdBasico() {
                                                     >
                                                         <option value="">Selecione</option>
                                                         <option value="CATI">CATI</option>
-                                                        <option value="Estácio">Estácio</option>
+                                                        <option value="UNISUL">UNISUL (Continente)</option>
+                                                        <option value="UNIASSELVI">UNIASSELVI (Forquilhas)</option>
                                                     </select>
                                                 </div>
 
@@ -684,6 +685,8 @@ export default function IdBasico() {
                                                         <option value="">Selecione</option>
                                                         <option value="Segunda e Quarta">Segunda e Quarta</option>
                                                         <option value="Terça e Quinta">Terça e Quinta</option>
+                                                        <option value="Segunda e Quinta">Segunda e Quinta</option>
+                                                        <option value="Terça e Quarta">Terça e Quarta</option>
                                                     </select>
                                                 </div>
 
