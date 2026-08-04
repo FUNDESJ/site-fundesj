@@ -104,6 +104,10 @@ html,
   white-space: nowrap;
   width: auto;
   max-width: 90%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .inscricao-btn:hover {

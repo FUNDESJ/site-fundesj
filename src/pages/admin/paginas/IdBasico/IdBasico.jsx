@@ -220,6 +220,23 @@ export default function IdBasico() {
 
     function handleInputChange(e) {
         const { name, value } = e.target;
+
+        // Quando o local muda, auto-preencher período e dias conforme regras do local
+        if (name === 'local') {
+            const regrasLocal = {
+                UNISUL: { periodo: 'Vespertino', dias: 'Segunda e Quinta' },
+                UNIASSELVI: { periodo: 'Vespertino', dias: 'Terça e Quarta' }
+            };
+            const regra = regrasLocal[value];
+            setNovaTurma(prev => ({
+                ...prev,
+                local: value,
+                periodo: regra ? regra.periodo : prev.periodo,
+                dias: regra ? regra.dias : prev.dias
+            }));
+            return;
+        }
+
         setNovaTurma(prev => ({
             ...prev,
             [name]: value
@@ -667,6 +684,7 @@ export default function IdBasico() {
                                                         value={novaTurma.periodo}
                                                         onChange={handleInputChange}
                                                         required
+                                                        disabled={novaTurma.local === 'UNISUL' || novaTurma.local === 'UNIASSELVI'}
                                                     >
                                                         <option value="">Selecione</option>
                                                         <option value="Matutino">Matutino</option>
@@ -681,6 +699,7 @@ export default function IdBasico() {
                                                         value={novaTurma.dias}
                                                         onChange={handleInputChange}
                                                         required
+                                                        disabled={novaTurma.local === 'UNISUL' || novaTurma.local === 'UNIASSELVI'}
                                                     >
                                                         <option value="">Selecione</option>
                                                         <option value="Segunda e Quarta">Segunda e Quarta</option>
