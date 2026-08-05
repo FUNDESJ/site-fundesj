@@ -28,7 +28,7 @@ const DIAS = [
     { value: 'Segunda e Quinta', label: 'Segunda e Quinta' },
     { value: 'Terça e Quarta', label: 'Terça e Quarta' },
 ];
-
+  
 export default function ModalEditarInscrito({ isOpen, onClose, inscrito, recarregarLista }) {
     const [nome, setNome] = useState('');
     const [celular, setCelular] = useState('');

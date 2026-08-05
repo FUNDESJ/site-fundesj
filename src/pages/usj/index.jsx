@@ -42,7 +42,7 @@ function USJ() {
       
       <div className="usj-content-section">
         <h2 className="usj-section-title">LEGISLAÇÃO</h2>
-        <a href="https://fundesj.com.br/wp-content/uploads/2022/10/INSTRUC%CC%A7A%CC%83O-NORMATIVA-No-002-2022-FUNDESJ-COM-SITE.pdf" target="_blank" rel="noopener noreferrer"><p className="usj-section-text">Instrução normativa Nº 002/2022/FUNDESJ</p></a>
+        <a href="https://fundesj.saojose.sc.gov.br/wp-content/uploads/2022/10/INSTRUC%CC%A7A%CC%83O-NORMATIVA-No-002-2022-FUNDESJ-COM-SITE.pdf" target="_blank" rel="noopener noreferrer"><p className="usj-section-text">Instrução normativa Nº 002/2022/FUNDESJ</p></a>
       </div>
       
       <Footer />

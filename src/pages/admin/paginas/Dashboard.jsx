@@ -147,7 +147,7 @@ export default function Dashboard() {
                         <FaChartBar className="dashboard-header-icon" />
                         Dashboard
                     </h1>
-                    <p>Visão geral das métricas do sistema, com foco em Inclusão Digital</p>
+                    <p>Visão geral das métricas do Inclusão Digital</p>
                 </div>
                 <button className="dashboard-refresh" onClick={carregarDados} title="Atualizar métricas">
                     <FaSyncAlt /> Atualizar
