@@ -7,6 +7,7 @@ import {
 } from 'react-icons/fa';
 import './idbasico.css';
 import DeletarInscrito from './Modal/ModalDeletarInscrito';
+import ModalEditarInscrito from './Modal/ModalEditarInscrito';
 import ModalTurmaPendente from './Modal/ModalTurmaPendente';
 import ModalTurmaAtiva from './Modal/ModalTurmaAtiva';
 import ModalTurmaFinalizada from './Modal/ModalTurmaFinalizada.jsx';
@@ -32,6 +33,7 @@ export default function IdBasico() {
     const [mostrarFormTurma, setMostrarFormTurma] = useState(false);
     const [inscritoSelecionado, setInscritoSelecionado] = useState(null);
     const [openModalDeletar, setOpenModalDeletar] = useState(false);
+    const [openModalEditar, setOpenModalEditar] = useState(false);
     const [modalTurmaPendenteAberto, setModalTurmaPendenteAberto] = useState(false);
     const [modalTurmaAtivaAberto, setModalTurmaAtivaAberto] = useState(false);
     const [modalTurmaFinalizadaAberto, setModalTurmaFinalizadaAberto] = useState(false);
@@ -253,6 +255,16 @@ export default function IdBasico() {
         setInscritoSelecionado(null);
     }
 
+    function abrirModalEditar(inscrito) {
+        setInscritoSelecionado(inscrito);
+        setOpenModalEditar(true);
+    }
+
+    function fecharModalEditar() {
+        setOpenModalEditar(false);
+        setInscritoSelecionado(null);
+    }
+
     function abrirModalTurmaPendente(turma) {
         setTurmaSelecionada(turma);
         setModalTurmaPendenteAberto(true);
@@ -356,7 +368,14 @@ export default function IdBasico() {
         return correspondeBusca && correspondeLocal && correspondeSituacao;
     });
 
-    const locaisDisponiveis = [...new Set(inscritos.map(i => i.local))];
+    // Garante que CATI, UNISUL e UNIASSELVI sempre apareçam no filtro,
+    // mesmo que ainda não tenham inscritos. Exclui Estácio/históricos.
+    const locaisBase = ['CATI', 'UNISUL', 'UNIASSELVI'];
+    const locaisBanco = [...new Set(inscritos.map(i => i.local))];
+    const locaisParaFiltro = [...new Set([...locaisBase, ...locaisBanco])].filter(l => {
+        const normalizado = (l || '').toString().trim().toLowerCase();
+        return !['estácio', 'estacio', 'estacio de sc'].includes(normalizado);
+    });
 
     return (
         <div className="idbasico-container">
@@ -451,7 +470,7 @@ export default function IdBasico() {
                                             className="idbasico-filter-select"
                                         >
                                             <option value="todos">Todos os locais</option>
-                                            {locaisDisponiveis.map((local, index) => (
+                                            {locaisParaFiltro.map((local, index) => (
                                                 <option key={index} value={local}>
                                                     {local}
                                                 </option>
@@ -609,7 +628,11 @@ export default function IdBasico() {
 
                                                         <td>
                                                             <div className="idbasico-acoes-cell">
-                                                                <button className="idbasico-acao-btn idbasico-editar-btn" title="Editar">
+                                                                <button
+                                                                    className="idbasico-acao-btn idbasico-editar-btn"
+                                                                    title="Editar"
+                                                                    onClick={() => abrirModalEditar(inscrito)}
+                                                                >
                                                                     <FaEdit className="idbasico-acao-icon" />
                                                                     <span>Editar</span>
                                                                 </button>
@@ -921,10 +944,19 @@ export default function IdBasico() {
                 recarregarLista={recarregarListaInscritos}
             />
 
+            <ModalEditarInscrito
+                isOpen={openModalEditar}
+                onClose={fecharModalEditar}
+                inscrito={inscritoSelecionado}
+                recarregarLista={recarregarListaInscritos}
+            />
+
             <ModalTurmaPendente
                 isOpen={modalTurmaPendenteAberto}
                 onClose={fecharModalTurmaPendente}
                 turma={turmaSelecionada}
+                onTurmaUpdated={recarregarTurmas}
+                onInscritosAlterados={carregarInscritos}
             />
 
             <ModalTurmaAtiva

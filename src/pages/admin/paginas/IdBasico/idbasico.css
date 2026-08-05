@@ -19,7 +19,7 @@
 }
 
 .header-content {
-    max-width: 1400px;
+    max-width: 1600px;
     margin: 0 auto;
 }
 
@@ -50,8 +50,8 @@
 
 /* Main */
 .idbasico-main {
-    padding: 2rem;
-    max-width: 1400px;
+    padding: 1.5rem 1.25rem;
+    max-width: 1600px;
     margin: 0 auto;
 }
 
@@ -126,7 +126,7 @@
 }
 
 .idbasico-content-card {
-    padding: 2rem;
+    padding: 1.5rem 1.25rem;
     width: 100%;
     animation: idbasicoFadeIn 0.3s ease;
 }
@@ -604,7 +604,7 @@
 .idbasico-inscritos-table {
     width: 100%;
     border-collapse: collapse;
-    min-width: 1100px;
+    table-layout: auto;
 }
 
 .idbasico-inscritos-table thead {
@@ -612,13 +612,14 @@
 }
 
 .idbasico-inscritos-table th {
-    padding: 1rem 1.5rem;
+    padding: 0.85rem 0.9rem;
     text-align: left;
     color: white;
     font-weight: 600;
-    font-size: 0.95rem;
+    font-size: 0.82rem;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    white-space: nowrap;
 }
 
 .idbasico-inscritos-table tbody tr {
@@ -631,17 +632,31 @@
 }
 
 .idbasico-inscritos-table td {
-    padding: 1rem 1.5rem;
+    padding: 0.7rem 0.9rem;
+    font-size: 0.88rem;
+    vertical-align: middle;
 }
 
 /* Células da Tabela */
 .idbasico-nome-cell {
     font-weight: 600;
     color: #2d3748;
+    max-width: 220px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.idbasico-nome-text {
+    display: inline-block;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .idbasico-telefone-cell {
     color: #4a5568;
+    white-space: nowrap;
 }
 
 .idbasico-primeira-vez-badge {
@@ -669,8 +684,10 @@
 .idbasico-dias-cell {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.4rem;
     color: #4a5568;
+    font-size: 0.85rem;
+    white-space: nowrap;
 }
 
 .idbasico-local-icon,
@@ -694,16 +711,17 @@
 }
 
 .idbasico-acao-btn {
-    padding: 0.5rem 1rem;
+    padding: 0.4rem 0.7rem;
     border: none;
     border-radius: 8px;
-    font-size: 0.9rem;
+    font-size: 0.82rem;
     font-weight: 600;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.35rem;
     cursor: pointer;
     transition: all 0.3s ease;
+    white-space: nowrap;
 }
 
 .idbasico-acao-btn.idbasico-editar-btn {
@@ -961,6 +979,15 @@
 @media (max-width: 1024px) {
     .idbasico-main {
         padding: 1.5rem;
+    }
+
+    .idbasico-table-container {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .idbasico-inscritos-table {
+        min-width: 900px;
     }
 }
 

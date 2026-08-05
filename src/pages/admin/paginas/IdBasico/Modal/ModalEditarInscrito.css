@@ -1,0 +1,220 @@
+.modal-editar-inscrito {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 720px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    animation: slideUp 0.4s ease-out forwards;
+}
+
+.modal-editar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid #eee;
+    background-color: #8B0000;
+    color: white;
+    border-radius: 12px 12px 0 0;
+}
+
+.modal-editar-header h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.modal-editar-close {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: background 0.2s ease;
+}
+
+.modal-editar-close:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.modal-editar-close:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.modal-editar-body {
+    padding: 1.5rem;
+}
+
+.modal-editar-info {
+    background-color: #f8f9fa;
+    padding: 0.75rem 1rem;
+    border-radius: 6px;
+    border-left: 4px solid #8B0000;
+    margin-bottom: 1.25rem;
+    color: #444;
+    font-size: 0.95rem;
+}
+
+.modal-editar-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+.modal-editar-field {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-editar-field label {
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 6px;
+    font-size: 0.92rem;
+}
+
+.modal-editar-field input,
+.modal-editar-field select {
+    padding: 10px 12px;
+    border: 1.5px solid #ddd;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    background-color: #fff;
+}
+
+.modal-editar-field input:focus,
+.modal-editar-field select:focus {
+    outline: none;
+    border-color: #8B0000;
+    box-shadow: 0 0 0 3px rgba(139, 0, 0, 0.1);
+}
+
+.modal-editar-field input:disabled,
+.modal-editar-field select:disabled {
+    background-color: #f5f5f5;
+    cursor: not-allowed;
+}
+
+.modal-editar-field-checkbox {
+    grid-column: 1 / -1;
+}
+
+.modal-editar-field-checkbox label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 500;
+    cursor: pointer;
+    color: #444;
+}
+
+.modal-editar-field-checkbox input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    accent-color: #8B0000;
+}
+
+.modal-editar-select-situacao {
+    border-width: 2px !important;
+    font-weight: 600 !important;
+}
+
+.modal-editar-erro {
+    margin-top: 1rem;
+    padding: 12px 16px;
+    background-color: #fdecea;
+    border-left: 4px solid #e74c3c;
+    border-radius: 6px;
+    color: #c0392b;
+    font-size: 0.92rem;
+}
+
+.modal-editar-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    padding: 1rem 1.5rem;
+    border-top: 1px solid #eee;
+    background-color: #fafafa;
+    border-radius: 0 0 12px 12px;
+}
+
+.modal-editar-btn-cancelar {
+    background: #fff;
+    color: #2c3e50;
+    border: 1.5px solid #ddd;
+    padding: 10px 22px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.modal-editar-btn-cancelar:hover:not(:disabled) {
+    background: #f0f0f0;
+    transform: translateY(-1px);
+}
+
+.modal-editar-btn-salvar {
+    background: #8B0000;
+    color: white;
+    border: none;
+    padding: 10px 22px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.modal-editar-btn-salvar:hover:not(:disabled) {
+    background: #a30000;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(139, 0, 0, 0.25);
+}
+
+.modal-editar-btn-salvar:disabled,
+.modal-editar-btn-cancelar:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+.spin-animation {
+    animation: spin 1s linear infinite;
+    margin-right: 8px;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+@media (max-width: 600px) {
+    .modal-editar-inscrito {
+        max-width: 95%;
+    }
+
+    .modal-editar-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .modal-editar-footer {
+        flex-direction: column-reverse;
+    }
+
+    .modal-editar-btn-cancelar,
+    .modal-editar-btn-salvar {
+        width: 100%;
+    }
+}

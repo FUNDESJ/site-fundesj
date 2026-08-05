@@ -18,7 +18,7 @@ import {
 } from 'react-icons/fa';
 import './ModalTurmaPendente.css';
 
-export default function ModalTurmaPendente({ isOpen, onClose, turma, onTurmaUpdated }) {
+export default function ModalTurmaPendente({ isOpen, onClose, turma, onTurmaUpdated, onInscritosAlterados }) {
     const [inscritos, setInscritos] = useState([]);
     const [carregando, setCarregando] = useState(false);
     const [deletandoInscrito, setDeletandoInscrito] = useState(null);
@@ -177,6 +177,11 @@ export default function ModalTurmaPendente({ isOpen, onClose, turma, onTurmaUpda
                 payload.Situacao = 'Cancelado';
             }
 
+            if (tipoRemocao === 'matriculado') {
+                payload.Situacao = 'Matriculado';
+                payload.foiChamado = false;
+            }
+
             await axios.put(
                 `https://back-end-fundesj.onrender.com/inscritosId/${inscritoSelecionadoRemocao.id}`,
                 payload,
@@ -199,9 +204,12 @@ export default function ModalTurmaPendente({ isOpen, onClose, turma, onTurmaUpda
             const mensagemSucesso =
                 tipoRemocao === 'jaChamado'
                     ? 'Aluno removido da turma e marcado como já chamado!'
-                    : 'Aluno removido da turma e marcado como Cancelado!';
+                    : tipoRemocao === 'cancelado'
+                    ? 'Aluno removido da turma e marcado como Cancelado!'
+                    : 'Aluno retornado à lista de inscritos como Matriculado (disponível para ser chamado de novo)!';
 
             mostrarNotificacao(mensagemSucesso, 'success');
+            if (onInscritosAlterados) onInscritosAlterados();
             fecharModalRemocao();
         } catch (erro) {
             console.error('Erro ao remover aluno:', erro);
@@ -238,6 +246,7 @@ export default function ModalTurmaPendente({ isOpen, onClose, turma, onTurmaUpda
             setInscritosDisponiveis(inscritosDisponiveis.filter(i => i.id !== inscrito.id));
 
             mostrarNotificacao(`${inscrito.nome} foi adicionado à turma!`, 'success');
+            if (onInscritosAlterados) onInscritosAlterados();
         } catch (erro) {
             console.error('Erro ao adicionar aluno:', erro);
             mostrarNotificacao('Erro ao adicionar aluno à turma.', 'error');
@@ -677,6 +686,17 @@ export default function ModalTurmaPendente({ isOpen, onClose, turma, onTurmaUpda
                                     onChange={(e) => setTipoRemocao(e.target.value)}
                                 />
                                 <span>Marcar como Cancelado</span>
+                            </label>
+
+                            <label className="mtp-opcao-remocao">
+                                <input
+                                    type="radio"
+                                    name="tipoRemocao"
+                                    value="matriculado"
+                                    checked={tipoRemocao === 'matriculado'}
+                                    onChange={(e) => setTipoRemocao(e.target.value)}
+                                />
+                                <span>Retornar à lista de inscritos como "Matriculado" (continua disponível para ser chamado de novo)</span>
                             </label>
                         </div>
 
