@@ -390,21 +390,20 @@ export default function IdBasico() {
 
             <header className="idbasico-header">
                 <div className="header-content">
-                    <div className="header-title">
-                        <FaUsers className="header-icon" />
-                        <h1>Gerenciamento - Curso de Inclusão Digital</h1>
+                    <div className="header-row">
+                        <div className="header-title">
+                            <FaUsers className="header-icon" />
+                            <h1>Gerenciamento - Curso de Inclusão Digital</h1>
+                        </div>
+                        <button
+                            className={`btn-sincronizar ${sincronizando ? 'sincronizando' : ''}`}
+                            onClick={sincronizarPlanilha}
+                            disabled={sincronizando}
+                        >
+                            <FaSyncAlt className={`sync-icon ${sincronizando ? 'rotating' : ''}`} />
+                            {sincronizando ? 'Sincronizando...' : 'Sincronizar dados com a planilha'}
+                        </button>
                     </div>
-                    <p className="idbasico-subtitle">
-                        Gerencie inscritos, turmas e acompanhe o progresso do curso
-                    </p>
-                    <button
-                        className={`btn-sincronizar ${sincronizando ? 'sincronizando' : ''}`}
-                        onClick={sincronizarPlanilha}
-                        disabled={sincronizando}
-                    >
-                        <FaSyncAlt className={`sync-icon ${sincronizando ? 'rotating' : ''}`} />
-                        {sincronizando ? 'Sincronizando...' : 'Sincronizar dados com a planilha'}
-                    </button>
                 </div>
             </header>
 

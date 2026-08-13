@@ -65,7 +65,7 @@
     left: 25%;
     width: 50%;
     height: 3px;
-    background: linear-gradient(90deg, #3498db, #2ecc71);
+    background: linear-gradient(90deg, #8B0000, #2ecc71);
     border-radius: 3px;
 }
 
@@ -97,7 +97,7 @@
 
 .modal-input:focus {
     outline: none;
-    border-color: #3498db;
+    border-color: #8B0000;
     box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
     background-color: #fff;
 }
@@ -168,7 +168,7 @@
 }
 
 .confirm-button {
-    background:  #3498db;
+    background:  #8B0000;
     color: white;
     box-shadow: 0 4px 6px rgba(52, 152, 219, 0.2);
 }
@@ -176,7 +176,7 @@
 .confirm-button:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 12px rgba(52, 152, 219, 0.25);
-    background:#2980b9
+    background:#a30000
 }
 
 .confirm-button:active {

@@ -24,7 +24,7 @@
 
 /* Botões */
 .btn-modal {
-    background-color: #3498db;
+    background-color: #8B0000;
     color: white;
     border: none;
     padding: 0.8rem 1.8rem;
@@ -42,15 +42,15 @@
 }
 
 .btn-modal:hover {
-    background-color: #2980b9;
+    background-color: #a30000;
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
 }
 
 .btn-ver-todos {
     background-color: transparent;
-    color: #3498db;
-    border: 1px solid #3498db;
+    color: #8B0000;
+    border: 1px solid #8B0000;
     padding: 0.6rem 1.2rem;
     border-radius: 6px;
     font-size: 0.9rem;
@@ -60,7 +60,7 @@
 }
 
 .btn-ver-todos:hover {
-    background-color: rgba(52, 152, 219, 0.1);
+    background-color: rgba(139, 0, 0, 0.1);
 }
 
 /* Filtros */
@@ -151,7 +151,7 @@
 }
 
 .inscritos-table thead tr {
-    background: #3498db;
+    background: #8B0000;
     color: white;
 }
 
@@ -168,7 +168,7 @@
 }
 
 .inscritos-table td.email {
-    color: #3498db;
+    color: #8B0000;
     text-decoration: underline;
     cursor: pointer;
 }
@@ -192,12 +192,12 @@
 }
 
 .btn-editar {
-    color: #3498db;
-    background-color: rgba(52, 152, 219, 0.1);
+    color: #8B0000;
+    background-color: rgba(139, 0, 0, 0.1);
 }
 
 .btn-editar:hover {
-    background-color: rgba(52, 152, 219, 0.2);
+    background-color: rgba(139, 0, 0, 0.2);
     transform: scale(1.1);
 }
 
@@ -236,7 +236,7 @@
     height: 20px;
     border: 3px solid rgba(52, 152, 219, 0.3);
     border-radius: 50%;
-    border-top-color: #3498db;
+    border-top-color: #8B0000;
     animation: spin 1s ease-in-out infinite;
 }
 
@@ -266,8 +266,8 @@
 
 .total-resultados {
     font-size: 0.9rem;
-    color: #3498db;
-    background-color: rgba(52, 152, 219, 0.1);
+    color: #8B0000;
+    background-color: rgba(139, 0, 0, 0.1);
     padding: 0.3rem 0.8rem;
     border-radius: 20px;
 }

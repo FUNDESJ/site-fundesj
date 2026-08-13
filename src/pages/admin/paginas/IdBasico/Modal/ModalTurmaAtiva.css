@@ -25,7 +25,7 @@
 
 /* Conteúdo do Modal */
 .modal-turma-ativa-content {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #8B0000 0%, #a52a2a 100%);
     border-radius: 24px;
     width: 90%;
     max-width: 900px;
@@ -65,7 +65,7 @@
 .header-icon-wrapper {
     width: 56px;
     height: 56px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #8B0000 0%, #a52a2a 100%);
     border-radius: 16px;
     display: flex;
     align-items: center;
@@ -162,7 +162,7 @@
 }
 
 .estatistica-icon.total {
-    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    background: linear-gradient(135deg, #8B0000 0%, #a30000 100%);
     color: white;
 }
 
@@ -256,7 +256,7 @@
 
 .finalizar-input:focus {
     outline: none;
-    border-color: #667eea;
+    border-color: #8B0000;
     box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.12);
 }
 
@@ -359,11 +359,11 @@
 }
 
 .sub-tab:hover {
-    color: #667eea;
+    color: #8B0000;
 }
 
 .sub-tab.active {
-    color: #667eea;
+    color: #8B0000;
 }
 
 .sub-tab.active::after {
@@ -373,7 +373,7 @@
     left: 0;
     right: 0;
     height: 2px;
-    background: #667eea;
+    background: #8B0000;
 }
 
 /* Lista de Alunos */
@@ -590,7 +590,7 @@
 
 .spinner {
     font-size: 40px;
-    color: #667eea;
+    color: #8B0000;
 }
 
 .rotating {

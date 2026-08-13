@@ -60,7 +60,7 @@
 }
 
 .modal-editar-form-group input:focus {
-  border-color: #3498db;
+  border-color: #8B0000;
   outline: none;
 }
 
@@ -91,7 +91,7 @@
 }
 
 .btn-salvar {
-  background-color: #3498db;
+  background-color: #8B0000;
   color: white;
   border: none;
   padding: 0.75rem 1.5rem;
@@ -103,7 +103,7 @@
 }
 
 .btn-salvar:hover {
-  background-color: #2980b9;
+  background-color: #a30000;
   transform: translateY(-2px);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }

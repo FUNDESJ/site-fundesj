@@ -3,6 +3,67 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 
+// Expressões regulares para validação dos campos
+const REGEX = {
+    // Nome: letras (com acentos), espaços, mínimo 3 caracteres, primeiro/último não-vazio
+    nome: /^[A-Za-zÀ-ÖØ-öø-ÿ][A-Za-zÀ-ÖØ-öø-ÿ\s'.-]*[A-Za-zÀ-ÖØ-öø-ÿ]$/,
+
+    // Data de nascimento DD/MM/AAAA (validação de faixa é feita em validarDataNascimento)
+    dataTexto: /^(0[1-9]|[12]\d|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/,
+
+    // Celular com DDD + 9 dígitos: (00) 00000-0000
+    celular: /^\(\d{2}\)\s9\d{4}-\d{4}$/,
+
+    // Email no formato padrão
+    email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+};
+
+// Aplica a máscara (00) 00000-0000 ao celular conforme o usuário digita
+function aplicarMascaraCelular(valor) {
+    const digitos = (valor || '').replace(/\D/g, '').slice(0, 11);
+    if (digitos.length === 0) return '';
+    if (digitos.length <= 2) return `(${digitos}`;
+    if (digitos.length <= 7) return `(${digitos.slice(0, 2)}) ${digitos.slice(2)}`;
+    return `(${digitos.slice(0, 2)}) ${digitos.slice(2, 7)}-${digitos.slice(7)}`;
+}
+
+// Aplica a máscara DD/MM/AAAA conforme o usuário digita
+function aplicarMascaraData(valor) {
+    const digitos = (valor || '').replace(/\D/g, '').slice(0, 8);
+    if (digitos.length === 0) return '';
+    if (digitos.length <= 2) return digitos;
+    if (digitos.length <= 4) return `${digitos.slice(0, 2)}/${digitos.slice(2)}`;
+    return `${digitos.slice(0, 2)}/${digitos.slice(2, 4)}/${digitos.slice(4)}`;
+}
+
+// Converte a data DD/MM/AAAA para YYYY-MM-DD (formato aceito pelo backend)
+function dataTextoParaIso(dataTexto) {
+    if (!REGEX.dataTexto.test(dataTexto)) return '';
+    const [dia, mes, ano] = dataTexto.split('/');
+    return `${ano}-${mes}-${dia}`;
+}
+
+// Valida se a data de nascimento é coerente (idade mínima 60 anos, não futura)
+function validarDataNascimento(dataTexto) {
+    if (!REGEX.dataTexto.test(dataTexto)) {
+        return 'Data inválida. Use o formato DD/MM/AAAA.';
+    }
+    const [dia, mes, ano] = dataTexto.split('/').map(Number);
+    const data = new Date(ano, mes - 1, dia);
+    if (data.getFullYear() !== ano || data.getMonth() !== mes - 1 || data.getDate() !== dia) {
+        return 'Data inválida. Verifique o dia e o mês.';
+    }
+    const hoje = new Date();
+    let idade = hoje.getFullYear() - ano;
+    const fezAniversario = (hoje.getMonth() > mes - 1) ||
+        (hoje.getMonth() === mes - 1 && hoje.getDate() >= dia);
+    if (!fezAniversario) idade -= 1;
+    if (idade < 60) return 'É necessário ter pelo menos 60 anos.';
+    if (idade > 120) return 'Data de nascimento inválida.';
+    if (data > hoje) return 'Data de nascimento não pode ser no futuro.';
+    return '';
+}
+
 export default function Inscricoes() {
     const [formData, setFormData] = useState({
         nomeCompleto: '',
@@ -15,19 +76,20 @@ export default function Inscricoes() {
         dias: ''
     })
 
+    const [dataTexto, setDataTexto] = useState(''); // Estado separado para a data com máscara DD/MM/AAAA
+    const [erros, setErros] = useState({});
+    const [showErrors, setShowErrors] = useState(false);
+
     const [isSubmitted, setIsSubmitted] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
     const [submissionStatus, setSubmissionStatus] = useState(null)
     const [errorMessage, setErrorMessage] = useState('')
 
     const handleChange = (e) => {
-        const { name, value, type } = e.target
+        const { name, value } = e.target
 
         if (name === 'primeira_vez') {
-            setFormData(prev => ({
-                ...prev,
-                primeira_vez: value === 'true'
-            }))
+            setFormData(prev => ({ ...prev, primeira_vez: value === 'true' }))
             return
         }
 
@@ -47,28 +109,106 @@ export default function Inscricoes() {
             return
         }
 
-        setFormData(prev => ({
-            ...prev,
-            [name]: value
-        }))
+        // Nome: aplica Regex (apenas letras, espaços e alguns caracteres válidos)
+        if (name === 'nomeCompleto') {
+            // Permite apenas letras (com acento), espaços, apóstrofo, hífen e ponto
+            const valorLimpo = value.replace(/[^A-Za-zÀ-ÖØ-öø-ÿ\s'.-]/g, '');
+            setFormData(prev => ({ ...prev, nomeCompleto: valorLimpo }));
+            setErros(prev => ({ ...prev, nomeCompleto: '' }));
+            return;
+        }
+
+        // Celular: aplica máscara automática (00) 00000-0000
+        if (name === 'celular') {
+            const celularFormatado = aplicarMascaraCelular(value);
+            setFormData(prev => ({ ...prev, celular: celularFormatado }));
+            setErros(prev => ({ ...prev, celular: '' }));
+            return;
+        }
+
+        // Data: aplica máscara DD/MM/AAAA e mantém um estado visual paralelo
+        if (name === 'dataNascimentoTexto') {
+            const dataFormatada = aplicarMascaraData(value);
+            setDataTexto(dataFormatada);
+            setErros(prev => ({ ...prev, dataNascimento: '' }));
+            // Atualiza o formData no formato YYYY-MM-DD para o backend
+            if (dataFormatada.length === 10) {
+                setFormData(prev => ({ ...prev, dataNascimento: dataTextoParaIso(dataFormatada) }));
+            } else {
+                setFormData(prev => ({ ...prev, dataNascimento: '' }));
+            }
+            return;
+        }
+
+        // Email: filtro básico enquanto digita (remove espaços)
+        if (name === 'email') {
+            const valorLimpo = value.replace(/\s/g, '');
+            setFormData(prev => ({ ...prev, email: valorLimpo }));
+            setErros(prev => ({ ...prev, email: '' }));
+            return;
+        }
+
+        setFormData(prev => ({ ...prev, [name]: value }))
+    }
+
+    // Valida todos os campos via Regex
+    function validarFormulario(dados) {
+        const novosErros = {};
+
+        // Nome Completo
+        const nomeTrim = (dados.nomeCompleto || '').trim();
+        if (!nomeTrim) {
+            novosErros.nomeCompleto = 'Nome completo é obrigatório.';
+        } else if (nomeTrim.length < 3) {
+            novosErros.nomeCompleto = 'Nome muito curto.';
+        } else if (!REGEX.nome.test(nomeTrim)) {
+            novosErros.nomeCompleto = 'Use apenas letras e espaços.';
+        }
+
+        // Data de Nascimento
+        const erroData = validarDataNascimento(dataTexto);
+        if (erroData) {
+            novosErros.dataNascimento = erroData;
+        }
+
+        // Celular
+        if (!REGEX.celular.test(dados.celular || '')) {
+            novosErros.celular = 'Celular inválido. Use o formato (00) 00000-0000.';
+        }
+
+        // Email (opcional, mas se preenchido deve ser válido)
+        if (dados.email && !REGEX.email.test(dados.email)) {
+            novosErros.email = 'Email inválido.';
+        }
+
+        return novosErros;
     }
 
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        // Validação dos campos obrigatórios
+        setShowErrors(true);
+
+        // Validação Regex de todos os campos
+        const novosErros = validarFormulario(formData);
+        if (Object.keys(novosErros).length > 0) {
+            setErros(novosErros);
+            setSubmissionStatus('error');
+            setErrorMessage('Verifique os campos destacados e tente novamente.');
+            return;
+        }
+        setErros({});
+
+        // Validação dos campos obrigatórios (local, período, dias, primeira_vez)
         if (
-            !formData.nomeCompleto ||
-            !formData.dataNascimento ||
-            !formData.celular ||
             formData.primeira_vez === null ||
             !formData.local ||
             !formData.periodo ||
             !formData.dias
         ) {
-            setSubmissionStatus('error')
-            setErrorMessage('Preencha todos os campos obrigatórios.')
-            return
+            setSubmissionStatus('error');
+            setErrorMessage('Preencha todos os campos obrigatórios.');
+            return;
         }
 
         setIsLoading(true)
@@ -134,6 +274,9 @@ export default function Inscricoes() {
             periodo: '',
             dias: ''
         })
+        setDataTexto('');
+        setErros({});
+        setShowErrors(false);
         setIsSubmitted(false)
         setSubmissionStatus(null)
         setErrorMessage('')
@@ -207,39 +350,53 @@ export default function Inscricoes() {
                                     value={formData.nomeCompleto}
                                     onChange={handleChange}
                                     placeholder="Digite seu nome completo"
-                                    className="form-input"
+                                    className={`form-input ${showErrors && erros.nomeCompleto ? 'form-input-error' : ''}`}
                                     required
                                     disabled={isLoading}
                                 />
+                                {showErrors && erros.nomeCompleto && (
+                                    <span className="form-error-message">{erros.nomeCompleto}</span>
+                                )}
                             </div>
 
                             <div className="form-group">
                                 <label htmlFor="dataNascimento">Data de Nascimento *</label>
                                 <input
-                                    type="date"
+                                    type="text"
+                                    inputMode="numeric"
                                     id="dataNascimento"
-                                    name="dataNascimento"
-                                    value={formData.dataNascimento}
+                                    name="dataNascimentoTexto"
+                                    value={dataTexto}
                                     onChange={handleChange}
-                                    className="form-input"
+                                    placeholder="DD/MM/AAAA"
+                                    maxLength="10"
+                                    className={`form-input ${showErrors && erros.dataNascimento ? 'form-input-error' : ''}`}
                                     required
                                     disabled={isLoading}
                                 />
+                                {showErrors && erros.dataNascimento && (
+                                    <span className="form-error-message">{erros.dataNascimento}</span>
+                                )}
                             </div>
 
                             <div className="form-group">
                                 <label htmlFor="celular">Celular *</label>
                                 <input
                                     type="tel"
+                                    inputMode="numeric"
                                     id="celular"
                                     name="celular"
                                     value={formData.celular}
                                     onChange={handleChange}
                                     placeholder="(00) 00000-0000"
-                                    className="form-input"
+                                    maxLength="15"
+                                    className={`form-input ${showErrors && erros.celular ? 'form-input-error' : ''}`}
                                     required
                                     disabled={isLoading}
                                 />
+                                {showErrors && erros.celular && (
+                                    <span className="form-error-message">{erros.celular}</span>
+                                )}
                             </div>
 
                             <div className="form-group">
@@ -251,9 +408,12 @@ export default function Inscricoes() {
                                     value={formData.email}
                                     onChange={handleChange}
                                     placeholder="seu.email@exemplo.com"
-                                    className="form-input"
+                                    className={`form-input ${showErrors && erros.email ? 'form-input-error' : ''}`}
                                     disabled={isLoading}
                                 />
+                                {showErrors && erros.email && (
+                                    <span className="form-error-message">{erros.email}</span>
+                                )}
                             </div>
 
                             <div className="form-group">

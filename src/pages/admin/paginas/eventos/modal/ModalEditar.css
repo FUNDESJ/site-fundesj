@@ -79,7 +79,7 @@
 .form-group input:focus,
 .form-group textarea:focus,
 .form-group select:focus {
-    border-color: #4a90e2;
+    border-color: #8B0000;
     outline: none;
 }
 
@@ -130,12 +130,12 @@
 }
 
 .btn-salvar {
-    background-color: #4a90e2;
+    background-color: #8B0000;
     color: white;
 }
 
 .btn-salvar:hover {
-    background-color: #3a7bc8;
+    background-color: #a30000;
 }
 
 .btn:disabled {

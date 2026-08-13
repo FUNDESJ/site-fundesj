@@ -82,7 +82,7 @@
 }
 
 .modal-editar-input:focus {
-    border-color: #4a90e2;
+    border-color: #8B0000;
     box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
     outline: none;
 }
@@ -115,7 +115,7 @@
 }
 
 .modal-editar-btn-save {
-    background-color: #4a90e2;
+    background-color: #8B0000;
     color: white;
 }
 

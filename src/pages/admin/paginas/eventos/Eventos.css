@@ -16,13 +16,14 @@
     font-weight: 600;
 }
 
+
 .eventos-header p {
     color: #7f8c8d;
     font-size: 1rem;
 }
 
 .btn-criar-evento {
-    background-color: #3498db;
+    background-color: #8B0000;
     color: white;
     border: none;
     padding: 0.75rem 1.5rem;
@@ -38,7 +39,7 @@
 }
 
 .btn-criar-evento:hover {
-    background-color: #2980b9;
+    background-color: #a30000;
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
@@ -59,7 +60,7 @@
 }
 
 .eventos-table thead tr {
-    background-color: #3498db;
+    background-color: #8B0000;
     color: white;
     text-align: left;
 }
@@ -94,7 +95,7 @@
 }
 
 .eventos-table td.email {
-    color: #3498db;
+    color: #8B0000;
 }
 
 .sem-dados {
@@ -141,7 +142,7 @@
 }
 
 .btn-editar:hover {
-    color: #3498db;
+    color: #8B0000;
 }
 
 .btn-excluir:hover {
@@ -201,7 +202,7 @@
 
 .filtro-select:focus {
     outline: none;
-    border-color: #4a90e2;
+    border-color: #8B0000;
 }
 
 .filtro-select-container::after {
@@ -239,12 +240,12 @@
 
 .filtro-input:focus {
     outline: none;
-    border-color: #4a90e2;
+    border-color: #8B0000;
 }
 
 .btn-criar-evento {
     padding: 10px 20px;
-    background-color: #4a90e2;
+    background-color: #8B0000;
     color: white;
     border: none;
     border-radius: 4px;
@@ -256,7 +257,7 @@
 }
 
 .btn-criar-evento:hover {
-    background-color: #3a7bc8;
+    background-color: #a30000;
 }
 
 /* Responsividade */
