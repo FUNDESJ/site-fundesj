@@ -43,7 +43,7 @@ function dataTextoParaIso(dataTexto) {
     return `${ano}-${mes}-${dia}`;
 }
 
-// Valida se a data de nascimento é coerente (idade mínima 60 anos, não futura)
+// Valida se a data de nascimento é coerente (idade mínima 49 anos, não futura)
 function validarDataNascimento(dataTexto) {
     if (!REGEX.dataTexto.test(dataTexto)) {
         return 'Data inválida. Use o formato DD/MM/AAAA.';
@@ -58,7 +58,7 @@ function validarDataNascimento(dataTexto) {
     const fezAniversario = (hoje.getMonth() > mes - 1) ||
         (hoje.getMonth() === mes - 1 && hoje.getDate() >= dia);
     if (!fezAniversario) idade -= 1;
-    if (idade < 60) return 'É necessário ter pelo menos 60 anos.';
+    if (idade < 49) return 'É necessário ter pelo menos 49 anos.';
     if (idade > 120) return 'Data de nascimento inválida.';
     if (data > hoje) return 'Data de nascimento não pode ser no futuro.';
     return '';
