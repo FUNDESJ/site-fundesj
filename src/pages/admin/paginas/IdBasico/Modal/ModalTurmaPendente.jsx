@@ -55,11 +55,15 @@ export default function ModalTurmaPendente({ isOpen, onClose, turma, onTurmaUpda
 
         const mapaLocais = {
             estacio: ['estacio', 'estacio de sa', 'estacio de sa', 'estácio', 'estácio de sá'],
-            cati: ['cati']
+            cati: ['cati'],
+            unisul: ['unisul'],
+            unieselvi: ['uniasselvi']
         };
 
         const turmaEhEstacio = mapaLocais.estacio.includes(localTurmaNormalizado);
         const turmaEhCati = mapaLocais.cati.includes(localTurmaNormalizado);
+        const turmaEhUnisul = mapaLocais.unisul.includes(localTurmaNormalizado);
+        const turmaEhUniasselvi = mapaLocais.unieselvi.includes(localTurmaNormalizado);
 
         if (turmaEhEstacio) {
             return mapaLocais.estacio.includes(localAlunoNormalizado);
@@ -67,6 +71,14 @@ export default function ModalTurmaPendente({ isOpen, onClose, turma, onTurmaUpda
 
         if (turmaEhCati) {
             return mapaLocais.cati.includes(localAlunoNormalizado);
+        }
+
+        if (turmaEhUnisul) {
+            return mapaLocais.unisul.includes(localAlunoNormalizado);
+        }
+
+        if (turmaEhUniasselvi) {
+            return mapaLocais.unieselvi.includes(localAlunoNormalizado);
         }
 
         return localAlunoNormalizado === localTurmaNormalizado;

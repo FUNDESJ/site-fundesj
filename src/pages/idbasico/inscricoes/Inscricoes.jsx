@@ -465,7 +465,6 @@ export default function Inscricoes() {
                                         <div className="radio-custom"></div>
                                         <span>CATI — Centro de Atenção à Terceira Idade</span>
                                     </label>
-                                    {/* 
                                     <label className={`radio-option ${isLoading ? 'disabled' : ''}`}>
                                         <input
                                             type="radio"
@@ -492,7 +491,6 @@ export default function Inscricoes() {
                                         <div className="radio-custom"></div>
                                         <span>UNIASSELVI (Forquilhas) — Vespertino 14h às 16h</span>
                                     </label>
-                                    */}
                                 </div>
                             </div>
 
