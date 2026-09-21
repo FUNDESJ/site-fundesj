@@ -86,6 +86,17 @@ function Home() {
                         </button>
                     </Link>
 
+                    <a
+                        href="https://forms.gle/LnP8U3SDt7wyVHFEA"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inscricao-link"
+                    >
+                        <button className="inscricao-btn avjas-btn">
+                            Inscrições Seminário AVJAS
+                        </button>
+                    </a>
+
                     {/*  <a 
                         href="https://forms.gle/WXhmbwEmdcsLyWhX7" 
                         target="_blank" 

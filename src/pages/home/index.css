@@ -183,6 +183,11 @@ html,
   transform: translateX(4px);
 }
 
+/* Botão Inscrições Seminário AVJAS - mesmo estilo do Inclusão Digital, apenas ajusta o espaçamento */
+.avjas-btn {
+  margin-top: 0;
+}
+
 .hero-content {
   display: flex;
   flex-direction: column;
@@ -218,14 +223,18 @@ html,
 @media (max-width: 480px) {
   .inscricao-btn {
     letter-spacing: 0.5px;
-  margin-top: 24px;
-  padding: 14px 22px;
-  font-size: 0.95rem;
-  max-width: 92%;
-  text-align: center;
+    margin-top: 24px;
+    padding: 14px 22px;
+    font-size: 0.95rem;
+    max-width: 92%;
+    text-align: center;
     display: inline-flex;
     align-items: center;
     justify-content: center;
+  }
+
+  .inscricao-btn.avjas-btn {
+    margin-top: 0;
   }
 
   .inscricao-btn .btn-arrow {
