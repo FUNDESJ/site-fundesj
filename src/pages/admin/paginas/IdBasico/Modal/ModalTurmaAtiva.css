@@ -680,6 +680,120 @@
     cursor: not-allowed;
 }
 
+/* Botão Excluir Turma */
+.turma-acoes-botoes {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.btn-excluir-turma {
+    padding: 10px 24px;
+    background: #ffffff;
+    color: #991b1b;
+    border: 2px solid #fecaca;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.btn-excluir-turma:hover:not(:disabled) {
+    background: #991b1b;
+    border-color: #991b1b;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(153, 27, 27, 0.3);
+}
+
+.btn-excluir-turma:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Busca de alunos disponíveis */
+.busca-alunos {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.busca-icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9ca3af;
+    font-size: 14px;
+}
+
+.busca-input {
+    width: 100%;
+    padding: 12px 14px 12px 40px;
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    font-size: 14px;
+    color: #1f2937;
+    background: #fff;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.busca-input:focus {
+    outline: none;
+    border-color: #8B0000;
+    box-shadow: 0 0 0 3px rgba(139, 0, 0, 0.12);
+}
+
+/* Badge "Já chamado" na lista de disponíveis */
+.chamado-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 10px;
+    background: #fef3c7;
+    color: #92400e;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.aluno-card-ja-chamado {
+    border: 1px solid #fde68a !important;
+    background: #fffbeb;
+}
+
+/* Botão Adicionar (na lista de disponíveis) */
+.btn-adicionar-lista {
+    padding: 10px 18px;
+    background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+    margin-left: 16px;
+}
+
+.btn-adicionar-lista:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(22, 163, 74, 0.3);
+}
+
+.btn-adicionar-lista:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
 /* Notificações */
 .notificacao-turma-ativa {
     position: fixed;
@@ -797,9 +911,19 @@
 
     .btn-fechar,
     .btn-finalizar-turma,
+    .btn-excluir-turma,
+    .btn-adicionar-lista,
     .btn-confirmar-finalizacao,
     .btn-cancelar-finalizacao {
         width: 100%;
         justify-content: center;
+    }
+
+    .turma-acoes-botoes {
+        flex-direction: column;
+    }
+
+    .btn-adicionar-lista {
+        margin-left: 0;
     }
 }

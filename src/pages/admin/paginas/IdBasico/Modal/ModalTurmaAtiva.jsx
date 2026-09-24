@@ -14,6 +14,10 @@ import {
     FaHistory,
     FaThumbsUp,
     FaUserSlash,
+    FaUserPlus,
+    FaSearch,
+    FaTrashAlt,
+    FaExclamationTriangle,
     FaPhoneAlt
 } from 'react-icons/fa';
 import './ModalTurmaAtiva.css';
@@ -33,13 +37,31 @@ export default function ModalTurmaAtiva({ isOpen, onClose, turma, onTurmaUpdated
     const [dataFinalizacao, setDataFinalizacao] = useState('');
     const [finalizaTurma, setFinalizaTurma] = useState(false);
 
+    // Estados: adicionar alunos
+    const [inscritosDisponiveis, setInscritosDisponiveis] = useState([]);
+    const [carregandoDisponiveis, setCarregandoDisponiveis] = useState(false);
+    const [buscaInscritos, setBuscaInscritos] = useState('');
+    const [adicionandoInscrito, setAdicionandoInscrito] = useState(null);
+
+    // Estado: excluir turma
+    const [excluindoTurma, setExcluindoTurma] = useState(false);
+
     useEffect(() => {
         if (turma && turma.id && isOpen) {
             listarInscritos();
             setFinalizaTurma(false);
             setDataFinalizacao('');
+            setActiveSubTab('alunos');
+            setBuscaInscritos('');
+            setInscritosDisponiveis([]);
         }
     }, [turma, isOpen]);
+
+    useEffect(() => {
+        if (activeSubTab === 'adicionar' && turma && isOpen) {
+            listarInscritosDisponiveis();
+        }
+    }, [activeSubTab]);
 
     useEffect(() => {
         if (inscritos.length > 0) {
@@ -213,6 +235,168 @@ export default function ModalTurmaAtiva({ isOpen, onClose, turma, onTurmaUpdated
         }
     }
 
+    async function excluirTurma() {
+        const qtdAlunos = inscritos.length;
+        const mensagem = qtdAlunos > 0
+            ? `Tem certeza que deseja EXCLUIR a turma "${turma.nome}"?\n\nOs ${qtdAlunos} aluno(s) vinculados a ela retornarão à lista de inscritos como "Matriculado" (disponíveis para novas turmas).\n\nA turma NÃO será contabilizada como finalizada. Esta ação não poderá ser desfeita.`
+            : `Tem certeza que deseja EXCLUIR a turma "${turma.nome}"?\n\nA turma NÃO será contabilizada como finalizada. Esta ação não poderá ser desfeita.`;
+
+        if (!window.confirm(mensagem)) {
+            return;
+        }
+
+        try {
+            setExcluindoTurma(true);
+            const token = localStorage.getItem('authToken');
+            const headers = {
+                Authorization: `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            };
+
+            // 1) Desvincula todos os alunos da turma (FK com RESTRICT impediria o delete)
+            await Promise.all(
+                inscritos.map(inscrito =>
+                    axios.put(
+                        `https://back-end-fundesj.onrender.com/inscritosId/${inscrito.id}`,
+                        { turma_id: null, foiChamado: false },
+                        { headers }
+                    )
+                )
+            );
+
+            // 2) Deleta a turma
+            await axios.delete(
+                `https://back-end-fundesj.onrender.com/turmaId/deletar/${turma.id}`,
+                { headers }
+            );
+
+            mostrarNotificacao('Turma excluída com sucesso!', 'success');
+
+            if (onTurmaUpdated) {
+                onTurmaUpdated();
+            }
+
+            setTimeout(() => {
+                onClose();
+            }, 1500);
+        } catch (erro) {
+            console.error('Erro ao excluir turma:', erro);
+            mostrarNotificacao('Erro ao excluir turma.', 'error');
+        } finally {
+            setExcluindoTurma(false);
+        }
+    }
+
+    // ===============================
+    // ADICIONAR ALUNOS (turma ativa)
+    // ===============================
+    function normalizarTexto(texto) {
+        return (texto || '')
+            .toString()
+            .trim()
+            .toLowerCase()
+            .normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, '');
+    }
+
+    function ehLocalCompativelComTurma(localAluno) {
+        const localTurmaNormalizado = normalizarTexto(turma?.local);
+        const localAlunoNormalizado = normalizarTexto(localAluno);
+
+        const mapaLocais = {
+            estacio: ['estacio', 'estacio de sa', 'estácio', 'estácio de sá'],
+            cati: ['cati'],
+            unisul: ['unisul'],
+            uniasselvi: ['uniasselvi']
+        };
+
+        for (const chave of Object.keys(mapaLocais)) {
+            if (mapaLocais[chave].includes(localTurmaNormalizado)) {
+                return mapaLocais[chave].includes(localAlunoNormalizado);
+            }
+        }
+
+        return localAlunoNormalizado === localTurmaNormalizado;
+    }
+
+    async function listarInscritosDisponiveis() {
+        try {
+            setCarregandoDisponiveis(true);
+            const token = localStorage.getItem('authToken');
+
+            const retorno = await axios.get(
+                'https://back-end-fundesj.onrender.com/inscritosId/ordenados',
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                }
+            );
+
+            const listaRetornada = Array.isArray(retorno.data) ? retorno.data : [];
+            const idsInscritosNaTurma = inscritos.map(i => i.id);
+
+            const disponiveis = listaRetornada.filter((inscrito) => {
+                const naoEstaNaTurmaAtual = !idsInscritosNaTurma.includes(inscrito.id);
+                const semTurma = inscrito.turma_id === null;
+                const localCompativel = ehLocalCompativelComTurma(inscrito.local);
+                const naoCancelado = (inscrito.Situacao || '').trim().toLowerCase() !== 'cancelado';
+                const naoDesistente = (inscrito.Situacao || '').trim().toLowerCase() !== 'desistente';
+                const naoAprovado = (inscrito.Situacao || '').trim().toLowerCase() !== 'aprovado';
+
+                return naoEstaNaTurmaAtual && semTurma && localCompativel && naoCancelado && naoDesistente && naoAprovado;
+            });
+
+            setInscritosDisponiveis(disponiveis);
+        } catch (erro) {
+            console.error('Erro ao carregar inscritos disponíveis:', erro);
+            setInscritosDisponiveis([]);
+        } finally {
+            setCarregandoDisponiveis(false);
+        }
+    }
+
+    async function adicionarInscritoTurma(inscrito) {
+        if (!window.confirm(`Deseja adicionar ${inscrito.nome} à turma ${turma.nome}?`)) {
+            return;
+        }
+
+        try {
+            setAdicionandoInscrito(inscrito.id);
+            const token = localStorage.getItem('authToken');
+
+            await axios.put(
+                `https://back-end-fundesj.onrender.com/inscritosId/${inscrito.id}`,
+                {
+                    turma_id: turma.id,
+                    foiChamado: true
+                },
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                        'Content-Type': 'application/json'
+                    }
+                }
+            );
+
+            const inscritoAdicionado = { ...inscrito, foiChamado: true, turma_id: turma.id };
+            setInscritos(prev => [...prev, inscritoAdicionado]);
+            setInscritosDisponiveis(prev => prev.filter(i => i.id !== inscrito.id));
+
+            mostrarNotificacao(`${inscrito.nome} foi adicionado à turma!`, 'success');
+        } catch (erro) {
+            console.error('Erro ao adicionar aluno:', erro);
+            mostrarNotificacao('Erro ao adicionar aluno à turma.', 'error');
+        } finally {
+            setAdicionandoInscrito(null);
+        }
+    }
+
+    const inscritosDisponiveisFiltrados = inscritosDisponiveis.filter(inscrito =>
+        (inscrito.nome || '').toLowerCase().includes(buscaInscritos.toLowerCase()) ||
+        (inscrito.celular || '').includes(buscaInscritos)
+    );
+
     function mostrarNotificacao(mensagem, tipo) {
         const notificacao = document.createElement('div');
         notificacao.className = `notificacao-turma-ativa notificacao-${tipo}`;
@@ -349,14 +533,35 @@ export default function ModalTurmaAtiva({ isOpen, onClose, turma, onTurmaUpdated
                     </div>
 
                     <div className="finalizacao-bloco">
-                        <button
-                            className="btn-finalizar-turma"
-                            onClick={() => setFinalizaTurma(true)}
-                            disabled={finalizandoTurma}
-                        >
-                            <FaStop />
-                            Finalizar Turma
-                        </button>
+                        <div className="turma-acoes-botoes">
+                            <button
+                                className="btn-finalizar-turma"
+                                onClick={() => setFinalizaTurma(true)}
+                                disabled={finalizandoTurma || excluindoTurma}
+                            >
+                                <FaStop />
+                                Finalizar Turma
+                            </button>
+
+                            <button
+                                className="btn-excluir-turma"
+                                onClick={excluirTurma}
+                                disabled={excluindoTurma || finalizandoTurma}
+                                title="Excluir a turma sem contabilizá-la como finalizada"
+                            >
+                                {excluindoTurma ? (
+                                    <>
+                                        <FaSpinner className="spinner-btn rotating" />
+                                        Excluindo...
+                                    </>
+                                ) : (
+                                    <>
+                                        <FaTrashAlt />
+                                        Excluir Turma
+                                    </>
+                                )}
+                            </button>
+                        </div>
 
                         {finalizaTurma && (
                             <div className="finalizar-container">
@@ -425,6 +630,13 @@ export default function ModalTurmaAtiva({ isOpen, onClose, turma, onTurmaUpdated
                             onClick={() => setActiveSubTab('alunos')}
                         >
                             <FaUsers /> Alunos Matriculados ({inscritos.length})
+                        </button>
+
+                        <button
+                            className={`sub-tab ${activeSubTab === 'adicionar' ? 'active' : ''}`}
+                            onClick={() => setActiveSubTab('adicionar')}
+                        >
+                            <FaUserPlus /> Adicionar Alunos
                         </button>
                     </div>
 
@@ -513,6 +725,109 @@ export default function ModalTurmaAtiva({ isOpen, onClose, turma, onTurmaUpdated
                                                     )}
                                                 </button>
                                             </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            )}
+                        </div>
+                    )}
+
+                    {activeSubTab === 'adicionar' && (
+                        <div className="alunos-section">
+                            <div className="busca-alunos">
+                                <FaSearch className="busca-icon" />
+                                <input
+                                    type="text"
+                                    placeholder="Buscar por nome ou telefone..."
+                                    value={buscaInscritos}
+                                    onChange={(e) => setBuscaInscritos(e.target.value)}
+                                    className="busca-input"
+                                />
+                            </div>
+
+                            {carregandoDisponiveis ? (
+                                <div className="loading-state">
+                                    <FaSpinner className="spinner rotating" />
+                                    <p>Carregando alunos disponíveis...</p>
+                                </div>
+                            ) : inscritosDisponiveisFiltrados.length === 0 ? (
+                                <div className="empty-state">
+                                    <div className="empty-icon">
+                                        <FaExclamationTriangle />
+                                    </div>
+                                    <h4>Nenhum aluno disponível</h4>
+                                    <p>
+                                        {buscaInscritos
+                                            ? 'Não encontramos alunos com esta busca.'
+                                            : `Não há alunos disponíveis compatíveis com o local ${turma.local} para adicionar a esta turma.`}
+                                    </p>
+                                </div>
+                            ) : (
+                                <div className="alunos-lista">
+                                    {inscritosDisponiveisFiltrados.map((inscrito) => (
+                                        <div
+                                            key={inscrito.id}
+                                            className={`aluno-card ${inscrito.foiChamado ? 'aluno-card-ja-chamado' : ''}`}
+                                        >
+                                            <div className="aluno-info">
+                                                <div className="aluno-avatar">
+                                                    <span className="avatar-inicial">
+                                                        {inscrito.nome?.charAt(0)?.toUpperCase() || '?'}
+                                                    </span>
+                                                </div>
+
+                                                <div className="aluno-detalhes">
+                                                    <div className="aluno-nome-container">
+                                                        <strong className="aluno-nome">{inscrito.nome}</strong>
+
+                                                        {inscrito.primeira_vez && (
+                                                            <span className="primeira-vez-badge">
+                                                                <FaCheckCircle /> Primeira Vez
+                                                            </span>
+                                                        )}
+
+                                                        {inscrito.foiChamado && (
+                                                            <span
+                                                                className="chamado-badge"
+                                                                title="Este aluno já foi chamado anteriormente"
+                                                            >
+                                                                <FaExclamationTriangle /> Já Chamado
+                                                            </span>
+                                                        )}
+                                                    </div>
+
+                                                    <div className="aluno-metadados">
+                                                        <span className="metadado">
+                                                            <FaClock className="metadado-icon" />
+                                                            {inscrito.periodo}
+                                                        </span>
+
+                                                        <span className="metadado">
+                                                            <FaCalendarAlt className="metadado-icon" />
+                                                            {inscrito.dias}
+                                                        </span>
+
+                                                        <span className="metadado telefone">
+                                                            <FaPhoneAlt className="metadado-icon" />
+                                                            {inscrito.celular}
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <button
+                                                className="btn-adicionar-lista"
+                                                onClick={() => adicionarInscritoTurma(inscrito)}
+                                                disabled={adicionandoInscrito === inscrito.id}
+                                            >
+                                                {adicionandoInscrito === inscrito.id ? (
+                                                    <FaSpinner className="spinner-btn rotating" />
+                                                ) : (
+                                                    <>
+                                                        <FaUserPlus /> Adicionar
+                                                    </>
+                                                )}
+                                            </button>
                                         </div>
                                     ))}
                                 </div>
