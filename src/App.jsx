@@ -41,6 +41,7 @@ import OficinaDoFuturo from './pages/oficinaDoFuturo/index.jsx';
 import EgressosUnivali from './pages/egressosUnivali/index.jsx';
 import InstitutoEla from './pages/instituto-ela/index.jsx';
 import Avos from './pages/avos/index.jsx';
+import MemoriasAfetivas from './pages/memorias-afetivas/index.jsx';
 function App() {
   return (
     <BrowserRouter>
@@ -85,6 +86,7 @@ function App() {
         <Route path="/egressos-univali" element={<EgressosUnivali/>}/>
         <Route path="/instituto-ela" element={<InstitutoEla/>}/>
         <Route path="/avos" element={<Avos/>}/>
+        <Route path="/memorias-afetivas" element={<MemoriasAfetivas/>}/>
         <Route path='/admin/*'
           element={
             <PrivateRoute>

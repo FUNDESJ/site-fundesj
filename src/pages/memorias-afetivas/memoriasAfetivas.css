@@ -1,0 +1,435 @@
+:root {
+    --ma-clr: #6b3a1a;
+    --ma-clr-soft: #8a5a2e;
+    --ma-bg: #fbf7f1;
+    --ma-text: #2f2a2d;
+    --ma-text-soft: #6b5f57;
+    --ma-white: #ffffff;
+    --ma-gold: #c99d5b;
+    --ma-gold-soft: #ecdcc3;
+}
+
+.ma-page {
+    background: var(--ma-bg);
+    color: var(--ma-text);
+}
+
+.ma-container {
+    width: min(100% - 32px, 1200px);
+    margin: 0 auto;
+}
+
+/* ─── TÍTULOS DE SEÇÃO ─── */
+.ma-section-tag {
+    display: inline-block;
+    padding: 5px 12px;
+    background: rgba(107, 58, 26, 0.08);
+    color: var(--ma-clr);
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    width: fit-content;
+    margin-bottom: 14px;
+}
+
+.ma-section-tag-light {
+    background: rgba(255, 255, 255, 0.14);
+    color: var(--ma-gold-soft);
+}
+
+.ma-section-title {
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+    color: var(--ma-clr);
+    margin: 0 0 18px;
+}
+
+.ma-section-text {
+    color: var(--ma-text-soft);
+    line-height: 1.9;
+    font-size: 0.98rem;
+    margin: 0 0 14px;
+    max-width: 760px;
+}
+
+.ma-section-text-bottom {
+    margin-bottom: 40px;
+}
+
+/* ─── HERO ─── */
+.ma-hero {
+    padding: 100px 0 80px;
+    background: linear-gradient(180deg, #f7efe4 0%, var(--ma-bg) 100%);
+}
+
+.ma-hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.ma-hero-text {
+    max-width: 560px;
+}
+
+.ma-hero-text h1 {
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 1.05;
+    margin: 0 0 16px;
+    color: var(--ma-clr);
+}
+
+.ma-hero-subtitle {
+    font-size: 1.08rem;
+    font-weight: 600;
+    color: var(--ma-clr-soft);
+    margin: 0 0 18px;
+}
+
+.ma-hero-desc {
+    font-size: 0.98rem;
+    line-height: 1.9;
+    color: var(--ma-text-soft);
+    margin: 0 0 22px;
+}
+
+.ma-hero-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 18px;
+}
+
+.ma-chip {
+    padding: 7px 14px;
+    background: var(--ma-white);
+    border: 1px solid rgba(107, 58, 26, 0.14);
+    border-radius: 999px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--ma-clr);
+}
+
+.ma-hero-prof {
+    font-size: 0.9rem;
+    color: var(--ma-text-soft);
+    margin: 0;
+}
+
+.ma-hero-prof strong {
+    color: var(--ma-clr);
+}
+
+.ma-hero-image {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    border-radius: 28px 8px 28px 8px;
+    box-shadow: 0 16px 40px rgba(107, 58, 26, 0.14);
+}
+
+.ma-hero-image-caption {
+    text-align: right;
+    margin-top: 10px;
+    font-size: 0.8rem;
+    color: var(--ma-text-soft);
+    font-style: italic;
+}
+
+/* ─── SOBRE ─── */
+.ma-sobre {
+    padding: 70px 0;
+    background: var(--ma-white);
+}
+
+/* ─── TIMELINE / MOVIMENTOS ─── */
+.ma-timeline {
+    padding: 70px 0 100px;
+}
+
+.ma-step {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 32px;
+    padding: 20px 0;
+    position: relative;
+}
+
+.ma-step:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    left: 28px;
+    top: 76px;
+    bottom: -16px;
+    width: 2px;
+    background: rgba(107, 58, 26, 0.16);
+    z-index: 0;
+}
+
+.ma-step-marker {
+    position: relative;
+    z-index: 1;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--ma-white);
+    border: 3px solid rgba(107, 58, 26, 0.18);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 0.9rem;
+    color: var(--ma-clr);
+    flex-shrink: 0;
+}
+
+.ma-step:nth-child(even) .ma-step-marker {
+    border-color: var(--ma-gold);
+    color: var(--ma-gold);
+    background: rgba(201, 157, 91, 0.06);
+}
+
+.ma-step-tag {
+    display: inline-block;
+    padding: 5px 12px;
+    background: rgba(107, 58, 26, 0.07);
+    color: var(--ma-clr);
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    width: fit-content;
+}
+
+.ma-step:nth-child(even) .ma-step-tag {
+    background: rgba(201, 157, 91, 0.12);
+    color: #96692f;
+}
+
+.ma-step-card {
+    background: var(--ma-white);
+    border-radius: 20px;
+    padding: 30px 28px;
+    box-shadow: 0 4px 24px rgba(41, 22, 10, 0.05);
+    border: 1px solid rgba(107, 58, 26, 0.08);
+    transition: transform 0.3s;
+}
+
+.ma-step-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(41, 22, 10, 0.1);
+}
+
+.ma-step-card h3 {
+    margin: 0 0 10px;
+    font-size: 1.22rem;
+    color: var(--ma-clr);
+    font-weight: 800;
+}
+
+.ma-step:nth-child(even) .ma-step-card h3 { color: var(--ma-clr-soft); }
+
+.ma-step-card p {
+    margin: 0;
+    color: var(--ma-text-soft);
+    line-height: 1.8;
+    font-size: 0.95rem;
+}
+
+/* ─── ENCONTROS ─── */
+.ma-encontros {
+    padding: 80px 0;
+    background: var(--ma-white);
+}
+
+.ma-encontros-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.ma-encontros-image {
+    width: 100%;
+    border-radius: 28px 8px 28px 8px;
+    box-shadow: 0 16px 40px rgba(107, 58, 26, 0.12);
+}
+
+.ma-encontros-lista {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.ma-encontros-lista li {
+    background: var(--ma-bg);
+    border: 1px solid rgba(107, 58, 26, 0.1);
+    border-left: 4px solid var(--ma-clr);
+    border-radius: 12px;
+    padding: 16px 18px;
+    color: var(--ma-text-soft);
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+.ma-encontros-lista li strong {
+    color: var(--ma-clr);
+}
+
+/* ─── PARTICIPAÇÃO ─── */
+.ma-participacao {
+    padding: 70px 0;
+}
+
+.ma-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+}
+
+.ma-card {
+    background: var(--ma-white);
+    border-radius: 20px;
+    padding: 28px 24px;
+    box-shadow: 0 4px 24px rgba(41, 22, 10, 0.05);
+    border: 1px solid rgba(107, 58, 26, 0.08);
+    transition: transform 0.3s;
+}
+
+.ma-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(41, 22, 10, 0.1);
+}
+
+.ma-card h3 {
+    margin: 0 0 10px;
+    font-size: 1.1rem;
+    color: var(--ma-clr);
+    font-weight: 800;
+}
+
+.ma-card p {
+    margin: 0;
+    color: var(--ma-text-soft);
+    line-height: 1.75;
+    font-size: 0.92rem;
+}
+
+/* ─── GALERIA ─── */
+.ma-galeria {
+    padding: 70px 0;
+    background: var(--ma-white);
+}
+
+.ma-galeria-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 32px;
+}
+
+.ma-galeria-img {
+    width: 100%;
+    height: 380px;
+    object-fit: contain;
+    background: var(--ma-gold-soft);
+    border-radius: 20px 6px 20px 6px;
+    box-shadow: 0 8px 28px rgba(41, 22, 10, 0.1);
+    transition: transform 0.3s;
+}
+
+.ma-galeria-img:hover {
+    transform: translateY(-4px);
+}
+
+/* ─── CUIDADOS ─── */
+.ma-cuidados {
+    padding: 80px 0;
+}
+
+.ma-cuidados-card {
+    background: linear-gradient(135deg, var(--ma-clr) 0%, var(--ma-clr-soft) 100%);
+    border-radius: 28px;
+    padding: 48px 44px;
+    box-shadow: 0 20px 50px rgba(107, 58, 26, 0.25);
+}
+
+.ma-cuidados-title {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 800;
+    color: var(--ma-white);
+    margin: 0 0 24px;
+    letter-spacing: -0.02em;
+}
+
+.ma-cuidados-lista {
+    margin: 0;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    color: rgba(255, 255, 255, 0.92);
+    font-size: 0.98rem;
+    line-height: 1.7;
+}
+
+/* ─── QUOTE ─── */
+.ma-quote-section {
+    padding: 0 0 100px;
+}
+
+.ma-quote-card {
+    background: var(--ma-white);
+    border-radius: 28px;
+    padding: 56px 44px;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(41, 22, 10, 0.08);
+    border: 1px solid rgba(107, 58, 26, 0.08);
+}
+
+.ma-quote-text {
+    font-size: clamp(1.2rem, 2.4vw, 1.6rem);
+    font-weight: 600;
+    font-style: italic;
+    color: var(--ma-clr);
+    line-height: 1.6;
+    margin: 0 0 18px;
+}
+
+.ma-quote-source {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--ma-gold);
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 860px) {
+    .ma-hero-grid { grid-template-columns: 1fr; gap: 32px; }
+    .ma-hero { padding: 60px 0 48px; }
+    .ma-hero-image { height: 280px; }
+
+    .ma-encontros-grid { grid-template-columns: 1fr; gap: 32px; }
+
+    .ma-galeria-grid { grid-template-columns: 1fr 1fr; }
+
+    .ma-step { grid-template-columns: 44px 1fr; gap: 20px; }
+    .ma-step:not(:last-child)::after { left: 21px; }
+    .ma-step-marker { width: 44px; height: 44px; font-size: 0.82rem; }
+}
+
+@media (max-width: 540px) {
+    .ma-hero-text h1 { font-size: 2rem; }
+    .ma-hero-image { height: 220px; border-radius: 20px 6px 20px 6px; }
+    .ma-galeria-grid { grid-template-columns: 1fr; }
+    .ma-galeria-img { height: 300px; }
+    .ma-cuidados-card { padding: 36px 26px; }
+    .ma-quote-card { padding: 40px 26px; }
+    .ma-timeline { padding-bottom: 64px; }
+}

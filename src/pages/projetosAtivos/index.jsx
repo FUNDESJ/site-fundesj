@@ -11,6 +11,7 @@ import univali from '../../images/fotos parceiros/UNIVALI.png';
 import institutoElaImg from '../../images/fotos parceiros/ela.png';
 import movmulherviva from '../../images/projetos/mulher-viva.jpeg';
 import avosImg from '../../images/projetos/avos-carrosel.png';
+import memoriasImg from '../../images/projetos/memorias-afetivas/memorias-1.jpeg';
 const CARD_WIDTH = 300;
 const CARD_GAP = 20;
 const CARDS_TO_SHOW = 3;
@@ -68,6 +69,13 @@ const ProjetosAtivos = () => {
                 'Projeto de inserção de egressos da Univali em projetos e ações comunitárias.',
             image: univali,
             link: '/egressos-univali',
+        },
+        {
+            title: 'Memórias Afetivas',
+            description:
+                'Oficina de restauração, organização e valorização de fotografias e memórias familiares com apoio da Inteligência Artificial.',
+            image: memoriasImg,
+            link: '/memorias-afetivas',
         },
     ];
 
