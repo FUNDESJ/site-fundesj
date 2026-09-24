@@ -354,7 +354,13 @@ export default function IdBasico() {
         } else if (filtroSituacao === 'desistente') {
             correspondeSituacao = situacaoNormalizada === 'desistente';
         } else if (filtroSituacao === 'chamado') {
-            correspondeSituacao = inscrito.foiChamado === true;
+            // Mostra apenas quem exibe a tag "Já chamado" na tabela:
+            // foiChamado === true e sem situação sobrescrita (aprovado/desistente/cancelado)
+            correspondeSituacao =
+                inscrito.foiChamado === true &&
+                situacaoNormalizada !== 'aprovado' &&
+                situacaoNormalizada !== 'desistente' &&
+                situacaoNormalizada !== 'cancelado';
         } else if (filtroSituacao === 'cancelado') {
             correspondeSituacao = situacaoNormalizada === 'cancelado';
         } else if (filtroSituacao === 'matriculado') {
@@ -486,7 +492,7 @@ export default function IdBasico() {
                                             <option value="aprovado">Aprovado</option>
                                             <option value="desistente">Desistente</option>
                                             <option value="cancelado">Cancelado</option>
-                                            <option value="chamado">Foi chamado</option>
+                                            <option value="chamado">Já chamado</option>
                                         </select>
                                     </div>
                                 </div>
