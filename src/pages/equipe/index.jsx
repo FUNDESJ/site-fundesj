@@ -85,7 +85,7 @@ function Equipe() {
     },
     {
       name: "Roger Porton Kuntze",
-      position: "Preguiçoso Oficial da FUNDESJ jjkk",
+      position: "Universitário de Tecnologia",
       email: "tecnologia@fundesj.com.br",
       category: "technology"
     },
