@@ -3,9 +3,6 @@ import Footer from '../../components/footer/footer.jsx';
 import './memoriasAfetivas.css';
 import heroImg from '../../images/projetos/memorias-afetivas/memorias-2.jpeg';
 import imgEncontros from '../../images/projetos/memorias-afetivas/memorias-3.jpeg';
-import galeria1 from '../../images/projetos/memorias-afetivas/memorias-4.jpeg';
-import galeria2 from '../../images/projetos/memorias-afetivas/memorias-6.jpeg';
-import galeria3 from '../../images/projetos/memorias-afetivas/memorias-7.jpeg';
 
 function MemoriasAfetivas() {
     return (
@@ -265,6 +262,8 @@ function MemoriasAfetivas() {
                         </div>
                     </div>
                 </section>
+
+
 
                 <section className="ma-quote-section">
                     <div className="ma-container">

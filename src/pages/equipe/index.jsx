@@ -10,7 +10,7 @@ function Equipe() {
       email: "superintendente@fundesj.com.br",
       category: "leadership"
     },
-    
+
     {
       name: "Eloisa Vieira Müller",
       position: "Recursos Humanos",
@@ -42,12 +42,6 @@ function Equipe() {
       category: "admin"
     },
     {
-      name: "Nalma Aparecida Nienchotter",
-      position: "Assessora Administrativa",
-      email: "secretaria@fundesj.com.br",
-      category: "admin"
-    },
-    {
       name: "Monica Medeiros Gomes Matuo",
       position: "Assessora Administrativa",
       email: "secretaria@fundesj.com.br",
@@ -55,12 +49,6 @@ function Equipe() {
     },
     {
       name: "Arianni de Campos",
-      position: "Universitário de Tecnologia",
-      email: "tecnologia@fundesj.com.br",
-      category: "technology"
-    },
-    {
-      name: "Bernardo Alves Thives",
       position: "Universitário de Tecnologia",
       email: "tecnologia@fundesj.com.br",
       category: "technology"
@@ -78,7 +66,25 @@ function Equipe() {
       category: "technology"
     },
     {
-      name: "Felipe Linhares Domingues",
+      name: "Gustavo Murilo da Silva Rocha",
+      position: "Universitário de Tecnologia",
+      email: "tecnologia@fundesj.com.br",
+      category: "technology"
+    },
+    {
+      name: "Lucas Thiesen Prim Campos",
+      position: "Jovem Aprendiz",
+      email: "tecnologia@fundesj.com.br",
+      category: "technology"
+    },
+    {
+      name: "Matheus Umbelino de Azevedo",
+      position: "Universitário de Tecnologia",
+      email: "tecnologia@fundesj.com.br",
+      category: "technology"
+    },
+    {
+      name: "Roger Porton Kuntze",
       position: "Universitário de Tecnologia",
       email: "tecnologia@fundesj.com.br",
       category: "technology"
@@ -90,7 +96,7 @@ function Equipe() {
       <Header />
       <div className='equipe-container'>
         <h2 className='equipe-title'>Nossa Equipe</h2>
-        
+
         <div className="team-grid">
           {teamMembers.map((member, index) => (
             <div key={index} className={`team-card ${member.category}`}>
