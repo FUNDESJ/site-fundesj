@@ -42,6 +42,7 @@ await axios.post('https://back-end-fundesj.onrender.com/eventos', {
             atualizarEventos?.();
             alert("Evento criado com sucesso")
         } catch (erro) {
+            console.error('Erro ao criar evento:', erro.response?.data || erro);
             alert("Erro no sistema")
         } finally {
             setIsLoading(false)

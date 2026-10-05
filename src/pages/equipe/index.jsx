@@ -10,7 +10,6 @@ function Equipe() {
       email: "superintendente@fundesj.com.br",
       category: "leadership"
     },
-
     {
       name: "Eloisa Vieira Müller",
       position: "Recursos Humanos",
