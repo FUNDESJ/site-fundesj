@@ -53,7 +53,7 @@ function Equipe() {
       category: "technology"
     },
     {
-      name: "Bernardo Ghinato Goelzer",
+      name: "Bernardo",
       position: "Universitário de Tecnologia",
       email: "tecnologia@fundesj.com.br",
       category: "technology"
