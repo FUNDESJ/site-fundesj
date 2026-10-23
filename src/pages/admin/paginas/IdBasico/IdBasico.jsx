@@ -228,7 +228,7 @@ export default function IdBasico() {
             const regrasLocal = {
                 UNISUL: { periodo: 'Vespertino', dias: 'Segunda e Quinta' },
                 UNIASSELVI: { periodo: 'Vespertino', dias: 'Terça e Quarta' },
-                SERRARIA: { periodo: 'Vespertino', dias: 'Segunda e Quinta' }
+                SERRARIA: { periodo: 'Vespertino', dias: 'Terça e Quarta' }
             };
             const regra = regrasLocal[value];
             setNovaTurma(prev => ({

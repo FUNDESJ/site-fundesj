@@ -99,7 +99,7 @@ export default function Inscricoes() {
             const diasFixosPorLocal = {
                 UNISUL: 'Segunda e Quinta',
                 UNIASSELVI: 'Terça e Quarta',
-                SERRARIA: 'Segunda e Quinta'
+                SERRARIA: 'Terça e Quarta'
             }
             setFormData(prev => ({
                 ...prev,
@@ -220,7 +220,7 @@ export default function Inscricoes() {
         const diasFixosPorLocal = {
             UNISUL: 'Segunda e Quinta',
             UNIASSELVI: 'Terça e Quarta',
-            SERRARIA: 'Segunda e Quinta'
+            SERRARIA: 'Terça e Quarta'
         }
         const dadosParaEnviar = {
             ...formData,
@@ -548,7 +548,7 @@ export default function Inscricoes() {
                             {/* Aviso de horário e dias fixos para SERRARIA */}
                             {formData.local === 'SERRARIA' && (
                                 <div className="form-info-notice">
-                                    <p><strong>Importante:</strong> Na SERRARIA oferecemos turmas no período <strong>vespertino (14h às 16h)</strong>, às <strong>segundas e quintas-feiras</strong>.</p>
+                                    <p><strong>Importante:</strong> Na SERRARIA oferecemos turmas no período <strong>vespertino (14h às 16h)</strong>, às <strong>terças e quartas-feiras</strong>.</p>
                                 </div>
                             )}
 
@@ -617,7 +617,7 @@ export default function Inscricoes() {
                             <p><strong>Celular:</strong> {formData.celular}</p>
                             <p><strong>Local preferido:</strong> {formData.local === 'CATI' ? 'CATI (Centro de Atenção à Terceira Idade)' : formData.local === 'UNISUL' ? 'UNISUL (Continente)' : formData.local === 'UNIASSELVI' ? 'UNIASSELVI (Forquilhas)' : formData.local === 'SERRARIA' ? 'SERRARIA' : formData.local}</p>
                             <p><strong>Horário preferido:</strong> {formData.local === 'CATI' ? (formData.periodo === 'Matutino' ? 'Matutino (9h às 11h)' : 'Vespertino (14h às 16h)') : 'Vespertino (14h às 16h)'}</p>
-                            <p><strong>Dias:</strong> {formData.local === 'UNISUL' ? 'Segunda e Quinta' : formData.local === 'UNIASSELVI' ? 'Terça e Quarta' : formData.local === 'SERRARIA' ? 'Segunda e Quinta' : formData.dias}</p>
+                            <p><strong>Dias:</strong> {formData.local === 'UNISUL' ? 'Segunda e Quinta' : formData.local === 'UNIASSELVI' ? 'Terça e Quarta' : formData.local === 'SERRARIA' ? 'Terça e Quarta' : formData.dias}</p>
                             <p><strong>Data de envio:</strong> {new Date().toLocaleDateString('pt-BR')}</p>
                         </div>
 
