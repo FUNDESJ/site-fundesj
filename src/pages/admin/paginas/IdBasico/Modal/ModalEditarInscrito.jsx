@@ -15,6 +15,7 @@ const LOCAIS = [
     { value: 'CATI', label: 'CATI' },
     { value: 'UNISUL', label: 'UNISUL (Continente)' },
     { value: 'UNIASSELVI', label: 'UNIASSELVI (Forquilhas)' },
+    { value: 'SERRARIA', label: 'SERRARIA' },
 ];
 
 const PERIODOS = [

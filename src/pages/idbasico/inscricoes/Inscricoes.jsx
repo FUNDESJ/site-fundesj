@@ -95,10 +95,11 @@ export default function Inscricoes() {
 
         // Se o local mudar, definir automaticamente o período e os dias quando aplicável
         if (name === 'local') {
-            const locaisVespertinoFixo = ['UNISUL', 'UNIASSELVI']
+            const locaisVespertinoFixo = ['UNISUL', 'UNIASSELVI', 'SERRARIA']
             const diasFixosPorLocal = {
                 UNISUL: 'Segunda e Quinta',
-                UNIASSELVI: 'Terça e Quarta'
+                UNIASSELVI: 'Terça e Quarta',
+                SERRARIA: 'Segunda e Quinta'
             }
             setFormData(prev => ({
                 ...prev,
@@ -215,10 +216,11 @@ export default function Inscricoes() {
         setSubmissionStatus(null)
 
         // Garantir período Vespertino e dias fixos para locais sem escolha
-        const locaisVespertinoFixo = ['UNISUL', 'UNIASSELVI']
+        const locaisVespertinoFixo = ['UNISUL', 'UNIASSELVI', 'SERRARIA']
         const diasFixosPorLocal = {
             UNISUL: 'Segunda e Quinta',
-            UNIASSELVI: 'Terça e Quarta'
+            UNIASSELVI: 'Terça e Quarta',
+            SERRARIA: 'Segunda e Quinta'
         }
         const dadosParaEnviar = {
             ...formData,
@@ -469,14 +471,14 @@ export default function Inscricoes() {
                                         <input
                                             type="radio"
                                             name="local"
-                                            value="UNISUL"
-                                            checked={formData.local === 'UNISUL'}
+                                            value="SERRARIA"
+                                            checked={formData.local === 'SERRARIA'}
                                             onChange={handleChange}
                                             disabled={isLoading}
                                             required
                                         />
                                         <div className="radio-custom"></div>
-                                        <span>UNISUL (Continente) — Vespertino 14h às 16h</span>
+                                        <span>SERRARIA — Vespertino 14h às 16h</span>
                                     </label>
                                     <label className={`radio-option ${isLoading ? 'disabled' : ''}`}>
                                         <input
@@ -543,6 +545,13 @@ export default function Inscricoes() {
                                 </div>
                             )}
 
+                            {/* Aviso de horário e dias fixos para SERRARIA */}
+                            {formData.local === 'SERRARIA' && (
+                                <div className="form-info-notice">
+                                    <p><strong>Importante:</strong> Na SERRARIA oferecemos turmas no período <strong>vespertino (14h às 16h)</strong>, às <strong>segundas e quintas-feiras</strong>.</p>
+                                </div>
+                            )}
+
                             {/* Campo de dias - aparece apenas quando CATI é selecionado */}
                             {formData.local === 'CATI' && (
                                 <div className="form-group">
@@ -606,9 +615,9 @@ export default function Inscricoes() {
                         <div className="success-details">
                             <p><strong>Nome:</strong> {formData.nomeCompleto}</p>
                             <p><strong>Celular:</strong> {formData.celular}</p>
-                            <p><strong>Local preferido:</strong> {formData.local === 'CATI' ? 'CATI (Centro de Atenção à Terceira Idade)' : formData.local === 'UNISUL' ? 'UNISUL (Continente)' : formData.local === 'UNIASSELVI' ? 'UNIASSELVI (Forquilhas)' : formData.local}</p>
+                            <p><strong>Local preferido:</strong> {formData.local === 'CATI' ? 'CATI (Centro de Atenção à Terceira Idade)' : formData.local === 'UNISUL' ? 'UNISUL (Continente)' : formData.local === 'UNIASSELVI' ? 'UNIASSELVI (Forquilhas)' : formData.local === 'SERRARIA' ? 'SERRARIA' : formData.local}</p>
                             <p><strong>Horário preferido:</strong> {formData.local === 'CATI' ? (formData.periodo === 'Matutino' ? 'Matutino (9h às 11h)' : 'Vespertino (14h às 16h)') : 'Vespertino (14h às 16h)'}</p>
-                            <p><strong>Dias:</strong> {formData.local === 'UNISUL' ? 'Segunda e Quinta' : formData.local === 'UNIASSELVI' ? 'Terça e Quarta' : formData.dias}</p>
+                            <p><strong>Dias:</strong> {formData.local === 'UNISUL' ? 'Segunda e Quinta' : formData.local === 'UNIASSELVI' ? 'Terça e Quarta' : formData.local === 'SERRARIA' ? 'Segunda e Quinta' : formData.dias}</p>
                             <p><strong>Data de envio:</strong> {new Date().toLocaleDateString('pt-BR')}</p>
                         </div>
 

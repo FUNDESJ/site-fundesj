@@ -227,7 +227,8 @@ export default function IdBasico() {
         if (name === 'local') {
             const regrasLocal = {
                 UNISUL: { periodo: 'Vespertino', dias: 'Segunda e Quinta' },
-                UNIASSELVI: { periodo: 'Vespertino', dias: 'Terça e Quarta' }
+                UNIASSELVI: { periodo: 'Vespertino', dias: 'Terça e Quarta' },
+                SERRARIA: { periodo: 'Vespertino', dias: 'Segunda e Quinta' }
             };
             const regra = regrasLocal[value];
             setNovaTurma(prev => ({
@@ -376,7 +377,7 @@ export default function IdBasico() {
 
     // Garante que CATI, UNISUL e UNIASSELVI sempre apareçam no filtro,
     // mesmo que ainda não tenham inscritos. Exclui Estácio/históricos.
-    const locaisBase = ['CATI', 'UNISUL', 'UNIASSELVI'];
+    const locaisBase = ['CATI', 'UNISUL', 'UNIASSELVI', 'SERRARIA'];
     const locaisBanco = [...new Set(inscritos.map(i => i.local))];
     const locaisParaFiltro = [...new Set([...locaisBase, ...locaisBanco])].filter(l => {
         const normalizado = (l || '').toString().trim().toLowerCase();
@@ -702,6 +703,7 @@ export default function IdBasico() {
                                                         <option value="CATI">CATI</option>
                                                         <option value="UNISUL">UNISUL (Continente)</option>
                                                         <option value="UNIASSELVI">UNIASSELVI (Forquilhas)</option>
+                                                        <option value="SERRARIA">SERRARIA</option>
                                                     </select>
                                                 </div>
 
@@ -712,7 +714,7 @@ export default function IdBasico() {
                                                         value={novaTurma.periodo}
                                                         onChange={handleInputChange}
                                                         required
-                                                        disabled={novaTurma.local === 'UNISUL' || novaTurma.local === 'UNIASSELVI'}
+                                                        disabled={novaTurma.local === 'UNISUL' || novaTurma.local === 'UNIASSELVI' || novaTurma.local === 'SERRARIA'}
                                                     >
                                                         <option value="">Selecione</option>
                                                         <option value="Matutino">Matutino</option>
@@ -727,7 +729,7 @@ export default function IdBasico() {
                                                         value={novaTurma.dias}
                                                         onChange={handleInputChange}
                                                         required
-                                                        disabled={novaTurma.local === 'UNISUL' || novaTurma.local === 'UNIASSELVI'}
+                                                        disabled={novaTurma.local === 'UNISUL' || novaTurma.local === 'UNIASSELVI' || novaTurma.local === 'SERRARIA'}
                                                     >
                                                         <option value="">Selecione</option>
                                                         <option value="Segunda e Quarta">Segunda e Quarta</option>
