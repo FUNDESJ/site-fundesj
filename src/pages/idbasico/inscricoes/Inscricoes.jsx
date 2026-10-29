@@ -491,7 +491,7 @@ export default function Inscricoes() {
                                             required
                                         />
                                         <div className="radio-custom"></div>
-                                        <span>UNIASSELVI (Forquilhas) — Vespertino 14h às 16h</span>
+                                        <span>UNIASSELVI (Forquilinhas) — Vespertino 14h às 16h</span>
                                     </label>
                                 </div>
                             </div>
