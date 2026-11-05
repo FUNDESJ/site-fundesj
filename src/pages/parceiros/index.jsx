@@ -115,28 +115,28 @@ function Parceiros() {
         },
         {
             id: 16,
+            nome: "UAB - Universidade Aberta do Brasil",
+            link: "https://uab.capes.gov.br/",
+            img: Imagem20
+        },
+        {
+            id: 17,
             nome: "Universidade Estácio",
             link: "https://estacio.br/",
             img: Imagem3
         },
         {
-            id: 17,
+            id: 18,
             nome: "Unicesumar",
             link: "https://www.unicesumar.edu.br/",
             img: Imagem13
         },
         {
-            id: 18,
+            id: 19,
             nome: "Univali",
             link: "https://univali.br/Paginas/default.aspx",
             img: Imagem14
         },
-        {
-            id: 19,
-            nome: "UAB - Universidade Aberta do Brasil",
-            link: "https://uab.capes.gov.br/",
-            img: Imagem20
-        }
     ];
     return (
         <>
