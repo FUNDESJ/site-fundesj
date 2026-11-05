@@ -19,6 +19,7 @@ import Imagem16 from '../../images/fotos parceiros/ela.png'
 import Imagem17 from '../../images/fotos parceiros/redeFemininaContraCancer.png'
 import Imagem18 from '../../images/fotos parceiros/funiber.png'
 import Imagem19 from '../../images/fotos parceiros/Logo-AVOS-Coracao.jpg'
+import Imagem20 from '../../images/fotos parceiros/UAB.jpeg'
 function Parceiros() {
 
     const parceiros = [
@@ -129,6 +130,12 @@ function Parceiros() {
             nome: "Univali",
             link: "https://univali.br/Paginas/default.aspx",
             img: Imagem14
+        },
+        {
+            id: 19,
+            nome: "UAB - Universidade Aberta do Brasil",
+            link: "https://uab.capes.gov.br/",
+            img: Imagem20
         }
     ];
     return (
