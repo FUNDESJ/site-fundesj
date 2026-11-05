@@ -116,7 +116,7 @@ function Parceiros() {
         {
             id: 16,
             nome: "UAB - Universidade Aberta do Brasil",
-            link: "https://uab.capes.gov.br/",
+            link: "https://uab.ufsc.br/",
             img: Imagem20
         },
         {
